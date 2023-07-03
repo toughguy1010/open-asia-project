@@ -1,0 +1,38 @@
+{
+    "right": {
+        "search-2": {
+            "title": ""
+        },
+        "recent-posts-2": {
+            "title": "",
+            "number": 5
+        },
+        "recent-comments-2": {
+            "title": "",
+            "number": 5
+        },
+        "archives-2": {
+            "title": "",
+            "count": 0,
+            "dropdown": 0
+        },
+        "categories-2": {
+            "title": "",
+            "count": 0,
+            "hierarchical": 0,
+            "dropdown": 0
+        },
+        "meta-2": {
+            "title": ""
+        }
+    },
+    "footer": {
+        "bookyourtravel_address_widget-2": {
+            "title": "Contact us for a custom itinerary",
+            "company_name": "",
+            "company_address": "",
+            "company_phone": "1-555-555-5555",
+            "company_email": "mail@bookyourtravel.com"
+        }
+    }
+}

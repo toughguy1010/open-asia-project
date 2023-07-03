@@ -1,0 +1,36 @@
+<wpml-config>
+	<taxonomies>
+		<taxonomy translate="1">accommodation_type</taxonomy>
+		<taxonomy translate="1">acc_tag</taxonomy>
+		<taxonomy translate="1">car_type</taxonomy>
+		<taxonomy translate="1">car_rental_tag</taxonomy>
+		<taxonomy translate="1">cruise_type</taxonomy>
+		<taxonomy translate="1">cruise_tag</taxonomy>
+		<taxonomy translate="1">location_tag</taxonomy>
+		<taxonomy translate="1">location_type</taxonomy>
+		<taxonomy translate="1">tour_type</taxonomy>
+		<taxonomy translate="1">tour_tag</taxonomy>
+	</taxonomies>
+	<custom-fields>
+	</custom-fields>
+  <admin-texts>
+		<key name="bookyourtravel">
+			<key name="contact_company_name" />
+			<key name="contact_phone_number" />
+			<key name="contact_address_street" />
+			<key name="contact_address_city" />
+			<key name="contact_address_country" />
+			<key name="contact_email" />
+			<key name="default_currency_symbol" />
+			<key name="enable_rtl" />
+			<key name="basic_gdpr_agreement_text" />
+			<key name="locations_permalink_slug" />
+			<key name="accommodations_permalink_slug" />
+			<key name="tours_permalink_slug" />
+			<key name="car_rentals_permalink_slug" />
+			<key name="cruises_permalink_slug" />
+			<key name="review_form_thank_you" />
+			<key name="booking_form_thank_you" />
+		</key>
+  </admin-texts>
+</wpml-config>

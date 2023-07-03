@@ -1,0 +1,53 @@
+{
+    "right": {
+        "text-1": {
+            "title": "Need help booking?",
+            "text": "Call our customer services team on the number below to speak to one of our advisors who will help you with all of your holiday needs.\r\n<p class=\"number\">1- 555 - 555 - 555<\/p>",
+            "filter": true,
+            "visual": true
+        },
+        "text-2": {
+            "title": "Why book with us?",
+            "text": "<h5>Best rates<\/h5>\r\n<p>Get the best rates, or get a refund.<br>No booking fees. Save money!<\/p>\r\n<h5>Largest Selection<\/h5>\r\n<p>140,000+ hotels worldwide<br>130+ airlines<br>Over 3 million guest reviews<\/p>\r\n<h5>We\u2019re Always Here<\/h5>\r\n<p>Call or email us, anytime<br>Get 24-hour support before, during, and after your trip<\/p>",
+            "filter": true,
+            "visual": true
+        }
+    },
+    "above-footer": {
+        "bookyourtravel_call_to_action_widget-2": {
+            "call_to_action_text": "Like what you see? Are you ready to stand out? You know what to do!",
+            "button_text": "GET STARTED",
+            "button_url": "https:\/\/1.envato.market\/c\/1305088\/275988\/4415?u=https%3A%2F%2Fthemeforest.net%2Fitem%2Fbook-your-travel-online-booking-wordpress-theme%2F5632266"
+        }
+    },
+    "mega-menu": {
+        "text-3": {
+            "mega_menu_is_grid_widget": "true",
+            "title": "Activity level",
+            "text": "",
+            "filter": true,
+            "visual": true
+        },
+        "text-4": {
+            "mega_menu_is_grid_widget": "true",
+            "title": "Tour types",
+            "text": "",
+            "filter": true,
+            "visual": true
+        },
+        "text-5": {
+            "mega_menu_is_grid_widget": "true",
+            "title": "Group size",
+            "text": "",
+            "filter": true,
+            "visual": true
+        },
+        "text-6": {
+            "mega_menu_is_grid_widget": "true",
+            "title": "Service type",
+            "text": "",
+            "filter": true,
+            "visual": true
+        }
+    }
+}

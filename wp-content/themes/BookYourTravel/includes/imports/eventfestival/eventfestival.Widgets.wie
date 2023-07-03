@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "rev-slider-widget-2": {
+      "rev_slider_title": "",
+      "rev_slider": "1",
+      "rev_slider_homepage": "on",
+      "rev_slider_pages": ""
+    }
+  },
+  "footer": {
+    "text-2": {
+      "title": "About",
+      "text": "Muse about brain is the seed of intelligence from which we spring two ghostly white figures in coveralls and helmets are softly dancing.",
+      "filter": true,
+      "visual": true
+    },
+    "bookyourtravel_social_widget-2": {
+      "title": "Follow us",
+      "facebook_id": "#",
+      "twitter_id": "#",
+      "youtube_profile": "#",
+      "rss_feed": "",
+      "linked_in_profile": "",
+      "gplus_profile": "",
+      "vimeo_profile": "#",
+      "pinterest_profile": "#",
+      "whatsapp_profile": "",
+      "instagram_profile": "#",
+      "skype_profile": "",
+      "tripadvisor_profile": ""
+    }
+  }
+}

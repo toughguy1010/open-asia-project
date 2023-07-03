@@ -1,0 +1,7 @@
+.menu-icon-location .dashicons-admin-post:before 					{content: '\e55f';font-family:"Material Icons";font-size:21px;}
+.menu-icon-review .dashicons-admin-post:before 					{content: '\e8dc';font-family:"Material Icons";font-size:21px;}
+.menu-icon-extra_item .dashicons-admin-post:before 				{content: "\f546";}
+.menu-icon-accommodation .dashicons-admin-post:before 	{content: '\e7f1';font-family:"Material Icons";font-size:21px;}
+.menu-icon-tour .dashicons-admin-post:before 						{content: '\e536';font-family:"Material Icons";font-size:21px;}
+.menu-icon-cruise .dashicons-admin-post:before 						{content: '\e532';font-family:"Material Icons";font-size:21px;}
+.menu-icon-car_rental .dashicons-admin-post:before 				{content: '\e531';font-family:"Material Icons";font-size:21px;}

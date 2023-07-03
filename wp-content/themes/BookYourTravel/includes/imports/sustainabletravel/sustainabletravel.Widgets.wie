@@ -1,0 +1,95 @@
+{
+  "right": {
+    "text-1": {
+      "title": "Why book with us?",
+      "text": "<h5>Best price guarantee</h5>\r\nHome we’ve ever known emerged into consciousness.\r\n<h5>No booking fees</h5>\r\nInconspicuous motes of rock and gas laws of physics.\r\n<h5>Flexible payment plans</h5>\r\nRock and gas laws the only home we’ve ever known.",
+      "filter": true,
+      "visual": true
+    },
+    "text-2": {
+      "title": "Need help booking?",
+      "text": "Call us on 1-555-555-555 for individual, tailored advice for your perfect stay or send us a message with your hotel booking query.\r\n<p class=\"number\">1-555-555-555</p>",
+      "filter": true,
+      "visual": true
+    }
+  },
+  "right-tour": {
+    "text-3": {
+      "title": "Why book with us?",
+      "text": "<h5>Best price guarantee</h5>\r\nHome we’ve ever known emerged into consciousness.\r\n\r\n<h5>No booking fees</h5>\r\nInconspicuous motes of rock and gas laws of physics.\r\n\r\n<h5>Flexible payment plans</h5>\r\nRock and gas laws the only home we’ve ever known.",
+      "filter": true,
+      "visual": true
+    },
+    "bookyourtravel_tour_list_widget-1": {
+      "title": "Featured tours",
+      "number_of_posts": "4",
+      "sort_by": "rand",
+      "sort_descending": "1",
+      "display_mode": "small",
+      "posts_per_row": "1",
+      "show_featured_only": "",
+      "tour_type_ids": null,
+      "tour_tag_ids": null,
+      "hide_title": null,
+      "hide_image": null,
+      "hide_description": "1",
+      "hide_actions": null,
+      "hide_rating": "1",
+      "hide_price": "1",
+      "hide_address": null
+    },
+    "text-4": {
+      "title": "Need help booking?",
+      "text": "<p>Call us on 1-555-555-555 for individual, tailored advice for your perfect stay or send us a message with your hotel booking query.</p>\r\n<p class=\"number\">1-555-555-555</p>",
+      "filter": true,
+      "visual": true
+    }
+  },
+  "hero": {
+    "rev-slider-widget-1": {
+      "rev_slider_title": "",
+      "rev_slider": "1",
+      "rev_slider_homepage": "on",
+      "rev_slider_pages": ""
+    }
+  },
+  "above-footer": {
+    "bookyourtravel_social_widget-1": {
+      "title": "",
+      "facebook_id": "#",
+      "twitter_id": "#",
+      "youtube_profile": "",
+      "rss_feed": "",
+      "linked_in_profile": "",
+      "gplus_profile": "",
+      "vimeo_profile": "",
+      "pinterest_profile": "#",
+      "whatsapp_profile": "",
+      "instagram_profile": "#",
+      "skype_profile": "",
+      "tripadvisor_profile": "#"
+    }
+  },
+  "footer": {
+    "custom_html-1": {
+      "title": "Africa",
+      "content": "<ul>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/destination/africa/kenya/\">Kenya</a></li>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/destination/africa/madagascar/\">Madagascar</a></li>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/destination/africa/mauritius/\">Mauritius</a></li>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/destination/africa/uganda/\">Uganda</a></li>\r\n</ul>"
+    },
+    "custom_html-2": {
+      "title": "Asia",
+      "content": "<ul>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/destination/asia/bhutan/\">Bhutan</a></li>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/destination/asia/southeast-asia/cambodia/\">Cambodia</a></li>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/destination/asia/india/\">India</a></li>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/destination/asia/southeast-asia/indonesia/\">Indonesia</a></li>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/destination/asia/southeast-asia/myanmar/\">Myanmar</a></li>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/destination/asia/sri-lanka/\">Sri Lanka</a></li>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/destination/asia/southeast-asia/thailand/\">Thailand</a></li>\r\n</ul>"
+    },
+    "custom_html-3": {
+      "title": "South America",
+      "content": "<ul>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/destination/south-america/ecuador/\">Ecuador</a></li>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/destination/south-america/peru/\">Peru</a></li>\r\n</ul>"
+    },
+    "custom_html-4": {
+      "title": "Experience",
+      "content": "<ul>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/tours/\">Tours</a></li>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/custom-itineraries/\">Custom itineraries</a></li>\r\n</ul>"
+    },
+    "custom_html-5": {
+      "title": "Discover",
+      "content": "<ul>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/about-us/\">About us</a></li>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/our-team/\">Our team</a></li>\r\n\t<li><a href=\"https://themes.themeenergy.com/bookyourtravel/sustainable-travel/faqs/\">FAQs</a></li>\r\n</ul>"
+    }
+  }
+}

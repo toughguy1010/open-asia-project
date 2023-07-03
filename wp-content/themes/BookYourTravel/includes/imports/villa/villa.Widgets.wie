@@ -1,0 +1,25 @@
+{
+    "hero": {
+        "rev-slider-widget-2": {
+            "rev_slider_title": "",
+            "rev_slider": "1",
+            "rev_slider_homepage": "on",
+            "rev_slider_pages": ""
+        }
+    },
+    "mega-menu": {
+        "calendar-1": {
+            "mega_menu_is_grid_widget": "true",
+            "title": "dsfdfdfdf"
+        },
+        "search-1": {
+            "mega_menu_is_grid_widget": "true",
+            "title": "dfgfgd"
+        },
+        "custom_html-1": {
+            "title": "dfdfdgdg",
+            "content": "",
+            "mega_menu_is_grid_widget": "true"
+        }
+    }
+}

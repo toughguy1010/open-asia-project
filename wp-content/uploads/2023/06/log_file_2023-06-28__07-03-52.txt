@@ -1,0 +1,59 @@
+
+---Downloaded files---
+The import files for: Hotel were successfully downloaded!
+Initial max execution time = 120
+Files info:
+Site URL = http://localhost/oat_project
+Data file = E:\wamp64\www\oat_project/wp-content/themes/BookYourTravel/includes/imports/hotel/hotel.WordPress.xml
+Widget file = E:\wamp64\www\oat_project/wp-content/themes/BookYourTravel/includes/imports/hotel/hotel.Widgets.wie
+Customizer file = E:\wamp64\www\oat_project/wp-content/themes/BookYourTravel/includes/imports/hotel/hotel.Customizer.dat
+Redux files:
+not defined!
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+---Importing widgets---
+Left Sidebar : 
+
+BookYourTravel: Search - No Title - Imported
+
+Right Sidebar : 
+
+BookYourTravel: Iconic Features Widget - No Title - Imported
+
+Right Accommodation Sidebar : 
+
+BookYourTravel: Iconic Features Widget - No Title - Imported
+
+Hero Sidebar : 
+
+Slider Revolution - No Title - Imported
+BookYourTravel: Search - No Title - Imported
+
+Footer Sidebar : 
+
+BookYourTravel: Address Widget - No Title - Imported
+Text - Useful - Imported
+BookYourTravel: Social Widget - Follow us - Imported
+Gallery - Awards - Imported
+Gallery - &nbsp; - Imported
+
+Max Mega Menu Widgets : 
+
+BookYourTravel: Post List - No Title - Imported
+Text - Don&#039;t miss - Imported
+Custom HTML - No Title - Imported
+
+
+
+---Importing customizer settings---
+Customizer settings import finished!
+
+---ocdi/after_import---
+

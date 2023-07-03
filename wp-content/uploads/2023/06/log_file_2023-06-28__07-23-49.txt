@@ -1,0 +1,48 @@
+
+---Downloaded files---
+The import files for: Exotic Tours were successfully downloaded!
+Initial max execution time = 120
+Files info:
+Site URL = http://localhost/oat_project
+Data file = E:\wamp64\www\oat_project/wp-content/themes/BookYourTravel/includes/imports/exotictours/exotictours.WordPress.xml
+Widget file = E:\wamp64\www\oat_project/wp-content/themes/BookYourTravel/includes/imports/exotictours/exotictours.Widgets.wie
+Customizer file = E:\wamp64\www\oat_project/wp-content/themes/BookYourTravel/includes/imports/exotictours/exotictours.Customizer.dat
+Redux files:
+not defined!
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+---Importing widgets---
+Right Sidebar : 
+
+Text - Need help booking? - Imported
+Text - Why book with us? - Imported
+
+Above Footer Sidebar : 
+
+BookYourTravel: Call-To-Action Widget - No Title - Imported
+
+Max Mega Menu Widgets : 
+
+Text - Activity level - Imported
+Text - Tour types - Imported
+Text - Group size - Imported
+Text - Service type - Imported
+
+
+
+---Importing customizer settings---
+Customizer settings import finished!
+
+---ocdi/after_import---
+

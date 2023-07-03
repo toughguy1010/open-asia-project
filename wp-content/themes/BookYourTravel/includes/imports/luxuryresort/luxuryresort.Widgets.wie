@@ -1,0 +1,87 @@
+{
+    "right": {
+        "search-2": {
+            "title": ""
+        },
+        "recent-posts-2": {
+            "title": "",
+            "number": 5
+        },
+        "recent-comments-2": {
+            "title": "",
+            "number": 5
+        },
+        "archives-2": {
+            "title": "",
+            "count": 0,
+            "dropdown": 0
+        },
+        "categories-2": {
+            "title": "",
+            "count": 0,
+            "hierarchical": 0,
+            "dropdown": 0
+        },
+        "meta-2": {
+            "title": ""
+        }
+    },
+    "hero": {
+        "rev-slider-widget-3": {
+            "rev_slider_title": "",
+            "rev_slider": "2",
+            "rev_slider_homepage": "on",
+            "rev_slider_pages": ""
+        }
+    },
+    "above-footer": {
+        "rev-slider-widget-2": {
+            "rev_slider_title": "",
+            "rev_slider": "1",
+            "rev_slider_pages": ""
+        }
+    },
+    "footer": {
+        "bookyourtravel_address_widget-2": {
+            "title": "",
+            "company_name": "Book Your Travel LLC",
+            "company_address": "1400 Pennsylvania Ave. Washington, DC",
+            "company_phone": "1-555-555-5555",
+            "company_email": "info@bookyourtravel.com"
+        },
+        "text-2": {
+            "title": "Our Awards",
+            "text": "<img class=\"alignnone size-full wp-image-100\" src=\"http:\/\/themes.themeenergy.com\/bookyourtravel\/resort\/wp-content\/sample_media\/sites\/18\/2017\/12\/awards-white.png\" alt=\"\" width=\"179\" height=\"79\" \/>",
+            "filter": true,
+            "visual": true
+        },
+        "mc4wp_form_widget-2": {
+            "title": "Newsletter"
+        },
+        "bookyourtravel_social_widget-2": {
+            "title": "Connect with us",
+            "facebook_id": "#",
+            "twitter_id": "#",
+            "youtube_profile": "",
+            "rss_feed": "",
+            "linked_in_profile": "",
+            "gplus_profile": "",
+            "vimeo_profile": "",
+            "pinterest_profile": "#",
+            "whatsapp_profile": "#",
+            "instagram_profile": "#",
+            "skype_profile": "",
+            "tripadvisor_profile": "#"
+        },
+        "nav_menu-2": {
+            "title": "Highlights",
+            "nav_menu": 36
+        },
+        "text-3": {
+            "title": "Luxury resort",
+            "text": "Lorem ipsum dolor sit amet, consectetuer.\r\nCommodo ligula eget dolor. Aenean massa.\r\n\r\nCum sociis natoque penatibus et magnis \r\ndis parturient montes.",
+            "filter": true,
+            "visual": true
+        }
+    }
+}

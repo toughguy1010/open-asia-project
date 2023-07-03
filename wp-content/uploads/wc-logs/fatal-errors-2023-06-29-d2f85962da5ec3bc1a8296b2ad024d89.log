@@ -1,0 +1,25 @@
+2023-06-29T01:36:02+00:00 CRITICAL Uncaught Error: Call to undefined function st_reg_shortcode() in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\visual_composer\short_code.php:39
+Stack trace:
+#0 E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\functions.php(189): require_once()
+#1 E:\wamp64\www\oat_project\wp-settings.php(591): include('E:\\wamp64\\www\\o...')
+#2 E:\wamp64\www\oat_project\wp-config.php(96): require_once('E:\\wamp64\\www\\o...')
+#3 E:\wamp64\www\oat_project\wp-load.php(50): require_once('E:\\wamp64\\www\\o...')
+#4 E:\wamp64\www\oat_project\wp-admin\admin-ajax.php(22): require_once('E:\\wamp64\\www\\o...')
+#5 {main}
+  thrown in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\visual_composer\short_code.php on line 39
+
+2023-06-29T03:41:59+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function BookYourTravel_Theme_Controls::the_entity_title(), 1 passed in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\post\post-item.php on line 64 and at least 3 expected in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\theme_controls.php:164
+Stack trace:
+#0 E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\post\post-item.php(64): BookYourTravel_Theme_Controls::the_entity_title(Array)
+#1 E:\wamp64\www\oat_project\wp-includes\template.php(785): require('E:\\wamp64\\www\\o...')
+#2 E:\wamp64\www\oat_project\wp-includes\template.php(718): load_template('E:\\wamp64\\www\\o...', false, Array)
+#3 E:\wamp64\www\oat_project\wp-includes\general-template.php(204): locate_template(Array, true, false, Array)
+#4 E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\plugins\widgets\widget-post-list.php(110): get_template_part('includes/parts/...', 'item')
+#5 E:\wamp64\www\oat_project\wp- in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\theme_controls.php on line 164
+
+2023-06-29T03:42:45+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO), expecting ';' or ',' in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\post\post-item.php on line 66
+
+2023-06-29T03:43:58+00:00 CRITICAL Cannot redeclare BookYourTravel_Theme_Controls::the_entity_tags() in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\theme_controls.php on line 214
+
+2023-06-29T03:44:11+00:00 CRITICAL Cannot redeclare BookYourTravel_Theme_Controls::the_entity_tags() in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\theme_controls.php on line 214
+

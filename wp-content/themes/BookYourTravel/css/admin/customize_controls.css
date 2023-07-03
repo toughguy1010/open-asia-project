@@ -1,0 +1,5 @@
+.customize-control-content .ui-slider-horizontal { width: 80%; }
+.customize-control-content .customize-tooltip { width: 15%; float: right; margin-top: -3px; font-size: 1em; }
+.customize-control-content .ui-slider-horizontal .min { position: absolute; bottom: -25px; left: 0; font-size: 0.9em;color:#ccc; }
+.customize-control-content .ui-slider-horizontal .max { position: absolute; bottom: -25px; right: 0; font-size: 0.9em; color:#ccc; }
+.control-section .customize-control-byt_slider { margin-bottom: 28px; }

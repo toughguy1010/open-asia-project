@@ -1,0 +1,74 @@
+{
+    "right-accommodation": {
+        "text-4": {
+            "title": "For your comfort & convenience",
+            "text": "We offer guests the finest in luxury amenities throughout your stay. We provide comfy brand linens with silk-filled duvets, luxurious robes, and slippers, individual temperature control &amp; balcony heaters, ironing board and iron, hair dryer and lighted makeup mirror, and extra bedside outlets with USB charging docks.",
+            "filter": true,
+            "visual": true
+        },
+        "media_image-2": {
+            "attachment_id": 146,
+            "url": "http:\/\/themes.themeenergy.com\/bookyourtravel\/bed-and-breakfast\/wp-content\/sample_media\/sites\/12\/2018\/05\/bnb-rooms6.jpg",
+            "title": "",
+            "size": "full",
+            "width": 400,
+            "height": 600,
+            "caption": "",
+            "alt": "",
+            "link_type": "custom",
+            "link_url": "#",
+            "image_classes": "",
+            "link_classes": "",
+            "link_rel": "",
+            "link_target_blank": false,
+            "image_title": ""
+        },
+        "text-3": {
+            "title": "Important",
+            "text": "All rooms include a homemade breakfast each morning during your stay. Please contact the inn before your stay if you have any special dietary needs.",
+            "filter": true,
+            "visual": true
+        },
+        "custom_html-2": {
+            "title": "Location",
+            "content": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m18!1m12!1m3!1d2836.6302075312615!2d-124.06937868475895!3d44.68633097909932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54ea78da3be63bc1%3A0xab8b26649320fe64!2sOregon+Coast+Beach!5e0!3m2!1sen!2ssi!4v1535462991720\" width=\"300\" height=\"300\" frameborder=\"0\" style=\"border:0\" allowfullscreen><\/iframe>"
+        }
+    },
+    "hero": {
+        "rev-slider-widget-2": {
+            "rev_slider_title": "",
+            "rev_slider": "1",
+            "rev_slider_homepage": "on",
+            "rev_slider_pages": ""
+        }
+    },
+    "footer": {
+        "bookyourtravel_address_widget-2": {
+            "title": "",
+            "company_name": "Book Your Travel LLC",
+            "company_address": "1400 Pennsylvania Ave. Washington, DC",
+            "company_phone": "1-555-555-5555",
+            "company_email": "info@bookyourtravel.com"
+        },
+        "pages-2": {
+            "title": "Useful links",
+            "sortby": "post_title",
+            "exclude": ""
+        },
+        "bookyourtravel_social_widget-2": {
+            "title": "Follow us",
+            "facebook_id": "#",
+            "twitter_id": "#",
+            "youtube_profile": "",
+            "rss_feed": "",
+            "linked_in_profile": "",
+            "gplus_profile": "",
+            "vimeo_profile": "",
+            "pinterest_profile": "#",
+            "whatsapp_profile": "",
+            "instagram_profile": "#",
+            "skype_profile": "#",
+            "tripadvisor_profile": "#"
+        }
+    }
+}

@@ -1,0 +1,128 @@
+{
+    "left": {
+        "media_image-2": {
+            "attachment_id": 506,
+            "url": "http:\/\/themes.themeenergy.com\/bookyourtravel\/travel-guide\/wp-content\/uploads\/sites\/14\/2018\/11\/banner.jpg",
+            "title": "",
+            "size": "full",
+            "width": 400,
+            "height": 600,
+            "caption": "",
+            "alt": "",
+            "link_type": "custom",
+            "link_url": "https:\/\/1.envato.market\/c\/1305088\/275988\/4415?u=https%3A%2F%2Fthemeforest.net%2Fitem%2Fbook-your-travel-online-booking-wordpress-theme%2F5632266",
+            "image_classes": "nospace",
+            "link_classes": "",
+            "link_rel": "",
+            "link_target_blank": false,
+            "image_title": ""
+        },
+        "bookyourtravel_location_list_widget-4": {
+            "title": "Browse regions",
+            "number_of_posts": "4",
+            "sort_by": "date",
+            "sort_descending": "",
+            "display_mode": "small",
+            "posts_per_row": "1",
+            "show_featured_only": "",
+            "exclude_descendant_locations": "",
+            "location_tag_ids": null,
+            "hide_title": null,
+            "hide_image": null,
+            "hide_description": null,
+            "hide_actions": "1"
+        }
+    },
+    "right": {
+        "tag_cloud-2": {
+            "title": "",
+            "count": 0,
+            "taxonomy": "post_tag"
+        },
+        "bookyourtravel_post_list_widget-2": {
+            "title": "Popular posts",
+            "number_of_posts": "2",
+            "sort_by": "title",
+            "sort_descending": null,
+            "display_mode": "small",
+            "posts_per_row": "1",
+            "category_ids": null,
+            "hide_title": null,
+            "hide_image": null,
+            "hide_description": "1",
+            "hide_actions": "1"
+        },
+        "bookyourtravel_location_list_widget-2": {
+            "title": "Best destinations",
+            "number_of_posts": "4",
+            "sort_by": "title",
+            "sort_descending": "1",
+            "display_mode": "small",
+            "posts_per_row": "1",
+            "show_featured_only": "",
+            "exclude_descendant_locations": "",
+            "location_tag_ids": null,
+            "hide_title": null,
+            "hide_image": null,
+            "hide_description": null,
+            "hide_actions": "1"
+        }
+    },
+    "hero": {
+        "rev-slider-widget-2": {
+            "rev_slider_title": "",
+            "rev_slider": "1",
+            "rev_slider_homepage": "on",
+            "rev_slider_pages": ""
+        }
+    },
+    "footer": {
+        "bookyourtravel_location_list_widget-3": {
+            "title": "Top destinations",
+            "number_of_posts": "3",
+            "sort_by": "ID",
+            "sort_descending": "1",
+            "display_mode": "small",
+            "posts_per_row": "1",
+            "show_featured_only": "",
+            "exclude_descendant_locations": "",
+            "location_tag_ids": [],
+            "hide_title": null,
+            "hide_image": null,
+            "hide_description": null,
+            "hide_actions": "1"
+        },
+        "bookyourtravel_accommodation_list_widget-2": {
+            "title": "Latest offers",
+            "number_of_posts": "3",
+            "sort_by": "title",
+            "sort_descending": "",
+            "display_mode": "small",
+            "posts_per_row": "1",
+            "show_featured_only": "",
+            "accommodation_type_ids": null,
+            "accommodation_tag_ids": null,
+            "hide_title": null,
+            "hide_image": null,
+            "hide_description": null,
+            "hide_actions": "1",
+            "hide_address": "1",
+            "hide_stars": "1",
+            "hide_rating": "1",
+            "hide_price": "1"
+        },
+        "bookyourtravel_post_list_widget-3": {
+            "title": "Travel inspiration",
+            "number_of_posts": "3",
+            "sort_by": "title",
+            "sort_descending": "1",
+            "display_mode": "small",
+            "posts_per_row": "1",
+            "category_ids": null,
+            "hide_title": null,
+            "hide_image": null,
+            "hide_description": null,
+            "hide_actions": "1"
+        }
+    }
+}
