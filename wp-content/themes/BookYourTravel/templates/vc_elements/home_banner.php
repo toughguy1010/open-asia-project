@@ -69,7 +69,9 @@ $img_url = wp_get_attachment_image_src($img, 'full');
                         Travel style
                     </div>
 
-                    <div class="travel-style-list">
+                   
+
+                    <div class="travel-style-list">                  
                         <?php
                         $tour_type_ids = array(
                             49, // ID của Active Adventure
@@ -79,16 +81,19 @@ $img_url = wp_get_attachment_image_src($img, 'full');
                             55, // ID của Honeymoon
                             56, // ID của Luxury Travel
                             57  // ID của Off the Beaten Path
-                        );
+                        );                        
                         foreach ($tour_type_ids as $tour_type_id) {
                             $tour_type = get_term_by('id', $tour_type_id, 'tour_type');
                             if ($tour_type) {
                         ?>
-                                <a href="<?php echo $tour_type->slug ?>">
+                        <div class ="travel-style-col">
+                             <a href="<?php echo $tour_type->slug ?>">
                                     <div class="travel-style-item">
                                         <?php echo  $tour_type->name ?>
                                     </div>
                                 </a>
+                        </div>
+                               
                         <?php
                             }
                         }
