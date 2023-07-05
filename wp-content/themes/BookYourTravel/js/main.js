@@ -95,4 +95,8 @@ function hideAllSubMenus(menu) {
       }
     }
   });
+  $(".view-btn").click(function() {
+    var aboutContent = $(this).closest(".about-us-item").find(".about-content-body");
+    aboutContent.toggleClass("active-about-content");
+});
 })(jQuery);

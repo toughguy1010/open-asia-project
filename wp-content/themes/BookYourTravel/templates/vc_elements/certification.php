@@ -15,7 +15,7 @@ $list_traveler_review =  vc_param_group_parse_atts($attr['list_traveler_review']
                 $attachment_id = $item['image'];
                 $img_item = wp_get_attachment_image_src($attachment_id);
             ?>
-                <a href="<?= $item['link'] ?>">
+                <a href="#">
                     <img src="<?= $img_item[0] ?>" alt="">
                 </a>
             <?php

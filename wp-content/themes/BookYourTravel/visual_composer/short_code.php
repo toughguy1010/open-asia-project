@@ -112,5 +112,64 @@ if (!function_exists('hotline_information')) {
     }
     add_shortcode('hotline_information', 'hotline_information');
 }
+if (!function_exists('about_us')) {
+    function about_us($attr, $content, $span)
+    {
+        
+        $attr = shortcode_atts([
+            'about_us_content' => '',
+           
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/about_us.php');
+    }
+    add_shortcode('about_us', 'about_us');
+}
+if (!function_exists('passionate_team')) {
+    function passionate_team($attr, $content, $span)
+    {
+        
+        $attr = shortcode_atts([
+            'title' => '',
+            'description' => '',
+            'member' => '',
+           
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/passionate_team.php');
+    }
+    add_shortcode('passionate_team', 'passionate_team');
+}
 
 
+if (!function_exists('trip_option')) {
+    function trip_option($attr, $content, $span)
+    {
+        
+        $attr = shortcode_atts([
+            'title' => '',
+            'background' => '',
+            'text_btn' => '',
+            'link_btn' => '',
+           
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/trip_option.php');
+    }
+    add_shortcode('trip_option', 'trip_option');
+}
+
+if (!function_exists('page_banner')) {
+    function page_banner($attr, $content, $span)
+    {
+        $attr = shortcode_atts([
+            'title' => '',
+            'background' => '',
+            'disable_plan_field' => '',
+            'title_plan' => '',
+            'step_of_plan' => '',
+            'text_btn' => '',
+            'link_btn' => '',
+           
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/page_banner.php');
+    }
+    add_shortcode('page_banner', 'page_banner');
+}
