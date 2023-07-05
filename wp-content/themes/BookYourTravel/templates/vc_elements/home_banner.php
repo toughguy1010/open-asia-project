@@ -2,6 +2,7 @@
 
 $img = $attr['background_image'];
 $img_url = wp_get_attachment_image_src($img, 'full');
+$disable_search = $attr['disable_search'];
 
 ?>
 <style>
@@ -24,7 +25,9 @@ $img_url = wp_get_attachment_image_src($img, 'full');
             <?= $attr['search_title'] ?>
         </h1>
         <p class="search_span"><?= $attr['search_span'] ?></p>
-        <div class="search_wrap">
+        <?php if(!$disable_search){
+            ?>
+<div class="search_wrap">
             <input type="text" class="search-input" readonly>
             <div class="search-button">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="50px" height="50px" fill-rule="nonzero">
@@ -97,6 +100,9 @@ $img_url = wp_get_attachment_image_src($img, 'full');
                 </div>
             </div>
         </div>
+            <?php
+        } ?>
+        
     </div>
 
 </section>

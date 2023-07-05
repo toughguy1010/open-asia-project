@@ -23,6 +23,13 @@ function customLoadVCMapNewLayout()
                     'description' => 'This is the searching title of hero section',
                 ),
                 array(
+                    'type' => 'checkbox',
+                    'heading' => 'Disable Search Field',
+                    'param_name' => 'disable_search',
+                    'value' => '',
+                    'description' => 'Disable search input',
+                ),
+                array(
                     "type" => "attach_image",
                     "heading" => __("Background Image"),
                     "param_name" => "background_image",
@@ -271,6 +278,169 @@ function customLoadVCMapNewLayout()
             ),
         )
     );
-}
 
-?>
+    vc_map(
+        array(
+            'name' => 'Introduction',
+            'base' => 'introduction',
+            'category' => 'BookYourTravel',
+            'params' => array(
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Tilte',
+                    'param_name' => 'title',
+                    'description' => 'Enter the introduction title',
+                ),
+               
+                array(
+                    "type" => "attach_image",
+                    "heading" => __("Avatar Image"),
+                    "param_name" => "avatar_image",
+                    'description' => 'Enter the avatar image',
+                ),
+                 array(
+                    'type' => 'textfield',
+                    'heading' => 'Description',
+                    'param_name' => 'description',
+                    'description' => 'Enter the introduction title',
+                ),
+
+                // Thêm các trường tùy chỉnh khác cho thành phần của bạn
+            ),
+        )
+    );
+    vc_map(
+        array(
+            'name' => 'Certification',
+            'base' => 'certification',
+            'category' => 'BookYourTravel',
+            "params" => [
+                [
+                    'type' => 'attach_image',
+                    'heading' => esc_html__('Logo', 'traveler'),
+                    'param_name' => 'logo',
+                    'value' => '',
+                    'description' => esc_html__('Enter your logo', 'traveler'),
+                ],
+                [
+                    'type' => 'textfield',
+                    'heading' => esc_html__('Description', 'traveler'),
+                    'param_name' => 'description',
+                    'value' => '',
+                    'description' => esc_html__('Enter your description', 'traveler'),
+                ],
+                [
+                    'type' => 'textfield',
+                    'heading' => esc_html__('Content', 'traveler'),
+                    'param_name' => 'span',
+                    'value' => '',
+                    'description' => esc_html__('Enter your Content', 'traveler'),
+                ],
+                [
+                    'type' => 'param_group',
+                    'heading' => esc_html__('List certification image ', 'traveler'),
+                    'param_name' => 'list_certification_image',
+                    'value' => '',
+                    'params' => array(
+                        [
+                            "type" => "textfield",
+                            "heading" => __("Link", 'traveler'),
+                            "param_name" => "link",
+                            "description" => __("Enter location ID.", 'traveler')
+                        ],
+                        [
+                            "type" => "attach_image",
+                            "heading" => __("image", 'traveler'),
+                            "param_name" => "image",
+                            "description" => __("Enter location ID.", 'traveler')
+                        ],
+                    ),
+                ],
+                [
+                    'type' => 'attach_image',
+                    'heading' => esc_html__('Brand Image', 'traveler'),
+                    'param_name' => 'brand_image',
+                    'value' => '',
+                    'description' => esc_html__('Enter your Brand Image', 'traveler'),
+                ],
+                [
+                    'type' => 'textfield',
+                    'heading' => esc_html__('Brand Rating Title', 'traveler'),
+                    'param_name' => 'rating_title',
+                    'value' => '',
+                    'description' => esc_html__('Enter your Brand Image', 'traveler'),
+                ],
+                [
+                    'type' => 'textfield',
+                    'heading' => esc_html__('Brand Rating Number', 'traveler'),
+                    'param_name' => 'rating_number',
+                    'value' => '',
+                    'description' => esc_html__('Enter your Brand Rating Number', 'traveler'),
+                ],
+                [
+                    'type' => 'textfield',
+                    'heading' => esc_html__('Brand Ranking Title', 'traveler'),
+                    'param_name' => 'ranking_title',
+                    'value' => '',
+                    'description' => esc_html__('Enter your Brand Ranking Title', 'traveler'),
+                ],
+                [
+                    'type' => 'textfield',
+                    'heading' => esc_html__('Brand Ranking', 'traveler'),
+                    'param_name' => 'ranking',
+                    'value' => '',
+                    'description' => esc_html__('Enter your Brand Ranking', 'traveler'),
+                ],
+                [
+                    'type' => 'param_group',
+                    'heading' => esc_html__('List traveler reivew ', 'traveler'),
+                    'param_name' => 'list_traveler_review',
+                    'value' => '',
+                    'params' => array(
+                        [
+                            "type" => "textfield",
+                            "heading" => __("Traveler reviews", 'traveler'),
+                            "param_name" => "traveler_reviews",
+                            "description" => __("Enter Traveler reviews.", 'traveler')
+                        ],
+                    ),
+                ],
+            ]
+        )
+    );
+    vc_map(
+        array(
+            'name' => 'Hotline Information',
+            'base' => 'hotline_information',
+            'category' => 'BookYourTravel',
+            'params' => array(
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Name',
+                    'param_name' => 'name',
+                    'description' => 'Enter name of the person who owns the phone number',
+                ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Phone Number',
+                    'param_name' => 'phone_number',
+                    'description' => 'Enter the phone number',
+                ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Email',
+                    'param_name' => 'email',
+                    'description' => 'Enter the email',
+                ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Working time',
+                    'param_name' => 'working_time',
+                    'description' => 'Enter the working time',
+                ),
+
+                // Thêm các trường tùy chỉnh khác cho thành phần của bạn
+            ),
+        )
+    );
+}

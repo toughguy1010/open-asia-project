@@ -12,6 +12,22 @@
 
 global $bookyourtravel_theme_globals, $tour_item_args, $tour_list_args, $bookyourtravel_tour_helper;
 
+
+
+// get term id by slug
+if (isset($_GET['tour-type'])) {
+    $tour_type_slug = $_GET['tour-type'];
+    
+    $tour_type = get_term_by('slug', $tour_type_slug, 'tour_type');
+    
+    if ($tour_type) {
+        $tour_type_id = $tour_type->term_id;
+    } else {
+        echo 'Tour type không tồn tại.';
+    }
+
+}
+
 $posts_per_page = isset($tour_list_args['posts_per_page']) ? $tour_list_args['posts_per_page'] : 12;
 $paged = isset($tour_list_args['paged']) ? $tour_list_args['paged'] : 1;
 $sort_by = isset($tour_list_args['sort_by']) ? $tour_list_args['sort_by'] : 'title';
@@ -24,7 +40,7 @@ $tour_tag_ids = isset($tour_list_args['tour_tag_ids']) ? $tour_list_args['tour_t
 $tour_type_ids = isset($tour_list_args['tour_type_ids']) ? $tour_list_args['tour_type_ids'] : array();
 $tour_duration_ids = isset($tour_list_args['tour_duration_ids']) ? $tour_list_args['tour_duration_ids'] : array();
 $author_id = isset($tour_list_args["author_id"]) ? $tour_list_args["author_id"] : null;
-
+$tour_type_ids =  $tour_type_id;
 $tour_results = $bookyourtravel_tour_helper->list_tours($paged, $posts_per_page, $sort_by, $sort_order, array($parent_location_id), false, $tour_type_ids, $tour_duration_ids, $tour_tag_ids, array(), $show_featured_only, $author_id, $include_private);
 
 $display_mode = strip_tags(isset($tour_list_args['display_mode']) ? $tour_list_args['display_mode'] : 'card');

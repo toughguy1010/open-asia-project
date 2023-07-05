@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BookYourTravel_Cruise_Helper class
  *
@@ -8,27 +9,29 @@
  * @version 8.00
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
 require_once BookYourTravel_Theme_Utils::get_file_path('/includes/post_types/class-cruise.php');
 
-class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
+class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton
+{
 
 	private $enable_cruises;
 	private $cruise_custom_meta_fields;
 	private $cruise_list_custom_meta_fields;
 	private $cruise_custom_meta_tabs;
 	private $cruise_list_custom_meta_tabs;
-    private $cruise_list_meta_box;
+	private $cruise_list_meta_box;
 
 	// used by frontend submit {
-        private $cruise_schedule_fields;
-        private $cruise_booking_fields;
-    // }
+	private $cruise_schedule_fields;
+	private $cruise_booking_fields;
+	// }
 
-	protected function __construct() {
+	protected function __construct()
+	{
 
 		global $bookyourtravel_theme_globals;
 
@@ -39,72 +42,79 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		parent::__construct();
 	}
 
-    public function init() {
+	public function init()
+	{
 
-		add_action( 'bookyourtravel_initialize_post_types', array( $this, 'initialize_post_type' ), 0);
+		add_action('bookyourtravel_initialize_post_types', array($this, 'initialize_post_type'), 0);
 
 		if ($this->enable_cruises) {
 
-			add_action( 'bookyourtravel_after_delete_cruise', array( $this, 'after_delete_cruise' ), 10, 1);
-			add_action( 'bookyourtravel_save_cruise', array( $this, 'save_cruise' ), 10, 1);
-			add_action( 'admin_init', array($this, 'remove_unnecessary_meta_boxes') );
-			add_filter( 'manage_edit-cruise_columns', array( $this, 'manage_edit_cruise_columns'), 10, 1);
-			add_action( 'admin_init', array( $this, 'cruise_admin_init' ) );
-			add_action( 'edited_cruise_type', array( $this, 'save_cruise_type_custom_meta' ), 10, 2 );
-			add_action( 'create_cruise_type', array( $this, 'save_cruise_type_custom_meta' ), 10, 2 );
-			add_action( 'cruise_type_add_form_fields', array( $this, 'cruise_type_add_new_meta_fields' ), 10, 1 );
-            add_action( 'cruise_type_edit_form_fields', array( $this, 'cruise_type_edit_meta_fields' ), 10, 2 );
-            add_filter( 'bookyourtravel_custom_taxonomy_list', array($this, 'custom_taxonomy_list'), 10, 1);
+			add_action('bookyourtravel_after_delete_cruise', array($this, 'after_delete_cruise'), 10, 1);
+			add_action('bookyourtravel_save_cruise', array($this, 'save_cruise'), 10, 1);
+			add_action('admin_init', array($this, 'remove_unnecessary_meta_boxes'));
+			add_filter('manage_edit-cruise_columns', array($this, 'manage_edit_cruise_columns'), 10, 1);
+			add_action('admin_init', array($this, 'cruise_admin_init'));
+			add_action('edited_cruise_type', array($this, 'save_cruise_type_custom_meta'), 10, 2);
+			add_action('create_cruise_type', array($this, 'save_cruise_type_custom_meta'), 10, 2);
+			add_action('cruise_type_add_form_fields', array($this, 'cruise_type_add_new_meta_fields'), 10, 1);
+			add_action('cruise_type_edit_form_fields', array($this, 'cruise_type_edit_meta_fields'), 10, 2);
+			add_filter('bookyourtravel_custom_taxonomy_list', array($this, 'custom_taxonomy_list'), 10, 1);
 
-			add_action( 'bookyourtravel_before_single_cruise_content', array($this, 'before_single_cruise_content'));
+			add_action('bookyourtravel_before_single_cruise_content', array($this, 'before_single_cruise_content'));
 
-			add_action( 'booking_form_details_cruise_core_fields', array($this, 'booking_form_details_core_fields'));
-			add_action( 'booking_form_confirmation_cruise_core_fields', array($this, 'booking_form_confirmation_core_fields'));
-			add_action( 'booking_form_calendar_cruise_after_calendar_control', array($this, 'booking_form_calendar_after_calendar_control'));
-			add_action( 'booking_form_calendar_cruise_start_summary_control', array($this, 'booking_form_calendar_start_summary_control'));
-			add_action( 'booking_form_calendar_cruise_booking_terms', array($this, 'booking_form_calendar_booking_terms'));
+			add_action('booking_form_details_cruise_core_fields', array($this, 'booking_form_details_core_fields'));
+			add_action('booking_form_confirmation_cruise_core_fields', array($this, 'booking_form_confirmation_core_fields'));
+			add_action('booking_form_calendar_cruise_after_calendar_control', array($this, 'booking_form_calendar_after_calendar_control'));
+			add_action('booking_form_calendar_cruise_start_summary_control', array($this, 'booking_form_calendar_start_summary_control'));
+			add_action('booking_form_calendar_cruise_booking_terms', array($this, 'booking_form_calendar_booking_terms'));
 
-			add_filter( 'manage_edit-cruise_type_columns' , array( $this,'cruise_type_taxonomy_columns'));
-			add_filter( 'manage_cruise_type_custom_column', array( $this,'cruise_type_columns_content'), 10, 3 );
+			add_filter('manage_edit-cruise_type_columns', array($this, 'cruise_type_taxonomy_columns'));
+			add_filter('manage_cruise_type_custom_column', array($this, 'cruise_type_columns_content'), 10, 3);
 
-			add_action( 'bookyourtravel_initialize_ajax', array( $this, 'initialize_ajax' ), 0);
+			add_action('bookyourtravel_initialize_ajax', array($this, 'initialize_ajax'), 0);
 
 			add_action('booking_form_calendar_cruise_after_price_breakdown', array($this, 'booking_form_calendar_after_price_breakdown'));
 
 			$this->initialize_meta_fields();
 		}
-    }
+	}
 
-    function custom_taxonomy_list($taxonomies) {
-        if ($this->enable_cruises) {
-            $taxonomies[] = "cruise_type";
-            $taxonomies[] = "cruise_tag";
-        }
+	function custom_taxonomy_list($taxonomies)
+	{
+		if ($this->enable_cruises) {
+			$taxonomies[] = "cruise_type";
+			$taxonomies[] = "cruise_tag";
+		}
 
-        return $taxonomies;
-    }
+		return $taxonomies;
+	}
 
-	function get_custom_meta_fields() {
-		$this->initialize_meta_fields();		
+	function get_custom_meta_fields()
+	{
+		$this->initialize_meta_fields();
 		return $this->cruise_custom_meta_fields;
 	}
 
-	function get_custom_meta_tabs() {
-		$this->initialize_meta_fields();		
+	function get_custom_meta_tabs()
+	{
+		$this->initialize_meta_fields();
 		return $this->cruise_custom_meta_tabs;
-    }
+	}
 
-	function get_cruise_schedule_fields() {
+	function get_cruise_schedule_fields()
+	{
 		$this->initialize_meta_fields();
 		return $this->cruise_schedule_fields;
 	}
 
-	function get_cruise_booking_fields() {
+	function get_cruise_booking_fields()
+	{
 		$this->initialize_meta_fields();
 		return $this->cruise_booking_fields;
 	}
 
-	function initialize_meta_fields() {
+	function initialize_meta_fields()
+	{
 
 		global $bookyourtravel_cabin_type_helper, $post, $bookyourtravel_theme_globals;
 
@@ -166,9 +176,9 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'id' => '_cruise_content_tab',
 				'class' => 'content_tab'
 			)
-        );
+		);
 
-        $this->cruise_custom_meta_tabs = apply_filters('bookyourtravel_cruise_custom_meta_tabs', $this->cruise_custom_meta_tabs);
+		$this->cruise_custom_meta_tabs = apply_filters('bookyourtravel_cruise_custom_meta_tabs', $this->cruise_custom_meta_tabs);
 
 		$cruise_feature_displays = array();
 		$cruise_feature_displays[] = array('value' => 'gallery', 'label' => esc_html__('Image gallery', 'bookyourtravel'));
@@ -188,14 +198,14 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'id'	=> 'cruise_short_description',
 				'type'	=> 'editor',
 				'admin_tab_id' => 'content_tab'
-            ),
+			),
 			array( // Post ID select box
 				'label'	=> esc_html__('Use referral url?', 'bookyourtravel'), // <label>
 				'desc'	=> esc_html__('List on list pages and widgets but link to an external website via referral url.', 'bookyourtravel'), // description
 				'id'	=> 'cruise_use_referral_url', // field id and name
 				'type'	=> 'checkbox', // type of field
-                'admin_tab_id' => 'general_tab'
-            ),
+				'admin_tab_id' => 'general_tab'
+			),
 			array(
 				'label'	=> esc_html__('Referral url', 'bookyourtravel'),
 				'desc'	=> esc_html__('Referral url to take visitors to when item is clicked on on list pages and widgets (to use for example for affiliate links).', 'bookyourtravel'),
@@ -203,7 +213,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'type'	=> 'text',
 				'admin_tab_id' => 'general_tab',
 				'field_container_class' => 'referral_url'
-            ),
+			),
 			array(
 				'label'	=> esc_html__('Referral price', 'bookyourtravel'),
 				'desc'	=> esc_html__('Referral price to display for item when item is listed on list pages and widgets.', 'bookyourtravel'),
@@ -211,13 +221,13 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'type'	=> 'text',
 				'admin_tab_id' => 'general_tab',
 				'field_container_class' => 'referral_url'
-            ),
+			),
 			array( // Post ID select box
 				'label'	=> esc_html__('Is Featured', 'bookyourtravel'), // <label>
 				'desc'	=> esc_html__('Show in lists where only featured items are shown.', 'bookyourtravel'), // description
 				'id'	=> 'cruise_is_featured', // field id and name
 				'type'	=> 'checkbox', // type of field
-				'admin_tab_id'=> 'general_tab'
+				'admin_tab_id' => 'general_tab'
 			),
 			array(
 				'label'	=> esc_html__('Ribbon text', 'bookyourtravel'),
@@ -231,7 +241,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'desc'	=> esc_html__('Do you want to not show inquiry form for this cruise?', 'bookyourtravel'), // description
 				'id'	=> 'cruise_hide_inquiry_form', // field id and name
 				'type'	=> 'checkbox', // type of field
-				'admin_tab_id'=> 'general_tab'
+				'admin_tab_id' => 'general_tab'
 			),
 			array(
 				'label'	=> esc_html__('Contact email addresses', 'bookyourtravel'),
@@ -267,7 +277,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'id'	=> 'cruise_duration', // field id and name, needs to be the exact name of the taxonomy
 				'type'	=> 'tax_checkboxes', // type of field
 				'admin_tab_id' => 'general_tab'
-			),			
+			),
 			array( // Post ID select box
 				'label'	=> esc_html__('Locations', 'bookyourtravel'), // <label>
 				'desc'	=> '', // description
@@ -282,20 +292,20 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'id'	=> 'cruise_address',
 				'type'	=> 'text',
 				'admin_tab_id' => 'general_tab'
-			),		
-            array(
-                'label' => esc_html__('Force disable single view calendar?', 'bookyourtravel'), // <label>
-                'desc' => esc_html__('If this option is checked, then this cruise will not display a calendar in the availability tab regardless of whether it has valid schedules or not.', 'bookyourtravel'), // description
-                'id' => 'cruise_force_disable_calendar', // field id and name
-                'type' => 'checkbox', // type of field
-                'admin_tab_id' => 'booking_tab',
-            ),	
+			),
+			array(
+				'label' => esc_html__('Force disable single view calendar?', 'bookyourtravel'), // <label>
+				'desc' => esc_html__('If this option is checked, then this cruise will not display a calendar in the availability tab regardless of whether it has valid schedules or not.', 'bookyourtravel'), // description
+				'id' => 'cruise_force_disable_calendar', // field id and name
+				'type' => 'checkbox', // type of field
+				'admin_tab_id' => 'booking_tab',
+			),
 			array(
 				'label'	=> esc_html__('Is for reservation only?', 'bookyourtravel'), // <label>
 				'desc'	=> esc_html__('If this option is checked, then this particular cruise will not be processed via WooCommerce even if WooCommerce is in use.', 'bookyourtravel'), // description
 				'id'	=> 'cruise_is_reservation_only', // field id and name
 				'type'	=> 'checkbox', // type of field
-				'admin_tab_id'=> 'booking_tab'
+				'admin_tab_id' => 'booking_tab'
 			),
 			array(
 				'label'	=> esc_html__('Cruise duration (days)', 'bookyourtravel'),
@@ -313,14 +323,14 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'id'	=> 'cabin_types', // field id and name
 				'type'	=> 'post_checkboxes', // type of field
 				'post_type' => array('cabin_type'), // post types to display, options are prefixed with their post type
-				'admin_tab_id'=> 'booking_tab'
+				'admin_tab_id' => 'booking_tab'
 			),
 			array(
 				'label'	=> esc_html__('Price per person?', 'bookyourtravel'), // <label>
 				'desc'	=> esc_html__('Is price calculated per person (adult, child)? If not then calculations are done per cabin.', 'bookyourtravel'), // description
 				'id'	=> 'cruise_is_price_per_person', // field id and name
 				'type'	=> 'checkbox', // type of field
-				'admin_tab_id'=> 'booking_tab'
+				'admin_tab_id' => 'booking_tab'
 			),
 			array(
 				'label'	=> esc_html__('Count children stay free', 'bookyourtravel'),
@@ -347,7 +357,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'type'	=> 'select', // type of field
 				'options' => $cruise_feature_displays,
 				'std' => 'gallery',
-				'admin_tab_id'=> 'gallery_tab'
+				'admin_tab_id' => 'gallery_tab'
 			),
 			array( // Repeatable & Sortable Text inputs
 				'label'	=> esc_html__('Gallery images', 'bookyourtravel'), // <label>
@@ -359,7 +369,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 					'title' => 'sanitize_text_field',
 					'desc' => 'wp_kses_data'
 				),
-				'repeatable_fields' => array ( // array of fields to be repeated
+				'repeatable_fields' => array( // array of fields to be repeated
 					array( // Image ID field
 						'label'	=> esc_html__('Image', 'bookyourtravel'), // <label>
 						'id'	=> 'image', // field id and name
@@ -370,30 +380,30 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 			),
 		);
 
-        if ($bookyourtravel_theme_globals->show_static_prices_in_grids()) {
-            array_unshift($this->cruise_custom_meta_fields, array( // Select box
-                'label' => esc_html__('Static "From" price', 'bookyourtravel'), // <label>
-                'desc' => esc_html__('This price is shown in grids when the "Show static from prices in grid displays?" in enabled in theme configuration settings', 'bookyourtravel'), // description
-                'id' => 'cruise_static_from_price', // field id and name, needs to be the exact name of the taxonomy
-                'type' => 'text', // type of field
-                'std' => '0',
-                'admin_tab_id' => 'booking_tab'
-            ));
-        }	
+		if ($bookyourtravel_theme_globals->show_static_prices_in_grids()) {
+			array_unshift($this->cruise_custom_meta_fields, array( // Select box
+				'label' => esc_html__('Static "From" price', 'bookyourtravel'), // <label>
+				'desc' => esc_html__('This price is shown in grids when the "Show static from prices in grid displays?" in enabled in theme configuration settings', 'bookyourtravel'), // description
+				'id' => 'cruise_static_from_price', // field id and name, needs to be the exact name of the taxonomy
+				'type' => 'text', // type of field
+				'std' => '0',
+				'admin_tab_id' => 'booking_tab'
+			));
+		}
 
 		if ($bookyourtravel_theme_globals->enable_deposit_payments()) {
 			array_unshift($this->cruise_custom_meta_fields, array( // Select box
-                'label' => esc_html__('Deposit percentage', 'bookyourtravel'), // <label>
-                'desc' => esc_html__('% deposit charge', 'bookyourtravel'), // description
-                'id' => 'cruise_deposit_percentage', // field id and name, needs to be the exact name of the taxonomy
-                'type' => 'number', // type of field
+				'label' => esc_html__('Deposit percentage', 'bookyourtravel'), // <label>
+				'desc' => esc_html__('% deposit charge', 'bookyourtravel'), // description
+				'id' => 'cruise_deposit_percentage', // field id and name, needs to be the exact name of the taxonomy
+				'type' => 'number', // type of field
 				'std' => '100',
-                'min' => '0',
-                'max' => '100',
-                'step' => '1',
+				'min' => '0',
+				'max' => '100',
+				'step' => '1',
 				'admin_tab_id' => 'booking_tab',
 				'field_container_class' => 'deposit_percentage'
-            ));
+			));
 		}
 
 		global $default_cruise_extra_fields;
@@ -446,7 +456,6 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				if ($field_type == 'textarea') {
 					$field_type = 'editor';
 				} else if ($field_type == 'select' && !empty($field_options)) {
-
 				} else if ($field_type == 'slider') {
 					$min = isset($cruise_extra_field['min']) && strlen($cruise_extra_field['min']) > 0 ? intval($cruise_extra_field['min']) :  1;
 					$max = isset($cruise_extra_field['max']) && strlen($cruise_extra_field['max']) > 0 ? intval($cruise_extra_field['max']) :  10;
@@ -459,7 +468,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 						'desc'	=> $field_desc,
 						'id'	=> 'cruise_' . $field_id,
 						'type'	=> $field_type,
-						'admin_tab_id'=> 'content_tab',
+						'admin_tab_id' => 'content_tab',
 						'options' => $field_options_array,
 						'min' => $min,
 						'max' => $max,
@@ -470,9 +479,9 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				if ($extra_field)
 					$this->cruise_custom_meta_fields[] = $extra_field;
 			}
-        }
+		}
 
-        $this->cruise_custom_meta_fields = apply_filters('bookyourtravel_cruise_custom_meta_fields', $this->cruise_custom_meta_fields);
+		$this->cruise_custom_meta_fields = apply_filters('bookyourtravel_cruise_custom_meta_fields', $this->cruise_custom_meta_fields);
 
 
 		$this->cruise_schedule_fields = array(
@@ -506,7 +515,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'post_type' => 'cruise',
 				'field_override_class' => 'required',
 				'show_in_fs_list' => true
-            ),
+			),
 			array(
 				'label' => esc_html__('Cabin type', 'bookyourtravel'),
 				'id' => 'cabin_type_id',
@@ -539,9 +548,9 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'type' => 'number',
 				'field_container_class' => 'per_person',
 			)
-        );
+		);
 
-        $this->cruise_schedule_fields = apply_filters('bookyourtravel_cruise_schedule_fields', $this->cruise_schedule_fields);
+		$this->cruise_schedule_fields = apply_filters('bookyourtravel_cruise_schedule_fields', $this->cruise_schedule_fields);
 
 		$this->cruise_booking_fields = array(
 			array(
@@ -632,7 +641,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'label' => esc_html__('Cruise', 'bookyourtravel'),
 				'id' => 'cruise_id',
 				'type' => 'post_select',
-                'post_type' => 'cruise',
+				'post_type' => 'cruise',
 				'field_override_class' => 'required',
 				'show_in_fs_list' => true
 			),
@@ -640,7 +649,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'label' => esc_html__('Cabin type', 'bookyourtravel'),
 				'id' => 'cabin_type_id',
 				'type' => 'post_select',
-                'post_type' => 'cabin_type',
+				'post_type' => 'cabin_type',
 				'field_override_class' => 'required',
 				'show_in_fs_list' => true
 			),
@@ -682,7 +691,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'show_in_fs_list' => true
 			)
 		);
-		
+
 		if ($bookyourtravel_theme_globals->enable_deposit_payments()) {
 			$this->cruise_booking_fields[] = array(
 				'label' => esc_html__('Deposit amount', 'bookyourtravel'),
@@ -694,7 +703,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		}
 
 		$this->cruise_booking_fields = apply_filters('bookyourtravel_cruise_booking_fields', $this->cruise_booking_fields);
-		
+
 
 		$sort_by_columns = array();
 		$sort_by_columns[] = array('value' => 'title', 'label' => esc_html__('Cruise title', 'bookyourtravel'));
@@ -726,21 +735,21 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				// the description is created in the callback function with a link to Manage the taxonomy terms
 				'id'	=> 'cruise_type', // field id and name, needs to be the exact name of the taxonomy
 				'type'	=> 'tax_checkboxes', // type of field
-				'admin_tab_id'=> 'filter_tab'
+				'admin_tab_id' => 'filter_tab'
 			),
 			array( // Taxonomy Select box
 				'label'	=> esc_html__('Cruise duration', 'bookyourtravel'), // <label>
 				// the description is created in the callback function with a link to Manage the taxonomy terms
 				'id'	=> 'cruise_duration', // field id and name, needs to be the exact name of the taxonomy
 				'type'	=> 'tax_checkboxes', // type of field
-				'admin_tab_id'=> 'filter_tab'
-			),			
+				'admin_tab_id' => 'filter_tab'
+			),
 			array( // Taxonomy Select box
 				'label'	=> esc_html__('Cruise tags', 'bookyourtravel'), // <label>
 				// the description is created in the callback function with a link to Manage the taxonomy terms
 				'id'	=> 'cruise_tag', // field id and name, needs to be the exact name of the taxonomy
 				'type'	=> 'tax_checkboxes', // type of field
-				'admin_tab_id'=> 'filter_tab'
+				'admin_tab_id' => 'filter_tab'
 			),
 			array( // Taxonomy Select box
 				'label'	=> esc_html__('Location', 'bookyourtravel'), // <label>
@@ -748,7 +757,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'id'	=> 'cruise_list_location_post_id', // field id and name
 				'type'	=> 'post_select', // type of field
 				'post_type' => array('location'), // post types to display, options are prefixed with their post type
-				'admin_tab_id'=> 'filter_tab'
+				'admin_tab_id' => 'filter_tab'
 			),
 			array( // Select box
 				'label'	=> esc_html__('Sort by field', 'bookyourtravel'), // <label>
@@ -756,21 +765,21 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'id'	=> 'cruise_list_sort_by', // field id and name, needs to be the exact name of the taxonomy
 				'type'	=> 'select', // type of field
 				'options' => $sort_by_columns,
-				'admin_tab_id'=> 'filter_tab'
+				'admin_tab_id' => 'filter_tab'
 			),
 			array( // Post ID select box
 				'label'	=> esc_html__('Sort descending?', 'bookyourtravel'), // <label>
 				'desc'	=> esc_html__('If checked, will sort cruises in descending order', 'bookyourtravel'), // description
 				'id'	=> 'cruise_list_sort_descending', // field id and name
 				'type'	=> 'checkbox', // type of field
-				'admin_tab_id'=> 'filter_tab'
+				'admin_tab_id' => 'filter_tab'
 			),
 			array( // Post ID select box
 				'label'	=> esc_html__('Show featured only?', 'bookyourtravel'), // <label>
 				'desc'	=> esc_html__('If checked, will list featured cruises only', 'bookyourtravel'), // description
 				'id'	=> 'cruise_list_show_featured_only', // field id and name
 				'type'	=> 'checkbox', // type of field
-				'admin_tab_id'=> 'filter_tab'
+				'admin_tab_id' => 'filter_tab'
 			),
 			array( // Post ID select box
 				'label'	=> esc_html__('Items per page', 'bookyourtravel'), // <label>
@@ -781,7 +790,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'min'	=> apply_filters('bookyourtravel_cruise_list_posts_per_page_min', '1'),
 				'max'	=> apply_filters('bookyourtravel_cruise_list_posts_per_page_max', '50'),
 				'step'	=> '1',
-				'admin_tab_id'=> 'filter_tab'
+				'admin_tab_id' => 'filter_tab'
 			),
 			array( // Post ID select box
 				'label'	=> esc_html__('Items per row', 'bookyourtravel'), // <label>
@@ -792,35 +801,35 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'min'	=> apply_filters('bookyourtravel_cruise_list_posts_per_row_min', '1'),
 				'max'	=> apply_filters('bookyourtravel_cruise_list_posts_per_row_max', '5'),
 				'step'	=> '1',
-				'admin_tab_id'=> 'filter_tab'
+				'admin_tab_id' => 'filter_tab'
 			),
 			array( // Post ID select box
 				'label'	=> esc_html__('Hide item titles?', 'bookyourtravel'), // <label>
 				'desc'	=> esc_html__('If checked, will hide titles of listed cruises', 'bookyourtravel'), // description
 				'id'	=> 'cruise_list_hide_item_titles', // field id and name
 				'type'	=> 'checkbox', // type of field
-				'admin_tab_id'=> 'item_settings_tab'
+				'admin_tab_id' => 'item_settings_tab'
 			),
 			array( // Post ID select box
 				'label'	=> esc_html__('Hide item images?', 'bookyourtravel'), // <label>
 				'desc'	=> esc_html__('If checked, will hide images of listed cruises', 'bookyourtravel'), // description
 				'id'	=> 'cruise_list_hide_item_images', // field id and name
 				'type'	=> 'checkbox', // type of field
-				'admin_tab_id'=> 'item_settings_tab'
+				'admin_tab_id' => 'item_settings_tab'
 			),
 			array( // Post ID select box
 				'label'	=> esc_html__('Hide item descriptions?', 'bookyourtravel'), // <label>
 				'desc'	=> esc_html__('If checked, will hide descriptions of listed cruises', 'bookyourtravel'), // description
 				'id'	=> 'cruise_list_hide_item_descriptions', // field id and name
 				'type'	=> 'checkbox', // type of field
-				'admin_tab_id'=> 'item_settings_tab'
+				'admin_tab_id' => 'item_settings_tab'
 			),
 			array( // Post ID select box
 				'label'	=> esc_html__('Hide buttons?', 'bookyourtravel'), // <label>
 				'desc'	=> esc_html__('If checked, will hide buttons of listed cruises', 'bookyourtravel'), // description
 				'id'	=> 'cruise_list_hide_item_actions', // field id and name
 				'type'	=> 'checkbox', // type of field
-				'admin_tab_id'=> 'item_settings_tab'
+				'admin_tab_id' => 'item_settings_tab'
 			),
 			array( // Post ID select box
 				'label'	=> esc_html__('Hide price?', 'bookyourtravel'), // <label>
@@ -834,7 +843,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'desc'	=> esc_html__('If checked, will hide address of listed cruises', 'bookyourtravel'), // description
 				'id'	=> 'cruise_list_hide_item_address', // field id and name
 				'type'	=> 'checkbox', // type of field
-				'admin_tab_id'=> 'item_settings_tab'
+				'admin_tab_id' => 'item_settings_tab'
 			)
 		);
 
@@ -846,35 +855,48 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				'id'	=> 'cruise_list_hide_item_rating', // field id and name
 				'type'	=> 'checkbox', // type of field
 			);
-		}		
+		}
 	}
 
-	function cruise_type_columns_content( $content, $column_name, $term_id )
+	function cruise_type_columns_content($content, $column_name, $term_id)
 	{
-		if ( 'is_repeated' == $column_name ) {
-			$term_meta = get_option( "taxonomy_$term_id" );
+		if ('is_repeated' == $column_name) {
+			$term_meta = get_option("taxonomy_$term_id");
 			$content = is_array($term_meta) && isset($term_meta['cruise_type_is_repeated']) ? intval($term_meta['cruise_type_is_repeated']) : 0;
 
 			switch ($content) {
-				case 0: $content = __('One off', 'bookyourtravel');break;
-				case 1: $content = __('Daily', 'bookyourtravel');break;
-				case 2: $content = __('Weekdays', 'bookyourtravel');break;
-				case 3: $content = __('Weekly', 'bookyourtravel');break;
-				case 4: $content = __('Weekly, multidays', 'bookyourtravel');break;
-				default: $content = __('One off', 'bookyourtravel');break;
+				case 0:
+					$content = __('One off', 'bookyourtravel');
+					break;
+				case 1:
+					$content = __('Daily', 'bookyourtravel');
+					break;
+				case 2:
+					$content = __('Weekdays', 'bookyourtravel');
+					break;
+				case 3:
+					$content = __('Weekly', 'bookyourtravel');
+					break;
+				case 4:
+					$content = __('Weekly, multidays', 'bookyourtravel');
+					break;
+				default:
+					$content = __('One off', 'bookyourtravel');
+					break;
 			}
 		}
 		return $content;
 	}
 
-	function cruise_type_taxonomy_columns( $columns )
+	function cruise_type_taxonomy_columns($columns)
 	{
 		$columns['is_repeated'] = __('Is Repeated', 'bookyourtravel');
 
 		return $columns;
 	}
 
-	function before_single_cruise_content() {
+	function before_single_cruise_content()
+	{
 		global $post, $entity_obj, $bookyourtravel_theme_globals;
 
 		if ($post && $post->post_type == 'cruise') {
@@ -897,57 +919,64 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		}
 	}
 
-	function initialize_ajax() {
+	function initialize_ajax()
+	{
 
-		add_action( 'wp_ajax_cruise_process_booking_ajax_request', array( $this, 'process_booking_ajax_request' ) );
-		add_action( 'wp_ajax_nopriv_cruise_process_booking_ajax_request', array( $this, 'process_booking_ajax_request' ) );
+		add_action('wp_ajax_cruise_process_booking_ajax_request', array($this, 'process_booking_ajax_request'));
+		add_action('wp_ajax_nopriv_cruise_process_booking_ajax_request', array($this, 'process_booking_ajax_request'));
 
-		add_action( 'wp_ajax_frontend_delete_cruise_schedule_ajax_request', array( $this, 'frontend_delete_cruise_schedule_ajax_request') );
+		add_action('wp_ajax_frontend_delete_cruise_schedule_ajax_request', array($this, 'frontend_delete_cruise_schedule_ajax_request'));
 
-		add_action( 'wp_ajax_nopriv_cruise_get_fields_ajax_request', array($this, 'cruise_get_fields_ajax_request'));
-		add_action( 'wp_ajax_cruise_get_fields_ajax_request', array($this, 'cruise_get_fields_ajax_request'));
+		add_action('wp_ajax_nopriv_cruise_get_fields_ajax_request', array($this, 'cruise_get_fields_ajax_request'));
+		add_action('wp_ajax_cruise_get_fields_ajax_request', array($this, 'cruise_get_fields_ajax_request'));
 
-		add_action( 'byt_ajax_handler_cruise_available_dates_ajax_request', array( $this, 'get_available_dates_json' ) );
-		add_action( 'byt_ajax_handler_nopriv_cruise_available_dates_ajax_request', array( $this, 'get_available_dates_json' ) );
-		add_action( 'byt_ajax_handler_cruise_get_day_price_ajax_request', array( $this, 'get_prices_json') );
-		add_action( 'byt_ajax_handler_nopriv_cruise_get_day_price_ajax_request', array( $this, 'get_prices_json') );
-		add_action( 'byt_ajax_handler_nopriv_cruise_load_min_price_ajax_request', array( $this, 'get_min_price_json' ) );
-		add_action( 'byt_ajax_handler_cruise_load_min_price_ajax_request', array( $this, 'get_min_price_json') );
+		add_action('byt_ajax_handler_cruise_available_dates_ajax_request', array($this, 'get_available_dates_json'));
+		add_action('byt_ajax_handler_nopriv_cruise_available_dates_ajax_request', array($this, 'get_available_dates_json'));
+		add_action('byt_ajax_handler_cruise_get_day_price_ajax_request', array($this, 'get_prices_json'));
+		add_action('byt_ajax_handler_nopriv_cruise_get_day_price_ajax_request', array($this, 'get_prices_json'));
+		add_action('byt_ajax_handler_nopriv_cruise_load_min_price_ajax_request', array($this, 'get_min_price_json'));
+		add_action('byt_ajax_handler_cruise_load_min_price_ajax_request', array($this, 'get_min_price_json'));
 
-		add_action( 'wp_ajax_cruise_available_dates_ajax_request', array( $this, 'get_available_dates_json' ) );
-		add_action( 'wp_ajax_nopriv_cruise_available_dates_ajax_request', array( $this, 'get_available_dates_json' ) );
-		add_action( 'wp_ajax_cruise_get_day_price_ajax_request', array( $this, 'get_prices_json') );
-		add_action( 'wp_ajax_nopriv_cruise_get_day_price_ajax_request', array( $this, 'get_prices_json') );
-		add_action( 'wp_ajax_nopriv_cruise_load_min_price_ajax_request', array( $this, 'get_min_price_json' ) );
-		add_action( 'wp_ajax_cruise_load_min_price_ajax_request', array( $this, 'get_min_price_json') );		
+		add_action('wp_ajax_cruise_available_dates_ajax_request', array($this, 'get_available_dates_json'));
+		add_action('wp_ajax_nopriv_cruise_available_dates_ajax_request', array($this, 'get_available_dates_json'));
+		add_action('wp_ajax_cruise_get_day_price_ajax_request', array($this, 'get_prices_json'));
+		add_action('wp_ajax_nopriv_cruise_get_day_price_ajax_request', array($this, 'get_prices_json'));
+		add_action('wp_ajax_nopriv_cruise_load_min_price_ajax_request', array($this, 'get_min_price_json'));
+		add_action('wp_ajax_cruise_load_min_price_ajax_request', array($this, 'get_min_price_json'));
 	}
 
-	function booking_form_calendar_booking_terms() {
+	function booking_form_calendar_booking_terms()
+	{
 		get_template_part('includes/parts/cruise/single/booking-form-calendar', 'booking-terms');
 	}
 
-	function booking_form_calendar_start_summary_control() {
+	function booking_form_calendar_start_summary_control()
+	{
 		get_template_part('includes/parts/cruise/single/booking-form-calendar', 'summary-fields');
 	}
 
-	function booking_form_calendar_after_calendar_control() {
+	function booking_form_calendar_after_calendar_control()
+	{
 		get_template_part('includes/parts/cruise/single/booking-form-calendar', 'fields');
 	}
 
-	function booking_form_confirmation_core_fields() {
+	function booking_form_confirmation_core_fields()
+	{
 		get_template_part('includes/parts/cruise/single/booking-form-confirmation', 'core-fields');
 	}
 
-	function booking_form_details_core_fields() {
+	function booking_form_details_core_fields()
+	{
 		get_template_part('includes/parts/cruise/single/booking-form-details', 'core-fields');
 	}
 
-	function get_min_price_json() {
-		if ( isset($_REQUEST) ) {
+	function get_min_price_json()
+	{
+		if (isset($_REQUEST)) {
 
 			$nonce = wp_kses($_REQUEST['nonce'], array());
 
-			if ( wp_verify_nonce( $nonce, 'bookyourtravel_nonce' ) ) {
+			if (wp_verify_nonce($nonce, 'bookyourtravel_nonce')) {
 				$cruise_id = isset($_REQUEST['cruise_id']) ? intval(wp_kses($_REQUEST['cruise_id'], array())) : 0;
 				$cabin_type_id = isset($_REQUEST['cabin_type_id']) ? intval(wp_kses($_REQUEST['cabin_type_id'], array())) : 0;
 				$start_date = isset($_REQUEST['start_date']) ? wp_kses($_REQUEST['start_date'], array()) : null;
@@ -957,16 +986,17 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 				$price = BookYourTravel_Theme_Utils::get_price_in_current_currency($price);
 
-                if ($price > 0) {
+				if ($price > 0) {
 					echo json_encode($price);
-                }
+				}
 			}
 		}
 
 		die();
 	}
 
-	function get_min_future_price($_cruise_id, $_cabin_type_id, $start_date = null, $end_date = null, $skip_cache = false) {
+	function get_min_future_price($_cruise_id, $_cabin_type_id, $start_date = null, $end_date = null, $skip_cache = false)
+	{
 		global $wpdb, $bookyourtravel_theme_globals;
 
 		$cruise_id = BookYourTravel_Theme_Utils::get_default_language_post_id($_cruise_id, 'cruise');
@@ -998,7 +1028,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		$min_price_meta_key = BookYourTravel_Theme_Utils::build_min_price_meta_key("cruise", $start_date, $end_date);
 		$min_price_check_meta_key = BookYourTravel_Theme_Utils::build_min_price_check_meta_key("cruise", $start_date, $end_date);
 
-        $cruise_obj = new BookYourTravel_Cruise($cruise_id);
+		$cruise_obj = new BookYourTravel_Cruise($cruise_id);
 		$min_price = $cruise_obj->_get_cached_price($min_price_meta_key, $min_price_check_meta_key);
 
 		if ($cruise_type_is_repeated > 0) {
@@ -1042,12 +1072,12 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 						INNER JOIN (" . DISTICT_DATE_RANGE_QUERY . ") possible_dates ON possible_dates.the_date = DATE(bookings.cruise_date)
 						WHERE bookings.cruise_id = %d ";
 
-						if ($bookyourtravel_theme_globals->use_woocommerce_for_checkout() && !$is_reservation_only) {
-							$completed_statuses = $bookyourtravel_theme_globals->get_completed_order_woocommerce_statuses();
-							if (!empty($completed_statuses)) {
-								$sql .= " AND IFNULL(bookings.woo_status, '') IN (" . $completed_statuses . ") ";
-							}
-						}					
+				if ($bookyourtravel_theme_globals->use_woocommerce_for_checkout() && !$is_reservation_only) {
+					$completed_statuses = $bookyourtravel_theme_globals->get_completed_order_woocommerce_statuses();
+					if (!empty($completed_statuses)) {
+						$sql .= " AND IFNULL(bookings.woo_status, '') IN (" . $completed_statuses . ") ";
+					}
+				}
 
 				if ($cabin_type_id > 0) {
 					$sql .= $wpdb->prepare(" AND bookings.cabin_type_id = %d ", $cabin_type_id);
@@ -1068,13 +1098,14 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		update_post_meta($cruise_id, $min_price_meta_key, $min_price);
 		update_post_meta($cruise_id, $min_price_check_meta_key, time());
 		update_post_meta($_cruise_id, $min_price_meta_key, $min_price);
-		update_post_meta($_cruise_id, $min_price_check_meta_key, time());					
+		update_post_meta($_cruise_id, $min_price_check_meta_key, time());
 
 		return $min_price;
 	}
-	
 
-	function get_min_future_date($cruise_id) {
+
+	function get_min_future_date($cruise_id)
+	{
 		global $wpdb, $bookyourtravel_theme_globals;
 
 		$cruise_id = BookYourTravel_Theme_Utils::get_default_language_post_id($cruise_id, 'cruise');
@@ -1088,7 +1119,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		// 4 - weekly, multidays
 		$cruise_type_is_repeated = $cruise_obj->get_type_is_repeated();
 
-		$is_reservation_only = (int)$cruise_obj->get_is_reservation_only();		
+		$is_reservation_only = (int)$cruise_obj->get_is_reservation_only();
 
 		$start_date = date("Y-m-d", time());
 		$end_date = date('Y-m-d', strtotime($start_date . " +50 months"));
@@ -1124,7 +1155,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 			if (!empty($completed_statuses)) {
 				$sql .= " AND IFNULL(bookings.woo_status, '') IN (" . $completed_statuses . ") ";
 			}
-		}		
+		}
 
 		$sql .= " GROUP BY possible_dates.the_date
 			) as bc
@@ -1137,48 +1168,50 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		$min_date = $wpdb->get_var($sql);
 
 		return $min_date;
-	}	
-	
-	function get_min_static_from_price_by_location($_location_id) {
+	}
+
+	function get_min_static_from_price_by_location($_location_id)
+	{
 		$min_price = 0;
 
-        global $wpdb, $bookyourtravel_theme_globals;
+		global $wpdb, $bookyourtravel_theme_globals;
 
-        $location_id = BookYourTravel_Theme_Utils::get_default_language_post_id($_location_id, 'location');
-        $location_obj = new BookYourTravel_Location($location_id);
+		$location_id = BookYourTravel_Theme_Utils::get_default_language_post_id($_location_id, 'location');
+		$location_obj = new BookYourTravel_Location($location_id);
 
-        $min_price_meta_key = BookYourTravel_Theme_Utils::build_min_price_meta_key("cruises");
-        $min_price_check_meta_key = BookYourTravel_Theme_Utils::build_min_price_check_meta_key("cruises");
-        $min_price = $location_obj->_get_cached_price($min_price_meta_key, $min_price_check_meta_key);
+		$min_price_meta_key = BookYourTravel_Theme_Utils::build_min_price_meta_key("cruises");
+		$min_price_check_meta_key = BookYourTravel_Theme_Utils::build_min_price_check_meta_key("cruises");
+		$min_price = $location_obj->_get_cached_price($min_price_meta_key, $min_price_check_meta_key);
 
-        if ($min_price == 0 || $skip_cache) {
-            $post_ids = $location_obj->get_cruise_ids();
+		if ($min_price == 0 || $skip_cache) {
+			$post_ids = $location_obj->get_cruise_ids();
 
-            if (count($post_ids) > 0) {
-                delete_post_meta($location_id, $min_price_meta_key);
+			if (count($post_ids) > 0) {
+				delete_post_meta($location_id, $min_price_meta_key);
 
-                $post_ids = array_map(function ($v) {
-                    return "'" . esc_sql($v) . "'";
-                }, $post_ids);
-                $post_ids_str = implode(',', $post_ids);                  
+				$post_ids = array_map(function ($v) {
+					return "'" . esc_sql($v) . "'";
+				}, $post_ids);
+				$post_ids_str = implode(',', $post_ids);
 
-                $sql = "SELECT IFNULL(MIN(meta_value), 0) min_price 
+				$sql = "SELECT IFNULL(MIN(meta_value), 0) min_price 
                     FROM $wpdb->postmeta as meta
                     WHERE meta_key='cruise_static_from_price' AND post_id IN ($post_ids_str) ";
 
-                $min_price = $wpdb->get_var($sql);
+				$min_price = $wpdb->get_var($sql);
 
-                update_post_meta($location_id, $min_price_meta_key, $min_price);
-                update_post_meta($location_id, $min_price_check_meta_key, time());
-                update_post_meta($_location_id, $min_price_meta_key, $min_price);
-                update_post_meta($_location_id, $min_price_check_meta_key, time());				
-            }
-        }
+				update_post_meta($location_id, $min_price_meta_key, $min_price);
+				update_post_meta($location_id, $min_price_check_meta_key, time());
+				update_post_meta($_location_id, $min_price_meta_key, $min_price);
+				update_post_meta($_location_id, $min_price_check_meta_key, time());
+			}
+		}
 
-        return $min_price;
-    }
+		return $min_price;
+	}
 
-	function get_min_future_price_by_location($_location_id, $start_date = null, $end_date = null, $skip_cache = false) {
+	function get_min_future_price_by_location($_location_id, $start_date = null, $end_date = null, $skip_cache = false)
+	{
 		global $wpdb, $bookyourtravel_theme_globals;
 
 		$location_id = BookYourTravel_Theme_Utils::get_default_language_post_id($_location_id, 'location');
@@ -1200,20 +1233,20 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		$min_price_check_meta_key = BookYourTravel_Theme_Utils::build_min_price_check_meta_key("cruises", $start_date, $end_date);
 		$min_price = $location_obj->_get_cached_price($min_price_meta_key, $min_price_check_meta_key);
 
-        $date_range_match = ' ((possible_dates.the_date >= DATE(availabilities.start_date) AND possible_dates.the_date <= DATE(availabilities.end_date)) OR ';
-    	$date_range_match .= ' (possible_dates.the_date = DATE(availabilities.start_date) AND availabilities.end_date IS NULL)) ';
+		$date_range_match = ' ((possible_dates.the_date >= DATE(availabilities.start_date) AND possible_dates.the_date <= DATE(availabilities.end_date)) OR ';
+		$date_range_match .= ' (possible_dates.the_date = DATE(availabilities.start_date) AND availabilities.end_date IS NULL)) ';
 
 		if (!$min_price || $skip_cache) {
 
 			$cruise_ids = $location_obj->get_cruise_ids();
 
-            if (count($cruise_ids) > 0) {
-				$cruise_ids = array_map(function($v) {
+			if (count($cruise_ids) > 0) {
+				$cruise_ids = array_map(function ($v) {
 					return "'" . esc_sql($v) . "'";
 				}, $cruise_ids);
 				$cruise_ids_str = implode(',', $cruise_ids);
 
-                $sql = "
+				$sql = "
                 SELECT IFNULL(MIN(price), 0) min_price
                 FROM
                 (
@@ -1225,7 +1258,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
                         INNER JOIN (" . DISTICT_DATE_RANGE_QUERY . ") possible_dates ON " . $date_range_match . "
                         WHERE availabilities.cruise_id IN ($cruise_ids_str) ";
 
-                $sql .= " GROUP BY possible_dates.the_date, availabilities.price
+				$sql .= " GROUP BY possible_dates.the_date, availabilities.price
                     ) as avc
                     LEFT JOIN
                     (
@@ -1234,42 +1267,43 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
                         INNER JOIN (" . DISTICT_DATE_RANGE_QUERY . ") possible_dates ON possible_dates.the_date = DATE(bookings.cruise_date)
                         WHERE bookings.cruise_id IN ($cruise_ids_str)
 				";
-				
+
 				if ($bookyourtravel_theme_globals->use_woocommerce_for_checkout()) {
 					$completed_statuses = $bookyourtravel_theme_globals->get_completed_order_woocommerce_statuses();
 					if (!empty($completed_statuses)) {
 						$sql .= " AND IFNULL(woo_status, '') IN (" . $completed_statuses . ")";
 					}
-				}				
+				}
 
-                $sql .= " GROUP BY possible_dates.the_date
+				$sql .= " GROUP BY possible_dates.the_date
                     ) as bc
                     ON bc.booking_date = avc.the_date AND bc.cruise_id = avc.cruise_id
                     HAVING available_cabins > 0
                 ) as pr ";
 
-                $sql = $wpdb->prepare($sql, $start_date, $start_date, $end_date, $start_date, $start_date, $end_date);
+				$sql = $wpdb->prepare($sql, $start_date, $start_date, $end_date, $start_date, $start_date, $end_date);
 
 				$min_price = $wpdb->get_var($sql);
 
-                update_post_meta($location_id, $min_price_meta_key, $min_price);
-                update_post_meta($location_id, $min_price_check_meta_key, time());
-                update_post_meta($_location_id, $min_price_meta_key, $min_price);
-                update_post_meta($_location_id, $min_price_check_meta_key, time());
-            }
+				update_post_meta($location_id, $min_price_meta_key, $min_price);
+				update_post_meta($location_id, $min_price_check_meta_key, time());
+				update_post_meta($_location_id, $min_price_meta_key, $min_price);
+				update_post_meta($_location_id, $min_price_check_meta_key, time());
+			}
 		}
 
 		return $min_price;
 	}
 
-	function get_prices_json() {
+	function get_prices_json()
+	{
 		global $bookyourtravel_theme_globals;
 
-		if ( isset($_REQUEST) ) {
+		if (isset($_REQUEST)) {
 
 			$nonce = wp_kses($_REQUEST['nonce'], array());
 
-			if ( wp_verify_nonce( $nonce, 'bookyourtravel_nonce' ) ) {
+			if (wp_verify_nonce($nonce, 'bookyourtravel_nonce')) {
 				$cruise_id = isset($_REQUEST['cruise_id']) ? intval(wp_kses($_REQUEST['cruise_id'], array())) : 0;
 				$cabin_type_id = isset($_REQUEST['cabin_type_id']) ? intval(wp_kses($_REQUEST['cabin_type_id'], array())) : 0;
 				$search_date = isset($_REQUEST['the_date']) ? wp_kses($_REQUEST['the_date'], array()) : 0;
@@ -1287,11 +1321,12 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		die();
 	}
 
-	function get_prices($search_date, $cruise_id, $cabin_type_id = 0, $current_booking_id = 0) {
+	function get_prices($search_date, $cruise_id, $cabin_type_id = 0, $current_booking_id = 0)
+	{
 
 		global $wpdb, $bookyourtravel_theme_globals;
-		$price_decimal_places = $bookyourtravel_theme_globals->get_price_decimal_places();        
-		
+		$price_decimal_places = $bookyourtravel_theme_globals->get_price_decimal_places();
+
 		$cruise_id = BookYourTravel_Theme_Utils::get_default_language_post_id($cruise_id, 'cruise');
 		$cabin_type_id = BookYourTravel_Theme_Utils::get_default_language_post_id($cabin_type_id, 'cabin_type');
 
@@ -1328,12 +1363,12 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 			$sql .= $wpdb->prepare(" AND %s >= schedules.start_date AND %s <= schedules.end_date ", $search_date, $search_date);
 		}
 
-		$sql .= $wpdb->prepare(" AND schedules.cruise_id = %d ", $cruise_id );
+		$sql .= $wpdb->prepare(" AND schedules.cruise_id = %d ", $cruise_id);
 
 		if ($cabin_type_id > 0)
 			$sql .= $wpdb->prepare(" AND schedules.cabin_type_id = %d ", $cabin_type_id);
 
-		$sql .= $wpdb->prepare ("
+		$sql .= $wpdb->prepare("
 							GROUP BY availability_id
 						) availables_inner
 					) availables
@@ -1369,16 +1404,17 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $result;
 	}
 
-	function get_available_dates_json() {
+	function get_available_dates_json()
+	{
 		global $bookyourtravel_theme_globals;
 
 		$available_dates = [];
 
-		if ( isset($_REQUEST) ) {
+		if (isset($_REQUEST)) {
 
 			$nonce = wp_kses($_REQUEST['nonce'], array());
 
-			if ( wp_verify_nonce( $nonce, 'bookyourtravel_nonce' ) ) {
+			if (wp_verify_nonce($nonce, 'bookyourtravel_nonce')) {
 				$cruise_id = isset($_REQUEST['cruise_id']) ? intval(wp_kses($_REQUEST['cruise_id'], array())) : 0;
 				$cabin_type_id = isset($_REQUEST['cabin_type_id']) ? intval(wp_kses($_REQUEST['cabin_type_id'], array())) : 0;
 				$month = isset($_REQUEST['month']) ? intval(wp_kses($_REQUEST['month'], array())) : 0;
@@ -1398,7 +1434,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		die();
 	}
 
-	function list_available_dates($cruise_id, $cabin_type_id, $start_date, $month, $year, $month_range, $cabins) {
+	function list_available_dates($cruise_id, $cabin_type_id, $start_date, $month, $year, $month_range, $cabins)
+	{
 
 		global $wpdb, $bookyourtravel_theme_globals;
 
@@ -1502,15 +1539,16 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $wpdb->get_results($sql);
 	}
 
-	function cruise_get_fields_ajax_request() {
+	function cruise_get_fields_ajax_request()
+	{
 
 		global $wpdb;
 
-		if ( isset($_REQUEST) ) {
+		if (isset($_REQUEST)) {
 			$nonce = wp_kses($_REQUEST['nonce'], array());
 			$cruise_id = intval(wp_kses($_REQUEST['cruiseId'], array()));
 
-			if (wp_verify_nonce( $nonce, 'bookyourtravel_nonce' )) {
+			if (wp_verify_nonce($nonce, 'bookyourtravel_nonce')) {
 
 				$cruise_obj = new BookYourTravel_Cruise(intval($cruise_id));
 
@@ -1531,7 +1569,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 					$cabin_type_ids = $cruise_obj->get_cabin_types();
 					if ($cruise_obj && $cabin_type_ids && count($cabin_type_ids) > 0) {
-						for ( $i = 0; $i < count($cabin_type_ids); $i++ ) {
+						for ($i = 0; $i < count($cabin_type_ids); $i++) {
 							$temp_id = $cabin_type_ids[$i];
 							$cabin_type_obj = new BookYourTravel_Cabin_Type(intval($temp_id));
 							$cabin_type_temp = new stdClass();
@@ -1552,8 +1590,9 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		die();
 	}
 
-	function save_cruise($post_id) {
-        delete_post_meta_by_key('_location_cruise_ids');
+	function save_cruise($post_id)
+	{
+		delete_post_meta_by_key('_location_cruise_ids');
 
 		$cruise_obj = new BookYourTravel_Cruise($post_id);
 		if ($cruise_obj) {
@@ -1566,8 +1605,9 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		}
 	}
 
-	function after_delete_cruise($post_id) {
-        delete_post_meta_by_key('_location_cruise_ids');
+	function after_delete_cruise($post_id)
+	{
+		delete_post_meta_by_key('_location_cruise_ids');
 
 		$cruise_obj = new BookYourTravel_Cruise($post_id);
 		if ($cruise_obj) {
@@ -1580,15 +1620,16 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		}
 	}
 
-	function frontend_delete_cruise_schedule_ajax_request() {
+	function frontend_delete_cruise_schedule_ajax_request()
+	{
 
 		global $bookyourtravel_theme_globals, $bookyourtravel_cruise_helper;
 
-		if ( isset($_REQUEST) ) {
+		if (isset($_REQUEST)) {
 
 			$nonce = wp_kses($_REQUEST['nonce'], array());
 
-			if (wp_verify_nonce( $nonce, 'bookyourtravel_nonce' )) {
+			if (wp_verify_nonce($nonce, 'bookyourtravel_nonce')) {
 
 				$schedule_id = isset($_REQUEST['schedule_id']) ? intval(wp_kses($_REQUEST['schedule_id'], array())) : 0;
 
@@ -1598,14 +1639,14 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 					echo '1';
 				}
-
 			}
 		}
 
 		die();
 	}
 
-	function retrieve_booking_values_from_request($dont_calculate_totals = false) {
+	function retrieve_booking_values_from_request($dont_calculate_totals = false)
+	{
 
 		global $bookyourtravel_theme_globals, $bookyourtravel_extra_item_helper;
 
@@ -1613,7 +1654,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 		$booking_object = null;
 
-		if ( isset($_REQUEST) ) {
+		if (isset($_REQUEST)) {
 
 			$booking_object = new stdClass();
 
@@ -1640,7 +1681,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 			$booking_object->children = isset($_REQUEST['children']) ? intval(wp_kses($_REQUEST['children'], array())) : 0;
 			$booking_object->cruise_date = isset($_REQUEST['cruise_date']) ? date('Y-m-d', strtotime(sanitize_text_field($_REQUEST['cruise_date']))) : null;
 
-			$cruise_count_children_stay_free = get_post_meta($booking_object->cruise_id, 'cruise_count_children_stay_free', true );
+			$cruise_count_children_stay_free = get_post_meta($booking_object->cruise_id, 'cruise_count_children_stay_free', true);
 			$cruise_count_children_stay_free = isset($cruise_count_children_stay_free) ? intval($cruise_count_children_stay_free) : 0;
 
 			$booking_object->billable_children = $booking_object->children - $cruise_count_children_stay_free;
@@ -1653,7 +1694,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 				$booking_object->total_cruise_price = $this->calculate_total_cruise_price($booking_object->cruise_id, $booking_object->cabin_type_id, $booking_object->cruise_date, $booking_object->adults, $booking_object->billable_children, $booking_object->Id, $booking_object->cabin_count);
 				if ($booking_object->total_cruise_price == -1) {
 					return null;
-				}				
+				}
 				$booking_object->total_price += $booking_object->total_cruise_price;
 			}
 
@@ -1684,16 +1725,16 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 			$booking_object->cart_price = isset($_REQUEST['cart_price']) ? floatval(wp_kses($_REQUEST['cart_price'], array())) : 0;
 			if (!isset($_REQUEST['cart_price'])) {
-                $booking_object->cart_price = $booking_object->total_price;
-            }
+				$booking_object->cart_price = $booking_object->total_price;
+			}
 			if ($bookyourtravel_theme_globals->enable_deposit_payments()) {
 				$cruise_deposit_percentage = get_post_meta($booking_object->cruise_id, 'cruise_deposit_percentage', true);
 				$cruise_deposit_percentage = isset($cruise_deposit_percentage) && $cruise_deposit_percentage !== "" ? intval($cruise_deposit_percentage) : 100;
-	
-                if (!$dont_calculate_totals) {
-                    $booking_object->cart_price = $booking_object->total_price * ($cruise_deposit_percentage/100);
-                }
-            }
+
+				if (!$dont_calculate_totals) {
+					$booking_object->cart_price = $booking_object->total_price * ($cruise_deposit_percentage / 100);
+				}
+			}
 
 			$booking_form_fields = $bookyourtravel_theme_globals->get_booking_form_fields();
 
@@ -1721,22 +1762,58 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 					switch ($field_id) {
 
-						case 'first_name' 			: { $booking_object->first_name = $field_value; break; }
-						case 'last_name' 			: { $booking_object->last_name = $field_value; break; }
-						case 'company' 				: { $booking_object->company = $field_value; break; }
-						case 'email' 				: { $booking_object->email = $field_value; break; }
-						case 'phone' 				: { $booking_object->phone = $field_value; break; }
-						case 'address' 				: { $booking_object->address = $field_value; break; }
-						case 'address_2' 			: { $booking_object->address_2 = $field_value; break; }
-						case 'town' 				: { $booking_object->town = $field_value; break; }
-						case 'zip' 					: { $booking_object->zip = $field_value; break; }
-						case 'state' 				: { $booking_object->state = $field_value; break; }
-						case 'country' 				: { $booking_object->country = $field_value; break; }
-						case 'special_requirements' : { $booking_object->special_requirements = $field_value; break; }
-						default : {
-							$booking_object->other_fields[$field_id] = $field_value;
-							break;
-						}
+						case 'first_name': {
+								$booking_object->first_name = $field_value;
+								break;
+							}
+						case 'last_name': {
+								$booking_object->last_name = $field_value;
+								break;
+							}
+						case 'company': {
+								$booking_object->company = $field_value;
+								break;
+							}
+						case 'email': {
+								$booking_object->email = $field_value;
+								break;
+							}
+						case 'phone': {
+								$booking_object->phone = $field_value;
+								break;
+							}
+						case 'address': {
+								$booking_object->address = $field_value;
+								break;
+							}
+						case 'address_2': {
+								$booking_object->address_2 = $field_value;
+								break;
+							}
+						case 'town': {
+								$booking_object->town = $field_value;
+								break;
+							}
+						case 'zip': {
+								$booking_object->zip = $field_value;
+								break;
+							}
+						case 'state': {
+								$booking_object->state = $field_value;
+								break;
+							}
+						case 'country': {
+								$booking_object->country = $field_value;
+								break;
+							}
+						case 'special_requirements': {
+								$booking_object->special_requirements = $field_value;
+								break;
+							}
+						default: {
+								$booking_object->other_fields[$field_id] = $field_value;
+								break;
+							}
 					}
 				}
 			}
@@ -1745,11 +1822,13 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $booking_object;
 	}
 
-    function booking_form_calendar_after_price_breakdown() {
-        get_template_part('includes/parts/booking/booking-form', 'after-price-breakdown');
-    }
+	function booking_form_calendar_after_price_breakdown()
+	{
+		get_template_part('includes/parts/booking/booking-form', 'after-price-breakdown');
+	}
 
-	function process_booking_ajax_request() {
+	function process_booking_ajax_request()
+	{
 
 		global $bookyourtravel_theme_globals, $bookyourtravel_theme_woocommerce, $bookyourtravel_extra_item_helper;
 
@@ -1758,11 +1837,11 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		$show_currency_symbol_after = $bookyourtravel_theme_globals->show_currency_symbol_after();
 		$current_user = wp_get_current_user();
 
-		if ( isset($_REQUEST) ) {
+		if (isset($_REQUEST)) {
 
 			$nonce = wp_kses($_REQUEST['nonce'], array());
 
-			if ( wp_verify_nonce( $nonce, 'bookyourtravel_nonce' ) ) {
+			if (wp_verify_nonce($nonce, 'bookyourtravel_nonce')) {
 
 				$booking_object = $this->retrieve_booking_values_from_request();
 
@@ -1781,7 +1860,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 						echo json_encode($booking_object->Id);
 
 						$use_woocommerce_for_checkout = $bookyourtravel_theme_globals->use_woocommerce_for_checkout();
-						$is_reservation_only = get_post_meta( $cruise_id, 'cruise_is_reservation_only', true );
+						$is_reservation_only = get_post_meta($cruise_id, 'cruise_is_reservation_only', true);
 
 						if (!$use_woocommerce_for_checkout || !BookYourTravel_Theme_Utils::is_woocommerce_active() || $is_reservation_only) {
 
@@ -1817,7 +1896,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 								}
 							}
 
-                            $date_format = get_option('date_format');
+							$date_format = get_option('date_format');
 							$message .= sprintf(esc_html__("Cruise date: %s", 'bookyourtravel'), date_i18n($date_format, strtotime($booking_object->cruise_date))) . "\n\n";
 							$message .= sprintf(esc_html__("Adults: %s", 'bookyourtravel'), $booking_object->adults) . "\n\n";
 							$message .= sprintf(esc_html__("Children: %s", 'bookyourtravel'), $booking_object->children) . "\n\n";
@@ -1825,7 +1904,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 							if ($booking_object->total_extra_items_price > 0) {
 
 								$extra_items_string = '';
-                                $extra_items_array = array();
+								$extra_items_array = array();
 
 								if (!empty($booking_object->extra_items) && is_array($booking_object->extra_items)) {
 									$extra_items_array = $booking_object->extra_items;
@@ -1847,12 +1926,12 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 								$total_extra_items_price_string = '';
 								if (!$show_currency_symbol_after) {
-									$total_extra_items_price_string = $default_currency_symbol . ' ' . number_format_i18n( $total_extra_items_price, $price_decimal_places );
+									$total_extra_items_price_string = $default_currency_symbol . ' ' . number_format_i18n($total_extra_items_price, $price_decimal_places);
 								} else {
-									$total_extra_items_price_string = number_format_i18n( $total_extra_items_price, $price_decimal_places ) . ' ' . $default_currency_symbol;
+									$total_extra_items_price_string = number_format_i18n($total_extra_items_price, $price_decimal_places) . ' ' . $default_currency_symbol;
 								}
 
-								$total_extra_items_price_string = preg_replace("/&nbsp;/",' ',$total_extra_items_price_string);
+								$total_extra_items_price_string = preg_replace("/&nbsp;/", ' ', $total_extra_items_price_string);
 
 								$message .= sprintf(esc_html__("Extra items total: %s", 'bookyourtravel'), $total_extra_items_price_string) . "\n\n";
 							}
@@ -1863,12 +1942,12 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 								$total_cruise_price_string = '';
 								if (!$show_currency_symbol_after) {
-									$total_cruise_price_string = $default_currency_symbol . ' ' . number_format_i18n( $total_cruise_price, $price_decimal_places );
+									$total_cruise_price_string = $default_currency_symbol . ' ' . number_format_i18n($total_cruise_price, $price_decimal_places);
 								} else {
-									$total_cruise_price_string = number_format_i18n( $total_cruise_price, $price_decimal_places ) . ' ' . $default_currency_symbol;
+									$total_cruise_price_string = number_format_i18n($total_cruise_price, $price_decimal_places) . ' ' . $default_currency_symbol;
 								}
 
-								$total_cruise_price_string = preg_replace("/&nbsp;/",' ',$total_cruise_price_string);
+								$total_cruise_price_string = preg_replace("/&nbsp;/", ' ', $total_cruise_price_string);
 
 								$message .= sprintf(esc_html__("Reservation total: %s", 'bookyourtravel'), $total_cruise_price_string) . "\n\n";
 							}
@@ -1877,12 +1956,12 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 							$total_price_string = '';
 							if (!$show_currency_symbol_after) {
-								$total_price_string = $default_currency_symbol . ' ' . number_format_i18n( $total_price, $price_decimal_places );
+								$total_price_string = $default_currency_symbol . ' ' . number_format_i18n($total_price, $price_decimal_places);
 							} else {
-								$total_price_string = number_format_i18n( $total_price, $price_decimal_places ) . ' ' . $default_currency_symbol;
+								$total_price_string = number_format_i18n($total_price, $price_decimal_places) . ' ' . $default_currency_symbol;
 							}
 
-							$total_price_string = preg_replace("/&nbsp;/",' ',$total_price_string);
+							$total_price_string = preg_replace("/&nbsp;/", ' ', $total_price_string);
 							$message .= sprintf(esc_html__("Total price: %s", 'bookyourtravel'), $total_price_string) . "\n\n";
 
 							$headers = "Content-Type: text/plain; charset=utf-8\r\n";
@@ -1899,7 +1978,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 								}
 							}
 
-							$contact_emails = trim(get_post_meta($cruise_id, 'cruise_contact_email', true ));
+							$contact_emails = trim(get_post_meta($cruise_id, 'cruise_contact_email', true));
 
 							$emails_array = array();
 							if (empty($contact_emails))
@@ -1928,7 +2007,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		die();
 	}
 
-	function calculate_total_cruise_price($cruise_id, $cabin_type_id, $cruise_date, $adults, $children, $booking_id, $cabin_count) {
+	function calculate_total_cruise_price($cruise_id, $cabin_type_id, $cruise_date, $adults, $children, $booking_id, $cabin_count)
+	{
 
 		$cruise_obj = new BookYourTravel_Cruise($cruise_id);
 		$cruise_is_price_per_person = $cruise_obj->get_is_price_per_person();
@@ -1956,7 +2036,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $total_price;
 	}
 
-	function update_booking_woocommerce_info($booking_id, $cart_key = null, $woo_order_id = null, $woo_status = null) {
+	function update_booking_woocommerce_info($booking_id, $cart_key = null, $woo_order_id = null, $woo_status = null)
+	{
 
 		global $wpdb;
 
@@ -1980,7 +2061,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return null;
 	}
 
-	function create_cruise_booking($user_id, $booking_object) {
+	function create_cruise_booking($user_id, $booking_object)
+	{
 
 		global $wpdb;
 
@@ -1993,7 +2075,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 		$sql = $wpdb->prepare($sql, $user_id, $booking_object->cruise_id, $booking_object->cabin_type_id, $booking_object->cabin_count, $booking_object->adults, $booking_object->children, $booking_object->cruise_date, $booking_object->first_name, $booking_object->last_name, $booking_object->company, $booking_object->email, $booking_object->phone, $booking_object->address, $booking_object->address_2, $booking_object->town, $booking_object->zip, $booking_object->state, $booking_object->country, $booking_object->special_requirements, serialize($booking_object->other_fields), serialize($booking_object->extra_items), $booking_object->total_cruise_price, $booking_object->total_extra_items_price, $booking_object->total_price, $booking_object->cart_price);
 
-        $result = $wpdb->query($sql);
+		$result = $wpdb->query($sql);
 
 		if (is_wp_error($result))
 			$errors[] = $result;
@@ -2005,7 +2087,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $booking_object->Id;
 	}
 
-	function update_cruise_booking($booking_id, $booking_object) {
+	function update_cruise_booking($booking_id, $booking_object)
+	{
 
 		global $wpdb;
 
@@ -2019,35 +2102,92 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 			switch ($field_key) {
 
-				case 'cruise_id' 					: $field_sql .= $wpdb->prepare("cruise_id = %d, ", $field_value); break;
-				case 'cabin_type_id' 				: $field_sql .= $wpdb->prepare("cabin_type_id = %d, ", $field_value); break;
-				case 'cruise_date' 					: $field_sql .= $wpdb->prepare("cruise_date = %s, ", $field_value); break;
-				case 'cabin_count' 					: $field_sql .= $wpdb->prepare("cabin_count = %d, ", $field_value); break;
-				case 'adults' 						: $field_sql .= $wpdb->prepare("adults = %d, ", $field_value); break;
-				case 'children' 					: $field_sql .= $wpdb->prepare("children = %d, ", $field_value); break;
-				case 'user_id' 						: $field_sql .= $wpdb->prepare("user_id = %d, ", $field_value); break;
-				case 'first_name' 					: $field_sql .= $wpdb->prepare("first_name = %s, ", $field_value); break;
-				case 'last_name' 					: $field_sql .= $wpdb->prepare("last_name = %s, ", $field_value); break;
-				case 'company' 						: $field_sql .= $wpdb->prepare("company = %s, ", $field_value); break;
-				case 'email' 						: $field_sql .= $wpdb->prepare("email = %s, ", $field_value); break;
-				case 'phone' 						: $field_sql .= $wpdb->prepare("phone = %s, ", $field_value); break;
-				case 'address' 						: $field_sql .= $wpdb->prepare("address = %s, ", $field_value); break;
-				case 'address_2' 					: $field_sql .= $wpdb->prepare("address_2 = %s, ", $field_value); break;
-				case 'town' 						: $field_sql .= $wpdb->prepare("town = %s, ", $field_value); break;
-				case 'zip' 							: $field_sql .= $wpdb->prepare("zip = %s, ", $field_value); break;
-				case 'state' 						: $field_sql .= $wpdb->prepare("state = %s, ", $field_value); break;
-				case 'country' 						: $field_sql .= $wpdb->prepare("country = %s, ", $field_value); break;
-				case 'special_requirements' 		: $field_sql .= $wpdb->prepare("special_requirements = %s, ", $field_value); break;
-				case 'other_fields' 				: $field_sql .= $wpdb->prepare("other_fields = %s, ", serialize($field_value)); break;
-				case 'extra_items' 					: $field_sql .= $wpdb->prepare("extra_items = %s, ", serialize($field_value)); break;
-				case 'total_cruise_price' 			: $field_sql .= $wpdb->prepare("total_cruise_price = %f, ", $field_value); break;
-				case 'cart_price' 					: $field_sql .= $wpdb->prepare("cart_price = %f, ", $field_value); break;
-				case 'total_extra_items_price' 		: $field_sql .= $wpdb->prepare("total_extra_items_price = %f, ", $field_value); break;
-				case 'total_price' 					: $field_sql .= $wpdb->prepare("total_price = %f, ", $field_value); break;
-				case 'woo_order_id' 				: $field_sql .= $wpdb->prepare("woo_order_id = %d, ", $field_value); break;
-				case 'cart_key' 					: $field_sql .= $wpdb->prepare("cart_key = %s, ", $field_value); break;
-				case 'woo_status' 					: $field_sql .= $wpdb->prepare("woo_status = %s, ", $field_value); break;
-				default : break;
+				case 'cruise_id':
+					$field_sql .= $wpdb->prepare("cruise_id = %d, ", $field_value);
+					break;
+				case 'cabin_type_id':
+					$field_sql .= $wpdb->prepare("cabin_type_id = %d, ", $field_value);
+					break;
+				case 'cruise_date':
+					$field_sql .= $wpdb->prepare("cruise_date = %s, ", $field_value);
+					break;
+				case 'cabin_count':
+					$field_sql .= $wpdb->prepare("cabin_count = %d, ", $field_value);
+					break;
+				case 'adults':
+					$field_sql .= $wpdb->prepare("adults = %d, ", $field_value);
+					break;
+				case 'children':
+					$field_sql .= $wpdb->prepare("children = %d, ", $field_value);
+					break;
+				case 'user_id':
+					$field_sql .= $wpdb->prepare("user_id = %d, ", $field_value);
+					break;
+				case 'first_name':
+					$field_sql .= $wpdb->prepare("first_name = %s, ", $field_value);
+					break;
+				case 'last_name':
+					$field_sql .= $wpdb->prepare("last_name = %s, ", $field_value);
+					break;
+				case 'company':
+					$field_sql .= $wpdb->prepare("company = %s, ", $field_value);
+					break;
+				case 'email':
+					$field_sql .= $wpdb->prepare("email = %s, ", $field_value);
+					break;
+				case 'phone':
+					$field_sql .= $wpdb->prepare("phone = %s, ", $field_value);
+					break;
+				case 'address':
+					$field_sql .= $wpdb->prepare("address = %s, ", $field_value);
+					break;
+				case 'address_2':
+					$field_sql .= $wpdb->prepare("address_2 = %s, ", $field_value);
+					break;
+				case 'town':
+					$field_sql .= $wpdb->prepare("town = %s, ", $field_value);
+					break;
+				case 'zip':
+					$field_sql .= $wpdb->prepare("zip = %s, ", $field_value);
+					break;
+				case 'state':
+					$field_sql .= $wpdb->prepare("state = %s, ", $field_value);
+					break;
+				case 'country':
+					$field_sql .= $wpdb->prepare("country = %s, ", $field_value);
+					break;
+				case 'special_requirements':
+					$field_sql .= $wpdb->prepare("special_requirements = %s, ", $field_value);
+					break;
+				case 'other_fields':
+					$field_sql .= $wpdb->prepare("other_fields = %s, ", serialize($field_value));
+					break;
+				case 'extra_items':
+					$field_sql .= $wpdb->prepare("extra_items = %s, ", serialize($field_value));
+					break;
+				case 'total_cruise_price':
+					$field_sql .= $wpdb->prepare("total_cruise_price = %f, ", $field_value);
+					break;
+				case 'cart_price':
+					$field_sql .= $wpdb->prepare("cart_price = %f, ", $field_value);
+					break;
+				case 'total_extra_items_price':
+					$field_sql .= $wpdb->prepare("total_extra_items_price = %f, ", $field_value);
+					break;
+				case 'total_price':
+					$field_sql .= $wpdb->prepare("total_price = %f, ", $field_value);
+					break;
+				case 'woo_order_id':
+					$field_sql .= $wpdb->prepare("woo_order_id = %d, ", $field_value);
+					break;
+				case 'cart_key':
+					$field_sql .= $wpdb->prepare("cart_key = %s, ", $field_value);
+					break;
+				case 'woo_status':
+					$field_sql .= $wpdb->prepare("woo_status = %s, ", $field_value);
+					break;
+				default:
+					break;
 			}
 		}
 
@@ -2060,7 +2200,6 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 			$sql .= $wpdb->prepare(" WHERE Id = %d;", $booking_id);
 
 			$result = $wpdb->query($sql);
-
 		}
 
 		$this->clear_price_meta_cache($booking_object->cruise_id);
@@ -2068,31 +2207,36 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $result;
 	}
 
-	function cruise_admin_init() {
-        if ($this->enable_cruises) {
-            $this->initialize_meta_fields();
-            new Custom_Add_Meta_Box('cruise_custom_meta_fields', esc_html__('Extra information', 'bookyourtravel'), $this->cruise_custom_meta_fields, $this->cruise_custom_meta_tabs, 'cruise');
+	function cruise_admin_init()
+	{
+		if ($this->enable_cruises) {
+			$this->initialize_meta_fields();
+			new Custom_Add_Meta_Box('cruise_custom_meta_fields', esc_html__('Extra information', 'bookyourtravel'), $this->cruise_custom_meta_fields, $this->cruise_custom_meta_tabs, 'cruise');
 
-            $this->cruise_list_meta_box = new Custom_Add_Meta_Box('cruise_list_custom_meta_fields', esc_html__('Extra information', 'bookyourtravel'), $this->cruise_list_custom_meta_fields, $this->cruise_list_custom_meta_tabs, 'page');
-            remove_action('add_meta_boxes', array( $this->cruise_list_meta_box, 'add_box' ));
-            add_action('add_meta_boxes', array( $this, 'cruise_list_add_meta_boxes'));
-        }
+			$this->cruise_list_meta_box = new Custom_Add_Meta_Box('cruise_list_custom_meta_fields', esc_html__('Extra information', 'bookyourtravel'), $this->cruise_list_custom_meta_fields, $this->cruise_list_custom_meta_tabs, 'page');
+			remove_action('add_meta_boxes', array($this->cruise_list_meta_box, 'add_box'));
+			add_action('add_meta_boxes', array($this, 'cruise_list_add_meta_boxes'));
+		}
 	}
 
-	function cruise_list_add_meta_boxes() {
+	function cruise_list_add_meta_boxes()
+	{
 		global $post;
-		$template_file = get_post_meta($post->ID,'_wp_page_template',true);
+		$template_file = get_post_meta($post->ID, '_wp_page_template', true);
 		if ($template_file == 'page-cruise-list.php') {
 			add_meta_box(
 				$this->cruise_list_meta_box->id,
 				$this->cruise_list_meta_box->title,
-				array( $this->cruise_list_meta_box, 'meta_box_callback' ),
-				'page', 'normal', 'high'
+				array($this->cruise_list_meta_box, 'meta_box_callback'),
+				'page',
+				'normal',
+				'high'
 			);
 		}
 	}
 
-	function initialize_post_type() {
+	function initialize_post_type()
+	{
 
 		global $bookyourtravel_theme_globals;
 		$this->enable_cruises = $bookyourtravel_theme_globals->enable_cruises();
@@ -2110,116 +2254,124 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		$this->create_cruise_extra_tables();
 	}
 
-	function manage_edit_cruise_columns($columns) {
+	function manage_edit_cruise_columns($columns)
+	{
 
 		//unset($columns['taxonomy-cruise_type']);
 		return $columns;
 	}
 
-	function remove_unnecessary_meta_boxes() {
+	function remove_unnecessary_meta_boxes()
+	{
 		remove_meta_box('tagsdiv-cruise_tag', 'cruise', 'side');
 		remove_meta_box('tagsdiv-cruise_type', 'cruise', 'side');
 		remove_meta_box('tagsdiv-facility', 'cruise', 'side');
 	}
 
-	function register_cruise_tag_taxonomy() {
+	function register_cruise_tag_taxonomy()
+	{
 
 		$labels = array(
-				'name'              => esc_html__( 'Cruise tags', 'bookyourtravel' ),
-				'singular_name'     => esc_html__( 'Cruise tag', 'bookyourtravel' ),
-				'search_items'      => esc_html__( 'Search Cruise tags', 'bookyourtravel' ),
-				'all_items'         => esc_html__( 'All Cruise tags', 'bookyourtravel' ),
-				'parent_item'                => null,
-				'parent_item_colon'          => null,
-				'edit_item'         => esc_html__( 'Edit Cruise tag', 'bookyourtravel' ),
-				'update_item'       => esc_html__( 'Update Cruise tag', 'bookyourtravel' ),
-				'add_new_item'      => esc_html__( 'Add New Cruise tag', 'bookyourtravel' ),
-				'new_item_name'     => esc_html__( 'New Cruise tag Name', 'bookyourtravel' ),
-				'separate_items_with_commas' => esc_html__( 'Separate cruise tags with commas', 'bookyourtravel' ),
-				'add_or_remove_items'        => esc_html__( 'Add or remove cruise tags', 'bookyourtravel' ),
-				'choose_from_most_used'      => esc_html__( 'Choose from the most used cruise tags', 'bookyourtravel' ),
-				'not_found'                  => esc_html__( 'No cruise tags found.', 'bookyourtravel' ),
-				'menu_name'         => esc_html__( 'Cruise tags', 'bookyourtravel' ),
-			);
+			'name'              => esc_html__('Cruise tags', 'bookyourtravel'),
+			'singular_name'     => esc_html__('Cruise tag', 'bookyourtravel'),
+			'search_items'      => esc_html__('Search Cruise tags', 'bookyourtravel'),
+			'all_items'         => esc_html__('All Cruise tags', 'bookyourtravel'),
+			'parent_item'                => null,
+			'parent_item_colon'          => null,
+			'edit_item'         => esc_html__('Edit Cruise tag', 'bookyourtravel'),
+			'update_item'       => esc_html__('Update Cruise tag', 'bookyourtravel'),
+			'add_new_item'      => esc_html__('Add New Cruise tag', 'bookyourtravel'),
+			'new_item_name'     => esc_html__('New Cruise tag Name', 'bookyourtravel'),
+			'separate_items_with_commas' => esc_html__('Separate cruise tags with commas', 'bookyourtravel'),
+			'add_or_remove_items'        => esc_html__('Add or remove cruise tags', 'bookyourtravel'),
+			'choose_from_most_used'      => esc_html__('Choose from the most used cruise tags', 'bookyourtravel'),
+			'not_found'                  => esc_html__('No cruise tags found.', 'bookyourtravel'),
+			'menu_name'         => esc_html__('Cruise tags', 'bookyourtravel'),
+		);
 
 		$args = array(
-				'hierarchical'      => false,
-				'labels'            => $labels,
-				'show_ui'           => true,
-				'show_admin_column' => true,
-				'query_var'         => true,
-				'update_count_callback' => '_update_post_term_count',
-				'rewrite' => array('slug' => 'cruise-tag'),
-			);
+			'hierarchical'      => false,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'update_count_callback' => '_update_post_term_count',
+			'rewrite' => array('slug' => 'cruise-tag'),
+		);
 
-		register_taxonomy( 'cruise_tag', array( 'cruise' ), $args );
+		register_taxonomy('cruise_tag', array('cruise'), $args);
 	}
-	
-	function register_cruise_duration_taxonomy() {
+
+	function register_cruise_duration_taxonomy()
+	{
 		$labels = array(
-				'name'              => esc_html__( 'Cruise durations', 'bookyourtravel' ),
-				'singular_name'     => esc_html__( 'Cruise duration', 'bookyourtravel' ),
-				'search_items'      => esc_html__( 'Search Cruise durations', 'bookyourtravel' ),
-				'all_items'         => esc_html__( 'All Cruise durations', 'bookyourtravel' ),
-				'parent_item'                => null,
-				'parent_item_colon'          => null,
-				'edit_item'         => esc_html__( 'Edit Cruise duration', 'bookyourtravel' ),
-				'update_item'       => esc_html__( 'Update Cruise duration', 'bookyourtravel' ),
-				'add_new_item'      => esc_html__( 'Add New Cruise duration', 'bookyourtravel' ),
-				'new_item_name'     => esc_html__( 'New Cruise Duration Name', 'bookyourtravel' ),
-				'separate_items_with_commas' => esc_html__( 'Separate Cruise durations with commas', 'bookyourtravel' ),
-				'add_or_remove_items'        => esc_html__( 'Add or remove Cruise durations', 'bookyourtravel' ),
-				'choose_from_most_used'      => esc_html__( 'Choose from the most used Cruise durations', 'bookyourtravel' ),
-				'not_found'                  => esc_html__( 'No Cruise durations found.', 'bookyourtravel' ),
-				'menu_name'         => esc_html__( 'Cruise durations', 'bookyourtravel' ),
-			);
+			'name'              => esc_html__('Cruise durations', 'bookyourtravel'),
+			'singular_name'     => esc_html__('Cruise duration', 'bookyourtravel'),
+			'search_items'      => esc_html__('Search Cruise durations', 'bookyourtravel'),
+			'all_items'         => esc_html__('All Cruise durations', 'bookyourtravel'),
+			'parent_item'                => null,
+			'parent_item_colon'          => null,
+			'edit_item'         => esc_html__('Edit Cruise duration', 'bookyourtravel'),
+			'update_item'       => esc_html__('Update Cruise duration', 'bookyourtravel'),
+			'add_new_item'      => esc_html__('Add New Cruise duration', 'bookyourtravel'),
+			'new_item_name'     => esc_html__('New Cruise Duration Name', 'bookyourtravel'),
+			'separate_items_with_commas' => esc_html__('Separate Cruise durations with commas', 'bookyourtravel'),
+			'add_or_remove_items'        => esc_html__('Add or remove Cruise durations', 'bookyourtravel'),
+			'choose_from_most_used'      => esc_html__('Choose from the most used Cruise durations', 'bookyourtravel'),
+			'not_found'                  => esc_html__('No Cruise durations found.', 'bookyourtravel'),
+			'menu_name'         => esc_html__('Cruise durations', 'bookyourtravel'),
+		);
 
 		$args = array(
-				'hierarchical'      => false,
-				'labels'            => $labels,
-				'show_ui'           => true,
-				'show_admin_column' => true,
-				'query_var'         => false,
-				'update_count_callback' => '_update_post_term_count',
-				'rewrite' => array('slug' => 'cruise-duration'),
-			);
+			'hierarchical'      => false,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => false,
+			'update_count_callback' => '_update_post_term_count',
+			'rewrite' => array('slug' => 'cruise-duration'),
+		);
 
-		register_taxonomy( 'cruise_duration', 'cruise', $args );
+		register_taxonomy('cruise_duration', 'cruise', $args);
 	}
 
-	function register_cruise_type_taxonomy() {
+	function register_cruise_type_taxonomy()
+	{
 		$labels = array(
-				'name'              => esc_html__( 'Cruise types', 'bookyourtravel' ),
-				'singular_name'     => esc_html__( 'Cruise type', 'bookyourtravel' ),
-				'search_items'      => esc_html__( 'Search Cruise types', 'bookyourtravel' ),
-				'all_items'         => esc_html__( 'All Cruise types', 'bookyourtravel' ),
-				'parent_item'                => null,
-				'parent_item_colon'          => null,
-				'edit_item'         => esc_html__( 'Edit Cruise type', 'bookyourtravel' ),
-				'update_item'       => esc_html__( 'Update Cruise type', 'bookyourtravel' ),
-				'add_new_item'      => esc_html__( 'Add New Cruise type', 'bookyourtravel' ),
-				'new_item_name'     => esc_html__( 'New Cruise Type Name', 'bookyourtravel' ),
-				'separate_items_with_commas' => esc_html__( 'Separate Cruise types with commas', 'bookyourtravel' ),
-				'add_or_remove_items'        => esc_html__( 'Add or remove Cruise types', 'bookyourtravel' ),
-				'choose_from_most_used'      => esc_html__( 'Choose from the most used Cruise types', 'bookyourtravel' ),
-				'not_found'                  => esc_html__( 'No Cruise types found.', 'bookyourtravel' ),
-				'menu_name'         => esc_html__( 'Cruise types', 'bookyourtravel' ),
-			);
+			'name'              => esc_html__('Cruise types', 'bookyourtravel'),
+			'singular_name'     => esc_html__('Cruise type', 'bookyourtravel'),
+			'search_items'      => esc_html__('Search Cruise types', 'bookyourtravel'),
+			'all_items'         => esc_html__('All Cruise types', 'bookyourtravel'),
+			'parent_item'                => null,
+			'parent_item_colon'          => null,
+			'edit_item'         => esc_html__('Edit Cruise type', 'bookyourtravel'),
+			'update_item'       => esc_html__('Update Cruise type', 'bookyourtravel'),
+			'add_new_item'      => esc_html__('Add New Cruise type', 'bookyourtravel'),
+			// custom
+			'add_new_item'      => esc_html__('Add New Cruise type', 'bookyourtravel'),
+			'new_item_name'     => esc_html__('New Cruise Type Name', 'bookyourtravel'),
+			'separate_items_with_commas' => esc_html__('Separate Cruise types with commas', 'bookyourtravel'),
+			'add_or_remove_items'        => esc_html__('Add or remove Cruise types', 'bookyourtravel'),
+			'choose_from_most_used'      => esc_html__('Choose from the most used Cruise types', 'bookyourtravel'),
+			'not_found'                  => esc_html__('No Cruise types found.', 'bookyourtravel'),
+			'menu_name'         => esc_html__('Cruise types', 'bookyourtravel'),
+		);
 
 		$args = array(
-				'hierarchical'      => false,
-				'labels'            => $labels,
-				'show_ui'           => true,
-				'show_admin_column' => true,
-				'query_var'         => false,
-				'update_count_callback' => '_update_post_term_count',
-				'rewrite' => array('slug' => 'cruise-type'),
-			);
+			'hierarchical'      => false,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => false,
+			'update_count_callback' => '_update_post_term_count',
+			'rewrite' => array('slug' => 'cruise-type'),
+		);
 
-		register_taxonomy( 'cruise_type', 'cruise', $args );
+		register_taxonomy('cruise_type', 'cruise', $args);
 	}
 
-	function register_cruise_post_type() {
+	function register_cruise_post_type()
+	{
 
 		global $bookyourtravel_theme_globals;
 
@@ -2231,40 +2383,45 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 			add_rewrite_rule(
 				"{$cruises_permalink_slug}$",
-				"index.php?post_type=page&page_id={$cruise_list_page_id}", 'top');
+				"index.php?post_type=page&page_id={$cruise_list_page_id}",
+				'top'
+			);
 
 			add_rewrite_rule(
 				"{$cruises_permalink_slug}/page/?([1-9][0-9]*)",
-				"index.php?post_type=page&page_id={$cruise_list_page_id}&paged=\$matches[1]", 'top');
-
+				"index.php?post_type=page&page_id={$cruise_list_page_id}&paged=\$matches[1]",
+				'top'
+			);
 		}
 
 		add_rewrite_rule(
 			"{$cruises_permalink_slug}/([^/]+)/page/?([1-9][0-9]*)",
-			"index.php?post_type=cruise&name=\$matches[1]&paged-byt=\$matches[2]", 'top');
+			"index.php?post_type=cruise&name=\$matches[1]&paged-byt=\$matches[2]",
+			'top'
+		);
 
 		add_rewrite_tag('%paged-byt%', '([1-9][0-9]*)');
 
 		$labels = array(
-			'name'                => esc_html__( 'Cruises', 'bookyourtravel' ),
-			'singular_name'       => esc_html__( 'Cruise', 'bookyourtravel' ),
-			'menu_name'           => esc_html__( 'Cruises', 'bookyourtravel' ),
-			'all_items'           => esc_html__( 'All Cruises', 'bookyourtravel' ),
-			'view_item'           => esc_html__( 'View Cruise', 'bookyourtravel' ),
-			'add_new_item'        => esc_html__( 'Add New Cruise', 'bookyourtravel' ),
-			'add_new'             => esc_html__( 'New Cruise', 'bookyourtravel' ),
-			'edit_item'           => esc_html__( 'Edit Cruise', 'bookyourtravel' ),
-			'update_item'         => esc_html__( 'Update Cruise', 'bookyourtravel' ),
-			'search_items'        => esc_html__( 'Search Cruises', 'bookyourtravel' ),
-			'not_found'           => esc_html__( 'No Cruises found', 'bookyourtravel' ),
-			'not_found_in_trash'  => esc_html__( 'No Cruises found in Trash', 'bookyourtravel' ),
+			'name'                => esc_html__('Cruises', 'bookyourtravel'),
+			'singular_name'       => esc_html__('Cruise', 'bookyourtravel'),
+			'menu_name'           => esc_html__('Cruises', 'bookyourtravel'),
+			'all_items'           => esc_html__('All Cruises', 'bookyourtravel'),
+			'view_item'           => esc_html__('View Cruise', 'bookyourtravel'),
+			'add_new_item'        => esc_html__('Add New Cruise', 'bookyourtravel'),
+			'add_new'             => esc_html__('New Cruise', 'bookyourtravel'),
+			'edit_item'           => esc_html__('Edit Cruise', 'bookyourtravel'),
+			'update_item'         => esc_html__('Update Cruise', 'bookyourtravel'),
+			'search_items'        => esc_html__('Search Cruises', 'bookyourtravel'),
+			'not_found'           => esc_html__('No Cruises found', 'bookyourtravel'),
+			'not_found_in_trash'  => esc_html__('No Cruises found in Trash', 'bookyourtravel'),
 		);
 		$args = array(
-			'label'               => esc_html__( 'Cruise', 'bookyourtravel' ),
-			'description'         => esc_html__( 'Cruise information pages', 'bookyourtravel' ),
+			'label'               => esc_html__('Cruise', 'bookyourtravel'),
+			'description'         => esc_html__('Cruise information pages', 'bookyourtravel'),
 			'labels'              => $labels,
-			'supports'            => array( 'title', 'editor', 'thumbnail', 'author', 'page-attributes' ),
-			'taxonomies'          => array( ),
+			'supports'            => array('title', 'editor', 'thumbnail', 'author', 'page-attributes'),
+			'taxonomies'          => array(),
 			'hierarchical'        => false,
 			'public'              => true,
 			'show_ui'             => true,
@@ -2280,10 +2437,11 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 			'rewrite' => array('slug' => $cruises_permalink_slug),
 		);
 
-		register_post_type( 'cruise', $args );
+		register_post_type('cruise', $args);
 	}
 
-	function create_cruise_extra_tables() {
+	function create_cruise_extra_tables()
+	{
 
 		global $bookyourtravel_installed_version, $force_recreate_tables;
 
@@ -2356,45 +2514,49 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		}
 	}
 
-	function cruise_type_add_new_meta_fields($taxonomy) {
+	function cruise_type_add_new_meta_fields($taxonomy)
+	{
 		// this will add the custom meta fields to the add new term page
 		$days_of_week = BookYourTravel_Theme_Utils::get_days_of_week();
-	?>
+
+		?>
+
 		<div class="form-field">
-			<label for="term_meta[cruise_type_is_repeated]"><?php esc_html_e( 'Is cruise repeated?', 'bookyourtravel' ); ?></label>
-			<select class="cruise_type_repeat_type display_block" id="term_meta[cruise_type_is_repeated]" name="term_meta[cruise_type_is_repeated]">
+			<label for="term_meta[cruise_type_is_repeated]"><?php esc_html_e('Is cruise repeated?', 'bookyourtravel'); ?></label>
+			<select class="cruise_type_repeat_type display_block" id="term_meta[cruise_type_is_repeated]" name="term_meta[cruise_type_is_repeated]" >
 				<option value="0"><?php esc_html_e('No', 'bookyourtravel') ?></option>
 				<option value="1"><?php esc_html_e('Daily', 'bookyourtravel') ?></option>
 				<option value="2"><?php esc_html_e('Weekdays', 'bookyourtravel') ?></option>
 				<option value="3"><?php esc_html_e('Weekly', 'bookyourtravel') ?></option>
 				<option value="4"><?php esc_html_e('Weekly (multi-days)', 'bookyourtravel') ?></option>
 			</select>
-			<p class="description"><?php esc_html_e( 'Do cruises belonging to this cruise type repeat on a daily, weekly, weekday or monthly basis?','bookyourtravel' ); ?></p>
+			<p class="description"><?php esc_html_e('Do cruises belonging to this cruise type repeat on a daily, weekly, weekday or monthly basis?', 'bookyourtravel'); ?></p>
 		</div>
 		<div id="tr_cruise_type_day_of_week" class="form-field" style="display:none">
-			<label for="term_meta[cruise_type_day_of_week]"><?php esc_html_e( 'Start day (if weekly)', 'bookyourtravel' ); ?></label>
+			<label for="term_meta[cruise_type_day_of_week]"><?php esc_html_e('Start day (if weekly)', 'bookyourtravel'); ?></label>
 			<select id="term_meta[cruise_type_day_of_week]" name="term_meta[cruise_type_day_of_week]">
-			  <?php
-				for ($i=0; $i<count($days_of_week); $i++) {
+				<?php
+				for ($i = 0; $i < count($days_of_week); $i++) {
 					$day_of_week = $days_of_week[$i]; ?>
-			  <option value="<?php echo esc_attr($i); ?>"><?php echo esc_html($day_of_week); ?></option>
-			  <?php } ?>
+					<option value="<?php echo esc_attr($i); ?>"><?php echo esc_html($day_of_week); ?></option>
+				<?php } ?>
 			</select>
-			<p class="description"><?php esc_html_e( 'Select a start day of the week for weekly cruise','bookyourtravel' ); ?></p>
+			<p class="description"><?php esc_html_e('Select a start day of the week for weekly cruise', 'bookyourtravel'); ?></p>
 		</div>
 		<div id="tr_cruise_type_days_of_week" class="form-field" style="display:none">
-			<label><?php esc_html_e( 'Start day (if weekly multi-days)', 'bookyourtravel' ); ?></label>
-			  <?php
-				for ($i=0; $i<count($days_of_week); $i++) {
-					$day_of_week = $days_of_week[$i]; ?>
-			<input type="checkbox" id="term_meta[cruise_type_days_of_week_<?php echo esc_attr($i); ?>]" name="term_meta[cruise_type_days_of_week][]" value="<?php echo esc_attr($i); ?>"><?php echo esc_html($day_of_week); ?>
+			<label><?php esc_html_e('Start day (if weekly multi-days)', 'bookyourtravel'); ?></label>
+			<?php
+			for ($i = 0; $i < count($days_of_week); $i++) {
+				$day_of_week = $days_of_week[$i]; ?>
+				<input type="checkbox" id="term_meta[cruise_type_days_of_week_<?php echo esc_attr($i); ?>]" name="term_meta[cruise_type_days_of_week][]" value="<?php echo esc_attr($i); ?>"><?php echo esc_html($day_of_week); ?>
 			<?php } ?>
-			<p class="description"><?php esc_html_e( 'Select multiple start days of the week for weekly cruise','bookyourtravel' ); ?></p>
+			<p class="description"><?php esc_html_e('Select multiple start days of the week for weekly cruise', 'bookyourtravel'); ?></p>
 		</div>
 	<?php
 	}
 
-	function cruise_type_edit_meta_fields($term, $taxonomy) {
+	function cruise_type_edit_meta_fields($term, $taxonomy)
+	{
 
 		$days_of_week = BookYourTravel_Theme_Utils::get_days_of_week();
 
@@ -2402,9 +2564,10 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		$t_id = $term->term_id;
 
 		// retrieve the existing value(s) for this meta field. This returns an array
-		$term_meta = get_option( "taxonomy_$t_id" ); ?>
+	
+		?>
 		<tr class="form-field">
-			<th scope="row" valign="top"><label for="term_meta[cruise_type_is_repeated]"><?php esc_html_e( 'Is cruise repeated?', 'bookyourtravel' ); ?></label></th>
+			<th scope="row" valign="top"><label for="term_meta[cruise_type_is_repeated]"><?php esc_html_e('Is cruise repeated?', 'bookyourtravel'); ?></label></th>
 			<td>
 				<select class="cruise_type_repeat_type display_table_row" id="term_meta[cruise_type_is_repeated]" name="term_meta[cruise_type_is_repeated]">
 					<option <?php echo isset($term_meta['cruise_type_is_repeated']) && (int) $term_meta['cruise_type_is_repeated'] == 0 ? 'selected' : '' ?> value="0"><?php esc_html_e('No', 'bookyourtravel') ?></option>
@@ -2413,45 +2576,46 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 					<option <?php echo isset($term_meta['cruise_type_is_repeated']) && (int) $term_meta['cruise_type_is_repeated'] == 3 ? 'selected' : '' ?> value="3"><?php esc_html_e('Weekly', 'bookyourtravel') ?></option>
 					<option <?php echo isset($term_meta['cruise_type_is_repeated']) && (int) $term_meta['cruise_type_is_repeated'] == 4 ? 'selected' : '' ?> value="4"><?php esc_html_e('Weekly (multi-days)', 'bookyourtravel') ?></option>
 				</select>
-				<p class="description"><?php esc_html_e( 'Do cruises belonging to this cruise type repeat on a set basis?','bookyourtravel' ); ?></p>
+				<p class="description"><?php esc_html_e('Do cruises belonging to this cruise type repeat on a set basis?', 'bookyourtravel'); ?></p>
 			</td>
 		</tr>
 		<tr id="tr_cruise_type_day_of_week" class="form-field" style="<?php echo !isset($term_meta['cruise_type_is_repeated']) || (int)$term_meta['cruise_type_is_repeated'] != 3 ? 'display:none' : ''; ?>">
-			<th scope="row" valign="top"><label for="term_meta[cruise_type_day_of_week]"><?php esc_html_e( 'Start day (if weekly)', 'bookyourtravel' ); ?></label></th>
+			<th scope="row" valign="top"><label for="term_meta[cruise_type_day_of_week]"><?php esc_html_e('Start day (if weekly)', 'bookyourtravel'); ?></label></th>
 			<td>
 				<select id="term_meta[cruise_type_day_of_week]" name="term_meta[cruise_type_day_of_week]">
-				  <?php
-					for ($i=0; $i<count($days_of_week); $i++) {
+					<?php
+					for ($i = 0; $i < count($days_of_week); $i++) {
 						$day_of_week = $days_of_week[$i]; ?>
-				  <option <?php echo isset($term_meta['cruise_type_day_of_week']) && (int)$term_meta['cruise_type_day_of_week'] == $i ? 'selected' : '' ?> value="<?php echo esc_attr($i); ?>"><?php echo esc_html($day_of_week); ?></option>
-				  <?php } ?>
+						<option <?php echo isset($term_meta['cruise_type_day_of_week']) && (int)$term_meta['cruise_type_day_of_week'] == $i ? 'selected' : '' ?> value="<?php echo esc_attr($i); ?>"><?php echo esc_html($day_of_week); ?></option>
+					<?php } ?>
 				</select>
-				<p class="description"><?php esc_html_e( 'Select a start day of the week for weekly cruise','bookyourtravel' ); ?></p>
+				<p class="description"><?php esc_html_e('Select a start day of the week for weekly cruise', 'bookyourtravel'); ?></p>
 			</td>
 		</tr>
 		<tr id="tr_cruise_type_days_of_week" class="form-field" style="<?php echo !isset($term_meta['cruise_type_is_repeated']) || (int)$term_meta['cruise_type_is_repeated'] != 4 ? 'display:none' : ''; ?>">
-			<th scope="row" valign="top"><label><?php esc_html_e( 'Start day (if weekly multi-days)', 'bookyourtravel' ); ?></label></th>
+			<th scope="row" valign="top"><label><?php esc_html_e('Start day (if weekly multi-days)', 'bookyourtravel'); ?></label></th>
 			<td>
-			  <?php
-				for ($i=0; $i<count($days_of_week); $i++) {
+				<?php
+				for ($i = 0; $i < count($days_of_week); $i++) {
 					$day_of_week = $days_of_week[$i]; ?>
-				<input <?php echo isset($term_meta['cruise_type_days_of_week']) && in_array($i, (array)$term_meta['cruise_type_days_of_week']) ? 'checked' : '' ?> type="checkbox" id="term_meta[cruise_type_days_of_week_<?php echo esc_attr($i); ?>]" name="term_meta[cruise_type_days_of_week][]" value="<?php echo esc_attr($i); ?>"><?php echo esc_html($day_of_week); ?>
+					<input <?php echo isset($term_meta['cruise_type_days_of_week']) && in_array($i, (array)$term_meta['cruise_type_days_of_week']) ? 'checked' : '' ?> type="checkbox" id="term_meta[cruise_type_days_of_week_<?php echo esc_attr($i); ?>]" name="term_meta[cruise_type_days_of_week][]" value="<?php echo esc_attr($i); ?>"><?php echo esc_html($day_of_week); ?>
 				<?php } ?>
-				<p class="description"><?php esc_html_e( 'Select multiple start days of the week for weekly cruise','bookyourtravel' ); ?></p>
+				<p class="description"><?php esc_html_e('Select multiple start days of the week for weekly cruise', 'bookyourtravel'); ?></p>
 			</td>
 		</tr>
-	<?php
+<?php
 	}
 
-	function save_cruise_type_custom_meta( $term_id, $tt_id ) {
+	function save_cruise_type_custom_meta($term_id, $tt_id)
+	{
 
-		if ( isset( $_POST['term_meta'] ) ) {
+		if (isset($_POST['term_meta'])) {
 			$t_id = $term_id;
-			$term_meta = get_option( "taxonomy_{$t_id}" );
+			$term_meta = get_option("taxonomy_{$t_id}");
 
-            if (!is_array($term_meta)) {
+			if (!is_array($term_meta)) {
 				$term_meta = array();
-            }
+			}
 
 			$cat_keys = array_keys($_POST['term_meta']);
 			foreach ($cat_keys as $key) {
@@ -2464,11 +2628,12 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		}
 	}
 
-	function cruises_search_fields( $fields, $wp_query ) {
+	function cruises_search_fields($fields, $wp_query)
+	{
 
 		global $wpdb, $bookyourtravel_multi_language_count, $bookyourtravel_theme_globals;
 
-		if ( isset($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] == 'cruise' ) {
+		if (isset($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] == 'cruise') {
 
 			$search_only_available = false;
 			if (isset($wp_query->query_vars['search_only_available']))
@@ -2476,13 +2641,13 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 			$date_today = date('Y-m-d', time());
 			$date_from = null;
-			if ( isset($wp_query->query_vars['byt_date_from']) )
+			if (isset($wp_query->query_vars['byt_date_from']))
 				$date_from = date('Y-m-d', strtotime($wp_query->get('byt_date_from')));
 			else
 				$date_from = $date_today;
 
 			$date_to = null;
-			if ( isset($wp_query->query_vars['byt_date_to']) )
+			if (isset($wp_query->query_vars['byt_date_to']))
 				$date_to = date('Y-m-d', strtotime($wp_query->get('byt_date_to') . ' -1 day'));
 			else
 				$date_to = date('Y-m-d', strtotime($date_from . ' +24 months'));
@@ -2500,7 +2665,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 						FROM " . BOOKYOURTRAVEL_CRUISE_SCHEDULE_TABLE . " schedule
 						WHERE 1=1 AND ";
 
-					if(defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
+					if (defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
 						$temp_fields_sql .= " (cruise_id = wpml_translations_default.element_id OR cruise_id = wpml_translations.element_id) ";
 					} else {
 						$temp_fields_sql .= " cruise_id = {$wpdb->posts}.ID ";
@@ -2528,7 +2693,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 									FROM " . BOOKYOURTRAVEL_CRUISE_BOOKING_TABLE . " bookings
 									INNER JOIN " . BOOKYOURTRAVEL_CRUISE_SCHEDULE_TABLE . " schedule ON bookings.cruise_id = schedule.cruise_id ";
 
-					if(defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
+					if (defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
 						$fields .= " WHERE (schedule.cruise_id = wpml_translations_default.element_id OR schedule.cruise_id = wpml_translations.element_id) ";
 					} else {
 						$fields .= " WHERE schedule.cruise_id = {$wpdb->posts}.ID ";
@@ -2543,14 +2708,14 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 					}
 
 					if ($date_from != null) {
-						$fields .= $wpdb->prepare( " AND DATE(%s) = DATE(bookings.cruise_date) ", $date_from);
+						$fields .= $wpdb->prepare(" AND DATE(%s) = DATE(bookings.cruise_date) ", $date_from);
 					}
 
 					$fields .= " ) cabins_booked ";
 				}
 			}
 
-			if ( isset($wp_query->query_vars['byt_date_to']) )
+			if (isset($wp_query->query_vars['byt_date_to']))
 				$date_to = date('Y-m-d', strtotime($wp_query->get('byt_date_to')));
 			else
 				$date_to = date('Y-m-d', strtotime($date_from . ' +24 months'));
@@ -2563,38 +2728,40 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 			} else {
 				$fields_sql .= " WHERE price_meta2.post_id={$wpdb->posts}.ID ";
 			}
-			
+
 			$fields_sql .= " AND price_meta2.meta_key=%s LIMIT 1), 0) cruise_price ";
 
-			$fields .= $wpdb->prepare($fields_sql, $min_price_meta_key);			
-			
+			$fields .= $wpdb->prepare($fields_sql, $min_price_meta_key);
+
 			$fields_sql = ", IFNULL((SELECT price_meta3.meta_value + 0 FROM {$wpdb->postmeta} price_meta3 ";
 			if (defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
 				$fields_sql .= " WHERE price_meta3.post_id={$wpdb->posts}.ID ";
 			} else {
 				$fields_sql .= " WHERE price_meta3.post_id={$wpdb->posts}.ID ";
 			}
-			
+
 			$fields_sql .= " AND price_meta3.meta_key='cruise_static_from_price' LIMIT 1), 0) cruise_static_price ";
 
-            $fields .= $fields_sql;			
+			$fields .= $fields_sql;
 		}
 
 		return $fields;
 	}
 
-	function cruises_search_where( $where, $wp_query ) {
+	function cruises_search_where($where, $wp_query)
+	{
 
 		global $wpdb;
 
-		if ( isset($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] == 'cruise' ) {
+		if (isset($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] == 'cruise') {
 			$where = str_replace('DECIMAL', 'DECIMAL(10,2)', $where);
 		}
 
 		return $where;
 	}
 
-	function cruises_search_groupby( $groupby, $wp_query ) {
+	function cruises_search_groupby($groupby, $wp_query)
+	{
 
 		global $wpdb;
 
@@ -2602,17 +2769,17 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 			$groupby = " {$wpdb->posts}.ID ";
 
 		if (!is_admin()) {
-			if ( isset($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] == 'cruise' ) {
+			if (isset($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] == 'cruise') {
 
 				$date_today = date('Y-m-d', time());
 				$date_from = null;
-				if ( isset($wp_query->query_vars['byt_date_from']) )
+				if (isset($wp_query->query_vars['byt_date_from']))
 					$date_from = date('Y-m-d', strtotime($wp_query->get('byt_date_from')));
 				else
 					$date_from = $date_today;
 
 				$date_to = null;
-				if ( isset($wp_query->query_vars['byt_date_to']) )
+				if (isset($wp_query->query_vars['byt_date_to']))
 					$date_to = date('Y-m-d', strtotime($wp_query->get('byt_date_to') . ' -1 day'));
 				else
 					$date_to = date('Y-m-d', strtotime($date_from . ' +24 months'));
@@ -2646,15 +2813,15 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 						$top = 0;
 
 						$groupby .= ' AND ( 1!=1 ';
-						for ( $i = 0; $i < $price_range_count; $i++ ) {
+						for ($i = 0; $i < $price_range_count; $i++) {
 							$bottom = ($i * $price_range_increment) + $price_range_bottom;
 							if ($bottom == 0) {
 								$bottom = 0.1;
 							}
-							$top = ( ( $i+1 ) * $price_range_increment ) + $price_range_bottom - 1;
+							$top = (($i + 1) * $price_range_increment) + $price_range_bottom - 1;
 
-							if ( in_array( $i + 1, $prices ) ) {
-								if ( $i < ( ($price_range_count - 1) ) ) {
+							if (in_array($i + 1, $prices)) {
+								if ($i < (($price_range_count - 1))) {
 									$groupby .= $wpdb->prepare(" OR (cruise_price >= %f AND cruise_price <= %f ) ", $bottom, $top);
 									$groupby .= $wpdb->prepare(" OR (cruise_static_price >= %f AND cruise_static_price <= %f ) ", $bottom, $top);
 								} else {
@@ -2667,14 +2834,14 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 						$groupby .= ")";
 					}
 				}
-
 			}
 		}
 
 		return $groupby;
 	}
 
-	function cruises_search_join($join) {
+	function cruises_search_join($join)
+	{
 
 		global $wp_query, $wpdb, $bookyourtravel_multi_language_count, $bookyourtravel_theme_globals;
 
@@ -2685,7 +2852,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $join;
 	}
 
-	function build_cruises_search_orderby($orderby, $wp_query) {
+	function build_cruises_search_orderby($orderby, $wp_query)
+	{
 
 		global $wpdb;
 
@@ -2703,18 +2871,20 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 			$column = 'cruise_static_price';
 			if ($wp_query->get('byt_orderby') == $column) {
 				$orderby = $column . ' ' . $order;
-			}			
+			}
 		}
 
 		return $orderby;
 	}
 
-	function list_cruises_count($paged = 0, $per_page = 0, $orderby = '', $order = '', $location_ids = array(), $exclusive_locations = false, $cruise_types_array = array(), $cruise_durations_array = array(), $cruise_tags_array = array(), $cruise_facilities_array = array(), $search_args = array(), $featured_only = false, $author_id = null, $include_private = false) {
+	function list_cruises_count($paged = 0, $per_page = 0, $orderby = '', $order = '', $location_ids = array(), $exclusive_locations = false, $cruise_types_array = array(), $cruise_durations_array = array(), $cruise_tags_array = array(), $cruise_facilities_array = array(), $search_args = array(), $featured_only = false, $author_id = null, $include_private = false)
+	{
 		$results = $this->list_cruises($paged, $per_page, $orderby, $order, $location_ids, $exclusive_locations, $cruise_types_array, $cruise_durations_array, $cruise_tags_array, $cruise_facilities_array, $search_args, $featured_only, $author_id, $include_private, true);
 		return $results['total'];
 	}
 
-	function list_cruises($paged = 0, $per_page = -1, $orderby = '', $order = '', $param_location_ids = array(), $exclusive_locations = false, $cruise_types_array = array(), $cruise_durations_array = array(), $cruise_tags_array = array(), $cruise_facilities_array = array(), $search_args = array(), $featured_only = false, $author_id = null, $include_private = false, $count_only = false ) {
+	function list_cruises($paged = 0, $per_page = -1, $orderby = '', $order = '', $param_location_ids = array(), $exclusive_locations = false, $cruise_types_array = array(), $cruise_durations_array = array(), $cruise_tags_array = array(), $cruise_facilities_array = array(), $search_args = array(), $featured_only = false, $author_id = null, $include_private = false, $count_only = false)
+	{
 
 		global $bookyourtravel_theme_globals;
 
@@ -2736,12 +2906,12 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 		if (isset($search_args['keyword']) && strlen($search_args['keyword']) > 0 && !$exclusive_locations) {
 			$args = array(
-						's' => $search_args['keyword'],
-						'post_type' => 'location',
-						'posts_per_page'=> -1, 
-						'post_status' => 'publish',
-						'suppress_filters' => false
-					);
+				's' => $search_args['keyword'],
+				'post_type' => 'location',
+				'posts_per_page' => -1,
+				'post_status' => 'publish',
+				'suppress_filters' => false
+			);
 
 			$location_posts = get_posts($args);
 			foreach ($location_posts as $location) {
@@ -2773,11 +2943,11 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 			$args['meta_key'] = 'review_score';
 			$args['orderby'] = 'meta_value_num';
 		} else if ($orderby == 'price' || $orderby == 'min_price') {
-            if ($bookyourtravel_theme_globals->show_static_prices_in_grids()) {
-                $args['byt_orderby'] = 'cruise_static_price';
-            } else {
-                $args['byt_orderby'] = 'cruise_price';
-            }
+			if ($bookyourtravel_theme_globals->show_static_prices_in_grids()) {
+				$args['byt_orderby'] = 'cruise_static_price';
+			} else {
+				$args['byt_orderby'] = 'cruise_price';
+			}
 			$args['byt_order'] = $order;
 		}
 
@@ -2790,21 +2960,21 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 			$args['post_status'][] = 'private';
 		}
 
-		if ( isset($search_args['rating']) && strlen($search_args['rating']) > 0 ) {
+		if (isset($search_args['rating']) && strlen($search_args['rating']) > 0) {
 			$rating = floatval(intval($search_args['rating']) / 10);
-			if ($rating > 0 & $rating <=10) {
+			if ($rating > 0 & $rating <= 10) {
 				$args['meta_query'][] = array(
 					'relation' => 'AND',
-						array(
-							'key' => 'review_score',
-							'value' => $rating,
-							'type' => 'DECIMAL',
-							'compare'   => '>=',
-						),
-						array(
-							'key' => 'review_score',
-							'compare' => 'EXISTS'
-						)
+					array(
+						'key' => 'review_score',
+						'value' => $rating,
+						'type' => 'DECIMAL',
+						'compare'   => '>=',
+					),
+					array(
+						'key' => 'review_score',
+						'compare' => 'EXISTS'
+					)
 				);
 			}
 		}
@@ -2829,57 +2999,57 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 		if (!empty($cruise_types_array)) {
 			$args['tax_query'][] = 	array(
-					'taxonomy' => 'cruise_type',
-					'field' => 'term_id',
-					'terms' => $cruise_types_array,
-					'operator'=> 'IN'
+				'taxonomy' => 'cruise_type',
+				'field' => 'term_id',
+				'terms' => $cruise_types_array,
+				'operator' => 'IN'
 			);
 		}
 
 		if (!empty($cruise_durations_array)) {
 			$args['tax_query'][] = 	array(
-					'taxonomy' => 'cruise_duration',
-					'field' => 'term_id',
-					'terms' => $cruise_durations_array,
-					'operator'=> 'IN'
+				'taxonomy' => 'cruise_duration',
+				'field' => 'term_id',
+				'terms' => $cruise_durations_array,
+				'operator' => 'IN'
 			);
-		}		
+		}
 
 		if (!empty($cruise_tags_array)) {
 			$args['tax_query'][] = 	array(
-					'taxonomy' => 'cruise_tag',
-					'field' => 'term_id',
-					'terms' => $cruise_tags_array,
-					'operator'=> 'IN'
+				'taxonomy' => 'cruise_tag',
+				'field' => 'term_id',
+				'terms' => $cruise_tags_array,
+				'operator' => 'IN'
 			);
 		}
 
 		if (!empty($cruise_facilities_array)) {
 			$args['tax_query'][] = 	array(
-					'taxonomy' => 'facility',
-					'field' => 'id',
-					'terms' => $cruise_facilities_array,
-					'operator'=> 'IN'
+				'taxonomy' => 'facility',
+				'field' => 'id',
+				'terms' => $cruise_facilities_array,
+				'operator' => 'IN'
 			);
 		}
 
 		$search_only_available = false;
-		if ( isset($search_args['search_only_available'])) {
+		if (isset($search_args['search_only_available'])) {
 			$search_only_available = $search_args['search_only_available'];
 		}
 
-		if ( isset($search_args['date_from']) )
+		if (isset($search_args['date_from']))
 			$args['byt_date_from'] = $search_args['date_from'];
 
-		if ( isset($search_args['date_to']) )
+		if (isset($search_args['date_to']))
 			$args['byt_date_to'] = $search_args['date_to'];
 
-		if ( isset($search_args['cabins']) )
+		if (isset($search_args['cabins']))
 			$args['byt_cabins'] = $search_args['cabins'];
 
 		$args['search_only_available'] = $search_only_available;
 
-		if ( isset($search_args['prices']) ) {
+		if (isset($search_args['prices'])) {
 			$args['prices'] = $search_args['prices'];
 			$args['price_range_bottom'] = $bookyourtravel_theme_globals->get_price_range_bottom();
 			$args['price_range_increment'] = $bookyourtravel_theme_globals->get_price_range_increment();
@@ -2910,10 +3080,10 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		}
 
 		add_filter('posts_where', array($this, 'cruises_search_where'), 10, 2);
-		add_filter('posts_fields', array($this, 'cruises_search_fields'), 10, 2 );
-		add_filter('posts_groupby', array($this, 'cruises_search_groupby'), 10, 2 );
-		add_filter('posts_join', array($this, 'cruises_search_join'), 10, 2 );
-		add_filter('posts_orderby', array($this, 'build_cruises_search_orderby'), 10, 2 );
+		add_filter('posts_fields', array($this, 'cruises_search_fields'), 10, 2);
+		add_filter('posts_groupby', array($this, 'cruises_search_groupby'), 10, 2);
+		add_filter('posts_join', array($this, 'cruises_search_join'), 10, 2);
+		add_filter('posts_orderby', array($this, 'build_cruises_search_orderby'), 10, 2);
 
 		$posts_query = new WP_Query($args);
 
@@ -2927,8 +3097,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		} else {
 			$results = array();
 
-			if ($posts_query->have_posts() ) {
-				while ( $posts_query->have_posts() ) {
+			if ($posts_query->have_posts()) {
+				while ($posts_query->have_posts()) {
 					global $post;
 					$posts_query->the_post();
 					$results[] = $post;
@@ -2943,16 +3113,17 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 		wp_reset_postdata();
 
-		remove_filter('posts_where', array($this, 'cruises_search_where') );
-		remove_filter('posts_fields', array($this, 'cruises_search_fields') );
-		remove_filter('posts_groupby', array($this, 'cruises_search_groupby' ));
-		remove_filter('posts_join', array($this, 'cruises_search_join') );
-		remove_filter('posts_orderby', array($this, 'build_cruises_search_orderby') );
+		remove_filter('posts_where', array($this, 'cruises_search_where'));
+		remove_filter('posts_fields', array($this, 'cruises_search_fields'));
+		remove_filter('posts_groupby', array($this, 'cruises_search_groupby'));
+		remove_filter('posts_join', array($this, 'cruises_search_join'));
+		remove_filter('posts_orderby', array($this, 'build_cruises_search_orderby'));
 
 		return $results;
 	}
 
-	function get_cruise_booking($booking_id) {
+	function get_cruise_booking($booking_id)
+	{
 
 		global $wpdb, $bookyourtravel_multi_language_count, $bookyourtravel_theme_globals;
 
@@ -2968,25 +3139,25 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 						'cruise_booking' entry_type
 				FROM $table_name_bookings bookings ";
 
-		if(defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
+		if (defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
 			$sql .= " INNER JOIN " . $wpdb->prefix . "icl_translations cruise_translations_default ON cruise_translations_default.element_type = 'post_cruise' AND cruise_translations_default.language_code='" . BookYourTravel_Theme_Utils::get_default_language() . "' AND cruise_translations_default.element_id = bookings.cruise_id ";
 			$sql .= " INNER JOIN " . $wpdb->prefix . "icl_translations cruise_translations ON cruise_translations.element_type = 'post_cruise' AND cruise_translations.language_code='" . ICL_LANGUAGE_CODE . "' AND cruise_translations.trid = cruise_translations_default.trid ";
 		}
 
 		$sql .= " INNER JOIN $wpdb->posts cruises ON ";
-		if(defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
+		if (defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
 			$sql .= " cruises.ID = cruise_translations.element_id ";
 		} else {
 			$sql .= " cruises.ID = bookings.cruise_id ";
 		}
 
-		if(defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
+		if (defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
 			$sql .= " INNER JOIN " . $wpdb->prefix . "icl_translations cabin_translations_default ON cabin_translations_default.element_type = 'post_cabin_type' AND cabin_translations_default.language_code='" . BookYourTravel_Theme_Utils::get_default_language() . "' AND cabin_translations_default.element_id = bookings.cabin_type_id ";
 			$sql .= " INNER JOIN " . $wpdb->prefix . "icl_translations cabin_translations ON cabin_translations.element_type = 'post_cabin_type' AND cabin_translations.language_code='" . ICL_LANGUAGE_CODE . "' AND cabin_translations.trid = cabin_translations_default.trid ";
 		}
 
 		$sql .= " INNER JOIN $wpdb->posts cabin_types ON ";
-		if(defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
+		if (defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
 			$sql .= " cabin_types.ID = cabin_translations.element_id ";
 		} else {
 			$sql .= " cabin_types.ID = bookings.cabin_type_id ";
@@ -2997,7 +3168,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $wpdb->get_row($wpdb->prepare($sql, $booking_id));
 	}
 
-	function delete_cruise_booking($booking_id) {
+	function delete_cruise_booking($booking_id)
+	{
 
 		global $wpdb;
 
@@ -3017,7 +3189,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		$wpdb->query($wpdb->prepare($sql, $booking_id));
 	}
 
-	function list_cruise_bookings($paged = null, $per_page = 0, $orderby = 'Id', $order = 'ASC', $search_term = null, $user_id = 0, $author_id = null, $cruise_id = null, $cabin_type_id = null) {
+	function list_cruise_bookings($paged = null, $per_page = 0, $orderby = 'Id', $order = 'ASC', $search_term = null, $user_id = 0, $author_id = null, $cruise_id = null, $cabin_type_id = null)
+	{
 
 		global $wpdb, $bookyourtravel_multi_language_count, $bookyourtravel_theme_globals;
 
@@ -3032,25 +3205,25 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 						'cruise_booking' entry_type
 				FROM $table_name_bookings bookings  ";
 
-		if(defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
+		if (defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
 			$sql .= " INNER JOIN " . $wpdb->prefix . "icl_translations cruise_translations_default ON cruise_translations_default.element_type = 'post_cruise' AND cruise_translations_default.language_code='" . BookYourTravel_Theme_Utils::get_default_language() . "' AND cruise_translations_default.element_id = bookings.cruise_id ";
 			$sql .= " INNER JOIN " . $wpdb->prefix . "icl_translations cruise_translations ON cruise_translations.element_type = 'post_cruise' AND cruise_translations.language_code='" . ICL_LANGUAGE_CODE . "' AND cruise_translations.trid = cruise_translations_default.trid ";
 		}
 
 		$sql .= " INNER JOIN $wpdb->posts cruises ON ";
-		if(defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
+		if (defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
 			$sql .= " cruises.ID = cruise_translations.element_id ";
 		} else {
 			$sql .= " cruises.ID = bookings.cruise_id ";
 		}
 
-		if(defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
+		if (defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
 			$sql .= " INNER JOIN " . $wpdb->prefix . "icl_translations cabin_translations_default ON cabin_translations_default.element_type = 'post_cabin_type' AND cabin_translations_default.language_code='" . BookYourTravel_Theme_Utils::get_default_language() . "' AND cabin_translations_default.element_id = bookings.cabin_type_id ";
 			$sql .= " INNER JOIN " . $wpdb->prefix . "icl_translations cabin_translations ON cabin_translations.element_type = 'post_cabin_type' AND cabin_translations.language_code='" . ICL_LANGUAGE_CODE . "' AND cabin_translations.trid = cabin_translations_default.trid ";
 		}
 
 		$sql .= " INNER JOIN $wpdb->posts cabin_types ON ";
-		if(defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
+		if (defined('ICL_LANGUAGE_CODE') && $bookyourtravel_theme_globals->is_translatable('cruise') && (BookYourTravel_Theme_Utils::get_default_language() != ICL_LANGUAGE_CODE || $bookyourtravel_multi_language_count > 1)) {
 			$sql .= " cabin_types.ID = cabin_translations.element_id ";
 		} else {
 			$sql .= " cabin_types.ID = bookings.cabin_type_id ";
@@ -3069,7 +3242,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 
 		if (isset($cabin_type_id) && $cabin_type_id > 0) {
 			$sql .= $wpdb->prepare(" AND bookings.cabin_type_id = %d ", $cabin_type_id);
-		}		
+		}
 
 		if (isset($user_id) && $user_id > 0) {
 			$sql .= $wpdb->prepare(" AND bookings.user_id=%d ", $user_id);
@@ -3079,14 +3252,14 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 			$sql .= $wpdb->prepare(" AND cruises.post_author=%d ", $author_id);
 		}
 
-		if(!empty($orderby) && !empty($order)) {
-			$sql.= "ORDER BY $orderby $order";
+		if (!empty($orderby) && !empty($order)) {
+			$sql .= "ORDER BY $orderby $order";
 		}
 
 		$sql_count = $sql;
 
-		if(!empty($paged) && !empty($per_page)) {
-			$offset=($paged-1)*$per_page;
+		if (!empty($paged) && !empty($per_page)) {
+			$offset = ($paged - 1) * $per_page;
 			$sql .= $wpdb->prepare(" LIMIT %d, %d ", $offset, $per_page);
 		}
 
@@ -3098,7 +3271,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $results;
 	}
 
-	function get_cruise_schedule_max_people($schedule_id, $cruise_id, $cabin_type_id, $date) {
+	function get_cruise_schedule_max_people($schedule_id, $cruise_id, $cabin_type_id, $date)
+	{
 
 		global $wpdb, $bookyourtravel_theme_globals;
 
@@ -3139,7 +3313,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $wpdb->get_row($sql);
 	}
 
-	function create_cruise_schedule($season_name, $cruise_id, $cabin_type_id, $cabin_count, $start_date, $price, $price_child, $end_date) {
+	function create_cruise_schedule($season_name, $cruise_id, $cabin_type_id, $cabin_count, $start_date, $price, $price_child, $end_date)
+	{
 
 		global $wpdb;
 
@@ -3182,7 +3357,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $schedule_id;
 	}
 
-	function update_cruise_schedule($schedule_id, $season_name, $cruise_id, $cabin_type_id, $cabin_count, $start_date, $price, $price_child, $end_date) {
+	function update_cruise_schedule($schedule_id, $season_name, $cruise_id, $cabin_type_id, $cabin_count, $start_date, $price, $price_child, $end_date)
+	{
 
 		global $wpdb;
 
@@ -3219,7 +3395,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		$wpdb->query($sql);
 	}
 
-	function delete_cruise_schedule($schedule_id) {
+	function delete_cruise_schedule($schedule_id)
+	{
 
 		global $wpdb;
 
@@ -3235,7 +3412,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		$wpdb->query($wpdb->prepare($sql, $schedule_id));
 	}
 
-	function get_cruise_schedule($schedule_id) {
+	function get_cruise_schedule($schedule_id)
+	{
 
 		global $wpdb, $bookyourtravel_theme_globals;
 
@@ -3277,7 +3455,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $wpdb->get_row($sql);
 	}
 
-	function list_cruise_schedules ($paged = null, $per_page = 0, $orderby = 'Id', $order = 'ASC', $day = 0, $month = 0, $year = 0, $cruise_id = 0, $cabin_type_id=0, $search_term = '', $author_id = null) {
+	function list_cruise_schedules($paged = null, $per_page = 0, $orderby = 'Id', $order = 'ASC', $day = 0, $month = 0, $year = 0, $cruise_id = 0, $cabin_type_id = 0, $search_term = '', $author_id = null)
+	{
 
 		global $wpdb, $bookyourtravel_theme_globals;
 
@@ -3343,14 +3522,14 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 			$sql .= $filter_date;
 		}
 
-		if(!empty($orderby) & !empty($order)) {
+		if (!empty($orderby) & !empty($order)) {
 			$sql .= " ORDER BY $orderby $order ";
 		}
 
 		$sql_count = $sql;
 
-		if(!empty($paged) && !empty($per_page)) {
-			$offset=($paged-1)*$per_page;
+		if (!empty($paged) && !empty($per_page)) {
+			$offset = ($paged - 1) * $per_page;
 			$sql .= $wpdb->prepare(" LIMIT %d, %d ", $offset, $per_page);
 		}
 
@@ -3362,7 +3541,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $results;
 	}
 
-	function get_cruise_schedule_price($schedule_id, $is_child_price) {
+	function get_cruise_schedule_price($schedule_id, $is_child_price)
+	{
 
 		global $wpdb;
 
@@ -3378,7 +3558,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 	}
 
 
-	function get_cruise_min_price($cruise_id, $cabin_type_id=0, $date=null) {
+	function get_cruise_min_price($cruise_id, $cabin_type_id = 0, $date = null)
+	{
 
 		global $wpdb;
 
@@ -3447,7 +3628,8 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		return $min_price;
 	}
 
-	function clear_price_meta_cache($cruise_id) {
+	function clear_price_meta_cache($cruise_id)
+	{
 		global $wpdb;
 		$search_term = "%cruise_min_price%";
 		$sql = $wpdb->prepare("DELETE FROM $wpdb->postmeta WHERE post_id=%d AND meta_key LIKE '%s'", $cruise_id, $search_term);
@@ -3457,12 +3639,12 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton {
 		$location_ids = $cruise_obj->get_locations();
 
 		if ($location_ids && count($location_ids) > 0) {
-			for ( $i = 0; $i < count($location_ids); $i++ ) {
+			for ($i = 0; $i < count($location_ids); $i++) {
 				$location_id = $location_ids[$i];
 
 				$search_term = "%cruises_min_price%";
 				$sql = $wpdb->prepare("DELETE FROM $wpdb->postmeta WHERE post_id=%d AND meta_key LIKE '%s'", $location_id, $search_term);
-				$wpdb->query($sql);				
+				$wpdb->query($sql);
 			}
 		}
 	}
@@ -3473,15 +3655,16 @@ global $bookyourtravel_cruise_helper;
 $bookyourtravel_cruise_helper = BookYourTravel_Cruise_Helper::get_instance();
 $bookyourtravel_cruise_helper->init();
 
-add_shortcode( 'byt_cruise_card', 'byt_cruise_card_shortcode');
-function byt_cruise_card_shortcode($atts) {
+add_shortcode('byt_cruise_card', 'byt_cruise_card_shortcode');
+function byt_cruise_card_shortcode($atts)
+{
 
 	global $cruise_item_args;
 
 	extract(shortcode_atts(array(
-	  'cruise_id' => 0,
-	  'show_fields' => 'title,image,actions',
-      'css' => ''
+		'cruise_id' => 0,
+		'show_fields' => 'title,image,actions',
+		'css' => ''
 	), $atts));
 
 	$show_fields = explode(',', $show_fields);
@@ -3500,19 +3683,19 @@ function byt_cruise_card_shortcode($atts) {
 	$cruise_item_args['hide_address'] = !in_array('address', $show_fields);
 	$cruise_item_args['item_class'] = 'single-card';
 
-    $output = '';
+	$output = '';
 
 	ob_start();
-    get_template_part('includes/parts/cruise/cruise', 'item');
+	get_template_part('includes/parts/cruise/cruise', 'item');
 
 	$css_class = $css;
 	if (function_exists('vc_shortcode_custom_css_class')) {
-		$css_class = vc_shortcode_custom_css_class( $css, ' ' );
+		$css_class = vc_shortcode_custom_css_class($css, ' ');
 	}
 
-    $output = sprintf('<div class="widget widget-sidebar %s">', $css_class);
-    $output .= ob_get_clean();
-    $output .= "</div>";
+	$output = sprintf('<div class="widget widget-sidebar %s">', $css_class);
+	$output .= ob_get_clean();
+	$output .= "</div>";
 
 	wp_reset_postdata();
 	return $output;

@@ -10,7 +10,7 @@
  * @version 8.00
  */
 
-global $bookyourtravel_theme_globals, $cruise_item_args, $cruise_list_args, $bookyourtravel_cruise_helper;
+global $bookyourtravel_theme_globals, $cruise_item_args, $cruise_list_args, $bookyourtravel_cruise_helper ,$post;
 
 $posts_per_page    = isset($cruise_list_args['posts_per_page']) ? $cruise_list_args['posts_per_page'] : 12;
 $paged			   = isset($cruise_list_args['paged']) ? $cruise_list_args['paged'] : 1;
@@ -25,8 +25,16 @@ $cruise_duration_ids = isset($cruise_list_args['cruise_duration_ids']) ? $cruise
 $cruise_facility_ids = isset($cruise_list_args['cruise_facility_ids']) ? $cruise_list_args['cruise_facility_ids'] : array();
 $author_id = isset($cruise_list_args["author_id"]) ? $cruise_list_args["author_id"] : null;
 $id = $_GET['id'];
+
 $cruise_type_ids = $id;
-var_dump($cruise_type_ids);
+
+// custom
+
+// custom
+
+
+
+
 $cruise_results = $bookyourtravel_cruise_helper->list_cruises($paged, $posts_per_page, $sort_by, $sort_order, array($parent_location_id), false, $cruise_type_ids, $cruise_duration_ids, $cruise_tag_ids, $cruise_facility_ids, array(), $show_featured_only, $author_id, $include_private);
 
 $display_mode = isset($cruise_list_args['display_mode']) ? $cruise_list_args['display_mode'] : 'card';

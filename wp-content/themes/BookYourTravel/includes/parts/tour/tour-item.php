@@ -177,6 +177,8 @@ if (!isset($tour_item_args['hide_actions']) || !$tour_item_args['hide_actions'])
     echo "</div>";
 }
 
+
+
 echo '</div><!--//details-->';
 echo '<a href="' . esc_url($tour_permalink). '" class="overlay-link"></a>';
 
@@ -186,3 +188,14 @@ if ($display_mode == 'card') {
 } else {
 	echo '</li>';
 }
+
+// sequence_of_the_locations
+// if(get_field('order_location', get_the_ID())){
+// 	$order_location = get_field('order_location', get_the_ID());
+// 	foreach ($order_location as $locations ){
+// 		echo  $locations['sequence_of_the_locations'] ;
+// 	}
+
+// }else{
+// 	echo "Chua nhap overview content";
+// }

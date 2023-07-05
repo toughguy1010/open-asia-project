@@ -10,14 +10,14 @@
   left: 20px;
   z-index: 2;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
 }
-.nav-mobile-wrap{
+.nav-mobile-wrap {
   overflow: hidden;
 }
-.mobile-nav .sub-menu{
+.mobile-nav .sub-menu {
   display: block !important;
   position: absolute;
   top: 0;
@@ -25,24 +25,23 @@
   height: 100%;
   width: 300px !important;
   transform: translate(100%);
-  transition: all .5s;
+  transition: all 0.5s;
   left: 10px;
   min-height: 500px;
   background: #fff;
   z-index: 99999;
 }
-.active-sub-menu{
+.active-sub-menu {
   transform: translate(0%) !important;
-
 }
 /* .hide{
   transform: translate(100%) !important;
 
 } */
-.has-second-sub-menu .sub-menu{
+.has-second-sub-menu .sub-menu {
   left: 0;
 }
-.has-second-sub-menu a{
+.has-second-sub-menu a {
   width: 80%;
 }
 .mobile-nav .sub-menu li {
@@ -69,13 +68,19 @@
 .main-nav {
   height: 100%;
 }
-.active-mobile-nav{
+.active-mobile-nav {
   transform: translateX(0%);
-    opacity: 1;
+  opacity: 1;
 }
-.mobile-nav .main-nav .menu-item-has-children .sub-menu a{
+.mobile-nav .main-nav .menu-item-has-children .sub-menu a {
   width: 100%;
 }
+@media screen and (max-width: 1200px) {
+  #tailor-made-body {
+    width: 970px;
+  }
+}
+
 @media screen and (max-width: 1080px) {
   .main-nav li a {
     line-height: 24px;
@@ -136,6 +141,18 @@
   }
   .contact-list li::after {
     display: none;
+  }
+  #tailor-made-body {
+    width: unset;
+    margin: 90px 10%;
+    display: block;
+  }
+  #tailor-made-row {
+    width: 100%;
+  }
+  #certification {
+    width: 100%;
+    margin: 30px 0 !important;
   }
 }
 @media screen and (max-width: 960px) {
@@ -276,6 +293,15 @@
   .reviews-wrap .reviews {
     width: 100%;
   }
+  .introduction-body {
+    min-width: none;
+  }
+  #tailor-made-body {
+    margin: 40px 20px;
+  }
+  .wpforms-field-label-inline {
+    font-size: 13px !important ;
+  }
 }
 @media screen and (max-width: 500px) {
   .contact-list {
@@ -379,5 +405,54 @@
   }
   .reviews-wrap .thumbnail img {
     height: 500px;
+  }
+  #tailor-made-body {
+    margin: 40px 10px;
+  }
+  .introduction-content {
+    display: block;
+  }
+  .introduction-body {
+    min-width: none !important;
+    padding: 20px 10px;
+    margin-left: 0px;
+  }
+  .introduction-body::before {
+    display: none;
+  }
+  .introduction-title {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .introduction-header {
+    text-align: center;
+  }
+  #tailor-made-forms {
+    padding: 15px 15px;
+  }
+  #tailor-made-forms .form-title label {
+    font-size: 16px;
+    padding-left: 40px;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
+  #tailor-made-forms #wpforms-731-field_4-container label::after,
+  #tailor-made-forms #wpforms-731-field_11-container label::after {
+    height: 30px;
+    font-size: 16px;
+    width: 30px;
+  }
+  #wpforms-731-field_5,
+  #wpforms-731-field_7,
+  #wpforms-731-field_10 {
+    grid-template-columns: repeat(1, auto);
+  }
+  .list-certification-img {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }

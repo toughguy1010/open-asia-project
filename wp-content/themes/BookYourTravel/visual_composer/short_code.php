@@ -6,6 +6,7 @@ if (!function_exists('home_banner')) {
         $attr = shortcode_atts([
             'search_title' => '',
             'search_span' => $content,
+            'disable_search' =>'',
             'background_image' => '',
         ], $attr,);
         require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/home_banner.php');
@@ -64,3 +65,52 @@ if (!function_exists('reviews')) {
     }
     add_shortcode('reviews', 'reviews');
 }
+if (!function_exists('introduction')) {
+
+    function introduction($attr, $content, $span)
+    {
+        $attr = shortcode_atts([
+            'title' => '',
+            'avatar_image' => '',
+            'description' => '',
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/introduction.php');
+    }
+    add_shortcode('introduction', 'introduction');
+}
+if (!function_exists('certification')) {
+
+    function certification($attr, $content, $span)
+    {
+        $attr = shortcode_atts([
+            'logo' => '',
+            'description' => '',
+            'span' => '',
+            'list_certification_image' => [],
+            'brand_image' =>'',
+            'rating_title'=>'',
+            'rating_number'=>'',
+            'ranking_title'=>'',
+            'ranking'=>'',
+            'list_traveler_review'=>'',
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/certification.php');
+    }
+    add_shortcode('certification', 'certification');
+}
+if (!function_exists('hotline_information')) {
+
+    function hotline_information($attr, $content, $span)
+    {
+        $attr = shortcode_atts([
+            'name' => '',
+            'phone_number' => '',
+            'email' => '',
+            'working_time' => '',
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/hotline_information.php');
+    }
+    add_shortcode('hotline_information', 'hotline_information');
+}
+
+

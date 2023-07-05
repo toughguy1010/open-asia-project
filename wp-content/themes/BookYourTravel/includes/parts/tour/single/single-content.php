@@ -8,6 +8,18 @@ $tour_extra_fields = $bookyourtravel_theme_globals->get_tour_extra_fields();
 $tab_array = $bookyourtravel_theme_globals->get_tour_tabs();	
 $nav_layout = $bookyourtravel_theme_globals->get_tour_single_layout();
 
+// custom
+// get field tour content
+// overview
+if(get_field('overview', get_the_ID())){
+	$overview = get_field('overview', get_the_ID());
+	?>
+	<?php
+}else{
+	echo "Chua nhap overview content";
+}
+// overview
+
 ob_start();		
 
 get_template_part('includes/parts/tour/single/javascript', 'vars');
@@ -36,7 +48,6 @@ ob_end_clean();
 ob_start();
 
 $featured_element = $tour_obj->get_displayed_featured_element();
-
 if ($featured_element == 'gallery') {
 	get_template_part('includes/parts/post/single/post', 'gallery');
 } else {
