@@ -257,25 +257,6 @@
   padding-left: 15px;
 }
 
-@media (min-width: 768px) {
-  .easy_steps_container,
-  .location-header {
-    width: 750px;
-  }
-}
-
-@media (min-width: 992px) {
-  .easy_steps_container,
-  .location-header {
-    width: 970px;
-  }
-}
-@media (min-width: 1200px) {
-  .easy_steps_container,
-  .location-header {
-    width: 1170px;
-  }
-}
 .easy_steps_container,
 .location-header {
   padding-right: 15px;
@@ -1329,79 +1310,130 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   cursor: pointer;
   margin-bottom: 15px;
 }
-.active-about-content{
+.active-about-content {
   height: unset;
-  overflow:auto;
-
-
+  overflow: auto;
 }
-.passionate_team-title{
+.passionate_team-title {
   text-align: center;
   font-size: 32px;
   font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 8px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
-.passionate_team-description{
+.passionate_team-description {
   text-align: center;
   font-size: 15px;
 }
-.passionate_team-wrapper{
+.passionate_team-wrapper {
   margin-top: 50px;
 }
-.passionate_team-member{
+.passionate_team-member {
   display: flex;
   flex-wrap: wrap;
   margin-top: 50px;
 }
-.passionate_team-member-item{
+.passionate_team-member-item {
   flex: 0 0 33.333333%;
   text-align: center;
   margin-bottom: 30px;
 }
-.member-item-avatar img{
+.member-item-avatar img {
   width: 100%;
   height: auto;
   max-width: 250px;
   border-radius: 50%;
   margin-bottom: 30px;
 }
-.member-item-avatar{
+.member-item-avatar {
   text-align: center;
 }
-.member-item-name{
+.member-item-name {
   font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-align: center;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
 }
-.trip-option-title{
+.trip-option-title {
   color: #fff;
   font-size: 23px;
   text-align: center;
   font-weight: 700;
 }
-.trip-option-btn a{
+.trip-option-btn a {
   margin-top: 30px;
   color: #fff;
   border-radius: 5px;
   padding: 10px 25px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 500;
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-  box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   outline: none;
-  background: rgb(255,151,0);
+  background: rgb(255, 151, 0);
   border: none;
   text-decoration: none;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 1px;
 }
-.trip-option-btn{
+.trip-option-btn {
   text-align: center;
+}
+
+@media (max-width: 568px) {
+  .wpb-content-wrapper {
+    padding: 0 15px !important;
+  }
+
+  .easy_steps_container,
+  .location-header {
+    width: 750px;
+  }
+
+  .about-thumbnail-item {
+    width: auto;
+    height: auto;
+  }
+
+  #abous-us-body {
+    margin: 80px auto !important;
+    width: 100%;
+  }
+
+  .about_us_list .rtl {
+    direction: unset;
+  }
+
+  .about-us-item {
+    display: block;
+    margin-bottom: 30px;
+  }
+
+  .passionate_team-member {
+    display: block;
+  }
+
+  .vc_section {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .easy_steps_container,
+  .location-header {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .easy_steps_container,
+  .location-header {
+    width: 1170px;
+  }
 }

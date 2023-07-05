@@ -3,7 +3,7 @@
 $about_us_content = vc_param_group_parse_atts($attr['about_us_content']);
 ?>
 
-<div class="about_us_list">
+<div class="about_us_list aaa">
     <?php
     foreach ($about_us_content as $content) {
         $img_id = $content['iamge'];
