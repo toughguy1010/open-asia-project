@@ -658,4 +658,40 @@ function customLoadVCMapNewLayout()
             ),
         )
     );
+    vc_map(
+        array(
+            'name' => 'Client slider',
+            'base' => 'client_slider',
+            'category' => 'BookYourTravel',
+            'params' => array(
+                array(
+                    'type' => 'param_group',
+                    'heading' => 'Logo element',
+                    'param_name' => 'logo_element',
+                    'description' => 'Enter the logo title',
+                    'params' => array(
+                        [
+                            "type" => "textfield",
+                            "heading" => __("Title", 'traveler'),
+                            "param_name" => "title",
+                            "description" => __("Enter step title", 'traveler')
+                        ],
+                        [
+                            "type" => "attach_image",
+                            "heading" => __("Icon", 'traveler'),
+                            "param_name" => "icon",
+                            "description" => __("Enter your avatar.", 'traveler')
+                        ],
+                        [
+                            "type" => "textfield",
+                            "heading" => __("Link icon", 'traveler'),
+                            "param_name" => "link_icon",
+                            "description" => __("Enter your avatar.", 'traveler')
+                        ],
+                    )
+                ),
+                // Thêm các trường tùy chỉnh khác cho thành phần của bạn
+            ),
+        )
+    );
 }

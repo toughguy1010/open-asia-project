@@ -173,3 +173,15 @@ if (!function_exists('page_banner')) {
     }
     add_shortcode('page_banner', 'page_banner');
 }
+
+if (!function_exists('client_slider')) {
+    function client_slider($attr, $content, $span)
+    {
+        $attr = shortcode_atts([
+            'logo_element' => [],
+           
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/client_slider.php');
+    }
+    add_shortcode('client_slider', 'client_slider');
+}

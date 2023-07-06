@@ -1546,3 +1546,35 @@ width: 100%;
 #booking-guid-content blockquote::before{
   display: none;
 }
+.client-slider-wrap{
+  padding: 35px 0;
+  background-color: #e3e6e6;
+}
+.slider-element-list{
+  display: flex;
+  overflow-x: auto ;
+  width: 1170px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+.slider-item-img img{
+  width: 50px;
+  height: 50px;
+}
+.slider-element-item{
+  width: 14.5%;
+  display: block;
+  text-align: center;
+  color: #000;
+}
+.slider-element-item:hover{
+  color: #80b157;
+}
+.slider-item-title{
+  padding-top: 15px;
+  line-height: 24px;
+  font-weight: 500;
+  font-size: 15px;
+
+}
