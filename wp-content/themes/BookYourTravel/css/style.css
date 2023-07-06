@@ -664,6 +664,7 @@ h6 {
 
 /*04 Layout*/
 .page-wrap {
+  overflow: hidden;
   min-height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1089,7 +1090,7 @@ h6 {
   top: 0;
   margin-left: 0;
 }
-  /* .main-nav li:hover > ul {
+/* .main-nav li:hover > ul {
     display: block;
   } */
 .main-nav .selector {

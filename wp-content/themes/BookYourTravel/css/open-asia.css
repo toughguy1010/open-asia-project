@@ -1387,10 +1387,6 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 
 @media (max-width: 568px) {
-  .wpb-content-wrapper {
-    padding: 0 15px !important;
-  }
-
   .easy_steps_container,
   .location-header {
     width: 750px;
@@ -1404,6 +1400,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   #abous-us-body {
     margin: 80px auto !important;
     width: 100%;
+    padding: 0 20px;
   }
 
   .about_us_list .rtl {
@@ -1425,10 +1422,19 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   }
 }
 
-@media (min-width: 992px) {
+@media (max-width: 992px) {
   .easy_steps_container,
   .location-header {
     width: 970px;
+  }
+
+  #abous-us-body {
+    margin: 80px auto !important;
+    width: 100%;
+  }
+
+  .passionate_team-member-item {
+    flex: 0 0 50%;
   }
 }
 @media (min-width: 1200px) {
