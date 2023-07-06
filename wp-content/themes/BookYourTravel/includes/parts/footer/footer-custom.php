@@ -53,6 +53,40 @@ $contact_items = wp_get_nav_menu_items($menu_contact);
             ?>
         </ul>
     </div>
+    <div class="footer-wrap-item footer-connect">
+        <div class="footer-title">
+            Connect us
+        </div>
+        <ul class="footer-connect-list">
+            <?php
+            $post_id = 815; // ID 
+            $post = get_post($post_id);
+            $contact_socials = get_field('social', $post);
+            $contact_text = get_field('connect_text', $post);
+            $contact_btn_link = get_field('connect_button_link', $post);
+            ?>
+            <div class="footer-connect-item">
+                <?= $contact_text ?>
+            </div>
+            <div class="footer-connect-item">
+                <div class="social-list">
+                    <?php
+                    foreach ($contact_socials as $social) {
+                    ?>
+                        <a href="<?= $social['link_social'] ?>" class="social-item">
+                            <img src="<?= $social['icon_image'] ?>" alt="">
+                        </a>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="footer-connect-item connect-btn">
+                <p>Share your ideas with us:</p>
+                <a href="<?= $contact_btn_link  ?>"> Send us a message</a>
+            </div>
+        </ul>
+    </div>
 
 
 </section>

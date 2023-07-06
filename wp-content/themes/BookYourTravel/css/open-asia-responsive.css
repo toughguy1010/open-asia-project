@@ -456,3 +456,55 @@
     flex-wrap: wrap;
   }
 }
+
+@media (max-width: 568px) {
+  .wpb-content-wrapper {
+    padding: 0 15px !important;
+  }
+
+  /* .easy_steps_container,
+  .location-header {
+    width: 750px;
+  } */
+
+  .about-thumbnail-item {
+    width: auto;
+    height: auto;
+  }
+
+  #abous-us-body {
+    margin: 80px auto !important;
+    width: 100%;
+  }
+
+  .about_us_list .rtl {
+    direction: unset;
+  }
+
+  .about-us-item {
+    display: block;
+    margin-bottom: 30px;
+  }
+
+  .passionate_team-member {
+    display: block;
+  }
+
+  .vc_section {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* @media (min-width: 992px) {
+  .easy_steps_container,
+  .location-header {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .easy_steps_container,
+  .location-header {
+    width: 1170px;
+  }
+} */

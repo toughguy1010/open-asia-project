@@ -551,6 +551,12 @@ function customLoadVCMapNewLayout()
                     'param_name' => 'title',
                     'description' => 'Enter the Option title',
                 ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Description',
+                    'param_name' => 'description',
+                    'description' => 'Enter the Option description',
+                ),
 
                 array(
                     "type" => "attach_image",
@@ -624,7 +630,7 @@ function customLoadVCMapNewLayout()
                         [
                             "type" => "attach_image",
                             "heading" => __("Step icon", 'traveler'),
-                            "param_name" => "step icon",
+                            "param_name" => "step_icon",
                             "description" => __("Enter your avatar.", 'traveler')
                         ],
                         [

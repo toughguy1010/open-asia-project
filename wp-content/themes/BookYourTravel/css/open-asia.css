@@ -831,7 +831,7 @@
 }
 .footer-wrap-item {
   text-align: start;
-  width: 25%;
+  width: 20%;
 }
 .footer .logo img {
   width: 100px;
@@ -1329,79 +1329,220 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   cursor: pointer;
   margin-bottom: 15px;
 }
-.active-about-content{
+.active-about-content {
   height: unset;
-  overflow:auto;
-
-
+  overflow: auto;
 }
-.passionate_team-title{
+.passionate_team-title {
   text-align: center;
   font-size: 32px;
   font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 8px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
-.passionate_team-description{
+.passionate_team-description {
   text-align: center;
   font-size: 15px;
 }
-.passionate_team-wrapper{
+.passionate_team-wrapper {
   margin-top: 50px;
 }
-.passionate_team-member{
+.passionate_team-member {
   display: flex;
   flex-wrap: wrap;
   margin-top: 50px;
 }
-.passionate_team-member-item{
+.passionate_team-member-item {
   flex: 0 0 33.333333%;
   text-align: center;
   margin-bottom: 30px;
 }
-.member-item-avatar img{
+.member-item-avatar img {
   width: 100%;
   height: auto;
   max-width: 250px;
   border-radius: 50%;
   margin-bottom: 30px;
 }
-.member-item-avatar{
+.member-item-avatar {
   text-align: center;
 }
-.member-item-name{
+.member-item-name {
   font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-align: center;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
 }
-.trip-option-title{
+.trip-option-title {
   color: #fff;
   font-size: 23px;
   text-align: center;
   font-weight: 700;
 }
-.trip-option-btn a{
+.trip-option-btn a {
   margin-top: 30px;
   color: #fff;
   border-radius: 5px;
   padding: 10px 25px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 500;
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-  box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   outline: none;
-  background: rgb(255,151,0);
+  background: rgb(255, 151, 0);
   border: none;
   text-decoration: none;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 1px;
 }
-.trip-option-btn{
+.trip-option-btn {
   text-align: center;
+}
+.page-banner-container {
+  width: 1170px;
+  display: flex;
+  align-items: center;
+}
+.page-banner-container .page-banner-title {
+  flex: 1;
+  font-size: 55px;
+  line-height: 80px;
+  color: #fff;
+  text-shadow: 1px 1px 3px #231f20;
+}
+.plan-banner-wrap {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px 30px;
+  width: 480px;
+  margin-left: auto;
+}
+.plan-banner-wrap h3 {
+  margin: 0 0 25px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 32px;
+}
+.step-plan-item {
+  display: flex;
+  gap: 20px;
+}
+.step-img {
+  width: 20%;
+}
+.step-img img {
+  /* width: 40px;
+  height: 40px; */
+}
+.step-plan-body {
+  width: 70%;
+}
+.step-plan-title {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.step-plan-content {
+  font-size: 15px;
+  line-height: 20px;
+  margin-bottom: 15px;
+}
+.step-plan-btn a{
+  background-color: #80b157;
+    color: #fff !important;
+    padding: 10px 20px !important;
+    border-radius: 50px !important;
+    border: 1px solid #80b157;
+    transition: all 0.5s;
+    font-weight: 700;
+    font-size: 16px;
+}
+.step-plan-btn a:hover{
+  background-color: #ffffff;
+  color: #80b157 !important;
+}
+.step-plan-btn{
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+#booking-guid-content{
+  width: 1170px;
+  margin: 90px auto !important;
+}
+.plan-trip-option .trip-option-btn a{
+  background-color: #80b157;
+  color: #fff !important;
+  padding: 10px 20px !important;
+  border-radius: 50px !important;
+  border: 1px solid #80b157;
+  transition: all 0.5s;
+  font-weight: 700;
+  font-size: 16px;
+}
+.plan-trip-option .trip-option-btn a:hover{
+  background-color: #ffffff;
+  color: #80b157 !important;
+
+
+  
+}
+.social-list{
+  display: flex;
+}
+.social-item
+{
+  display: block;
+  width: 20px;
+  border-radius: 8px;
+  height: 20px;
+  background-color: #ffffff;
+  margin-right: 10px;
+}
+.social-item img{
+width: 100%;
+}
+.footer-connect-item{
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.2em;
+  color: #bdbdbd;
+  line-height: 25px;
+  margin-top: 25px;
+}
+.connect-btn a{
+  background-color: #80b157;
+    color: #fff !important;
+    padding: 10px 20px !important;
+    border-radius: 50px !important;
+    border: 1px solid #80b157;
+    transition: all 0.5s;
+}
+.connect-btn a:hover{
+  color: #80b157 !important;
+  background-color: #fff;
+
+}
+.footer p {
+  margin: 0 0 20px !important;
+}
+.static-content #get-infomation{
+  width: 100%;
+  margin-top: 0px;
+}
+#booking-guid-content blockquote{
+  font-style: italic;
+    font-size: 13px;
+    position: relative;
+    padding: 15px 0 10px 0px;
+    margin: 15px 0;
+}
+#booking-guid-content blockquote::before{
+  display: none;
 }
