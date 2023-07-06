@@ -79,6 +79,13 @@
   #tailor-made-body {
     width: 970px;
   }
+  .visa-content-wrap,
+  .page-banner-container,
+  #booking-guid-content,
+  .slider-element-list,
+  #abous-us-body {
+    width: 970px;
+  }
 }
 
 @media screen and (max-width: 1080px) {
@@ -185,6 +192,32 @@
   .menu-btn a:hover {
     background-color: #eee !important;
   }
+  .visa-content-wrap {
+    width: unset;
+    margin: 90px 5%;
+  }
+  .plan-banner-wrap {
+    display: none;
+  }
+  .page-banner-container .page-banner-title {
+    text-align: center;
+  }
+  #booking-guid-content {
+    width: unset;
+    margin: 90px 5% !important;
+  }
+  .slider-element-list {
+    overflow-x: auto;
+    width: 500px;
+    margin: 0 auto;
+  }
+  .slider-element-item {
+    flex: 0 0 200px;
+  }
+  #abous-us-body {
+    width: unset;
+    margin: 90px 5% !important;
+  }
 }
 @media screen and (max-width: 860px) {
   .search_wrap {
@@ -245,6 +278,14 @@
     width: 50%;
     margin-bottom: 60px;
   }
+  .member-item-avatar img {
+    max-width: 200px;
+  }
+  .about-us-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
 }
 @media screen and (max-width: 600px) {
   .quote-content {
@@ -301,6 +342,23 @@
   }
   .wpforms-field-label-inline {
     font-size: 13px !important ;
+  }
+  .visa-content-item {
+    flex-direction: column;
+  }
+  .passionate_team-description {
+    text-align: center;
+    font-size: 14px;
+    line-height: 25px;
+  }
+  .passionate_team-title {
+    font-size: 25px;
+  }
+  .passionate_team-member-item {
+    flex: 0 0 45%;
+  }
+  .passionate_team-member {
+    gap: 5%;
   }
 }
 @media screen and (max-width: 500px) {
@@ -454,6 +512,54 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+  }
+  .visa-content-wrap {
+    width: unset;
+    margin: 40px 5%;
+  }
+
+  .visa-content-description {
+    text-align: center;
+    font-size: 13px;
+    line-height: 22px;
+  }
+  .visa-item-thumb img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  .visa-item-title {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 40px;
+    text-align: center;
+  }
+  .visa-item-caption {
+    font-size: 13px;
+    text-align: center;
+    line-height: 23px;
+  }
+  .slider-element-item {
+    flex: 0 0 100px;
+  }
+  .client-slider-wrap {
+    padding: 35px 5%;
+  }
+  .slider-element-list {
+    gap: 20px;
+  }
+  .slider-item-title {
+    line-height: 18px;
+    font-size: 12px;
+  }
+  .trip-option-wrapper {
+    padding: 0 20px;
+  }
+  .trip-option-title {
+    font-size: 18px;
+  }
+  .plan-trip-option .trip-option-btn a {
+    font-size: 14px;
   }
 }
 

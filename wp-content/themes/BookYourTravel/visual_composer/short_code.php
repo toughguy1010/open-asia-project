@@ -185,3 +185,16 @@ if (!function_exists('client_slider')) {
     }
     add_shortcode('client_slider', 'client_slider');
 }
+
+if (!function_exists('visa_content')) {
+    function visa_content($attr, $content, $span)
+    {
+        $attr = shortcode_atts([
+            'description' => '',
+            'visa_location' => [],
+           
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/visa_content.php');
+    }
+    add_shortcode('visa_content', 'visa_content');
+}

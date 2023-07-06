@@ -694,4 +694,46 @@ function customLoadVCMapNewLayout()
             ),
         )
     );
+    vc_map(
+        array(
+            'name' => 'Visa Content',
+            'base' => 'visa_content',
+            'category' => 'BookYourTravel',
+            'params' => array(
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Description',
+                    'param_name' => 'description',
+                    'description' => 'Enter the description',
+                ),
+                array(
+                    'type' => 'param_group',
+                    'heading' => 'Visa of location',
+                    'param_name' => 'visa_location',
+                    'description' => 'Enter the logo title',
+                    'params' => array(
+                        [
+                            "type" => "textfield",
+                            "heading" => __("Title", 'traveler'),
+                            "param_name" => "title",
+                            "description" => __("Enter your title", 'traveler')
+                        ],
+                        [
+                            "type" => "attach_image",
+                            "heading" => __("Thumbnail", 'traveler'),
+                            "param_name" => "thumbnail",
+                            "description" => __("Enter your thumbnail.", 'traveler')
+                        ],
+                        [
+                            "type" => "textarea",
+                            "heading" => __("Text content", 'traveler'),
+                            "param_name" => "text_content",
+                            "description" => __("Enter your content.", 'traveler')
+                        ],
+                    )
+                ),
+                // Thêm các trường tùy chỉnh khác cho thành phần của bạn
+            ),
+        )
+    );
 }

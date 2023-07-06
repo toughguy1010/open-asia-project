@@ -974,7 +974,7 @@
   border-bottom: 30px solid #fff;
 }
 .search-value {
-  display: flex;
+  display: none;
 }
 .destination-title,
 .travel-style-title {
@@ -1391,8 +1391,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
-    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+ 
   outline: none;
   background: rgb(255, 151, 0);
   border: none;
@@ -1577,4 +1576,37 @@ width: 100%;
   font-weight: 500;
   font-size: 15px;
 
+}
+.visa-content-wrap{
+  width: 1170px;
+  margin: 90px auto;
+}
+.visa-content-description{
+  text-align: center;
+  font-size: 14px;
+  line-height: 25px;
+}
+.visa-content-item{
+  display: flex;
+  margin-top: 50px;
+  align-items: center;
+}
+.visa-item-thumb img{
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+.visa-item-thumb{
+  flex: 0 0 50%;
+  text-align: center;
+}
+.visa-item-title{
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 65px;
+  text-align: center;
+}
+.visa-item-caption{
+  font-size: 14px;
+  line-height: 25px;
 }
