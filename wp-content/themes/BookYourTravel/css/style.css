@@ -872,7 +872,7 @@ h6 {
 /*05 Header*/
 .header {
   background-color: #fff;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   width: 100%;
   position: relative;
   z-index: 999;

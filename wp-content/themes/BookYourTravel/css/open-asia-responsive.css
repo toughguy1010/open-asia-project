@@ -83,8 +83,16 @@
   .page-banner-container,
   #booking-guid-content,
   .slider-element-list,
-  #abous-us-body {
+  #abous-us-body,
+  .slider-title p,
+  #contact-us-content {
     width: 970px;
+  }
+  #contact-us-content .vc_row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -217,6 +225,18 @@
   #abous-us-body {
     width: unset;
     margin: 90px 5% !important;
+  }
+  .slider-title p,
+  #contact-us-content {
+    width: unset;
+  }
+  .header-contact-form h2::after {
+    left: 18%;
+  }
+  #contact-us-content .wpb_column:first-child {
+    margin-right: 0;
+    flex: 0 0 100%;
+    width: 70%;
   }
 }
 @media screen and (max-width: 860px) {
@@ -359,6 +379,21 @@
   }
   .passionate_team-member {
     gap: 5%;
+  }
+  .header-contact-form h2::after {
+    display: none;
+  }
+  .header-contact-form h2 {
+    padding-bottom: 0px;
+  }
+  .slider-title p {
+    text-align: center;
+  }
+  #contact-us-content .wpb_column:first-child {
+    width: 85%;
+  }
+  .contact-banner-wrap {
+    zoom: 0.8;
   }
 }
 @media screen and (max-width: 500px) {
@@ -561,6 +596,9 @@
   .plan-trip-option .trip-option-btn a {
     font-size: 14px;
   }
+  .contact-banner-wrap {
+    zoom: 0.7;
+  }
 }
 
 @media (max-width: 568px) {
@@ -602,15 +640,8 @@
   }
 }
 
-/* @media (min-width: 992px) {
-  .easy_steps_container,
-  .location-header {
-    width: 970px;
+@media screen and (max-width: 400px) {
+  .contact-banner-wrap {
+    zoom: 0.6;
   }
 }
-@media (min-width: 1200px) {
-  .easy_steps_container,
-  .location-header {
-    width: 1170px;
-  }
-} */

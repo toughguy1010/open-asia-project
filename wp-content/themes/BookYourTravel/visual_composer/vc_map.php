@@ -736,4 +736,74 @@ function customLoadVCMapNewLayout()
             ),
         )
     );
+    vc_map(
+        array(
+            'name' => 'Slider',
+            'base' => 'slider',
+            'category' => 'BookYourTravel',
+            'params' => array(
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Title slider',
+                    'param_name' => 'title',
+                    'description' => 'Enter the title',
+                ),
+                array(
+                    'type' => 'param_group',
+                    'heading' => 'Gallery',
+                    'param_name' => 'gallery',
+                    'description' => 'Enter the gallery',
+                    'params' => array(
+                        [
+                            "type" => "attach_image",
+                            "heading" => __("Image", 'traveler'),
+                            "param_name" => "image",
+                            "description" => __("Enter your image.", 'traveler')
+                        ],
+                    )
+                ),
+                // Thêm các trường tùy chỉnh khác cho thành phần của bạn
+            ),
+        )
+    );
+    vc_map(
+        array(
+            'name' => 'Contact banner',
+            'base' => 'contact_banner',
+            'category' => 'BookYourTravel',
+            'params' => array(
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Title',
+                    'param_name' => 'title',
+                    'description' => 'Enter the title',
+                ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Phone',
+                    'param_name' => 'phone',
+                    'description' => 'Enter the phone',
+                ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Email',
+                    'param_name' => 'email',
+                    'description' => 'Enter the email',
+                ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Address',
+                    'param_name' => 'address',
+                    'description' => 'Enter the address',
+                ),
+                array(
+                    'type' => 'attach_image',
+                    'heading' => 'Behind image',
+                    'param_name' => 'behind_image',
+                    'description' => 'Enter the image',
+                ),
+                // Thêm các trường tùy chỉnh khác cho thành phần của bạn
+            ),
+        )
+    );
 }

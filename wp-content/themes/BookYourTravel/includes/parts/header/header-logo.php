@@ -11,4 +11,4 @@ ob_start();
 <?php
 $logo_html = ob_get_contents();
 ob_end_clean();
-echo apply_filters('bookyourtravel_header_logo', $logo_html);
+echo apply_filters('bookyourtravel_header_logo', $logo_html);	

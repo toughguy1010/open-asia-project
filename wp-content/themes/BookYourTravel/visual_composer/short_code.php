@@ -198,3 +198,31 @@ if (!function_exists('visa_content')) {
     }
     add_shortcode('visa_content', 'visa_content');
 }
+if (!function_exists('slider')) {
+    function slider($attr, $content, $span)
+    {
+        $attr = shortcode_atts([
+            'title' => '',
+            'gallery' => [],
+           
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/slider.php');
+    }
+    add_shortcode('slider', 'slider');
+}
+if (!function_exists('contact_banner')) {
+    function contact_banner($attr, $content, $span)
+    {
+        $attr = shortcode_atts([
+            'title' => '',
+            'phone' => '',
+            'email' => '',
+            'address' => '',
+            'logo' => '',
+            'behind_image' => '',
+           
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/contact_banner.php');
+    }
+    add_shortcode('contact_banner', 'contact_banner');
+}

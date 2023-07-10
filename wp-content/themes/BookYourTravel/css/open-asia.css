@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;700&family=Poppins&family=Raleway:wght@400;500&family=Roboto:wght@300&family=Tiro+Devanagari+Hindi:ital@1&family=Tiro+Devanagari+Sanskrit&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;700&family=Poppins&family=Raleway:wght@400;500&family=Roboto:wght@300&family=Tiro+Devanagari+Hindi:ital@1&family=Tiro+Devanagari+Sanskrit&family=Reenie+Beanie&display=swap");
 * {
   font-family: "Montserrat", Arial, sans-serif;
@@ -932,6 +932,7 @@
   text-align: center;
   left: -88px;
   height: 44px;
+  z-index: 99999;
 }
 #sticky-request .cta .gradient-button {
   padding: 10px !important;
@@ -941,6 +942,7 @@
   text-transform: none;
   border: 1px solid #fff;
   min-width: none !important;
+  color: #fff !important;
 }
 #sticky-request .cta .gradient-button:hover {
   text-decoration: underline;
@@ -1609,4 +1611,154 @@ width: 100%;
 .visa-item-caption{
   font-size: 14px;
   line-height: 25px;
+}
+.slider-title{
+  position: absolute;
+  left: 0;
+  top: 44%;
+  color: #fff;
+  font-size: 33px;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 100%;
+  z-index: 9999;
+}
+.slider-title p {
+  width: 1170px;
+  margin: 0 auto;
+}
+.contact-banner-wrap{
+  min-width: 600px;
+  max-width: 600px;
+  height: 535px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.contact_banner{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 399px;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: -1;
+}
+.contact_banner img{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.text_contact{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 410px;
+  overflow: hidden;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  border-radius: 10px;
+  z-index: 1;
+  padding: 40px 26px 30px 26px;
+}
+.text_contact::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #3A3A3A 11.56%, #80b157 100%);
+  opacity: 0.9;
+  z-index: -1;
+  margin: -40px -26px -30px -26px;
+}
+.text_contact-caption{
+  font-family: "Satisfy", cursive;
+  font-size: 36px;
+  line-height: 47px;
+  color: #FFFFFF;
+  margin-bottom: 40px;
+  margin-top: 30px;
+}
+.contact_information-item{
+  color: #FFFFFF;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 15px;
+}
+#contact-us-content{
+  width: 1170px;
+  margin: 90px auto !important;
+  padding: 0 !important;
+}
+#contact-us-content .vc_row {
+  display: flex;
+}
+#contact-us-content .wpb_column:first-child {
+  flex: 0 0 50%;
+  margin-right: 50px;
+}
+.submit-contact-form .wpforms-field-container{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+.submit-contact-form .wpforms-field-text, .submit-contact-form .wpforms-field-textarea {
+  width: 100%;
+}
+.submit-contact-form .wpforms-field-name,.submit-contact-form .wpforms-field-email{
+  width: 47%;
+}
+.submit-contact-form .wpforms-field label, .submit-contact-form .wpforms-field legend{
+  display: none;
+}
+.submit-contact-form .wpforms-field input, .submit-contact-form .wpforms-field textarea{
+  border: 1px solid rgb(150, 150, 150) !important;
+  color: black !important;
+}
+.submit-contact-form .wpforms-field input::placeholder ,.submit-contact-form .wpforms-field textarea::placeholder{
+  color: rgb(83, 83, 83) !important;
+opacity: 1 !important;
+font-weight: 400;
+}
+.header-contact-form{
+  text-align: center;
+}
+.header-contact-form h2{
+  font-size: 32px;
+    font-weight: 400;
+    position: relative;
+    padding-bottom: 20px;
+}
+.header-contact-form h2::after{
+  position: absolute;
+  content: "";
+  width: 200px;
+  top: 100%;
+  left: 13%;
+  height: 1px;
+  background-color: #80b157;
+  transform: translate(50%, 50%)
+}
+.submit-contact-form .wpforms-submit{
+  display: block;
+    margin: 0 auto;
+}
+.custom-slider-wrap{
+  position: relative;
+}
+.custom-slider-wrap::after{
+  content: "";
+    width: 100%;
+    height: 100%;
+    background: -webkit-gradient(linear, right top, left top, color-stop(19.86%, rgba(5, 5, 5, 0.318)), color-stop(69.53%, rgba(0, 0, 0, 0.6)));
+    background: linear-gradient(270deg, rgba(5, 5, 5, 0.318) 19.86%, rgba(0, 0, 0, 0.6) 69.53%);
+    mix-blend-mode: normal;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }

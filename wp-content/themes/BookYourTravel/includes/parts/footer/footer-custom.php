@@ -90,3 +90,22 @@ $contact_items = wp_get_nav_menu_items($menu_contact);
 
 
 </section>
+
+<div id="sticky-request" class="vc_row wpb_row vc_row-fluid">
+    <div class="wpb_column vc_column_container vc_col-sm-12">
+        <div class="vc_column-inner">
+            <div class="wpb_wrapper">
+                <div class="widget widget-sidebar "> <!-- Call to action -->
+                    <div class="cta">
+                        <div class="wrap">
+                            <p>
+                                Request a quote </p>
+                            <a href="<?php echo home_url() ?>/contact-us" class="gradient-button">Request a quote</a>
+                        </div>
+                    </div>
+                    <!-- //Call to action -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
