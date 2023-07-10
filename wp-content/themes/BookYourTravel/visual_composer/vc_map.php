@@ -806,4 +806,38 @@ function customLoadVCMapNewLayout()
             ),
         )
     );
+    vc_map(
+        array(
+            'name' => 'Rotate banner',
+            'base' => 'rotate_banner',
+            'category' => 'BookYourTravel',
+            'params' => array(
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Title Image',
+                    'param_name' => 'title_image',
+                    'description' => 'Enter the title',
+                ),
+                array(
+                    'type' => 'attach_image',
+                    'heading' => 'Background',
+                    'param_name' => 'background',
+                    'description' => 'Enter the background',
+                ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Title Text fields',
+                    'param_name' => 'title_text_fields',
+                    'description' => 'Enter the title',
+                ),
+                array(
+                    'type' => 'textarea',
+                    'heading' => 'Content Text fields',
+                    'param_name' => 'content_text_fields',
+                    'description' => 'Enter the content',
+                ),
+                // Thêm các trường tùy chỉnh khác cho thành phần của bạn
+            ),
+        )
+    );
 }

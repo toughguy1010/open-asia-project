@@ -226,3 +226,17 @@ if (!function_exists('contact_banner')) {
     }
     add_shortcode('contact_banner', 'contact_banner');
 }
+if (!function_exists('rotate_banner')) {
+    function rotate_banner($attr, $content, $span)
+    {
+        $attr = shortcode_atts([
+            'title_image' => '',
+            'background' => '',
+            'title_text_fields' => '',
+            'content_text_fields' => '',
+           
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/rotate_banner.php');
+    }
+    add_shortcode('rotate_banner', 'rotate_banner');
+}

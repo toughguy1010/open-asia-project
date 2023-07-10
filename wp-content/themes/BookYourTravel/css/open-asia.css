@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;700&family=Poppins&family=Raleway:wght@400;500&family=Roboto:wght@300&family=Tiro+Devanagari+Hindi:ital@1&family=Tiro+Devanagari+Sanskrit&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;700&family=Poppins&family=Raleway:wght@400;500&family=Roboto:wght@300&family=Tiro+Devanagari+Hindi:ital@1&family=Tiro+Devanagari+Sanskrit&family=Reenie+Beanie&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kristi&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&display=swap");
 * {
   font-family: "Montserrat", Arial, sans-serif;
   box-sizing: border-box;
@@ -1309,27 +1310,37 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   font-size: 24px;
   font-weight: 700;
   text-transform: uppercase;
-  border-bottom: 2px solid #ffb200;
+  border-bottom: 2px solid #80b157;
   padding-bottom: 5px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 .about-content-body {
   font-size: 15px;
   line-height: 25px;
   margin-top: 15px;
-  height: 273px;
+  height: 254px;
   overflow: hidden;
 }
 .view-btn {
-  margin-top: 18px;
-  padding: 0px 15px;
-  color: #222;
-  background-color: #ffb201;
-  font-weight: 600;
-  border: 1px solid #ffb201;
-  width: fit-content;
-  margin-right: auto;
+  background-color: #80b157;
+  color: #fff !important;
+  padding: 10px 20px !important;
+  border-radius: 50px !important;
+  border: 1px solid #80b157;
+  transition: all 0.5s;
   cursor: pointer;
-  margin-bottom: 15px;
+  width: fit-content;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: auto;
+}
+.view-btn:hover {
+  background-color: #ffff;
+  color: #80b157 !important;
 }
 .active-about-content {
   height: unset;
@@ -1393,7 +1404,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
- 
+
   outline: none;
   background: rgb(255, 151, 0);
   border: none;
@@ -1454,30 +1465,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   line-height: 20px;
   margin-bottom: 15px;
 }
-.step-plan-btn a{
-  background-color: #80b157;
-    color: #fff !important;
-    padding: 10px 20px !important;
-    border-radius: 50px !important;
-    border: 1px solid #80b157;
-    transition: all 0.5s;
-    font-weight: 700;
-    font-size: 16px;
-}
-.step-plan-btn a:hover{
-  background-color: #ffffff;
-  color: #80b157 !important;
-}
-.step-plan-btn{
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
-#booking-guid-content{
-  width: 1170px;
-  margin: 90px auto !important;
-}
-.plan-trip-option .trip-option-btn a{
+.step-plan-btn a {
   background-color: #80b157;
   color: #fff !important;
   padding: 10px 20px !important;
@@ -1487,18 +1475,37 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   font-weight: 700;
   font-size: 16px;
 }
-.plan-trip-option .trip-option-btn a:hover{
+.step-plan-btn a:hover {
   background-color: #ffffff;
   color: #80b157 !important;
-
-
-  
 }
-.social-list{
+.step-plan-btn {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+#booking-guid-content {
+  width: 1170px;
+  margin: 90px auto !important;
+}
+.plan-trip-option .trip-option-btn a {
+  background-color: #80b157;
+  color: #fff !important;
+  padding: 10px 20px !important;
+  border-radius: 50px !important;
+  border: 1px solid #80b157;
+  transition: all 0.5s;
+  font-weight: 700;
+  font-size: 16px;
+}
+.plan-trip-option .trip-option-btn a:hover {
+  background-color: #ffffff;
+  color: #80b157 !important;
+}
+.social-list {
   display: flex;
 }
-.social-item
-{
+.social-item {
   display: block;
   width: 20px;
   border-radius: 8px;
@@ -1506,10 +1513,10 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   background-color: #ffffff;
   margin-right: 10px;
 }
-.social-item img{
-width: 100%;
+.social-item img {
+  width: 100%;
 }
-.footer-connect-item{
+.footer-connect-item {
   font-size: 15px;
   font-weight: 400;
   line-height: 1.2em;
@@ -1517,102 +1524,100 @@ width: 100%;
   line-height: 25px;
   margin-top: 25px;
 }
-.connect-btn a{
+.connect-btn a {
   background-color: #80b157;
-    color: #fff !important;
-    padding: 10px 20px !important;
-    border-radius: 50px !important;
-    border: 1px solid #80b157;
-    transition: all 0.5s;
+  color: #fff !important;
+  padding: 10px 20px !important;
+  border-radius: 50px !important;
+  border: 1px solid #80b157;
+  transition: all 0.5s;
 }
-.connect-btn a:hover{
+.connect-btn a:hover {
   color: #80b157 !important;
   background-color: #fff;
-
 }
 .footer p {
   margin: 0 0 20px !important;
 }
-.static-content #get-infomation{
+.static-content #get-infomation {
   width: 100%;
   margin-top: 0px;
 }
-#booking-guid-content blockquote{
+#booking-guid-content blockquote {
   font-style: italic;
-    font-size: 13px;
-    position: relative;
-    padding: 15px 0 10px 0px;
-    margin: 15px 0;
+  font-size: 13px;
+  position: relative;
+  padding: 15px 0 10px 0px;
+  margin: 15px 0;
 }
-#booking-guid-content blockquote::before{
+#booking-guid-content blockquote::before {
   display: none;
 }
-.client-slider-wrap{
+.client-slider-wrap {
   padding: 35px 0;
   background-color: #e3e6e6;
 }
-.slider-element-list{
+.slider-element-list {
   display: flex;
-  overflow-x: auto ;
+  overflow-x: auto;
   width: 1170px;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
 }
-.slider-item-img img{
+.slider-item-img img {
   width: 50px;
   height: 50px;
 }
-.slider-element-item{
+.slider-element-item {
   width: 14.5%;
   display: block;
   text-align: center;
   color: #000;
 }
-.slider-element-item:hover{
+.slider-element-item:hover {
   color: #80b157;
 }
-.slider-item-title{
+.slider-item-title {
   padding-top: 15px;
   line-height: 24px;
   font-weight: 500;
   font-size: 15px;
-
 }
-.visa-content-wrap{
+.visa-content-wrap {
   width: 1170px;
   margin: 90px auto;
 }
-.visa-content-description{
+.visa-content-description {
   text-align: center;
   font-size: 14px;
   line-height: 25px;
 }
-.visa-content-item{
+.visa-content-item {
   display: flex;
   margin-top: 50px;
   align-items: center;
 }
-.visa-item-thumb img{
+.visa-item-thumb img {
   width: 300px;
   height: 300px;
   border-radius: 50%;
 }
-.visa-item-thumb{
+.visa-item-thumb {
   flex: 0 0 50%;
   text-align: center;
 }
-.visa-item-title{
+.visa-item-title {
   font-size: 40px;
   font-weight: 700;
   line-height: 65px;
   text-align: center;
 }
-.visa-item-caption{
+.visa-item-caption {
   font-size: 14px;
   line-height: 25px;
 }
-.slider-title{
+.slider-title {
   position: absolute;
   left: 0;
   top: 44%;
@@ -1627,7 +1632,7 @@ width: 100%;
   width: 1170px;
   margin: 0 auto;
 }
-.contact-banner-wrap{
+.contact-banner-wrap {
   min-width: 600px;
   max-width: 600px;
   height: 535px;
@@ -1635,7 +1640,7 @@ width: 100%;
   overflow: hidden;
   z-index: 1;
 }
-.contact_banner{
+.contact_banner {
   position: absolute;
   top: 0;
   right: 0;
@@ -1645,14 +1650,14 @@ width: 100%;
   overflow: hidden;
   z-index: -1;
 }
-.contact_banner img{
+.contact_banner img {
   width: 100%;
   height: 100%;
   overflow: hidden;
   -o-object-fit: cover;
   object-fit: cover;
 }
-.text_contact{
+.text_contact {
   position: absolute;
   top: 50%;
   left: 0;
@@ -1669,26 +1674,26 @@ width: 100%;
   content: "";
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #3A3A3A 11.56%, #80b157 100%);
+  background: linear-gradient(135deg, #3a3a3a 11.56%, #80b157 100%);
   opacity: 0.9;
   z-index: -1;
   margin: -40px -26px -30px -26px;
 }
-.text_contact-caption{
+.text_contact-caption {
   font-family: "Satisfy", cursive;
   font-size: 36px;
   line-height: 47px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 40px;
   margin-top: 30px;
 }
-.contact_information-item{
-  color: #FFFFFF;
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 15px;
+.contact_information-item {
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 15px;
 }
-#contact-us-content{
+#contact-us-content {
   width: 1170px;
   margin: 90px auto !important;
   padding: 0 !important;
@@ -1700,39 +1705,44 @@ width: 100%;
   flex: 0 0 50%;
   margin-right: 50px;
 }
-.submit-contact-form .wpforms-field-container{
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
+.submit-contact-form .wpforms-field-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.submit-contact-form .wpforms-field-text, .submit-contact-form .wpforms-field-textarea {
+.submit-contact-form .wpforms-field-text,
+.submit-contact-form .wpforms-field-textarea {
   width: 100%;
 }
-.submit-contact-form .wpforms-field-name,.submit-contact-form .wpforms-field-email{
+.submit-contact-form .wpforms-field-name,
+.submit-contact-form .wpforms-field-email {
   width: 47%;
 }
-.submit-contact-form .wpforms-field label, .submit-contact-form .wpforms-field legend{
+.submit-contact-form .wpforms-field label,
+.submit-contact-form .wpforms-field legend {
   display: none;
 }
-.submit-contact-form .wpforms-field input, .submit-contact-form .wpforms-field textarea{
+.submit-contact-form .wpforms-field input,
+.submit-contact-form .wpforms-field textarea {
   border: 1px solid rgb(150, 150, 150) !important;
   color: black !important;
 }
-.submit-contact-form .wpforms-field input::placeholder ,.submit-contact-form .wpforms-field textarea::placeholder{
+.submit-contact-form .wpforms-field input::placeholder,
+.submit-contact-form .wpforms-field textarea::placeholder {
   color: rgb(83, 83, 83) !important;
-opacity: 1 !important;
-font-weight: 400;
+  opacity: 1 !important;
+  font-weight: 400;
 }
-.header-contact-form{
+.header-contact-form {
   text-align: center;
 }
-.header-contact-form h2{
+.header-contact-form h2 {
   font-size: 32px;
-    font-weight: 400;
-    position: relative;
-    padding-bottom: 20px;
+  font-weight: 400;
+  position: relative;
+  padding-bottom: 20px;
 }
-.header-contact-form h2::after{
+.header-contact-form h2::after {
   position: absolute;
   content: "";
   width: 200px;
@@ -1740,25 +1750,99 @@ font-weight: 400;
   left: 13%;
   height: 1px;
   background-color: #80b157;
-  transform: translate(50%, 50%)
+  transform: translate(50%, 50%);
 }
-.submit-contact-form .wpforms-submit{
+.submit-contact-form .wpforms-submit {
   display: block;
-    margin: 0 auto;
+  margin: 0 auto;
 }
-.custom-slider-wrap{
+.custom-slider-wrap {
   position: relative;
 }
-.custom-slider-wrap::after{
+.custom-slider-wrap::after {
   content: "";
-    width: 100%;
-    height: 100%;
-    background: -webkit-gradient(linear, right top, left top, color-stop(19.86%, rgba(5, 5, 5, 0.318)), color-stop(69.53%, rgba(0, 0, 0, 0.6)));
-    background: linear-gradient(270deg, rgba(5, 5, 5, 0.318) 19.86%, rgba(0, 0, 0, 0.6) 69.53%);
-    mix-blend-mode: normal;
-    background-size: 100% 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: -webkit-gradient(
+    linear,
+    right top,
+    left top,
+    color-stop(19.86%, rgba(5, 5, 5, 0.318)),
+    color-stop(69.53%, rgba(0, 0, 0, 0.6))
+  );
+  background: linear-gradient(
+    270deg,
+    rgba(5, 5, 5, 0.318) 19.86%,
+    rgba(0, 0, 0, 0.6) 69.53%
+  );
+  mix-blend-mode: normal;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.rotate_banner_wrap {
+  height: 260px;
+  width: 90%;
+  margin: 90px auto;
+  position: relative;
+}
+.rotate_banner h2 {
+  color: #ffffff;
+  font-size: 45px;
+  font-weight: 400;
+  font-family: Kristi;
+}
+.rotate_text_fields h2 {
+  font-size: 45px;
+  line-height: 1.22em;
+  text-align: center;
+}
+.rotate_text_fields p {
+  text-align: center;
+}
+.rotate_banner {
+  transition: transform 0.5s ease-in-out;
+  transform: rotateY(0);
+  z-index: 1;
+}
+.rotate_text_fields {
+  height: 100%;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  background-size: cover;
+  background-position: center;
+  background-color: #fff;
+  transform: rotateY(180deg);
+}
+.rotate_banner_wrap:hover .rotate_banner {
+  transform: rotateY(-180deg);
+}
+.rotate_banner_wrap:hover .rotate_text_fields {
+  transform: rotateY(0);
+}
+.rotate_text_fields a {
+  background-color: #80b157;
+  color: #fff !important;
+  padding: 10px 20px !important;
+  border-radius: 50px !important;
+  border: 1px solid #80b157;
+  transition: all 0.5s;
+  cursor: pointer;
+  width: fit-content;
+  margin: 0 auto;
+}
+.rotate_text_fields a:hover {
+  background-color: #fff;
+  color: #80b157 !important;
 }
