@@ -1,0 +1,69 @@
+2023-07-17T04:37:22+00:00 CRITICAL Uncaught Error: Call to a member function get_custom_field() on null in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\single\useful_information.php:2
+Stack trace:
+#0 E:\wamp64\www\oat_project\wp-includes\template.php(785): require()
+#1 E:\wamp64\www\oat_project\wp-includes\template.php(718): load_template('E:\\wamp64\\www\\o...', false, Array)
+#2 E:\wamp64\www\oat_project\wp-includes\general-template.php(204): locate_template(Array, true, false, Array)
+#3 E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\single\single-content.php(165): get_template_part('includes/parts/...')
+#4 E:\wamp64\www\oat_project\wp-includes\template.php(785): require('E:\\wamp64\\www\\o...')
+#5 E:\wamp64\www\oat_project\wp-includes\template.php(718): load_template('E:\\wamp64\\www\\o...', false, Array)
+#6 E:\wamp64\www\oat_project\wp-includes\general-template.php(204): locate_template(Array, true, false, Array)
+#7 E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\s in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\single\useful_information.php on line 2
+
+2023-07-17T04:43:18+00:00 CRITICAL Uncaught Error: Call to a member function get_displayed_featured_element() on null in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\tour-item-grid.php:62
+Stack trace:
+#0 E:\wamp64\www\oat_project\wp-includes\template.php(785): require()
+#1 E:\wamp64\www\oat_project\wp-includes\template.php(718): load_template('E:\\wamp64\\www\\o...', false, Array)
+#2 E:\wamp64\www\oat_project\wp-includes\general-template.php(204): locate_template(Array, true, false, Array)
+#3 E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\single\single-content.php(170): get_template_part('includes/parts/...', 'item-grid')
+#4 E:\wamp64\www\oat_project\wp-includes\template.php(785): require('E:\\wamp64\\www\\o...')
+#5 E:\wamp64\www\oat_project\wp-includes\template.php(718): load_template('E:\\wamp64\\www\\o...', false, Array)
+#6 E:\wamp64\www\oat_project\wp-includes\general-template.php(204): locate_template(Array, true, false, Array)
+#7 E:\wamp64\www\oat_project\wp-content\themes in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\tour-item-grid.php on line 62
+
+2023-07-17T04:46:49+00:00 CRITICAL Uncaught Error: Call to a member function list_tours() on null in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\single\single-content.php:184
+Stack trace:
+#0 E:\wamp64\www\oat_project\wp-includes\template.php(785): require()
+#1 E:\wamp64\www\oat_project\wp-includes\template.php(718): load_template('E:\\wamp64\\www\\o...', false, Array)
+#2 E:\wamp64\www\oat_project\wp-includes\general-template.php(204): locate_template(Array, true, false, Array)
+#3 E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\single-tour.php(51): get_template_part('includes/parts/...', 'content')
+#4 E:\wamp64\www\oat_project\wp-includes\template-loader.php(106): include('E:\\wamp64\\www\\o...')
+#5 E:\wamp64\www\oat_project\wp-blog-header.php(19): require_once('E:\\wamp64\\www\\o...')
+#6 E:\wamp64\www\oat_project\index.php(17): require('E:\\wamp64\\www\\o...')
+#7 {main}
+  thrown in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\single\single-content.php on line 184
+
+2023-07-17T04:47:40+00:00 CRITICAL Uncaught Error: Call to a member function get_displayed_featured_element() on null in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\tour-item-grid.php:62
+Stack trace:
+#0 E:\wamp64\www\oat_project\wp-includes\template.php(785): require()
+#1 E:\wamp64\www\oat_project\wp-includes\template.php(718): load_template('E:\\wamp64\\www\\o...', false, Array)
+#2 E:\wamp64\www\oat_project\wp-includes\general-template.php(204): locate_template(Array, true, false, Array)
+#3 E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\single\single-content.php(185): get_template_part('includes/parts/...', 'item-grid')
+#4 E:\wamp64\www\oat_project\wp-includes\template.php(785): require('E:\\wamp64\\www\\o...')
+#5 E:\wamp64\www\oat_project\wp-includes\template.php(718): load_template('E:\\wamp64\\www\\o...', false, Array)
+#6 E:\wamp64\www\oat_project\wp-includes\general-template.php(204): locate_template(Array, true, false, Array)
+#7 E:\wamp64\www\oat_project\wp-content\themes in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\tour-item-grid.php on line 62
+
+2023-07-17T07:40:18+00:00 CRITICAL Uncaught Error: Call to a member function get_taxonomy_image_id() on null in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\single\single-content.php:99
+Stack trace:
+#0 E:\wamp64\www\oat_project\wp-includes\template.php(785): require()
+#1 E:\wamp64\www\oat_project\wp-includes\template.php(718): load_template('E:\\wamp64\\www\\o...', false, Array)
+#2 E:\wamp64\www\oat_project\wp-includes\general-template.php(204): locate_template(Array, true, false, Array)
+#3 E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\single-tour.php(51): get_template_part('includes/parts/...', 'content')
+#4 E:\wamp64\www\oat_project\wp-includes\template-loader.php(106): include('E:\\wamp64\\www\\o...')
+#5 E:\wamp64\www\oat_project\wp-blog-header.php(19): require_once('E:\\wamp64\\www\\o...')
+#6 E:\wamp64\www\oat_project\index.php(17): require('E:\\wamp64\\www\\o...')
+#7 {main}
+  thrown in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\single\single-content.php on line 99
+
+2023-07-17T10:47:59+00:00 CRITICAL Uncaught Error: Call to a member function get_taxonomy_image_id() on null in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\single\single-content.php:98
+Stack trace:
+#0 E:\wamp64\www\oat_project\wp-includes\template.php(785): require()
+#1 E:\wamp64\www\oat_project\wp-includes\template.php(718): load_template('E:\\wamp64\\www\\o...', false, Array)
+#2 E:\wamp64\www\oat_project\wp-includes\general-template.php(204): locate_template(Array, true, false, Array)
+#3 E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\single-tour.php(51): get_template_part('includes/parts/...', 'content')
+#4 E:\wamp64\www\oat_project\wp-includes\template-loader.php(106): include('E:\\wamp64\\www\\o...')
+#5 E:\wamp64\www\oat_project\wp-blog-header.php(19): require_once('E:\\wamp64\\www\\o...')
+#6 E:\wamp64\www\oat_project\index.php(17): require('E:\\wamp64\\www\\o...')
+#7 {main}
+  thrown in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\single\single-content.php on line 98
+

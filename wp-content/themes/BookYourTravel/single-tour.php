@@ -37,10 +37,10 @@ if ( have_posts() ) while ( have_posts() ) : the_post();
 		$has_featured_image = true;
 	}
 ?>
-		<div class="row">
+		<div class="row single-tour">
 			<?php
 			if ($page_sidebar_positioning == 'left' || $page_sidebar_positioning == 'both') {
-				get_sidebar('left');
+				//get_sidebar('left');
 			}
 			?>
 			<?php do_action('bookyourtravel_before_single_tour_content'); ?>		
@@ -56,7 +56,7 @@ if ( have_posts() ) while ( have_posts() ) : the_post();
 			wp_reset_query();
 
 			if ($page_sidebar_positioning == 'right' || $page_sidebar_positioning == 'both') {
-				get_sidebar('right-tour');
+				//get_sidebar('right-tour');
 			}
 			?>
 		</div>

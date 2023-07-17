@@ -68,7 +68,6 @@ backButton.addEventListener("click", () => {
 
 // Hàm ẩn tất cả sub-menu
 function hideAllSubMenus(menu) {
-    console.log('84',menu)
   const subMenus = menu.querySelectorAll(".sub-menu");
 
   subMenus.forEach((subMenu) => {
@@ -78,6 +77,49 @@ function hideAllSubMenus(menu) {
 }
 
 (function ($) {
+
+  // $(window).scroll(function () {
+  //   var navWrapper = $(".single-tour-nav-wraper");
+  //   var navWrapperOffset = navWrapper.offset().top;
+  //   var windowHeight = jQuery(window).height();
+  //   var scrollTop = jQuery(this).scrollTop();
+  //   var navWrapperHeight = navWrapper.outerHeight();
+  //   console.log( navWrapperOffset + navWrapperHeight - windowHeight  )
+  //   console.log('scrollTop', scrollTop  )
+  //   console.log('navWrapperOffset', navWrapperOffset  )
+  //   if (
+  //     scrollTop >= navWrapperOffset &&
+  //     scrollTop <= navWrapperOffset + navWrapperHeight - windowHeight
+  //   ) {
+  //     jQuery(".single-tour-nav-wraper").addClass("navbar-fixed-top");
+  //   } else {
+  //     jQuery(".single-tour-nav-wraper").removeClass("navbar-fixed-top");
+  //   }
+
+  //   if (scrollTop == 0) {
+  //     jQuery(".single-tour-nav-wraper").removeClass("navbar-fixed-top");
+  //   }
+  // });
+
+  $(".show-all-items").on("click", function () {
+    $(".body-itinerary-item").slideToggle();
+  });
+  $(".circle-plus").on("click", function () {
+    var parentItem = $(this).closest(".customizable_itinerary-item");
+    var bodyItem = parentItem.find(".body-itinerary-item");
+    $(this).toggleClass("opened");
+    // bodyItem.toggleClass("active-customizable_itinerary");
+    bodyItem.slideToggle();
+  });
+
+  $(".circle-plus-two").on("click", function () {
+    $(this).toggleClass("opened");
+    var bodyItem = parentItem.find(".body-itinerary-item");
+    $(this).toggleClass("opened");
+    // bodyItem.toggleClass("active-customizable_itinerary");
+    bodyItem.slideToggle();
+  });
+
   $(".hamburger-lines").click(function () {
     $(".mobile-nav").addClass("active-mobile-nav");
   });
@@ -95,8 +137,90 @@ function hideAllSubMenus(menu) {
       }
     }
   });
-  $(".view-btn").click(function() {
-    var aboutContent = $(this).closest(".about-us-item").find(".about-content-body");
+  $(".view-btn").click(function () {
+    var aboutContent = $(this)
+      .closest(".about-us-item")
+      .find(".about-content-body");
     aboutContent.toggleClass("active-about-content");
-});
+  });
 })(jQuery);
+document.addEventListener("DOMContentLoaded", function () {
+  const sliders = document.querySelectorAll(".tour_item-gallery");
+
+  sliders.forEach(function (slider) {
+    const sliderWrap = slider.querySelector("#post-gallery");
+    if (sliderWrap) {
+      const sliderDots = slider.querySelector("#slider-dots");
+      const prevButton = slider.querySelector(".slider-prev");
+      const nextButton = slider.querySelector(".slider-next");
+      const slides = slider.querySelectorAll(".gallery-item");
+      const slideWidth = slides[0].offsetWidth;
+      const itemCount = slides.length;
+
+      let currentIndex = 0;
+
+      if (currentIndex == 0) {
+        prevButton.style.display = "none";
+      }
+
+      function moveToSlide(index) {
+        if (index < 0 || index >= itemCount) {
+          return;
+        }
+
+        sliderWrap.style.transform = `translateX(-${index * slideWidth}px)`;
+        currentIndex = index;
+
+        if (currentIndex == 0) {
+          prevButton.style.display = "none";
+        } else {
+          prevButton.style.display = "block";
+        }
+
+        if (currentIndex == itemCount - 1) {
+          nextButton.style.display = "none";
+        } else {
+          nextButton.style.display = "block";
+        }
+
+        // Highlight active dot
+        const dots = sliderDots.querySelectorAll(".dot");
+        dots.forEach((dot) => dot.classList.remove("active-dot"));
+        dots[currentIndex].classList.add("active-dot");
+      }
+
+      prevButton.addEventListener("click", () => {
+        moveToSlide(currentIndex - 1);
+      });
+
+      nextButton.addEventListener("click", () => {
+        moveToSlide(currentIndex + 1);
+      });
+
+      // Move to slide when click on dot
+      const dots = sliderDots.querySelectorAll(".dot");
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const index = parseInt(dot.getAttribute("data-index"));
+          moveToSlide(index);
+        });
+      });
+    }
+  });
+
+  const activeMapBtns = document.querySelectorAll(".tour_item-location");
+
+  activeMapBtns.forEach(function (btn) {
+    const map = btn.querySelector(".tour_itinerary");
+    if (map) {
+      const openBtn = btn.querySelector(".tour_item-location-sequence");
+      openBtn.addEventListener("click", function () {
+        map.classList.add("active-map");
+      });
+      const closeBtn = btn.querySelector(".map-icon");
+      closeBtn.addEventListener("click", function () {
+        map.classList.remove("active-map");
+      });
+    }
+  });
+});

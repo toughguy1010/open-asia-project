@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tour item template part
  *
@@ -10,7 +11,7 @@
  * @version 8.00
  */
 
-global $current_url, $post, $date_from, $date_to, $bookyourtravel_theme_globals, $bookyourtravel_tour_helper, $tour_list_args, $tour_item_args;
+global $current_url, $post, $date_from, $date_to, $bookyourtravel_theme_globals, $bookyourtravel_tour_helper, $tour_list_args, $tour_item_args, $bookyourtravel_theme_post_types, $entity_obj;
 
 if (empty($current_url)) {
 	$current_url = BookYourTravel_Theme_Utils::get_current_page_url_no_query();
@@ -46,6 +47,8 @@ if ($tour_id > 0) {
 	}
 
 	$tour_obj = new BookYourTravel_Tour($post);
+	$entity_obj = $tour_obj;
+
 	$tour_description = wpautop($tour_obj->get_short_description());
 	$tour_ribbon_text = $tour_obj->get_ribbon_text();
 	$tour_use_referral_url = $tour_obj->use_referral_url();
@@ -69,7 +72,7 @@ if ($tour_id > 0) {
 		$tour_permalink = get_the_permalink();
 
 		if ($date_from || $date_to) {
-			if(strpos($tour_permalink,'?') !== false) {
+			if (strpos($tour_permalink, '?') !== false) {
 				$tour_permalink .= sprintf("&from=%s&to=%s", $date_from, $date_to);
 			} else {
 				$tour_permalink .= sprintf("?from=%s&to=%s", $date_from, $date_to);
@@ -94,7 +97,6 @@ if ($tour_id > 0) {
 	$tour_thumbnail_html = sprintf('<img src="%s" alt="Lorem ipsum">', $dummy_image_source);
 }
 
-$action_label = esc_html__('Book now', 'bookyourtravel');
 
 $item_extra_class = '';
 if ($bookyourtravel_theme_globals->show_static_prices_in_grids()) {
@@ -104,14 +106,14 @@ if ($bookyourtravel_theme_globals->show_static_prices_in_grids()) {
 if ($display_mode == 'card') {
 	echo '<article ';
 	// if (!$tour_use_referral_url) {
-		echo 'data-tour-id="' . esc_attr($tour_id) . '"';
+	echo 'data-tour-id="' . esc_attr($tour_id) . '"';
 	// }
 	echo ' class="tour_item ' . esc_attr($item_class) . ' ' . esc_attr($item_extra_class) . '">';
 	echo '<div>';
 } else {
 	echo '<li ';
 	// if (!$tour_use_referral_url) {
-		echo 'data-tour-id="' . esc_attr($tour_id) . '"';
+	echo 'data-tour-id="' . esc_attr($tour_id) . '"';
 	// }
 	echo ' class="tour_item ' . esc_attr($item_extra_class) . '">';
 }
@@ -163,24 +165,24 @@ if (!isset($tour_item_args['hide_description']) || !$tour_item_args['hide_descri
 
 if ($current_url == $list_user_tours_url) {
 	$action_label = esc_html__('Edit', 'bookyourtravel');
-	$tour_permalink = esc_url( add_query_arg( 'fesid', $tour_id, $submit_user_tours_url ));
+	$tour_permalink = esc_url(add_query_arg('fesid', $tour_id, $submit_user_tours_url));
 }
 
 if (!isset($tour_item_args['hide_actions']) || !$tour_item_args['hide_actions']) {
-    echo "<div class='actions'>";
-    if ($tour_id > 0) {
-        BookYourTravel_Theme_Controls::the_link_button($tour_permalink, "gradient-button edit-entity", "", $action_label, true, $link_external, $tour_id);
-        if (!empty($current_url) && $current_url == $list_user_tours_url) {
-            BookYourTravel_Theme_Controls::the_link_button("#", "gradient-button fes-delete-entity delete-entity", "", __("Delete", "bookyourtravel"), true, false, $tour_id);
-        }
-    }
-    echo "</div>";
+	echo "<div class='actions'>";
+	if ($tour_id > 0) {
+		BookYourTravel_Theme_Controls::the_link_button($tour_permalink, "gradient-button edit-entity", "", $action_label, true, $link_external, $tour_id);
+		if (!empty($current_url) && $current_url == $list_user_tours_url) {
+			BookYourTravel_Theme_Controls::the_link_button("#", "gradient-button fes-delete-entity delete-entity", "", __("Delete", "bookyourtravel"), true, false, $tour_id);
+		}
+	}
+	echo "</div>";
 }
 
 
 
 echo '</div><!--//details-->';
-echo '<a href="' . esc_url($tour_permalink). '" class="overlay-link"></a>';
+echo '<a href="' . esc_url($tour_permalink) . '" class="overlay-link"></a>';
 
 if ($display_mode == 'card') {
 	echo '</div>';
@@ -189,13 +191,4 @@ if ($display_mode == 'card') {
 	echo '</li>';
 }
 
-// sequence_of_the_locations
-// if(get_field('order_location', get_the_ID())){
-// 	$order_location = get_field('order_location', get_the_ID());
-// 	foreach ($order_location as $locations ){
-// 		echo  $locations['sequence_of_the_locations'] ;
-// 	}
 
-// }else{
-// 	echo "Chua nhap overview content";
-// }

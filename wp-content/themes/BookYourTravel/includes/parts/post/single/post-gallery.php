@@ -31,7 +31,7 @@ if ($images && count($images) > 0) { ?>
 	<!--gallery-->
 	<ul id="post-gallery" class="cS-hidden post-gallery">
 	<?php foreach ($image_sources as $image_src => $image_alt) {?>
-		<li data-thumb="<?php echo esc_attr($image_src) ?>"><img src="<?php echo esc_attr($image_src) ?>" alt="<?php echo esc_attr($image_alt) ?>" /></li>
+		<li class="gallery-item" data-thumb="<?php echo esc_attr($image_src) ?>"><img src="<?php echo esc_attr($image_src) ?>" alt="<?php echo esc_attr($image_alt) ?>" /></li>
 	<?php } ?>
 	</ul>
 	<!--//gallery-->
@@ -42,7 +42,7 @@ if ($images && count($images) > 0) { ?>
     ?>
 	<!--featured image-->
 	<ul class="featured-image">
-		<li><img src="<?php echo esc_attr($featured_img_url) ?>" alt="<?php echo esc_attr($featured_img_alt) ?>" /></li>
+		<li ><img src="<?php echo esc_attr($featured_img_url) ?>" alt="<?php echo esc_attr($featured_img_alt) ?>" /></li>
 	</ul>
 	<!--//gallery-->
     <?php

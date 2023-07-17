@@ -135,7 +135,7 @@ class BookYourTravel_Tour extends BookYourTravel_Entity
 			if (is_array($term_meta)) {
 				$indexes = (array)$term_meta['tour_type_days_of_week'];
 			}
-		}
+		} 
 
 		return $indexes;
 	}

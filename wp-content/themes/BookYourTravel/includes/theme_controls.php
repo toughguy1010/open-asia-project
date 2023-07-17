@@ -380,8 +380,8 @@ class BookYourTravel_Theme_Controls {
 		$pager_settings = array(
 			'base' => $pagenum_link,
 			'total' => $max_num_pages,
-			'prev_text'    => esc_html__('&lt;', 'bookyourtravel'),
-			'next_text'    => esc_html__('&gt;', 'bookyourtravel'),
+			'prev_text'    => esc_html__('←', 'bookyourtravel'),
+			'next_text'    => esc_html__('→', 'bookyourtravel'),
 			'type'		   => 'array'
 		);
 
@@ -413,7 +413,7 @@ class BookYourTravel_Theme_Controls {
 			$first_link = $pager_links[0];
 			$last_link = $first_link;
 			preg_match_all($pattern, $first_link, $matches, PREG_PATTERN_ORDER);
-			echo '<span><a href="' . get_pagenum_link(1) . '">' . esc_html__('First page', 'bookyourtravel') . '</a></span>';
+			echo '<span style ="display: none"><a href="' . get_pagenum_link(1) . '">' . esc_html__('First page', 'bookyourtravel') . '</a></span>';
 			for ($i=0; $i<$count_links; $i++) {
 				$pager_link = $pager_links[$i];
 				if (!BookYourTravel_Theme_Utils::string_contains($pager_link, 'current'))
@@ -423,7 +423,7 @@ class BookYourTravel_Theme_Controls {
 				$last_link = $pager_link;
 			}
 			preg_match_all($pattern, $last_link, $matches, PREG_PATTERN_ORDER);
-			echo '<span><a href="' . get_pagenum_link($max_num_pages) . '">' . esc_html__('Last page', 'bookyourtravel') . '</a></span>';
+			echo '<span style ="display: none" ><a href="' . get_pagenum_link($max_num_pages) . '">' . esc_html__('Last page', 'bookyourtravel') . '</a></span>';
 		}
 	}
 
