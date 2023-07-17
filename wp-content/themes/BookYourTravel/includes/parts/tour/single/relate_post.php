@@ -29,9 +29,9 @@ $query = new WP_Query($args);
                 ?>
                         <div class="item-relate_post">
                             <?php if (has_post_thumbnail()) : ?>
-                                <div class="relate_post-thumbnail">
+                                <a href="<?php the_permalink() ?>" class="relate_post-thumbnail">
                                     <?php the_post_thumbnail('thumbnail'); ?>
-                                </div>
+                                </a>
                             <?php endif; ?>
                             <div class="content-relate_post">
                                 <div class="relate_post-date">
@@ -39,7 +39,7 @@ $query = new WP_Query($args);
                                     <span class="relate_post-date"><?php echo get_the_date(); ?></span>
 
                                 </div>
-                                <h2 class="relate_post-title"><?php the_title(); ?></h2>
+                                <a  href="<?php the_permalink() ?>" class="relate_post-title"><?php the_title(); ?></a>
                             </div>
                         </div>
                 <?php

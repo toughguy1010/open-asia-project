@@ -2064,7 +2064,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .tour_item-btn a {
   background-color: #80b157;
   color: #fff !important;
-  padding: 10px 15px !important;
+  padding: 9px 12px !important;
   border-radius: 50px !important;
   border: 1px solid #80b157;
   display: block;
@@ -2674,6 +2674,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .relate_post-thumbnail {
   overflow: hidden;
+  display: block;
 }
 .relate_post-thumbnail img{
   height: 250px;
@@ -2706,6 +2707,12 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   -webkit-line-clamp: 2; /* number of lines to show */
           line-clamp: 2; 
   -webkit-box-orient: vertical;
+  color: #000;    margin-top: 10px;
+  font-weight: 600;
+}
+.relate_post-title:hover{
+  color: #000 !important;
+
 }
 .top-relate_post{
   text-align: center;
