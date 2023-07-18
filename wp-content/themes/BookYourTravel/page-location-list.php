@@ -59,13 +59,15 @@ if ($parent_location_id == -1) {
 	$parent_location_id = 0;
 }
 
+
 ?>
+
 		<div class="row">
 		<?php
 			if ($page_sidebar_positioning == 'both' || $page_sidebar_positioning == 'left')
 				get_sidebar('left');
 		?>
-			<section class="<?php echo esc_attr($section_class); ?>">
+			<section class=" <?php echo esc_attr($section_class); ?>">
 				<?php  while ( have_posts() ) : the_post(); ?>
 				<article <?php post_class(); ?> id="page-<?php the_ID(); ?>">
 					<?php

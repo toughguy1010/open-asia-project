@@ -67,3 +67,7 @@ Stack trace:
 #7 {main}
   thrown in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\tour\single\single-content.php on line 98
 
+2023-07-17T16:30:28+00:00 CRITICAL syntax error, unexpected '?>' in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\location\single-parent\destination_banner.php on line 19
+
+2023-07-17T16:30:43+00:00 CRITICAL syntax error, unexpected '?>' in E:\wamp64\www\oat_project\wp-content\themes\BookYourTravel\includes\parts\location\single-parent\destination_banner.php on line 19
+

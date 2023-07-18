@@ -77,7 +77,6 @@ function hideAllSubMenus(menu) {
 }
 
 (function ($) {
-
   // $(window).scroll(function () {
   //   var navWrapper = $(".single-tour-nav-wraper");
   //   var navWrapperOffset = navWrapper.offset().top;
@@ -119,6 +118,18 @@ function hideAllSubMenus(menu) {
     // bodyItem.toggleClass("active-customizable_itinerary");
     bodyItem.slideToggle();
   });
+  // toggle FAQ
+  $(".faq_item-header").on("click", function () {
+    var parentItem = $(this).closest(".faq_item");
+    var bodyItem = parentItem.find(".faq_item-body");
+    $(this).toggleClass("active-arrow");
+    bodyItem.slideToggle();
+
+  });
+  $(".hidden_gem-action-btn").on("click", function () {
+    var hiddenContent = $(".hidden_gem-bottom-paragraph");
+    hiddenContent.slideToggle();
+  });
 
   $(".hamburger-lines").click(function () {
     $(".mobile-nav").addClass("active-mobile-nav");
@@ -143,6 +154,15 @@ function hideAllSubMenus(menu) {
       .find(".about-content-body");
     aboutContent.toggleClass("active-about-content");
   });
+
+  const firstParagraph = $("#firstChar").find("p").eq(0);
+  const firstCharacter = firstParagraph.text().charAt(0);
+
+  const wrappedContent = `<div class="squareBox">${firstCharacter}</div>${firstParagraph
+    .text()
+    .substring(1)}`;
+
+  firstParagraph.html(wrappedContent);
 })(jQuery);
 document.addEventListener("DOMContentLoaded", function () {
   const sliders = document.querySelectorAll(".tour_item-gallery");

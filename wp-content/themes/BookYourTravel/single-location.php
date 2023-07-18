@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying single locations
  *
@@ -12,46 +13,44 @@
 
 global $bookyourtravel_theme_globals;
 
-get_header();  
+get_header();
 get_template_part('byt', 'header');
 BookYourTravel_Theme_Controls::the_breadcrumbs();
-get_sidebar('under-header');	
+get_sidebar('under-header');
 
 $page_sidebar_positioning = $bookyourtravel_theme_globals->get_location_single_sidebar_position();
 $section_class = BookYourTravel_Theme_Utils::get_page_section_class($page_sidebar_positioning);
 
-if ( have_posts() ) while ( have_posts() ) : the_post();
+if (have_posts()) while (have_posts()) : the_post();
 	global $post;
 	$has_featured_image = false;
 	$displayed_featured_element = get_post_meta($post->ID, $post->post_type . '_displayed_featured_element', true);
-	if ($displayed_featured_element == 'image' && has_post_thumbnail($post->ID)) {
-		$has_featured_image = true;
-	}
+	
 ?>
-		<div class="row">
-			<?php
-			if ($page_sidebar_positioning == 'left' || $page_sidebar_positioning == 'both') {
-				get_sidebar('left');
-			}
-			?>
-			<section class="<?php echo esc_attr($section_class); ?> section-location-content">
-				<?php if (empty($page_sidebar_positioning) && !$has_featured_image) { ?>
+	<div class="row">
+		<section class="destination-list <?php echo esc_attr($section_class); ?> section-location-content">
+			<?php if (empty($page_sidebar_positioning) && !$has_featured_image) { ?>
 				<h1><?php the_title(); ?></h1>
-				<?php } ?>
-				<?php do_action('bookyourtravel_before_single_location_content'); ?>	
-				<?php get_template_part('includes/parts/location/single/single', 'content'); ?>
-				<?php do_action('bookyourtravel_after_single_location_content'); ?>		
-			</section>
+			<?php } ?>
+			<?php do_action('bookyourtravel_before_single_location_content'); ?>
 			<?php
-			wp_reset_postdata();
-			wp_reset_query();
-			
-			if ($page_sidebar_positioning == 'right' || $page_sidebar_positioning == 'both') {
-				get_sidebar('right');
+			$post_id = $post->ID;
+			$parent_id = wp_get_post_parent_id($post_id);
+			if ($parent_id) {
+				echo 'Bài viết có bài viết cha với ID: ' . $parent_id;
+				get_template_part('includes/parts/location/single-child/single-content');
+			} else {
+				get_template_part('includes/parts/location/single-parent/single-content');
 			}
 			?>
-		</div>
+			<?php do_action('bookyourtravel_after_single_location_content'); ?>
+		</section>
+		<?php
+		wp_reset_postdata();
+		wp_reset_query();
+		?>
+	</div>
 <?php
-endwhile; 
+endwhile;
 get_template_part('byt', 'footer');
 get_footer();
