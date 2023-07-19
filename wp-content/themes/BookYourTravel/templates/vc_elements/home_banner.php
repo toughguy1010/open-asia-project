@@ -75,19 +75,17 @@ $disable_search = $attr['disable_search'];
                     <div class="travel-style-list">
                         <?php
                         $tour_type_ids = array(
-                            49, // ID của Active Adventure
-                            52, // ID của Beach Escapes
-                            53, // ID của Culture & Heritage
-                            54, // ID của Family
-                            55, // ID của Honeymoon
-                            56, // ID của Luxury Travel
-                            57  // ID của Off the Beaten Path
+                            81, // ID của Active Adventure
+                            85, // ID của Beach Escapes
+                            86, // ID của Culture & Heritage
+                            84, // ID của Family
+                            83, // ID của Honeymoon
                         );
                         foreach ($tour_type_ids as $tour_type_id) {
                             $tour_type = get_term_by('id', $tour_type_id, 'tour_type');
                             if ($tour_type) {
                         ?>
-                                <a href="<?php echo $tour_type->slug ?>">
+                                <a href="<?= home_url()?>/tour/?tour-type=<?php echo $tour_type->slug ?>">
                                     <div class="travel-style-item">
                                         <?php echo  $tour_type->name ?>
                                     </div>

@@ -124,8 +124,14 @@ function hideAllSubMenus(menu) {
     var bodyItem = parentItem.find(".faq_item-body");
     $(this).toggleClass("active-arrow");
     bodyItem.slideToggle();
-
   });
+  // toggle FAQ
+  // toggle search value
+  $(".search-input").on("click",function(){
+    $(".search-value").toggleClass("active-search-fields");
+  })
+  // toggle search value
+
   $(".hidden_gem-action-btn").on("click", function () {
     var hiddenContent = $(".hidden_gem-bottom-paragraph");
     hiddenContent.slideToggle();
