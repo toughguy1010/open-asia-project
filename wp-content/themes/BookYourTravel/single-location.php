@@ -37,7 +37,6 @@ if (have_posts()) while (have_posts()) : the_post();
 			$post_id = $post->ID;
 			$parent_id = wp_get_post_parent_id($post_id);
 			if ($parent_id) {
-				echo 'Bài viết có bài viết cha với ID: ' . $parent_id;
 				get_template_part('includes/parts/location/single-child/single-content');
 			} else {
 				get_template_part('includes/parts/location/single-parent/single-content');

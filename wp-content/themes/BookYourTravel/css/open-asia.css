@@ -2812,7 +2812,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 #firstChar p:first-child {
   display: flex;
 }
-.squareBox {
+.squareBox ,.mkdf-square {
   height: 35px;
   flex: 0 0 35px;
   text-align: center;
@@ -2959,7 +2959,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   border: 1px solid #80b157;
   transition: all 0.5s;
 }
-#list-child-location h2 {
+#list-child-location h2  {
   font-family: Kristi;
   font-size: 70px;
   line-height: 1em;
@@ -3024,4 +3024,53 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   font-size: 40px;
   line-height: 60px;
   font-weight: 200;
+}
+.introduction-wrapper{
+  display: flex;
+  gap: 30px;
+}
+.introduction-left{
+  flex: 0 0 60%;
+}
+.mkdf-square{
+  position: relative;
+  display: inline-block;
+  width: 35px;
+}
+.introduction-left h2 ,.travel_guide-wrap h2 , #places_of_interest h2 ,.suggest_tour-wrapper h2 {
+  font-family: Kristi;
+    font-size: 70px !important;
+    line-height: 1em !important;
+    font-weight: 400;
+    color: #418a3d;
+    text-align: center !important;
+    margin-bottom: 32px !important;
+}
+.introduction-left p ,.travel_guide-content {
+  font-size: 14px;
+  line-height: 27px;
+
+}
+.travel_guide-content h4 {
+  margin-bottom: 0;
+  font-size: 20px;
+margin-top: 15px;
+
+}
+.travel_guide-content h5{
+  font-size: 16px;
+  margin-bottom: 15px;
+margin-top: 15px;
+}
+.places_of_interest-content strong{
+  display: block;
+  text-transform: uppercase;
+}
+.places_of_interest-content p{
+  color: #808285;
+  font-size: 15px;
+  line-height: 27px;
+}
+.places_of_interest-content img{
+  width: 100%;
 }

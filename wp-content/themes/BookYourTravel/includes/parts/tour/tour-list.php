@@ -64,10 +64,8 @@ if (isset($_GET['view'])) {
 
 
 $tour_results = $bookyourtravel_tour_helper->list_tours($paged, $posts_per_page, $sort_by, $sort_order, array($parent_location_id), false, $tour_type_ids, $tour_duration_ids, $tour_tag_ids, array(), $show_featured_only, $author_id, $include_private);
-
 $display_mode = strip_tags(isset($tour_list_args['display_mode']) ? $tour_list_args['display_mode'] : 'card');
 $found_post_content = isset($tour_list_args["found_post_content"]) ? $tour_list_args["found_post_content"] : false;
-
 if (count($tour_results) > 0 && $tour_results['total'] > 0) {
 
     if ($display_mode == 'card') {

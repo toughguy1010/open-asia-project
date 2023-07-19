@@ -201,7 +201,8 @@ class BookYourTravel_Tour_Helper extends BookYourTravel_BaseSingleton {
                 'label'	=> esc_html__('Tour type', 'bookyourtravel'), // <label>
                 // the description is created in the callback function with a link to Manage the taxonomy terms
                 'id'	=> 'tour_type', // field id and name, needs to be the exact name of the taxonomy
-                'type'	=> 'tax_select', // type of field
+                // 'type'	=> 'tax_select', // type of field
+                'type'	=> 'tax_checkboxes', // type of field
                 'admin_tab_id'=> 'general_tab'
 			),
 			array( // Taxonomy Select box

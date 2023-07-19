@@ -2348,7 +2348,7 @@ class BookYourTravel_Cruise_Helper extends BookYourTravel_BaseSingleton
 			'update_item'       => esc_html__('Update Cruise type', 'bookyourtravel'),
 			'add_new_item'      => esc_html__('Add New Cruise type', 'bookyourtravel'),
 			// custom
-			'add_new_item'      => esc_html__('Add New Cruise type', 'bookyourtravel'),
+			'parent'      => esc_html__('Add New Cruise type', 'bookyourtravel'),
 			'new_item_name'     => esc_html__('New Cruise Type Name', 'bookyourtravel'),
 			'separate_items_with_commas' => esc_html__('Separate Cruise types with commas', 'bookyourtravel'),
 			'add_or_remove_items'        => esc_html__('Add or remove Cruise types', 'bookyourtravel'),
