@@ -983,11 +983,10 @@ body {
 .search-value {
   display: none;
   gap: 100px;
-  box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.3);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.3);
 }
 .active-search-fields {
   display: flex;
-
 }
 .destination-title,
 .travel-style-title {
@@ -996,16 +995,18 @@ body {
   line-height: 26px;
   margin-bottom: 15px;
 }
-.destination-item a, .travel-style-list a{
+.destination-item a,
+.travel-style-list a {
   font-size: 16px;
-    color: #484848;
-    line-height: 30px;
+  color: #484848;
+  line-height: 30px;
 }
-.destination-item a:hover, .travel-style-list a:hover{
+.destination-item a:hover,
+.travel-style-list a:hover {
   color: #80b157;
   text-decoration: underline;
 }
-.travel-style{
+.travel-style {
   border-left: 1px solid #ddd;
   padding-left: 15px;
 }
@@ -2832,7 +2833,8 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 #firstChar p:first-child {
   display: flex;
 }
-.squareBox ,.mkdf-square {
+.squareBox,
+.mkdf-square {
   height: 35px;
   flex: 0 0 35px;
   text-align: center;
@@ -2979,7 +2981,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   border: 1px solid #80b157;
   transition: all 0.5s;
 }
-#list-child-location h2  {
+#list-child-location h2 {
   font-family: Kristi;
   font-size: 70px;
   line-height: 1em;
@@ -3022,7 +3024,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   display: block;
   width: fit-content;
 }
-.faq_item-arrow{
+.faq_item-arrow {
   border: solid black;
   border-width: 0 3px 3px 0;
   display: inline-block;
@@ -3031,72 +3033,301 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   -webkit-transform: rotate(45deg);
   height: 5px;
   width: 5px;
-  transition: all .5s;
+  transition: all 0.5s;
 }
-.active-arrow .faq_item-arrow{
+.active-arrow .faq_item-arrow {
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
 }
-.faq_item-body{
+.faq_item-body {
   display: none;
 }
-.faq_wrapper h2{
+.faq_wrapper h2 {
   font-size: 40px;
   line-height: 60px;
   font-weight: 200;
 }
-.introduction-wrapper{
+.introduction-wrapper {
   display: flex;
   gap: 30px;
 }
-.introduction-left{
+.introduction-left {
   flex: 0 0 60%;
 }
-.mkdf-square{
+.mkdf-square {
   position: relative;
   display: inline-block;
   width: 35px;
 }
-.introduction-left h2 ,.travel_guide-wrap h2 , #places_of_interest h2 ,.suggest_tour-wrapper h2 {
+.introduction-left h2,
+.travel_guide-wrap h2,
+#places_of_interest h2,
+.suggest_tour-wrapper h2 {
   font-family: Kristi;
-    font-size: 70px !important;
-    line-height: 1em !important;
-    font-weight: 400;
-    color: #418a3d;
-    text-align: center !important;
-    margin-bottom: 32px !important;
+  font-size: 70px !important;
+  line-height: 1em !important;
+  font-weight: 400;
+  color: #418a3d;
+  text-align: center !important;
+  margin-bottom: 32px !important;
 }
-.introduction-left p ,.travel_guide-content {
+.introduction-left p,
+.travel_guide-content {
   font-size: 14px;
   line-height: 27px;
-
 }
 .travel_guide-content h4 {
   margin-bottom: 0;
   font-size: 20px;
-margin-top: 15px;
-
+  margin-top: 15px;
 }
-.travel_guide-content h5{
+.travel_guide-content h5 {
   font-size: 16px;
   margin-bottom: 15px;
-margin-top: 15px;
+  margin-top: 15px;
 }
-.places_of_interest-content strong{
+.places_of_interest-content strong {
   display: block;
   text-transform: uppercase;
 }
-.places_of_interest-content p{
+.places_of_interest-content p {
   color: #808285;
   font-size: 15px;
   line-height: 27px;
 }
-.places_of_interest-content img{
+.places_of_interest-content img {
   width: 100%;
 }
-.single-tour-container .tour_item-tags{
+.single-tour-container .tour_item-tags {
   display: flex;
-    align-items: baseline;
-    margin-left: 35px;
-    gap: 25px;
+  align-items: baseline;
+  margin-left: 35px;
+  gap: 25px;
+}
+.cruise_type-title {
+  font-size: 42px;
+  color: #fff;
+  text-shadow: 3px 4px 7px rgba(81, 67, 21, 0.8);
+  font-weight: 600;
+}
+.cruise_type-option a {
+  background-color: #80b157;
+  color: #fff !important;
+  padding: 10px 20px !important;
+  border-radius: 50px !important;
+  border: 1px solid #80b157;
+  transition: all 0.5s;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.cruise_type-option a:hover {
+  background-color: #fff;
+
+  color: #80b157 !important;
+}
+.cruise_type-option {
+  margin-top: 30px;
+  text-align: end;
+}
+.cruise_type-wrapper {
+  margin-right: 80px;
+}
+.our_port-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.our_port-title {
+  font-size: 38px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+.our_port-description {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.our_port-list {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding-bottom: 45px;
+  border-bottom: 1px solid #ddd;
+}
+.our_port-item {
+  width: 23%;
+}
+.our_port-caption{
+  text-align: center;
+  font-size: 15px;
+  line-height: 27px;
+  margin-top: 45px;
+  padding-bottom: 45px;
+  font-weight: 500;
+  border-bottom: 1px solid #ddd;
+}
+.our_cruise-item{
+  width: 31%;
+  position: relative;
+  overflow: hidden;
+
+}
+.our_cruise-list .row{
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.cruise-thumb{
+  width: 100%;
+  height: 100%;
+}
+.cruise-thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: all .3s;
+}
+.cruise-content {
+  position: absolute;
+  top: 0;
+  background: rgba(0,0,0,.2);
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+}
+.cruise-title{
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  text-shadow: 0px 0px 20px rgba(18, 44, 52, 1);
+}
+.cruise-content a{
+  background-color: #80b157;
+  color: #fff !important;
+  padding: 10px 20px !important;
+  border-radius: 50px !important;
+  border: 1px solid #80b157;
+  transition: all 0.5s;
+  margin-bottom: 30px;
+  margin-top: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.cruise-content a:hover{
+  background-color: #fff;
+  color: #80b157 !important;
+}
+.our_cruise-item:hover .cruise-thumb img{
+  transform: scale(1.2);
+}
+.our_cruise-header{
+  text-align: center;
+  margin-bottom: 40px;
+}
+.our_cruise-title{
+  font-size: 26px;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+.why_us-header{
+  text-align: center;
+}
+.why-us-icon img{
+  width: 100px;
+}
+.why-us-title h2{
+  font-size: 26px;
+  text-transform: uppercase;
+  margin: 30px 0;
+}
+.why_us-content p{
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 27px;
+}
+.cruise_port-item h2{
+  font-size: 26px;
+  text-transform: uppercase;
+  margin-bottom: 45px;
+
+}
+.cruise_port-row{
+  display: flex;
+  gap: 50px;
+}
+.cruise_port-thumbnail{
+  flex: 0 0 35%;
+}
+.cruise_port-thumbnail img{
+  width: 100%;
+}
+.cruise_port-item{
+  margin-bottom: 45px;
+}
+.cruise_query-list a{
+  display: block;
+}
+.cruise_port-description{
+  font-size: 15px ;
+  font-weight: 500;
+  line-height: 25px;
+  margin-bottom: 10px;
+}
+.cruise_port-content p{
+  font-size: 15px ;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.cruise_query-list a{
+  font-size: 15px ;
+  color: #80b157;
+  font-weight: 700;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 23px;
+}
+.cruise_query-list a::before{
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  top: 6px;
+  left: 0;
+  background-color: #000;
+  border-radius: 50px;
+}
+#port_contact{
+  background-color: #418a3d;
+}
+.port_contact-wrap{
+  text-align: center;
+}
+.port_contact-wrap .headline{
+  color: #FFF;
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+.port_contact-wrap a{
+  background-color: #80b157;
+    color: #fff !important;
+    padding: 10px 20px !important;
+    border-radius: 50px !important;
+    border: 1px solid #80b157;
+    transition: all 0.5s;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.port_contact-wrap a:hover{
+  background-color: #ffff;
+  color: #80b157 !important;
 }
