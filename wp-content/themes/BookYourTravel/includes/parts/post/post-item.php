@@ -66,6 +66,13 @@ if (!isset($post_item_args['hide_title']) || !$post_item_args['hide_title']) {
 	if (!empty($tags)) {
 		BookYourTravel_Theme_Controls::the_entity_tags($tags, '');
 	}
+	else{
+		?> 
+		<div class="space">
+			
+		</div>
+		<?php
+	}
 
 	echo "<div class='item-header'>";
 	BookYourTravel_Theme_Controls::the_entity_title($post_title, $post_permalink, $post_status);

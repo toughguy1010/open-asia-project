@@ -20,11 +20,12 @@ $caption = get_query_var('caption');
                 foreach ($port_ids as $port_id) {
                     $port = get_term_by('id', $port_id, 'cruise_tag');
                     $id =  $port->term_id;
+                    $slug = $port->slug;
                     $thumbnail_id = $bookyourtravel_theme_post_types->get_taxonomy_image_id($id);
                     $thumbnail_obj = wp_get_attachment_image_src($thumbnail_id, "full");
                     isset($thumbnail_obj) ? $thumbnail_url = $thumbnail_obj[0] : $thumbnail_url = "";
                     ?> 
-                    <a href="#" class="our_port-item">
+                    <a href="#<?= $slug ?>" class="our_port-item">
                         <img src="<?=  $thumbnail_url?>" alt="">
                     </a>
                     <?php

@@ -19,7 +19,7 @@ if ($images && count($images) > 0) { ?>
 	for ( $i = 0; $i < count($images); $i++ ) {
 		$image = $images[$i];
 		$image_id = $image['image'];
-		$image_src = wp_get_attachment_image_src($image_id, 'full');
+		$image_src = wp_get_attachment_image_src($image_id, '1920x600');
 		$image_alt = get_post_meta( $image_id, '_wp_attachment_image_alt', true);
 		$image_src = $image_src && is_array($image_src) && count($image_src) > 0 ? $image_src[0] : '';
 		if (!empty($image_src)) {

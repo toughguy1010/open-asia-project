@@ -118,6 +118,7 @@ function hideAllSubMenus(menu) {
     // bodyItem.toggleClass("active-customizable_itinerary");
     bodyItem.slideToggle();
   });
+
   // toggle FAQ
   $(".faq_item-header").on("click", function () {
     var parentItem = $(this).closest(".faq_item");
@@ -126,10 +127,11 @@ function hideAllSubMenus(menu) {
     bodyItem.slideToggle();
   });
   // toggle FAQ
+
   // toggle search value
-  $(".search-input").on("click",function(){
+  $(".search-input").on("click", function () {
     $(".search-value").toggleClass("active-search-fields");
-  })
+  });
   // toggle search value
 
   $(".hidden_gem-action-btn").on("click", function () {
@@ -137,9 +139,16 @@ function hideAllSubMenus(menu) {
     hiddenContent.slideToggle();
   });
 
-  $(".hamburger-lines").click(function () {
+  $(".header-mobile .hamburger-lines").click(function (e) {
     $(".mobile-nav").addClass("active-mobile-nav");
   });
+
+  // toggle tour nav list
+  $(".single-tour-nav-container .hamburger-lines").on("click", function (e) {
+    $(".nav-tour-list").slideToggle();
+  });
+
+  // toggle tour nav list
 
   $(".mobile-nav").on("click", function (event) {
     var target = $(event.target);

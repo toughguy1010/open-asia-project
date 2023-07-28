@@ -195,8 +195,11 @@ function register_custom_menus() {
             'contact-info' => __('Contact Info'),
             'about-menu' => __('About us'),
             'destinations-menu' => __('Our Destination'),
+            'tour-menu' => __('Our Tour'),
+            'tour-style' => __('Tour Style'),
             'user-menu' => __('User Infor'),
             'social-menu' => __('Lets Get Social'),
+            'shore' => __('Shore Excursions'),
         )
     );
 }

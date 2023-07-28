@@ -29,16 +29,18 @@ $location_list = vc_param_group_parse_atts($attr['list_location']);
                 $location_permanlinhk = get_permalink($post->ID);
         ?>
                 <div class="location-item">
-                    <div>
-                    <img src="<?= $img_url[0] ?>" alt="" class="location-img">
-                        
+                    <div style="position:relative">
+                        <img src="<?= $img_url[0] ?>" alt="" class="location-img">
+                        <h2 class="inner-title">
+                            <?= $location_title ?>
+                        </h2>
                     </div>
                     <div class="location-content">
                         <div class="location-title-item">
                             <h2><?= $location_title ?></h2>
                         </div>
                         <div class="location-item-content">
-                                <?= $location['content'] ?>    
+                            <?= $location['content'] ?>
                         </div>
                         <div class="location-btn">
                             <a href="<?= $location_permanlinhk ?>">Discover Now</a>
@@ -51,6 +53,6 @@ $location_list = vc_param_group_parse_atts($attr['list_location']);
             wp_reset_postdata();
         }
         ?>
-        
+
     </div>
 </section>

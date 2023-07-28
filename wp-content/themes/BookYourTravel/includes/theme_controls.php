@@ -217,13 +217,14 @@ class BookYourTravel_Theme_Controls {
 				<?php
 					foreach ($tags as $tag) {
 						$tag_link = get_term_link( (int)$tag->term_id, $taxonomy_name );
-						echo '<li><a href="' . $tag_link . '" class = "post_tags">' . $tag->name . '</a></li>';
+						echo '<li><a href="' . $tag_link . '" class = "post_tags ">' . $tag->name . '</a></li>';
 					}
 				?>
 			</ul>
 		</div>
 		<?php
-		}
+		} 
+		
 	}
 
 	public static function the_top_review($entity_id) {

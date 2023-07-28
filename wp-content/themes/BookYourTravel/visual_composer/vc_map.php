@@ -552,13 +552,6 @@ function customLoadVCMapNewLayout()
                     'description' => 'Enter the Option title',
                 ),
                 array(
-                    'type' => 'textfield',
-                    'heading' => 'Description',
-                    'param_name' => 'description',
-                    'description' => 'Enter the Option description',
-                ),
-
-                array(
                     "type" => "attach_image",
                     "heading" => __("Background"),
                     "param_name" => "background",
@@ -576,7 +569,41 @@ function customLoadVCMapNewLayout()
                     'param_name' => 'link_btn',
                     'description' => 'Enter the introduction title',
                 ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Description',
+                    'param_name' => 'description',
+                    'description' => 'Enter the introduction title',
+                ),
 
+                // Thêm các trường tùy chỉnh khác cho thành phần của bạn
+            ),
+        )
+    );
+    vc_map(
+        array(
+            'name' => 'Responsible Quote',
+            'base' => 'responsible_quote',
+            'category' => 'BookYourTravel',
+            'params' => array(
+                array(
+                    'type' => 'textfield',
+                    'heading' => 'Tilte',
+                    'param_name' => 'title',
+                    'description' => 'Enter the title',
+                ),
+                array(
+                    "type" => "attach_image",
+                    "heading" => __("Icon"),
+                    "param_name" => "icon",
+                    'description' => 'Enter the icon',
+                ),
+                array(
+                    'type' => 'textarea',
+                    'heading' => 'Text',
+                    'param_name' => 'text',
+                    'description' => 'Enter the Text area',
+                ),
                 // Thêm các trường tùy chỉnh khác cho thành phần của bạn
             ),
         )

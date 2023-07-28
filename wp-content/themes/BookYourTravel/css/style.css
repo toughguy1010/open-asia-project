@@ -759,7 +759,7 @@ h6 {
 }
 .main > .wrap > .row > section > article {
   width: 100%;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 @media screen and (min-width: 961px) {
@@ -1804,7 +1804,7 @@ h6 {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
-  margin: 0 -10px;
+  /* margin: 0 -10px; */
 }
 .deals > .row > article,
 .destinations > .row > article,
@@ -3898,7 +3898,7 @@ table td .radio {
 }
 
 .row.calendar {
-  margin: 0 -10px;
+  /* margin: 0 -10px; */
 }
 #booking-form-calendar {
   position: relative;
@@ -7611,7 +7611,7 @@ button.ui-button::-moz-focus-inner {
 }
 
 .booking_form_datepicker {
-  margin: 0 -10px;
+  /* margin: 0 -10px; */
 }
 .ui-datepicker-inline {
   width: 100% !important;

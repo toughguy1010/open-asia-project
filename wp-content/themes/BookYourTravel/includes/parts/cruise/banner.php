@@ -13,7 +13,7 @@ isset($thumbnail_url) ? $background_url = $thumbnail_url[0] : $background_url = 
 <style>
 #cruise_type-banner{
     background-image: url("<?=  $background_url ?>");
-    min-height: 650px;
+    min-height: 555px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -28,7 +28,7 @@ isset($thumbnail_url) ? $background_url = $thumbnail_url[0] : $background_url = 
             <?= $title ?>
         </div>
         <div class="cruise_type-option">
-            <a href="#our_option">See Our Options</a>
+            <a href="#our_cruise">See Our Options</a>
         </div>
     </div>
 </section>

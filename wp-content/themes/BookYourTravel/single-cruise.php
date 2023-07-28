@@ -38,14 +38,14 @@ if ( have_posts() ) while ( have_posts() ) : the_post();
 		$has_featured_image = true;
 	}
 ?>
-		<div class="row">
+		<div class="row single-tour">
 			<?php
 			if ($page_sidebar_positioning == 'left' || $page_sidebar_positioning == 'both') {
-				get_sidebar('left');
+				//get_sidebar('left');
 			}
 			?>
 			<?php do_action('bookyourtravel_before_single_cruise_content'); ?>		
-			<section class="<?php echo esc_attr($section_class); ?> section-cruise-content">
+			<section class="<?php echo esc_attr($section_class); ?> section-tour-content section-cruise-content">
 				<?php if (empty($page_sidebar_positioning) && !$has_featured_image) { ?>
 				<h1><?php the_title(); ?></h1>
 				<?php } ?>
@@ -57,7 +57,7 @@ if ( have_posts() ) while ( have_posts() ) : the_post();
 			wp_reset_query();
 			
 			if ($page_sidebar_positioning == 'right' || $page_sidebar_positioning == 'both') {
-				get_sidebar('right-cruise');
+				//get_sidebar('right-cruise');
 			}
 			?>
 		</div>

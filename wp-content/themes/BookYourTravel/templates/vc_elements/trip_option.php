@@ -7,6 +7,7 @@ if (!$img_url) {
 $attr['text_btn'] = $attr['text_btn'] ?? "PLAN YOUR TRIP NOW";
 $attr['title'] = $attr['title'] ?? "Personalised Asia Tours to the highest standards, especially for you!";
 $attr['link_btn'] = $attr['link_btn'] ?? home_url() . '/tailor-made-your-tour/';
+$attr['description'] = $attr['description'] ?? "Free service. No credit card required";
 ?>
 <style>
     .trip-option-wrapper {
@@ -28,6 +29,9 @@ $attr['link_btn'] = $attr['link_btn'] ?? home_url() . '/tailor-made-your-tour/';
         </div>
         <div class="trip-option-btn">
             <a href="<?= $attr['link_btn'] ?>"><?= $attr['text_btn'] ?></a>
+        </div>
+        <div class="trip-option-description">
+            <p ><?= $attr['description'] ?></p>
         </div>
     </div>
 </div>

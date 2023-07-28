@@ -11,13 +11,14 @@ if ($ports) {
             foreach ($ports as $port_id) {
                 $port = get_term_by('id', $port_id, 'cruise_tag');
                 $port_title = $port->name;
+                $slug = $port->slug;
                 $id =  $port->term_id;
                 $description = $port->description;
                 $thumbnail_id = $bookyourtravel_theme_post_types->get_taxonomy_image_id($id);
                 $thumbnail_obj = wp_get_attachment_image_src($thumbnail_id, "full");
                 isset($thumbnail_obj) ? $thumbnail_url = $thumbnail_obj[0] : $thumbnail_url = "";
             ?>
-                <div class="cruise_port-item">
+                <div id = "<?= $slug ?>" class="cruise_port-item">
                     <h2>
                         <?=$port_title ?>
                     </h2>

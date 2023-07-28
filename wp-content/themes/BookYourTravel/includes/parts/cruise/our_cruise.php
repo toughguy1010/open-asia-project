@@ -58,6 +58,7 @@ $title =  get_term($cruise_type_id)->name;
 					setup_postdata($post);
 					$cruise_item_args['cruise_id'] = $post->ID;
 					$cruise_item_args['post'] = $post;
+					set_query_var('cruise_type_ids', $cruise_type_ids);
 					get_template_part('includes/parts/cruise/cruise', 'item');
 				}
 

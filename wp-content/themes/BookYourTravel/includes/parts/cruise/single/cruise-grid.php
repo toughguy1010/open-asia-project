@@ -12,24 +12,26 @@
  */
 
 global $current_url, $post, $date_from, $date_to, $bookyourtravel_theme_globals, $bookyourtravel_tour_helper, $tour_list_args, $tour_item_args, $bookyourtravel_theme_post_types, $entity_obj;
-$tour_id = $tour_item_args['tour_id'];
+global $bookyourtravel_theme_globals, $cruise_item_args, $cruise_list_args, $bookyourtravel_cruise_helper, $post, $cruise_obj, $cabin_obj;
+
+$cruise_id = $cruise_item_args['tour_id'];
 $tour_permalink = '';
 $tour_description = '';
 $tour_title = '';
 $tour_thumbnail_html = '';
 $tour_ribbon_text = '';
-if ($tour_id > 0) {
-    $tour_post = $tour_item_args['post'];
+if ($cruise_id > 0) {
+    $tour_post = $cruise_item_args['post'];
     global $post;
-    if (!$post || $post->ID != $tour_id) {
+    if (!$post || $post->ID != $cruise_id) {
         $post = $tour_post;
         setup_postdata($post);
     }
 
-    $tour_obj = new BookYourTravel_Tour($post);
-    $entity_obj = $tour_obj;
+    $cruise_obj = new BookYourTravel_Tour($post);
+    $entity_obj = $cruise_obj;
 
-    $tour_description = wpautop($tour_obj->get_short_description());
+    $tour_description = wpautop($cruise_obj->get_short_description());
     if ($post) {
         $thumbnail_id = get_post_thumbnail_id($post->ID);
         $attachment = get_post($thumbnail_id);
@@ -41,8 +43,8 @@ if ($tour_id > 0) {
     $tour_permalink = get_the_permalink();
     $tour_title = get_the_title();
     // custom
-    $tour_duration = $tour_obj->get_tour_durations();
-    $tour_tag = $tour_obj->get_tags();
+    $tour_duration = $cruise_obj->get_tour_durations();
+    $tour_tag = $cruise_obj->get_tags();
     if ($tour_price = get_field('tour_price', get_the_ID())) {
 		$have_price = $tour_price['have_price'];
 		
@@ -60,11 +62,11 @@ if (get_field('order_location', get_the_ID())) {
 }
 
 ?>
-<article data-tour-id="<?= $tour_id ?>" class="tour_grid_item">
+<article data-tour-id="<?= $cruise_id ?>" class="tour_grid_item">
     <div class="tour_grid-top">
         <a href="<?= $tour_permalink ?>" class="tour_grid-thumbnail">
             <?php
-            $featured_element = $tour_obj->get_displayed_featured_element();
+            $featured_element = $cruise_obj->get_displayed_featured_element();
             $images = $entity_obj->get_images();
             $img =  $images[0];
             $thumbnail_id = $img['image'];

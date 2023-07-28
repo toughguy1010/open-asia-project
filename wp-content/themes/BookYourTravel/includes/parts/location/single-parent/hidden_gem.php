@@ -5,7 +5,7 @@ if ($hidden_gem) {
     <section id="hidden_gem" class="section">
         <div class="hidden_gem-wrap nano-container">
             <div class="hidden_gem-left">
-                <h2>Vietnam Hidden Gem</h2>
+                <h2><?= the_title() ?> Hidden Gem</h2>
                 <div class="hidden_gem-content">
                     <div id="firstChar" class="hidden_gem-top-paragraph ">
                         <?= $hidden_gem['show_paragraphs'] ?>

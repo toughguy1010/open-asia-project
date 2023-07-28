@@ -1,5 +1,5 @@
 <?php
-global $bookyourtravel_theme_globals, $post, $first_display_tab, $default_tour_tabs, $entity_obj, $layout_class, $tab, $tour_item_args, $tour_list_args,$bookyourtravel_theme_post_types, $bookyourtravel_tour_helper;
+global $bookyourtravel_theme_globals, $post, $first_display_tab, $default_tour_tabs, $entity_obj, $layout_class, $tab, $tour_item_args, $tour_list_args, $bookyourtravel_theme_post_types, $bookyourtravel_tour_helper;
 
 $tour_obj = new BookYourTravel_Tour($post);
 $entity_obj = $tour_obj;
@@ -16,17 +16,15 @@ $tour_tag = $tour_obj->get_tags();
 $tour_description = wpautop($tour_obj->get_short_description());
 if (get_field('tour_price', get_the_ID())) {
 	$tour_price = get_field('tour_price', get_the_ID());
-	if($tour_price ){
+	if ($tour_price) {
 		$have_price = $tour_price['have_price'];
-	
+
 		if (isset($have_price[0])) {
 			$value_have_price = $have_price[0];
-		}
-		else{
+		} else {
 			$value_have_price = "";
 		}
 	}
-
 }
 $tour_type_id = $tour_obj->get_type_id();
 
@@ -137,6 +135,11 @@ if ($featured_element == 'gallery') {
 <div class="single-tour-body">
 	<div class="single-tour-nav-wraper">
 		<div class="single-tour-nav-container nano-container">
+			<div class="hamburger-lines">
+				<span class="line line1"></span>
+				<span class="line line2"></span>
+				<span class="line line3"></span>
+			</div>
 			<ul class="nav-tour-list">
 				<li class="nav-tour-item">
 					<a href="#tour-overview">Overview</a>

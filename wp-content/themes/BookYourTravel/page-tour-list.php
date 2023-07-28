@@ -146,7 +146,7 @@ $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
 								</div>
 							</div>
 							<div class="step-plan-btn">
-								<a href="">Start Designing You Trip Now</a>
+								<a href="<?= home_url()?>/tailor-made-your-tour/">Start Designing You Trip Now</a>
 							</div>
 							<span style="text-align: center; display: block;">
 								Free service. No credit card required

@@ -1,11 +1,12 @@
 <?php
 global  $bookyourtravel_theme_globals, $post, $first_display_tab, $default_tour_tabs, $entity_obj, $layout_class, $tab, $tour_item_args, $tour_list_args, $bookyourtravel_tour_helper;
 $location_id = get_query_var('location_id');
+$location_title = get_the_title($location_id);
 ?>
 
 <section id="relate_tour" class="section">
     <div class="nano-container">
-        <h2>You may also like...</h2>
+        <h2><?= $location_title?> Tours</h2>
         <?php
         // get term id by slug
        

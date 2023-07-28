@@ -149,11 +149,26 @@ if (!function_exists('trip_option')) {
             'background' => '',
             'text_btn' => '',
             'link_btn' => '',
+            'description' => '',
            
         ], $attr,);
         require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/trip_option.php');
     }
     add_shortcode('trip_option', 'trip_option');
+}
+if (!function_exists('responsible_quote')) {
+    function responsible_quote($attr, $content, $span)
+    {
+        
+        $attr = shortcode_atts([
+            'title' => '',
+            'icon' => '',
+            'text' => '',
+           
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/responsible_quote.php');
+    }
+    add_shortcode('responsible_quote', 'responsible_quote');
 }
 
 if (!function_exists('page_banner')) {

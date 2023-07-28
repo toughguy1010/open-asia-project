@@ -11,7 +11,7 @@ $disable_search = $attr['disable_search'];
         justify-content: center;
         align-items: center;
         width: 100%;
-        min-height: 650px;
+        min-height: 555px;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -25,82 +25,80 @@ $disable_search = $attr['disable_search'];
             <?= $attr['search_title'] ?>
         </h1>
         <p class="search_span"><?= $attr['search_span'] ?></p>
-        <?php if(!$disable_search){
-            ?>
-<div class="search_wrap">
-            <input type="text" class="search-input" readonly>
-            <div class="search-button">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="50px" height="50px" fill-rule="nonzero">
-                    <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                        <g transform="scale(5.12,5.12)">
-                            <path d="M21,3c-9.37891,0 -17,7.62109 -17,17c0,9.37891 7.62109,17 17,17c3.71094,0 7.14063,-1.19531 9.9375,-3.21875l13.15625,13.125l2.8125,-2.8125l-13,-13.03125c2.55469,-2.97656 4.09375,-6.83984 4.09375,-11.0625c0,-9.37891 -7.62109,-17 -17,-17zM21,5c8.29688,0 15,6.70313 15,15c0,8.29688 -6.70312,15 -15,15c-8.29687,0 -15,-6.70312 -15,-15c0,-8.29687 6.70313,-15 15,-15z"></path>
-                        </g>
-                    </g>
-                </svg>
-            </div>
-            <div class="search-value">
-                <span class="icon-caret"></span>
-                <div class="destination">
-                    <div class="destination-title">
-                        Destination
-                    </div>
-                    <div class="destination-list">
-                        <?php
-                        $posts = get_posts(array(
-                            'post_type' => 'location',
-                            'post_parent' => 0,
-                            'post_status' => 'publish',
+        <?php if (!$disable_search) {
+        ?>
+            <div class="search_wrap">
+                <input type="text" class="search-input" placeholder="Where to or what trip styles? " readonly>
+                <div class="search-button">
 
-                        ));
-                        foreach ($posts as $post) {
-                            setup_postdata($post);
-                            $location_title = $post->post_title;
-                            $location_permanlinhk = get_permalink($post->ID);
-                        ?>
-                            <div class="destination-item">
-                                <a href="<?php echo $location_permanlinhk ?>"><?php echo  $location_title ?></a>
-                            </div>
-                        <?php
-                        }
-                        wp_reset_postdata();
 
-                        ?>
-                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"  fill="#ffffff" />
+                    </svg>
                 </div>
-                <div class="travel-style">
-                    <div class="travel-style-title">
-                        Travel style
-                    </div>
+                <div class="search-value">
+                    <span class="icon-caret"></span>
+                    <div class="destination">
+                        <div class="destination-title">
+                            Destination
+                        </div>
+                        <div class="destination-list">
+                            <?php
+                            $posts = get_posts(array(
+                                'post_type' => 'location',
+                                'post_parent' => 0,
+                                'post_status' => 'publish',
 
-                    <div class="travel-style-list">
-                        <?php
-                        $tour_type_ids = array(
-                            81, // ID của Active Adventure
-                            85, // ID của Beach Escapes
-                            86, // ID của Culture & Heritage
-                            84, // ID của Family
-                            83, // ID của Honeymoon
-                        );
-                        foreach ($tour_type_ids as $tour_type_id) {
-                            $tour_type = get_term_by('id', $tour_type_id, 'tour_type');
-                            if ($tour_type) {
-                        ?>
-                                <a href="<?= home_url()?>/tour/?tour-type=<?php echo $tour_type->slug ?>">
-                                    <div class="travel-style-item">
-                                        <?php echo  $tour_type->name ?>
-                                    </div>
-                                </a>
-                        <?php
+                            ));
+                            foreach ($posts as $post) {
+                                setup_postdata($post);
+                                $location_title = $post->post_title;
+                                $location_permanlinhk = get_permalink($post->ID);
+                            ?>
+                                <div class="destination-item">
+                                    <a href="<?php echo $location_permanlinhk ?>"><?php echo  $location_title ?></a>
+                                </div>
+                            <?php
                             }
-                        }
-                        ?>
+                            wp_reset_postdata();
+
+                            ?>
+                        </div>
+                    </div>
+                    <div class="travel-style">
+                        <div class="travel-style-title">
+                            Travel style
+                        </div>
+
+                        <div class="travel-style-list">
+                            <?php
+                            $tour_type_ids = array(
+                                81, // ID của Active Adventure
+                                85, // ID của Beach Escapes
+                                86, // ID của Culture & Heritage
+                                84, // ID của Family
+                                83, // ID của Honeymoon
+                            );
+                            foreach ($tour_type_ids as $tour_type_id) {
+                                $tour_type = get_term_by('id', $tour_type_id, 'tour_type');
+                                if ($tour_type) {
+                            ?>
+                                    <a href="<?= home_url() ?>/tour/?tour-type=<?php echo $tour_type->slug ?>">
+                                        <div class="travel-style-item">
+                                            <?php echo  $tour_type->name ?>
+                                        </div>
+                                    </a>
+                            <?php
+                                }
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-            <?php
+        <?php
         } ?>
-        
+
     </div>
 
 </section>
