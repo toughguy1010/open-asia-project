@@ -35,7 +35,7 @@ $section_class = BookYourTravel_Theme_Utils::get_page_section_class($page_sideba
 				<?php  while ( have_posts() ) : the_post(); ?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class("static-content post"); ?>>
 					<?php if (has_post_thumbnail()) { ?>
-					<div class="page-featured-image">
+					<div class="page-featured-image ">
 						<?php $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), "byt-featured"); ?>
 						<div class="keyvisual" style="background-image:url(<?php echo esc_url($featured_img_url); ?>)"></div>
 						<div class="wrap"><h1><?php the_title(); ?></h1></div>

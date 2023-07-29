@@ -3583,15 +3583,15 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   background: #418a3d;
 }
 
-#mega-menu-242-0-0,
-#mega-menu-242-0-1,
+#mega-menu-2249-0-0,
+#mega-menu-2249-0-1,
 #mega-menu-437-0-0,
 #mega-menu-435-0-0 {
   position: relative !important;
 }
 
-#mega-menu-242-0-0::after,
-#mega-menu-242-0-1::after,
+#mega-menu-2249-0-0::after,
+#mega-menu-2249-0-1::after,
 #mega-menu-437-0-0::after,
 #mega-menu-435-0-0::after {
   position: absolute !important;
@@ -3736,9 +3736,9 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   border-top: 0 !important;
 }
 .page-banner-wrap .step-img img {
-  width: 60px;
-  height: 60px;
-  object-fit: fill;
+  width: 55px;
+  height: 45px;
+  object-fit: contain;
 }
 .glance-text {
   width: 80%;
@@ -3775,43 +3775,170 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   left: 0;
   transform: translateX(72%);
 }
-.post-bg-description{
+.post-bg-description {
   font-size: 16px;
   font-weight: 600;
 }
-#comments{
+#comments {
   display: none;
 }
-.post_breadcrumbs .breadcrumbs{
+.post_breadcrumbs .breadcrumbs {
   display: block;
 }
-.single .entry-content{
+.single .entry-content {
   padding-left: 0;
   padding-right: 0;
 }
 .post_breadcrumbs {
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
-.post_breadcrumbs .breadcrumbs li a, .post_breadcrumbs .breadcrumbs li  {
+.post_breadcrumbs .breadcrumbs li a,
+.post_breadcrumbs .breadcrumbs li {
   color: #aaa;
   display: inline;
   font-size: 12px;
 }
-.post_breadcrumbs .breadcrumbs li a:hover{
+.post_breadcrumbs .breadcrumbs li a:hover {
   color: #80b157;
 }
-.left-entry-content h1{
+.left-entry-content h1 {
   font-size: 26px;
   margin: 15px 0 10px;
   line-height: 1.3;
 }
-.left-entry-content .wp-block-image img{
+.left-entry-content .wp-block-image img {
   width: 100%;
 }
-.entry-content-body p{
+.entry-content-body p {
   font-size: 12px;
   color: #333;
   line-height: 27px;
   margin-bottom: 30px;
   margin-top: 25px;
+}
+.single-post-wrap {
+  display: flex;
+  gap: 50px;
+}
+.entry-destination{
+  border: 1px solid #eee;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.left-entry-content{
+  flex: 0 0 70%;
+}
+.right-entry-content{
+  flex: auto;
+}
+.single-post-wrap{
+  margin-top: 30px;
+}
+.destionation-post-item {
+  text-align: center;
+  margin-bottom: 30px;
+
+}
+.destionation-post-item a{
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 100%;
+  color: #555;
+}
+.destionation-post-item a:hover{
+  color: #80b157;
+}
+.destionation-post-wrap{
+  margin-top: 30px;
+}
+.entry-destination-header p {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+.entry-recent-post{
+  margin-top: 50px;
+}
+.entry-recent-post-header p{
+  padding-bottom: 10px;
+  padding-top: 15px;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  color: #555;
+}
+.recent-post-item{
+  display: flex;
+  gap: 10px;
+}
+.recent-post-title a{
+  font-size: 14px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+          line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  color: #111;
+  font-weight: 700;
+
+}
+.recent-post-title{
+  margin-bottom: 13px;
+}
+.recent-post-category{
+  font-size: 14px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+          line-clamp: 1; 
+  -webkit-box-orient: vertical;
+  color: #555;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 400;
+}
+.recent-post-header{
+  flex: 0 0 50%;
+}
+.recent-post-body{
+  flex: auto;
+}
+.page-post-list .left-entry-content .post_item  {
+  width: 100%;
+  padding: 0 !important;
+  margin-bottom: 80px !important;
+}
+.page-post-list .left-entry-content .post_item img{
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+.page-post-list  .post_title{
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+
+}
+.page-post-list  .space{
+  height: 0;
+}
+.page-post-list .post_item_wrap .description{
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+.page-post-list .post_title:hover{
+  color: #80b157;
+}
+.page-post-list article > div .details{
+  padding-top: 10px;
 }

@@ -45,16 +45,16 @@ if ($taxonomy == 'post_tag' || $taxonomy == 'category' || $taxonomy == '') {
 			?>
 			<section class="<?php echo esc_attr($section_class) ;?>">
 				<?php if ($taxonomy_featured_image_id) { ?>
-				<div class="page-featured-image">
-					<?php $featured_img_url = wp_get_attachment_image_src($taxonomy_featured_image_id, "byt-featured")[0]; ?>
-					<div class="keyvisual" style="background-image:url(<?php echo esc_url($featured_img_url); ?>)"></div>
-					<div class="wrap">
-						<?php
-						the_archive_title( '<h1 class="entry-title">', '</h1>' );
-						the_archive_description( '<div class="taxonomy-description">', '</div>' );
-						?>
+					<div class="entry-featured post-bg" style="background-image: url('<?= get_template_directory_uri() ?>/css/images/bg-travel-guide.jpg');">
+						<div class="post-bg-text">
+							<div class="post-bg-title">
+								Asia Travel Guide
+							</div>
+							<div class="post-bg-description">
+								Asia is our homeland. We'll show you Asia, better than anyone else!
+							</div>
+						</div>
 					</div>
-				</div>
 				<?php } else { ?>
 				<header class="page-header">
 					<?php
@@ -64,8 +64,8 @@ if ($taxonomy == 'post_tag' || $taxonomy == 'category' || $taxonomy == '') {
 				</header><!-- .page-header -->
 				<?php } ?>
 				<?php if (have_posts()) { ?>
-				<div class="deals">
-					<div class="row">
+				<div class="nano-container single-post-wrap section page-post-list">
+					<div class="row left-entry-content ">
 						<?php
 						while (have_posts()) {
 							the_post();
@@ -94,6 +94,30 @@ if ($taxonomy == 'post_tag' || $taxonomy == 'category' || $taxonomy == '') {
 							get_template_part($template_part, 'item');
 						}
 						?>
+					</div>
+					<div class="right-entry-content">
+						<div class="entry-destination">
+							<div class="entry-destination-header">
+								<p>Destinations</p>
+							</div>
+							<div class="entry-destination-body">
+								<?php
+								get_template_part('/templates/post/destination');
+								?>
+							</div>
+							
+						</div>
+						<div class="entry-recent-post">
+								<div class="entry-recent-post-header">
+									<p>Recent post</p>
+								</div>
+								<div class="entry-recent-post-body">
+									<?php
+									get_template_part('/templates/post/recent_post');
+									?>
+								</div>
+
+							</div>
 					</div>
 					<?php
 					if ($wp_query->max_num_pages > 1) {

@@ -44,9 +44,7 @@ $id = $post->ID;
 				<?php } ?>
 				<?php
 				?>
-
-
-				<div class="entry-content nano-container section">
+				<div class="entry-content nano-container single-post-wrap section">
 					<div class="left-entry-content">
 						<div class="post_breadcrumbs ">
 							<?php
@@ -62,19 +60,27 @@ $id = $post->ID;
 					</div>
 					<div class="right-entry-content">
 						<div class="entry-destination">
-							
 							<div class="entry-destination-header">
-								<p>Destination</p>
+								<p>Destinations</p>
 							</div>
 							<div class="entry-destination-body">
 								<?php
-								$categories = get_categories();
-								foreach ($categories as $category) {
-									echo '<div class="col-md-4"><a href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></div>';
-								}
+								get_template_part('/templates/post/destination');
 								?>
 							</div>
+							
 						</div>
+						<div class="entry-recent-post">
+								<div class="entry-recent-post-header">
+									<p>Recent post</p>
+								</div>
+								<div class="entry-recent-post-body">
+									<?php
+									get_template_part('/templates/post/recent_post');
+									?>
+								</div>
+
+							</div>
 					</div>
 				</div>
 			</article>

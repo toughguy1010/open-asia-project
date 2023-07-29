@@ -102,12 +102,13 @@ if ($featured_element == 'gallery') {
 
 <div class="single-tour-body">
 	<div class="single-tour-nav-wraper">
+		
+		<div class="single-tour-nav-container nano-container">
 		<div class="hamburger-lines">
 			<span class="line line1"></span>
 			<span class="line line2"></span>
 			<span class="line line3"></span>
 		</div>
-		<div class="single-tour-nav-container nano-container">
 			<ul class="nav-tour-list">
 				<li class="nav-tour-item">
 					<a href="#tour-overview">Overview</a>

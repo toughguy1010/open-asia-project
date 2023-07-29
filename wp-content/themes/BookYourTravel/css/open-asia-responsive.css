@@ -401,6 +401,26 @@
   }
 }
 @media screen and (max-width: 860px) {
+  .tour_item-top {
+    flex-direction: column-reverse;
+  }
+  .form-row{
+    flex-direction: column;
+    gap: 20px;
+  }
+  #orderby{
+    padding-left: 0 !important ;
+  }
+  .single-post-wrap {
+    flex-direction: column;
+  }
+  .recent-post-wrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .recent-post-item {
+    flex: 0 0 48%;
+  }
   .overview-body {
     flex-direction: column;
   }
@@ -518,7 +538,36 @@
   }
 }
 @media screen and (max-width: 600px) {
-
+  .recent-post-item {
+    flex: 0 0 100%;
+  }
+  .slider-dots{
+    top: 86%;
+    left: 30%;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background: #fff;
+    border-color: #fff;
+    outline: 1px solid transparent;
+    outline-offset: 2px;
+    margin: 0 4px;
+  }
+  .tour_item-content{
+    padding: 14px 20px 0px 20px;
+  }
+  .tour_item-title {
+    font-size: 18px;
+    line-height: 24px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.tour_item-location-icon img {
+  width: 50px;
+  height: 24px;
+}
   .customizable_itinerary-title h1 {
     font-size: 18px;
     line-height: 27px;
@@ -561,7 +610,7 @@
   .relate_post-description {
     font-size: 14px;
   }
-  .item-relate_post{
+  .item-relate_post {
     width: 100%;
   }
   .tour-overview-wrap h1 {
@@ -1001,7 +1050,7 @@
     font-size: 18px;
     width: 90%;
   }
-  .relate_post-title{
+  .relate_post-title {
     font-size: 14px;
   }
   .plan-trip-option .trip-option-btn a {

@@ -59,7 +59,8 @@ $item_class = BookYourTravel_Theme_Utils::get_item_class_by_row_posts($posts_per
 						$has_post_thumbnail = has_post_thumbnail();
 					?>
 					<?php if ($has_post_thumbnail) { ?>
-					<div class="page-featured-image">
+						
+					<div class="page-featured-image ">
 						<?php $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), "byt-featured"); ?>
 						<div class="keyvisual" style="background-image:url(<?php echo esc_url($featured_img_url); ?>)"></div>
 						<div class="wrap"><h1><?php the_title(); ?></h1></div>
@@ -77,7 +78,6 @@ $item_class = BookYourTravel_Theme_Utils::get_item_class_by_row_posts($posts_per
 					<?php wp_link_pages('before=<div class="pagination">&after=</div>'); ?>
 				</article>
 				<?php endwhile; ?>
-				
 				<div class="offers">
 					<div class="row">
 					<?php if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post(); global $post; ?>
