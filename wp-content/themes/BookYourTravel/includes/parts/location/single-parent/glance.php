@@ -1,11 +1,13 @@
 <?php
 $glance = get_query_var('glance');
+$location_id = get_query_var('location_id');
+$title = get_the_title($location_id);
 
 if ($glance) {
 ?>
     <section id="glance" class="section">
         <div class="glance-wraper nano-container">
-            <h2>Vietnam at a glance</h2>
+            <h2><?= $title ?> at a glance</h2>
             <div class="glance-list">
                 <?php 
                 foreach($glance as $item){

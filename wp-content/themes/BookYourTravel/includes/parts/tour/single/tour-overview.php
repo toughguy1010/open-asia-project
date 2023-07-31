@@ -50,7 +50,7 @@ if ($overview = get_field('overview', get_the_ID())){
 								This trip is not quite right for you yet?
 							</h4>
 							<p>
-								<a href="">Let's Customize It Now</a>
+								<a href="<?= home_url() ?>/tailor-made-your-tour/Vietnam at a glance">Let's Customize It Now</a>
 							</p>
 							<p>
 								<span>It's 100% Tailor-made. Personal Assistance 24/7</span>

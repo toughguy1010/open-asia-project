@@ -1,7 +1,9 @@
 .header-mobile {
   display: none !important;
 }
-
+.mega-menu-toggle {
+  display: none !important;
+}
 .hamburger-lines {
   display: block;
   height: 26px;
@@ -80,6 +82,44 @@
   width: 100%;
 }
 @media screen and (max-width: 1200px) {
+  .cruise_type-title {
+    font-size: 30px;
+  }
+  .cruise_type-option a {
+    font-size: 14px;
+  }
+  .our_port-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .our_port-description {
+    font-size: 20px;
+  }
+  .our_port-header {
+    margin-bottom: 30px;
+  }
+  .why-us-title h2 {
+    font-size: 20px;
+    margin: 15px 0;
+  }
+  .our_cruise-title {
+    font-size: 20px;
+  }
+  .cruise-content a {
+    padding: 7px 15px !important;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  .cruise_port-row {
+    gap: 30px;
+  }
+  .cruise_port-item h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+  .cruise-title {
+    font-size: 16px;
+  }
   .single-tour-nav-container .hamburger-lines {
     display: flex !important;
   }
@@ -332,6 +372,29 @@
     display: none !important;
     padding: 10px 0 !important;
   }
+  .mega-sub-menu{
+    width: 100% !important;
+  }
+  #mega-menu-wrap-primary-menu
+    #mega-menu-primary-menu
+    li.mega-menu-megamenu
+    > ul.mega-sub-menu
+    > li.mega-menu-row
+    .mega-menu-column
+    > ul.mega-sub-menu
+    > li.mega-menu-item {
+      padding: 15px 15px 15px 0px;
+  }
+  .mega-menu-item .menu-item a{
+    font-size: 14px !important;
+  }
+  #mega-menu-2249-0-0::after, #mega-menu-2249-0-1::after, #mega-menu-437-0-0::after, #mega-menu-435-0-0::after{
+    display: none !important;
+  }
+  .mega-block-title {
+    font-size: 14px !important;
+    line-height: 27px !important;
+}
   .header-mobile {
     display: flex !important;
     order: 2;
@@ -401,14 +464,69 @@
   }
 }
 @media screen and (max-width: 860px) {
+  .cruise_type-wrapper {
+    margin-right: 30px;
+  }
+  .cruise_port-description {
+    font-size: 14px;
+  }
+  .cruise_port-content p {
+    font-size: 14px;
+  }
+  .cruise_query-list a {
+    font-size: 14px;
+  }
+  .our_port-caption {
+    margin-top: 20px;
+    padding-bottom: 20px;
+  }
+  .why_us-content p {
+    font-size: 14px;
+  }
+  .our_port-description {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .why-us-icon img {
+    width: 70px;
+  }
+  .our_port-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .our_port-header {
+    margin-bottom: 20px;
+  }
+  #our_port {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  #cruise_type-banner {
+    min-height: 360px;
+  }
+  .cruise_type-option {
+    margin-top: 20px;
+  }
+  .cruise_type-title {
+    font-size: 26px;
+  }
+  .our_port-item {
+    width: 31%;
+  }
+  .single-tour-meta .tour_item-price {
+    flex-wrap: wrap;
+  }
+  .single-tour-meta .item-duraiton {
+    line-height: 25px;
+  }
   .tour_item-top {
     flex-direction: column-reverse;
   }
-  .form-row{
+  .form-row {
     flex-direction: column;
     gap: 20px;
   }
-  #orderby{
+  #orderby {
     padding-left: 0 !important ;
   }
   .single-post-wrap {
@@ -523,6 +641,8 @@
   #mega-menu-wrap-primary-menu .mega-menu-toggle + #mega-menu-primary-menu {
     background: unset;
     display: block !important;
+    overflow: auto;
+    height: 80vh;
   }
   .introduction-wrapper {
     flex-wrap: wrap;
@@ -538,10 +658,75 @@
   }
 }
 @media screen and (max-width: 600px) {
+  .single-tour-container .tour_item-tags {
+    gap: 25px;
+    margin-top: 10px;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+  .single-tour-meta .tour_item-duraiton {
+    width: 100%;
+  }
+  .our_port-item {
+    width: 47%;
+  }
+  .our_cruise-item {
+    width: 47%;
+  }
+  .cruise_port-row {
+    flex-direction: column;
+  }
+  .single-tour-container h1 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 15px;
+  }
+  .single-tour-meta {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .static_price strong {
+    font-size: 14px;
+  }
+  .market_price strong,
+  .save_price strong {
+    font-size: 14px;
+  }
+  .single-tour-meta .static_price,
+  .single-tour-meta .market_price,
+  .single-tour-meta .save_price {
+    margin-left: 0px;
+    margin-bottom: 0;
+    line-height: 38px;
+    flex: 00 100%;
+  }
+  .single-tour-header {
+    background-color: #ffff;
+    padding: 20px 0 20px;
+  }
+  .map-footer p a {
+    font-size: 14px;
+  }
+  .map-footer h4 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+  .customizable_itinerary-title {
+    flex-wrap: wrap;
+  }
+  .map-footer p span {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .map-footer p {
+    margin-bottom: 16px;
+  }
   .recent-post-item {
     flex: 0 0 100%;
   }
-  .slider-dots{
+  .slider-dots {
     top: 86%;
     left: 30%;
   }
@@ -555,7 +740,7 @@
     outline-offset: 2px;
     margin: 0 4px;
   }
-  .tour_item-content{
+  .tour_item-content {
     padding: 14px 20px 0px 20px;
   }
   .tour_item-title {
@@ -563,13 +748,14 @@
     line-height: 24px;
     margin-top: 0px;
     margin-bottom: 10px;
-}
-.tour_item-location-icon img {
-  width: 50px;
-  height: 24px;
-}
+  }
+  .tour_item-location-icon img {
+    width: 50px;
+    height: 24px;
+  }
   .customizable_itinerary-title h1 {
     font-size: 18px;
+    margin-bottom: 10px !important;
     line-height: 27px;
   }
   .overview-item-title {
@@ -577,6 +763,9 @@
     font-size: 14px;
     line-height: 24px;
     margin-bottom: 10px;
+  }
+  .toggle-text {
+    font-size: 12px;
   }
   .customizable_itinerary-description p {
     font-size: 14px;
@@ -662,7 +851,8 @@
   .introduction-left h2,
   .introduction-left h2,
   #places_of_interest h2,
-  .travel_guide-wrap h2 {
+  .travel_guide-wrap h2,
+  .glance-wraper h2 {
     font-size: 40px !important;
     margin-bottom: 10px;
   }
@@ -839,6 +1029,64 @@
   }
 }
 @media screen and (max-width: 500px) {
+  .breadcrumbs li {
+    font-size: 10px;
+  }
+  .separator {
+    margin: 0 5px;
+  }
+  .our_port-item {
+    width: 100%;
+  }
+  .our_cruise-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .why-us-title h2 {
+    font-size: 18px;
+  }
+  .our_cruise-title {
+    font-size: 18px;
+  }
+
+  .cruise_type-option a {
+    padding: 7px 15px !important;
+  }
+  .our_port-list {
+    gap: 15px;
+  }
+  .our_port-title {
+    font-size: 18px;
+  }
+  .cruise_type-wrapper {
+    margin-right: 10px;
+  }
+  .cruise_type-title {
+    font-size: 18px;
+    text-align: end;
+  }
+  .port_contact-wrap a {
+    padding: 7px 15px !important;
+    font-size: 14px;
+  }
+  .port_contact-wrap .headline {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  #port_contact {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .our_cruise-item {
+    width: 100%;
+  }
+  .tour_item-location-icon img {
+    width: 73px;
+    height: 20px;
+  }
+  .tour_item-content-wrap .tour_item-action {
+    flex-direction: column !important;
+  }
   .contact-list {
     font-size: 9px;
   }

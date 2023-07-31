@@ -3092,7 +3092,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .faq_item-body {
   display: none;
 }
-.faq_wrapper h2 {
+.faq_wrapper h2, .glance-wraper h2 {
   /* font-size: 40px;
   line-height: 60px;
   font-weight: 200; */
@@ -3218,6 +3218,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   flex-wrap: wrap;
   padding-bottom: 45px;
   border-bottom: 1px solid #ddd;
+  justify-content: center;
 }
 .our_port-item {
   width: 23%;
@@ -3239,6 +3240,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .our_cruise-list .row {
   gap: 30px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .cruise-thumb {
   width: 100%;
