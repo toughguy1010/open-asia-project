@@ -124,13 +124,18 @@ ob_start();
 	</div>
 </div>
 <?php
-$featured_element = $tour_obj->get_displayed_featured_element();
-if ($featured_element == 'gallery') {
-	get_template_part('includes/parts/post/single/post', 'gallery');
-} else {
-	get_template_part('includes/parts/post/single/post', 'image');
-}
+// $featured_element = $tour_obj->get_displayed_featured_element();
+// if ($featured_element == 'gallery') {
+// 	get_template_part('includes/parts/post/single/post', 'gallery');
+// } else {
+// 	get_template_part('includes/parts/post/single/post', 'image');
+// }
 ?>
+<!-- slider -->
+<?php get_template_part('includes/parts/tour/single/slider') ?>
+<!-- slider -->
+
+
 
 <div class="single-tour-body">
 	<div class="single-tour-nav-wraper">

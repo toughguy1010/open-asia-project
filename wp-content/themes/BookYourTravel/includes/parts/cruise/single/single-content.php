@@ -90,16 +90,18 @@ $cruise_slug = $cruise_type->slug;
 
 <?php
 
-$featured_element = $cruise_obj->get_displayed_featured_element();
+// $featured_element = $cruise_obj->get_displayed_featured_element();
 
-if ($featured_element == 'gallery') {
-	get_template_part('includes/parts/post/single/post', 'gallery');
-} else {
-	get_template_part('includes/parts/post/single/post', 'image');
-}
+// if ($featured_element == 'gallery') {
+// 	get_template_part('includes/parts/post/single/post', 'gallery');
+// } else {
+// 	get_template_part('includes/parts/post/single/post', 'image');
+// }
 
-?>
-
+// ?>
+<!-- slider -->
+<?php get_template_part('includes/parts/cruise/single/slider') ?>
+<!-- slider -->
 <div class="single-tour-body">
 	<div class="single-tour-nav-wraper">
 		

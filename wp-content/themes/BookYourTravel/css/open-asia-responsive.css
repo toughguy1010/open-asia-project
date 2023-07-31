@@ -171,6 +171,9 @@
   .tour_item-gallery ul li {
     height: unset;
   }
+  #post-slider{
+    margin: 0 ;
+  }
   .taxonomy-name {
     line-height: 50px;
     font-size: 40px;
@@ -658,12 +661,23 @@
   }
 }
 @media screen and (max-width: 600px) {
+  #post-slider {
+    height: 355px;
+}
   .single-tour-container .tour_item-tags {
-    gap: 25px;
+    gap: 5px;
     margin-top: 10px;
     width: 100%;
     margin-left: 0;
     margin-bottom: 0;
+    flex-wrap: wrap;  
+  }
+  .single-tour-container .tour_item-tags .item-tags{
+    margin-bottom: 0px;
+    width: 100%;
+  }
+  .tour_item-text{
+    font-size: 12px;
   }
   .single-tour-meta .tour_item-duraiton {
     width: 100%;

@@ -3944,3 +3944,13 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .page-post-list article > div .details{
   padding-top: 10px;
 }
+
+.lSSlideWrapper .gallery-item{
+  width: 1200px !important;
+}
+/* #post-gallery{
+  transform: translate3d(-830px, 0px, 0px) !important;
+} */
+#post-slider{
+height: 555px;
+}
