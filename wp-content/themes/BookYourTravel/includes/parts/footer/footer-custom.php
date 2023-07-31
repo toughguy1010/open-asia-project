@@ -11,10 +11,26 @@ $contact_items = wp_get_nav_menu_items($menu_contact);
         <?php get_template_part('includes/parts/header/header', 'logo'); ?>
         <ul class="footer-info-list">
             <?php
-            wp_nav_menu(array(
-                'theme_location' => 'contact-info',
-            ));
+            // wp_nav_menu(array(
+            //     'theme_location' => 'contact-info',
+            // ));
             ?>
+            <div class="menu-contact-infor-container">
+                <ul id="menu-contact-infor" class="menu">
+                    <li id="menu-item-603" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-603">
+                        <a href="http://openasiatravel.nanoweb.vn/" aria-current="page">Open Asia Travel</a>
+                    </li>
+                    <li id="menu-item-604" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-604">
+                        <a href="https://www.google.com/maps/place/173%2F75+%C4%90.+Ho%C3%A0ng+Hoa+Th%C3%A1m,+Ng%E1%BB%8Dc+H%E1%BB%93,+Ba+%C4%90%C3%ACnh,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0411381,105.8208083,17z/data=!3m1!4b1!4m6!3m5!1s0x3135ab0bdc9e6e9b:0xb8ad8c2c49cafa20!8m2!3d21.0411331!4d105.8233832!16s%2Fg%2F11g9gk3yc9?hl=vi-VN&amp;entry=ttu">173/75 Hoang Hoa Tham, Ba Dinh, Hanoi, Vietnam</a>
+                    </li>
+                    <li id="menu-item-605" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-605">
+                        <a href="tel:+84%20982%20996%20967">+84 982 996 967</a>
+                    </li>
+                    <li id="menu-item-606" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-606">
+                        <a href="mailto:info@openasiatravel.com">info@openasiatravel.com</a>
+                    </li>
+                </ul>
+            </div>
         </ul>
     </div>
     <div class="footer-wrap-item footer-overview">
