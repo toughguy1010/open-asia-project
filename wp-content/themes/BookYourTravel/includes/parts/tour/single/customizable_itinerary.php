@@ -105,6 +105,7 @@ if ($customizable_itinerary = get_field('customizable_itinerary', get_the_ID()))
                     <?php
                     echo do_shortcode('[wpforms id="965"]')
                     ?>
+                    <span class="small-text">Free service. No credit card required</span>
                 </div>
                 <div class="certification-tour">
                     <div class="certification-wrap">

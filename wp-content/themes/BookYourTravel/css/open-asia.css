@@ -7,6 +7,10 @@
   box-sizing: border-box;
   letter-spacing: 1px;
 }
+h1, h2, h3, h4, h5, h6, .price em {
+  font-family: "Montserrat", Arial, sans-serif ;
+
+}
 html,
 body {
   scroll-behavior: smooth;
@@ -1107,6 +1111,7 @@ body {
 .list-certification-img img {
   width: 100px;
   height: 100px;
+  object-fit: cover;
 }
 .certification-logo {
   width: 200px;
@@ -2251,7 +2256,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .tour_grid-top-content .tour_item-duraiton {
   margin-bottom: 0;
-  padding: 25px 15px;
+  padding: 15px 15px;
 }
 .tour_grid-top {
   position: relative;
@@ -2264,7 +2269,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   justify-content: space-between;
   align-items: end;
   width: 100%;
-  height: 30%;
+  height: 22%;
   color: #fff;
   /* padding: 0px 15px; */
   font-weight: 600;
@@ -2281,7 +2286,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   position: relative;
   z-index: 2;
   padding: 0px 15px;
-  padding-bottom: 25px;
+  padding-bottom: 15px;
   height: 100%;
   display: flex;
   align-items: flex-end;
@@ -2627,7 +2632,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   color: #80b157;
 }
 .customizable_itinerary-item {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .body-itinerary-item {
   padding: 20px 30px;
@@ -2874,7 +2879,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   line-height: 25px;
 }
 #firstChar p:first-child {
-  display: flex;
+  /* display: flex; */
 }
 
 .hidden_gem-content p {
@@ -2883,7 +2888,9 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .squareBox,
 .mkdf-square {
   height: 35px;
-  flex: 0 0 35px;
+  /* flex: 0 0 35px; */
+  width: 35px;
+  float: left;
   text-align: center;
   font-size: 22px;
   line-height: 35px;
@@ -3955,4 +3962,35 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 } */
 #post-slider{
 height: 555px;
+}
+.have-icon{
+  display: flex;
+  gap: 15px;
+}
+.footer-icon svg{
+  width: 15px;
+  height: 15px;
+  fill: #80b157;
+}
+.gallery-status-wrap img{
+width: 20px;
+}
+.gallery-status-wrap{
+  width: fit-content;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    padding: 6px 20px;
+    border-radius: 18px;
+    background-color: #e3e6e6;
+}
+#slide_status{
+  margin-left: 10px;
+}
+.single-tour-header-wrap{
+  display: flex;
+  justify-content: space-between;
+}
+.single-tour-header-right{
+  align-self: center;
 }

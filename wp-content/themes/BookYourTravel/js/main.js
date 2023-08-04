@@ -76,26 +76,28 @@ function hideAllSubMenus(menu) {
   });
 }
 
+
+ // Lấy tất cả các phần tử .mega-menu-item-has-children
+ const menuItemHasChildrenList = document.querySelectorAll('.mega-menu-item-has-children');
+
+ // Lặp qua từng phần tử và thêm sự kiện hover bằng JavaScript
+ menuItemHasChildrenList.forEach(menuItemHasChildren => {
+   const subMenu = menuItemHasChildren.querySelector('.mega-sub-menu');
+
+   menuItemHasChildren.addEventListener('mouseenter', () => {
+     subMenu.classList.add("active-mega-sub-menu")
+   });
+
+   menuItemHasChildren.addEventListener('mouseleave', () => {
+    subMenu.classList.remove("active-mega-sub-menu")
+   });
+ });
+
 (function ($) {
-  var body = $(".single-tour-body");
-  var stop =  body.offset().top;
-  console.log('stop',stop)
-  var navWrapper = $(".single-tour-nav-wraper");
-  var navWrapperOffset = navWrapper.offset().top;
-  console.log('navWrapperOffset',navWrapperOffset)
 
-  $(window).scroll(function () {
-   
-    var scrollTop = jQuery(this).scrollTop();
-    console.log(scrollTop)
-    if (   scrollTop >= navWrapperOffset  ) {
-      jQuery(".single-tour-nav-wraper").addClass("navbar-fixed-top");
-    } 
-    if (scrollTop < stop) {
-      jQuery(".single-tour-nav-wraper").removeClass("navbar-fixed-top");
-    }
-  });
-
+ 
+  $("#get-email").val("");
+  $("#get-email").attr("placeholder", "Enter your email");
   $(".show-all-items").on("click", function () {
     $(".body-itinerary-item").slideToggle();
   });
@@ -164,6 +166,16 @@ function hideAllSubMenus(menu) {
       .closest(".about-us-item")
       .find(".about-content-body");
     aboutContent.toggleClass("active-about-content");
+    
+    var currentState = $(this).data("state");
+
+    if (currentState === "more") {
+      $(this).text("View less");
+      $(this).data("state", "less");
+    } else {
+      $(this).text("View more");
+      $(this).data("state", "more");
+    }
   });
 
   const firstParagraph = $("#firstChar").find("p").eq(0);
@@ -174,6 +186,23 @@ function hideAllSubMenus(menu) {
     .substring(1)}`;
 
   firstParagraph.html(wrappedContent);
+    
+  // fixed navbar
+   
+    var navWrapper = $(".single-tour-nav-wraper");
+    var navWrapperOffset = navWrapper.offset().top;
+    $(window).scroll(function () {
+      var body = $(".single-tour-body");
+      var stop =  body.offset().top;
+      var scrollTop = jQuery(this).scrollTop();
+      if (   scrollTop >= navWrapperOffset  ) {
+        jQuery(".single-tour-nav-wraper").addClass("navbar-fixed-top");
+      } 
+      if (scrollTop < stop) {
+        jQuery(".single-tour-nav-wraper").removeClass("navbar-fixed-top");
+      }
+    });
+    // fixed navbar
 })(jQuery);
 document.addEventListener("DOMContentLoaded", function () {
   const sliders = document.querySelectorAll(".tour_item-gallery");
@@ -254,4 +283,105 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
+
+
+
+
+  // tour detail slider
+  const slideContainer = document.querySelector('#post-slider');
+  const slide = document.querySelector('.slides');
+  const nextBtn = document.getElementById('next-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const interval = 3000;
+
+  let slides = document.querySelectorAll('.slide');
+  let index = 1;
+  let slideId;
+
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[slides.length - 1].cloneNode(true);
+
+  firstClone.id = 'first-clone';
+  lastClone.id = 'last-clone';
+
+  slide.append(firstClone);
+  slide.prepend(lastClone);
+
+  const slideWidth = slides[index].clientWidth;
+
+  slide.style.transform = `translateX(${-slideWidth * index}px)`;
+
+  var totalSlides = parseInt(document.getElementById('slide_total').textContent, 10);
+  function updateSlideStatus() {
+    const currentSlide = index === 0 ? slides.length - 2 : index;
+    const displayedSlide = currentSlide <= totalSlides ? currentSlide : 1;
+  document.getElementById('slide_status').textContent = displayedSlide.toString();
+  
+  }
+  
+
+  const startSlide = () => {
+      slideId = setInterval(() => {
+          // moveToNextSlide();
+      }, interval);
+
+      slides[0].classList.add('active');
+  };
+
+  const getSlides = () => document.querySelectorAll('.slide');
+
+  slide.addEventListener('transitionend', () => {
+      slides = getSlides();
+      if (slides[index].id === firstClone.id) {
+          slide.style.transition = 'none';
+          index = 1;
+          slide.style.transform = `translateX(${-slideWidth * index}px)`;
+      }
+
+      if (slides[index].id === lastClone.id) {
+          slide.style.transition = 'none';
+          index = slides.length - 2;
+          slide.style.transform = `translateX(${-slideWidth * index}px)`;
+      }
+  });
+
+  const moveToNextSlide = () => {
+      slides = getSlides();
+      if (index >= slides.length - 1) return;
+      slides[index].classList.remove('active');
+      index++;
+      slide.style.transition = '.7s ease-out';
+      slide.style.transform = `translateX(${-slideWidth * index}px)`;
+      // Add "active" class to the next slide
+      if (index < slides.length - 1) {
+          slides[index].classList.add('active');
+      }
+      updateSlideStatus();
+  };
+
+  const moveToPreviousSlide = () => {
+      if (index <= 0) return;
+      slides[index].classList.remove('active');
+      index--;
+      slide.style.transition = '.7s ease-out';
+      slide.style.transform = `translateX(${-slideWidth * index}px)`;
+      // Add "active" class to the next slide
+      if (index > 0) {
+          slides[index].classList.add('active');
+      }
+      updateSlideStatus(); 
+  };
+
+  // slideContainer.addEventListener('mouseenter', () => {
+  //     clearInterval(slideId);
+  // });
+
+  // slideContainer.addEventListener('mouseleave', startSlide);
+  nextBtn.addEventListener('click', moveToNextSlide);
+  prevBtn.addEventListener('click', moveToPreviousSlide);
+
+  window.onload = function () {
+   // updateTotalSlideStatus(); // Cập nhật tổng số slide ban đầu
+    startSlide(); // Bắt đầu chạy slide
+  };
 });

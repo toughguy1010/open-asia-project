@@ -140,6 +140,7 @@ if (count($tour_results) > 0 && $tour_results['total'] > 0) {
         $tour_item_args['item_class'] = BookYourTravel_Theme_Utils::get_item_class_by_row_posts($posts_per_row);
     }
     echo '<div class ="tour_grid-list" >';
+    // var_dump($tour_results['results']);
     foreach ($tour_results['results'] as $tour_result) {
         global $post;
         $post = $tour_result;

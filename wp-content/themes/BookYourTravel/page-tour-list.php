@@ -96,7 +96,18 @@ $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
 	if ($page_sidebar_positioning == 'both' || $page_sidebar_positioning == 'left')
 		get_sidebar('left');
 	?>
+
 	<section class="<?php echo esc_attr($section_class); ?>">
+		<div class="single-breadcrumbs">
+			<nav class="breadcrumbs nano-container">
+				<ul>
+					<li><a href="<?php echo home_url() ?>" title="Home">Home</a></li>
+					<span class="separator"> » </span>
+					<li><a href="<?php echo home_url() ?>/tours/?tour-type=<?= $tour_slug ?>" title="Cruises"><?= $tour_type->name ?></a></li>
+				</ul>
+			</nav>
+		</div>
+		
 		<?php while (have_posts()) : the_post(); ?>
 			<article <?php post_class(); ?> id="page-<?php the_ID(); ?>">
 				<div class="page-banner-wrap" style="background-image: url(<?php echo $thumbnail_url ?>);">
@@ -146,7 +157,7 @@ $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
 								</div>
 							</div>
 							<div class="step-plan-btn">
-								<a href="<?= home_url()?>/tailor-made-your-tour/">Start Designing You Trip Now</a>
+								<a href="<?= home_url() ?>/tailor-made-your-tour/">Start Designing You Trip Now</a>
 							</div>
 							<span style="text-align: center; display: block;">
 								Free service. No credit card required
@@ -197,24 +208,25 @@ $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
 		do_action('bookyourtravel_page_tour_list_before');
 		?>
 		<div class="page-tour-wrapper">
-		<div class="taxonomy-header">
-			<div class="taxonomy-name">
-				<?= $tour_type->name ?>
+			<div class="taxonomy-header">
+				<div class="taxonomy-name">
+					<?= $tour_type->name ?>
+				</div>
+				<div class="taxonomy-description">
+					<?= $tour_type->description ?>
+				</div>
 			</div>
-			<div class="taxonomy-description">
-				<?= $tour_type->description ?>
-			</div>
+			<?php
+			get_template_part('includes/parts/tour/tour', 'list');
+			?>
 		</div>
-		<?php
-		get_template_part('includes/parts/tour/tour', 'list');
-		?>
-		</div>
-		
+
 		<?php
 
 		do_action('bookyourtravel_page_tour_list_after');
 		?>
-		<?php //wp_link_pages('before=<div class="pagination">&after=</div>'); ?>
+		<?php //wp_link_pages('before=<div class="pagination">&after=</div>'); 
+		?>
 	</section>
 	<?php
 	wp_reset_postdata();

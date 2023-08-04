@@ -27,6 +27,8 @@ if (get_field('tour_price', get_the_ID())) {
 	}
 }
 $tour_type_id = $tour_obj->get_type_id();
+$tour_type = get_term_by('id', $tour_type_id, 'tour_type');
+$tour_slug = $tour_type->slug;
 
 
 if (get_field('tour_itinerary', get_the_ID())) {
@@ -58,69 +60,97 @@ echo $js_vars;
 
 ob_start();
 ?>
+<div class="single-breadcrumbs">
+	<nav class="breadcrumbs nano-container">
+		<ul>
+			<li><a href="<?php echo home_url() ?>" title="Home">Home</a></li>
+			<span class="separator"> » </span>
+			<li><a href="<?php echo home_url() ?>/tours/?tour-type=<?= $tour_slug ?>" title="Cruises">Tour</a></li>
+			<span class="separator"> » </span>
+			<li><?= $tour_title ?></li>
+		</ul>
+	</nav>
+</div>
 <div class="single-tour-header">
-	<div class="nano-container single-tour-container ">
-		<h1><?= $tour_title ?></h1>
-		<div class="single-tour-meta">
-			<?php
-			if ($tour_duration) {
-			?>
-				<div class="tour_item-duraiton tour_item-text">
-					<?php
-					foreach ($tour_duration as $duration) {
-					?>
-						<div class="item-duraiton">
-							<img src="<?php echo get_template_directory_uri() ?>/css/images/ico__clock.png" alt="">
-							<?= $duration->name  ?>
-						</div>
-					<?php
-					}
-					?>
-				</div>
-			<?php
-			}
-			if ($value_have_price == 'Yes') {
-				$static_price = $tour_price['static_price'];
-				$market_price = $tour_price['market_price'];
-				$save_price = $market_price - $static_price;
-			?>
-				<div class="tour_item-price">
-					<div class="static_price">
-						Deal: <strong>US$<?= $static_price ?></strong>
-					</div>
-					<div class="market_price">
-						Typically: <strong>US$<?= $market_price ?></strong>
-					</div>
-					<div class="save_price">
-						You save: <strong>US$<?= $save_price ?></strong>
-					</div>
-				</div>
-			<?php
-			}
-			if ($tour_tag) {
-			?>
-				<div class="tour_item-tags">
-					<?php
-					foreach ($tour_tag as $tag) {
-						$thumbnail_id = $bookyourtravel_theme_post_types->get_taxonomy_image_id($tag->term_id);
-						$thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
-					?>
-						<div class="item-tags">
-							<div class="tags-icon">
-								<img src="<?= $thumbnail_url ?>" alt="">
+	<div class="nano-container single-tour-container single-tour-header-wrap ">
+		<div class="single-tour-header-left">
+			<h1><?= $tour_title ?></h1>
+			<div class="single-tour-meta">
+				<?php
+				if ($tour_duration) {
+				?>
+					<div class="tour_item-duraiton tour_item-text">
+						<?php
+						foreach ($tour_duration as $duration) {
+						?>
+							<div class="item-duraiton">
+								<img src="<?php echo get_template_directory_uri() ?>/css/images/ico__clock.png" alt="">
+								<?= $duration->name  ?>
 							</div>
-							<div class="tag-name tour_item-text">
-								<?= $tag->name  ?>
-							</div>
+						<?php
+						}
+						?>
+					</div>
+				<?php
+				}
+				if ($value_have_price == 'Yes') {
+					$static_price = $tour_price['static_price'];
+					$market_price = $tour_price['market_price'];
+					$save_price = $market_price - $static_price;
+				?>
+					<div class="tour_item-price">
+						<div class="static_price">
+							Deal: <strong>US$<?= $static_price ?></strong>
 						</div>
-					<?php
-					}
-					?>
-				</div>
-			<?php
-			}
-			?>
+						<div class="market_price">
+							Typically: <strong>US$<?= $market_price ?></strong>
+						</div>
+						<div class="save_price">
+							You save: <strong>US$<?= $save_price ?></strong>
+						</div>
+					</div>
+				<?php
+				}
+				if ($tour_tag) {
+				?>
+					<div class="tour_item-tags">
+						<?php
+						foreach ($tour_tag as $tag) {
+							$thumbnail_id = $bookyourtravel_theme_post_types->get_taxonomy_image_id($tag->term_id);
+							$thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
+						?>
+							<div class="item-tags">
+								<div class="tags-icon">
+									<img src="<?= $thumbnail_url ?>" alt="">
+								</div>
+								<div class="tag-name tour_item-text">
+									<?= $tag->name  ?>
+								</div>
+							</div>
+						<?php
+						}
+						?>
+					</div>
+				<?php
+				}
+				?>
+			</div>
 		</div>
+		<div class="single-tour-header-right">
+			<div class="gallery-status-wrap">
+				<img src="<?php echo get_template_directory_uri() ?>/css/images/silde-icon.png" alt="">
+				<span id = "slide_status"> 1 </span>
+				/ 
+				<span id = "slide_total"> 
+					<?php 
+					$images = $entity_obj->get_images();
+					$total_img = count($images);
+					echo  $total_img;
+					?>
+				</span>
+			</div>
+		</div>
+
 	</div>
 </div>
 <?php
@@ -134,9 +164,6 @@ ob_start();
 <!-- slider -->
 <?php get_template_part('includes/parts/tour/single/slider') ?>
 <!-- slider -->
-
-
-
 <div class="single-tour-body">
 	<div class="single-tour-nav-wraper">
 		<div class="single-tour-nav-container nano-container">

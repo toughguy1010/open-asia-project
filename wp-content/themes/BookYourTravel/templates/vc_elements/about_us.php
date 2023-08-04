@@ -28,7 +28,7 @@ $about_us_content = vc_param_group_parse_atts($attr['about_us_content']);
                     <?php echo $content['body']; ?>
 
                 </div>
-                <div class="view-btn">
+                <div class="view-btn" data-state="more">
                     View more
                 </div>
             </div>
