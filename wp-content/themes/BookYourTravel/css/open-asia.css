@@ -3994,3 +3994,8 @@ width: 20px;
 .single-tour-header-right{
   align-self: center;
 }
+.footer-info h2{
+  font-size: 23px ;
+  color: #80b157;
+  text-transform: uppercase;
+}

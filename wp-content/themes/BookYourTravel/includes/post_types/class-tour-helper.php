@@ -2427,6 +2427,24 @@ class BookYourTravel_Tour_Helper extends BookYourTravel_BaseSingleton {
 
 			$args['byt_order'] = $order;
 		}
+		else if ($orderby == 'id') {
+			// Sắp xếp theo 'id' của tour duration.
+			
+			$args['orderby'] = 'tax_query';
+			$args['tax_query'][] = array(
+				'taxonomy' => 'tour_duration',
+				'field' => 'term_id', 
+				'terms' => $tour_durations_array,
+				'operator'=> 'IN',
+				'orderby' => 'term_id',// Sắp xếp theo 'id' của tour duration
+				'order' => $order // Thứ tự sắp xếp (ASC hoặc DESC)
+			);
+			// var_dump($args['tax_query']);
+			// die;
+		} else {
+			// Mặc định sắp xếp theo 'date' của tour.
+			$args['orderby'] = $orderby;
+		}
 
 		$guests = (isset($search_args['guests']) && isset($search_args['guests'])) ? intval($search_args['guests']) : 0;
 

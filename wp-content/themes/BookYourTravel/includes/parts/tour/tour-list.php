@@ -41,13 +41,8 @@ $tour_type_ids = isset($tour_list_args['tour_type_ids']) ? $tour_list_args['tour
 $tour_duration_ids = isset($tour_list_args['tour_duration_ids']) ? $tour_list_args['tour_duration_ids'] : array();
 $author_id = isset($tour_list_args["author_id"]) ? $tour_list_args["author_id"] : null;
 $tour_type_ids =  $tour_type_id;
-$posts_per_page = 3;
-if (isset($_GET['post_per_page'])) {
-    $posts_per_page = $_GET['post_per_page'];
-}
-if (isset($_GET['orderby'])) {
-    $sort_order = $_GET['orderby'];
-}
+
+
 if (isset($_GET['view'])) {
     $view = $_GET['view'];
     if($view == 'grid'){
@@ -62,8 +57,46 @@ if (isset($_GET['view'])) {
     }
 }
 
+$sort_by = 'duration';
+// lấy ra tất cả các tour
+$tour_results = $bookyourtravel_tour_helper->list_tours($paged, -1, $sort_by, $sort_order, array($parent_location_id), false, $tour_type_ids, $tour_duration_ids, $tour_tag_ids, array(), $show_featured_only, $author_id, $include_private);
+// số tour hiển thị trên 1 trang
+$current_page = max(1, $paged); // Đảm bảo số trang ít nhất là 1
+$posts_per_page = 3; // Cập nhật số tour hiển thị trên mỗi trang thành 3
+if (isset($_GET['post_per_page'])) {
+    $posts_per_page = $_GET['post_per_page'];
+}
+$start_index = ($current_page - 1) * $posts_per_page;
+$end_index = $start_index + $posts_per_page;
 
-$tour_results = $bookyourtravel_tour_helper->list_tours($paged, $posts_per_page, $sort_by, $sort_order, array($parent_location_id), false, $tour_type_ids, $tour_duration_ids, $tour_tag_ids, array(), $show_featured_only, $author_id, $include_private);
+// lấy ra từng duration của các tour hiện có và sắp xếp rồi cho vào 1 mảng mới
+$newArrayTour=[];
+foreach ($tour_results['results'] as $item){
+    if (is_object($item)) {
+        $item = (array) $item;
+    }
+ $duration =   wp_get_post_terms( $item['ID'], 'tour_duration', array( "fields" => "all" ) );
+ if(!isset($item['duration'])){
+    $item['duration']=$duration[0]->term_id??null;
+ }
+$newArrayTour[]=$item;
+}
+// sắp xếp mảng mới theo duration
+$duration = array_column($newArrayTour, 'duration');
+
+// Sắp xếp mảng $duration dựa trên mảng $newArrayTour
+if (isset($_GET['orderby']) && ($_GET['orderby'] == 'DESC')) {
+    array_multisort($duration, SORT_DESC, $newArrayTour);
+} else {
+    array_multisort($duration, SORT_ASC, $newArrayTour);
+}
+
+// gán mảng mới sắp xếp vào mảng tour
+$tour_results['results'] =json_decode(json_encode( $newArrayTour));
+// Lấy tập con của các tour để hiển thị trên trang hiện tại
+$tour_results_subset = array_slice($tour_results['results'], $start_index, $posts_per_page);
+
+
 $display_mode = strip_tags(isset($tour_list_args['display_mode']) ? $tour_list_args['display_mode'] : 'card');
 $found_post_content = isset($tour_list_args["found_post_content"]) ? $tour_list_args["found_post_content"] : false;
 if (count($tour_results) > 0 && $tour_results['total'] > 0) {
@@ -105,8 +138,8 @@ if (count($tour_results) > 0 && $tour_results['total'] > 0) {
                             <option value="Default_sorting" <?php if (isset($_GET['orderby']) && $_GET['orderby'] === 'Default_sorting') echo 'selected'; ?>>
                                 Default sorting
                             </option>
-                            <option value="ASC" <?php if (isset($_GET['orderby']) && $_GET['orderby'] === 'ASC') echo 'selected'; ?>>By ASC</option>
-                            <option value="DESC" <?php if (isset($_GET['orderby']) && $_GET['orderby'] === 'DESC') echo 'selected'; ?>>By DESC</option>
+                            <option value="ASC" <?php if (isset($_GET['orderby']) && $_GET['orderby'] === 'ASC') echo 'selected'; ?>>By duration ASC</option>
+                            <option value="DESC" <?php if (isset($_GET['orderby']) && $_GET['orderby'] === 'DESC') echo 'selected'; ?>>By duration DESC</option>
                         </select>
                     </div>
                     <span class="sep"></span>
@@ -140,8 +173,7 @@ if (count($tour_results) > 0 && $tour_results['total'] > 0) {
         $tour_item_args['item_class'] = BookYourTravel_Theme_Utils::get_item_class_by_row_posts($posts_per_row);
     }
     echo '<div class ="tour_grid-list" >';
-    // var_dump($tour_results['results']);
-    foreach ($tour_results['results'] as $tour_result) {
+    foreach ($tour_results_subset as $tour_result) {
         global $post;
         $post = $tour_result;
         setup_postdata($post);
@@ -149,6 +181,7 @@ if (count($tour_results) > 0 && $tour_results['total'] > 0) {
             $tour_item_args['tour_id'] = $post->ID;
             $tour_item_args['post'] = $post;
             if ($view !== 'grid') {
+
                 get_template_part('includes/parts/tour/tour', 'item-list');
             } else {
 
