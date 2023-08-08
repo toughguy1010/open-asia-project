@@ -14,6 +14,7 @@ if ($thumbnail_data) {
 $hidden_gem = get_field('hidden_gem', get_the_ID());
 $glance = get_field('glance', get_the_ID());
 $faq = get_field('faq', get_the_ID());
+$weather = get_field('weather',  get_the_ID());
 $location_description = $location_obj->get_short_description();
 set_query_var('location_description', $location_description);
 set_query_var('thumbnail_url', $thumbnail_url);
@@ -21,6 +22,8 @@ set_query_var('hidden_gem', $hidden_gem);
 set_query_var('glance', $glance);
 set_query_var('location_id', $location_id);
 set_query_var('faq', $faq);
+set_query_var('weather', $weather);
+
 // destination banner
 get_template_part('includes/parts/location/single-parent/destination_banner');
 // destination banner
@@ -37,6 +40,9 @@ get_template_part('includes/parts/location/single-parent/glance');
 
 // list child location
 get_template_part('includes/parts/location/single-parent/list');
+// list child location
+// list child location
+get_template_part('includes/parts/location/single-parent/weather');
 // list child location
 
 

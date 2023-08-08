@@ -117,7 +117,7 @@ if ($images && count($images) > 0) {
 }
 
 ?>
-<script>
+<!-- <script>
     const slideContainer = document.querySelector('#post-slider');
     const slide = document.querySelector('.slides');
     const nextBtn = document.getElementById('next-btn');
@@ -202,4 +202,4 @@ if ($images && count($images) > 0) {
     prevBtn.addEventListener('click', moveToPreviousSlide);
 
     startSlide();
-</script>
+</script> -->

@@ -1,31 +1,3 @@
-// const backButton = document.querySelector('.back-btn');
-// const subMenuStack = []; // Mảng để lưu trạng thái submenu
-
-// backButton.addEventListener('click', () => {
-//   if (subMenuStack.length > 0) {
-//     const currentSubMenu = subMenuStack.pop(); // Lấy submenu cuối cùng trong stack
-//     const activeSubMenu = document.querySelector('.active-sub-menu');
-//     if (activeSubMenu) {
-//       activeSubMenu.classList.remove('active-sub-menu'); // Loại bỏ lớp "active-sub-menu" khỏi submenu hiện tại
-//     }
-//     currentSubMenu.classList.add('active-sub-menu'); // Hiển thị submenu trước đó (submenu thứ nhất)
-//   }
-// });
-
-// const menuItems = document.querySelectorAll('.menu-item-has-children > a');
-
-// menuItems.forEach((menuItem) => {
-//   menuItem.addEventListener('click', (event) => {
-//     event.preventDefault();
-
-//     const submenu = menuItem.nextElementSibling;
-//     if (submenu) {
-//       submenu.classList.add('active-sub-menu'); // Hiển thị submenu khi click vào menu
-//       subMenuStack.push(submenu); // Thêm submenu vào stack
-//     }
-//   });
-// });
-
 // Lấy danh sách tất cả các item có sub-menu
 const itemsWithSubMenu = document.querySelectorAll(".menu-item-has-children");
 
@@ -76,26 +48,25 @@ function hideAllSubMenus(menu) {
   });
 }
 
+// Lấy tất cả các phần tử .mega-menu-item-has-children
+const menuItemHasChildrenList = document.querySelectorAll(
+  ".mega-menu-item-has-children"
+);
 
- // Lấy tất cả các phần tử .mega-menu-item-has-children
- const menuItemHasChildrenList = document.querySelectorAll('.mega-menu-item-has-children');
+// Lặp qua từng phần tử và thêm sự kiện hover bằng JavaScript
+menuItemHasChildrenList.forEach((menuItemHasChildren) => {
+  const subMenu = menuItemHasChildren.querySelector(".mega-sub-menu");
 
- // Lặp qua từng phần tử và thêm sự kiện hover bằng JavaScript
- menuItemHasChildrenList.forEach(menuItemHasChildren => {
-   const subMenu = menuItemHasChildren.querySelector('.mega-sub-menu');
+  menuItemHasChildren.addEventListener("mouseenter", () => {
+    subMenu.classList.add("active-mega-sub-menu");
+  });
 
-   menuItemHasChildren.addEventListener('mouseenter', () => {
-     subMenu.classList.add("active-mega-sub-menu")
-   });
-
-   menuItemHasChildren.addEventListener('mouseleave', () => {
-    subMenu.classList.remove("active-mega-sub-menu")
-   });
- });
+  menuItemHasChildren.addEventListener("mouseleave", () => {
+    subMenu.classList.remove("active-mega-sub-menu");
+  });
+});
 
 (function ($) {
-
- 
   $("#get-email").val("");
   $("#get-email").attr("placeholder", "Enter your email");
   $(".show-all-items").on("click", function () {
@@ -135,6 +106,15 @@ function hideAllSubMenus(menu) {
   $(".hidden_gem-action-btn").on("click", function () {
     var hiddenContent = $(".hidden_gem-bottom-paragraph");
     hiddenContent.slideToggle();
+    var currentState = $(this).data("sate");
+
+    if (currentState === "more") {
+      $(this).text("Show less");
+      $(this).data("sate", "less");
+    } else {
+      $(this).text("Show more");
+      $(this).data("sate", "more");
+    }
   });
 
   $(".header-mobile .hamburger-lines").click(function (e) {
@@ -166,7 +146,7 @@ function hideAllSubMenus(menu) {
       .closest(".about-us-item")
       .find(".about-content-body");
     aboutContent.toggleClass("active-about-content");
-    
+
     var currentState = $(this).data("state");
 
     if (currentState === "more") {
@@ -186,87 +166,96 @@ function hideAllSubMenus(menu) {
     .substring(1)}`;
 
   firstParagraph.html(wrappedContent);
-    
+ // slide gallery in tour list
+ const sliders = document.querySelectorAll(".tour_item-gallery");
+
+ sliders.forEach(function (slider) {
+   const sliderWrap = slider.querySelector("#post-gallery");
+   if (sliderWrap) {
+     const sliderDots = slider.querySelector("#slider-dots");
+     const prevButton = slider.querySelector(".slider-prev");
+     const nextButton = slider.querySelector(".slider-next");
+     const slides = slider.querySelectorAll(".gallery-item");
+     const slideWidth = slides[0].offsetWidth;
+     const itemCount = slides.length;
+
+     let currentIndex = 0;
+
+     if (currentIndex == 0) {
+       prevButton.style.display = "none";
+     }
+
+     function moveToSlide(index) {
+       if (index < 0 || index >= itemCount) {
+         return;
+       }
+
+       sliderWrap.style.transform = `translateX(-${index * slideWidth}px)`;
+       currentIndex = index;
+
+       if (currentIndex == 0) {
+         prevButton.style.display = "none";
+       } else {
+         prevButton.style.display = "block";
+       }
+
+       if (currentIndex == itemCount - 1) {
+         nextButton.style.display = "none";
+       } else {
+         nextButton.style.display = "block";
+       }
+
+       // Highlight active dot
+       const dots = sliderDots.querySelectorAll(".dot");
+       dots.forEach((dot) => dot.classList.remove("active-dot"));
+       dots[currentIndex].classList.add("active-dot");
+     }
+
+     prevButton.addEventListener("click", () => {
+       moveToSlide(currentIndex - 1);
+     });
+
+     nextButton.addEventListener("click", () => {
+       moveToSlide(currentIndex + 1);
+     });
+
+     // Move to slide when click on dot
+     const dots = sliderDots.querySelectorAll(".dot");
+     dots.forEach((dot) => {
+       dot.addEventListener("click", () => {
+         const index = parseInt(dot.getAttribute("data-index"));
+         moveToSlide(index);
+       });
+     });
+   }
+ });
+ // slide gallery in tour list
+
   // fixed navbar
-   
-    var navWrapper = $(".single-tour-nav-wraper");
-    var navWrapperOffset = navWrapper.offset().top;
-    $(window).scroll(function () {
-      var body = $(".single-tour-body");
-      var stop =  body.offset().top;
-      var scrollTop = jQuery(this).scrollTop();
-      if (   scrollTop >= navWrapperOffset  ) {
-        jQuery(".single-tour-nav-wraper").addClass("navbar-fixed-top");
-      } 
-      if (scrollTop < stop) {
-        jQuery(".single-tour-nav-wraper").removeClass("navbar-fixed-top");
-      }
-    });
-    // fixed navbar
-})(jQuery);
-document.addEventListener("DOMContentLoaded", function () {
-  const sliders = document.querySelectorAll(".tour_item-gallery");
 
-  sliders.forEach(function (slider) {
-    const sliderWrap = slider.querySelector("#post-gallery");
-    if (sliderWrap) {
-      const sliderDots = slider.querySelector("#slider-dots");
-      const prevButton = slider.querySelector(".slider-prev");
-      const nextButton = slider.querySelector(".slider-next");
-      const slides = slider.querySelectorAll(".gallery-item");
-      const slideWidth = slides[0].offsetWidth;
-      const itemCount = slides.length;
-
-      let currentIndex = 0;
-
-      if (currentIndex == 0) {
-        prevButton.style.display = "none";
-      }
-
-      function moveToSlide(index) {
-        if (index < 0 || index >= itemCount) {
-          return;
-        }
-
-        sliderWrap.style.transform = `translateX(-${index * slideWidth}px)`;
-        currentIndex = index;
-
-        if (currentIndex == 0) {
-          prevButton.style.display = "none";
-        } else {
-          prevButton.style.display = "block";
-        }
-
-        if (currentIndex == itemCount - 1) {
-          nextButton.style.display = "none";
-        } else {
-          nextButton.style.display = "block";
-        }
-
-        // Highlight active dot
-        const dots = sliderDots.querySelectorAll(".dot");
-        dots.forEach((dot) => dot.classList.remove("active-dot"));
-        dots[currentIndex].classList.add("active-dot");
-      }
-
-      prevButton.addEventListener("click", () => {
-        moveToSlide(currentIndex - 1);
-      });
-
-      nextButton.addEventListener("click", () => {
-        moveToSlide(currentIndex + 1);
-      });
-
-      // Move to slide when click on dot
-      const dots = sliderDots.querySelectorAll(".dot");
-      dots.forEach((dot) => {
-        dot.addEventListener("click", () => {
-          const index = parseInt(dot.getAttribute("data-index"));
-          moveToSlide(index);
-        });
-      });
+  var navWrapper = $(".single-tour-nav-wraper");
+  var navWrapperOffset = navWrapper.offset().top;
+  console.log(navWrapper)
+  $(window).scroll(function() {
+    var body = $(".single-tour-body");
+    var stop = body.offset().top;
+    console.log(stop)
+    var scrollTop = jQuery(this).scrollTop();
+    if (scrollTop >= navWrapperOffset) {
+      jQuery(".single-tour-nav-wraper").addClass("navbar-fixed-top");
+    }
+    if (scrollTop < stop) {
+      jQuery(".single-tour-nav-wraper").removeClass("navbar-fixed-top");
     }
   });
+  // fixed navbar
+
+   // fixed navbar (cruise)
+
+})(jQuery);
+ 
+document.addEventListener("DOMContentLoaded", function () {
+
 
   const activeMapBtns = document.querySelectorAll(".tour_item-location");
 
@@ -284,25 +273,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-
-
-
   // tour detail slider
-  const slideContainer = document.querySelector('#post-slider');
-  const slide = document.querySelector('.slides');
-  const nextBtn = document.getElementById('next-btn');
-  const prevBtn = document.getElementById('prev-btn');
+  const slideContainer = document.querySelector("#post-slider");
+  const slide = document.querySelector(".slides");
+  const nextBtn = document.getElementById("next-btn");
+  const prevBtn = document.getElementById("prev-btn");
   const interval = 3000;
 
-  let slides = document.querySelectorAll('.slide');
+  let slides = document.querySelectorAll(".slide");
   let index = 1;
   let slideId;
 
   const firstClone = slides[0].cloneNode(true);
   const lastClone = slides[slides.length - 1].cloneNode(true);
 
-  firstClone.id = 'first-clone';
-  lastClone.id = 'last-clone';
+  firstClone.id = "first-clone";
+  lastClone.id = "last-clone";
 
   slide.append(firstClone);
   slide.prepend(lastClone);
@@ -311,65 +297,67 @@ document.addEventListener("DOMContentLoaded", function () {
 
   slide.style.transform = `translateX(${-slideWidth * index}px)`;
 
-  var totalSlides = parseInt(document.getElementById('slide_total').textContent, 10);
+  var totalSlides = parseInt(
+    document.getElementById("slide_total").textContent,
+    10
+  );
   function updateSlideStatus() {
     const currentSlide = index === 0 ? slides.length - 2 : index;
     const displayedSlide = currentSlide <= totalSlides ? currentSlide : 1;
-  document.getElementById('slide_status').textContent = displayedSlide.toString();
-  
+    document.getElementById("slide_status").textContent =
+      displayedSlide.toString();
   }
-  
 
   const startSlide = () => {
-      slideId = setInterval(() => {
-          // moveToNextSlide();
-      }, interval);
+    slideId = setInterval(() => {
+      // moveToNextSlide();
+    }, interval);
 
-      slides[0].classList.add('active');
+    slides[0].classList.add("active");
   };
 
-  const getSlides = () => document.querySelectorAll('.slide');
+  const getSlides = () => document.querySelectorAll(".slide");
 
-  slide.addEventListener('transitionend', () => {
-      slides = getSlides();
-      if (slides[index].id === firstClone.id) {
-          slide.style.transition = 'none';
-          index = 1;
-          slide.style.transform = `translateX(${-slideWidth * index}px)`;
-      }
+  slide.addEventListener("transitionend", () => {
+    slides = getSlides();
+    if (slides[index].id === firstClone.id) {
+      slide.style.transition = "none";
+      index = 1;
+      slide.style.transform = `translateX(${-slideWidth * index}px)`;
+    }
 
-      if (slides[index].id === lastClone.id) {
-          slide.style.transition = 'none';
-          index = slides.length - 2;
-          slide.style.transform = `translateX(${-slideWidth * index}px)`;
-      }
+    if (slides[index].id === lastClone.id) {
+      slide.style.transition = "none";
+      index = slides.length - 2;
+      slide.style.transform = `translateX(${-slideWidth * index}px)`;
+    }
   });
 
   const moveToNextSlide = () => {
-      slides = getSlides();
-      if (index >= slides.length - 1) return;
-      slides[index].classList.remove('active');
-      index++;
-      slide.style.transition = '.7s ease-out';
-      slide.style.transform = `translateX(${-slideWidth * index}px)`;
-      // Add "active" class to the next slide
-      if (index < slides.length - 1) {
-          slides[index].classList.add('active');
-      }
-      updateSlideStatus();
+    slides = getSlides();
+    if (index >= slides.length - 1) return;
+    slides[index].classList.remove("active");
+    index++;
+    slide.style.transition = ".7s ease-out";
+    slide.style.transform = `translateX(${-slideWidth * index}px)`;
+    // Add "active" class to the next slide
+    if (index < slides.length - 1) {
+      slides[index].classList.add("active");
+    }
+    updateSlideStatus();
   };
 
   const moveToPreviousSlide = () => {
-      if (index <= 0) return;
-      slides[index].classList.remove('active');
-      index--;
-      slide.style.transition = '.7s ease-out';
-      slide.style.transform = `translateX(${-slideWidth * index}px)`;
-      // Add "active" class to the next slide
-      if (index > 0) {
-          slides[index].classList.add('active');
-      }
-      updateSlideStatus(); 
+    if (index <= 0) return;
+    slides[index].classList.remove("active");
+    index--;
+    slide.style.transition = ".7s ease-out";
+    slide.style.transform = `translateX(${-slideWidth * index}px)`;
+    // Add "active" class to the next slide
+    if (index > 0) {
+      slides[index].classList.add("active");
+    }
+    updateSlideStatus();
   };
 
   // slideContainer.addEventListener('mouseenter', () => {
@@ -377,11 +365,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // });
 
   // slideContainer.addEventListener('mouseleave', startSlide);
-  nextBtn.addEventListener('click', moveToNextSlide);
-  prevBtn.addEventListener('click', moveToPreviousSlide);
+  nextBtn.addEventListener("click", moveToNextSlide);
+  prevBtn.addEventListener("click", moveToPreviousSlide);
 
   window.onload = function () {
-   // updateTotalSlideStatus(); // Cập nhật tổng số slide ban đầu
+    // updateTotalSlideStatus(); // Cập nhật tổng số slide ban đầu
     startSlide(); // Bắt đầu chạy slide
   };
 });
+
+
+(function($) {
+
+})(jQuery);

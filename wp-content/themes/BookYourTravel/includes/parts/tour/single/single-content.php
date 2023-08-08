@@ -139,10 +139,10 @@ ob_start();
 		<div class="single-tour-header-right">
 			<div class="gallery-status-wrap">
 				<img src="<?php echo get_template_directory_uri() ?>/css/images/silde-icon.png" alt="">
-				<span id = "slide_status"> 1 </span>
-				/ 
-				<span id = "slide_total"> 
-					<?php 
+				<span id="slide_status"> 1 </span>
+				/
+				<span id="slide_total">
+					<?php
 					$images = $entity_obj->get_images();
 					$total_img = count($images);
 					echo  $total_img;
@@ -223,3 +223,9 @@ ob_start();
 
 
 </div>
+<?php 
+
+?>
+<script>
+
+</script>

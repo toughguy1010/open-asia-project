@@ -10,7 +10,7 @@ if ($hidden_gem) {
                     <div id="firstChar" class="hidden_gem-top-paragraph ">
                         <?= $hidden_gem['show_paragraphs'] ?>
                     </div>
-                    <div class="hidden_gem-action-btn">
+                    <div data-sate = "more" class="hidden_gem-action-btn">
                         Show more
                     </div>
                     <div class="hidden_gem-bottom-paragraph">

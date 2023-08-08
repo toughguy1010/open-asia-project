@@ -42,49 +42,66 @@ $cruise_slug = $cruise_type->slug;
 </div>
 
 <div class="single-tour-header">
-	<div class="nano-container single-tour-container ">
-		<h1><?= $cruise_title ?></h1>
-		<div class="single-tour-meta">
-			<?php
-			if ($cruise_duration) {
-			?>
-				<div class="tour_item-duraiton tour_item-text">
-					<?php
-					foreach ($cruise_duration as $cruise_duration) {
-					?>
-						<div class="item-duraiton">
-							<img src="<?php echo get_template_directory_uri() ?>/css/images/ico__clock.png" alt="">
-							<?= $cruise_duration->name  ?>
-						</div>
-					<?php
-					}
-					?>
-				</div>
-			<?php
-			}
-			if ($cruise_facilities) {
-			?>
-				<div class="tour_item-tags">
-					<?php
-					foreach ($cruise_facilities as $facilities) {
-						$id = $facilities->term_id;
-						$icon = get_field('icon', 'term_' . $id);
-
-					?>
-						<div class="item-tags facilities-tags ">
-							<img width="27" src="<?= $icon ?>" alt="">
-							<div class="tag-name tour_item-text">
-								<?= $facilities->name  ?>
+	<div class="nano-container single-tour-container single-tour-header-wrap ">
+		<div class="single-tour-header-left">
+			<h1><?= $cruise_title ?></h1>
+			<div class="single-tour-meta">
+				<?php
+				if ($cruise_duration) {
+				?>
+					<div class="tour_item-duraiton tour_item-text">
+						<?php
+						foreach ($cruise_duration as $cruise_duration) {
+						?>
+							<div class="item-duraiton">
+								<img src="<?php echo get_template_directory_uri() ?>/css/images/ico__clock.png" alt="">
+								<?= $cruise_duration->name  ?>
 							</div>
-						</div>
-					<?php
-					}
-					?>
-				</div>
-			<?php
-			}
-			?>
+						<?php
+						}
+						?>
+					</div>
+				<?php
+				}
+				if ($cruise_facilities) {
+				?>
+					<div class="tour_item-tags">
+						<?php
+						foreach ($cruise_facilities as $facilities) {
+							$id = $facilities->term_id;
+							$icon = get_field('icon', 'term_' . $id);
+
+						?>
+							<div class="item-tags facilities-tags ">
+								<img width="27" src="<?= $icon ?>" alt="">
+								<div class="tag-name tour_item-text">
+									<?= $facilities->name  ?>
+								</div>
+							</div>
+						<?php
+						}
+						?>
+					</div>
+				<?php
+				}
+				?>
+			</div>
 		</div>
+		<div class="single-tour-header-right">
+			<div class="gallery-status-wrap">
+				<img src="<?php echo get_template_directory_uri() ?>/css/images/silde-icon.png" alt="">
+				<span id="slide_status"> 1 </span>
+				/
+				<span id="slide_total">
+					<?php
+					$images = $entity_obj->get_images();
+					$total_img = count($images);
+					echo  $total_img;
+					?>
+				</span>
+			</div>
+		</div>
+
 	</div>
 </div>
 
@@ -98,19 +115,20 @@ $cruise_slug = $cruise_type->slug;
 // 	get_template_part('includes/parts/post/single/post', 'image');
 // }
 
-// ?>
+// 
+?>
 <!-- slider -->
 <?php get_template_part('includes/parts/cruise/single/slider') ?>
 <!-- slider -->
-<div class="single-tour-body">
-	<div class="single-tour-nav-wraper">
-		
+<div class="single-tour-body single-cruise-body">
+	<div class="single-tour-nav-wraper single-cruise-nav-wraper">
+
 		<div class="single-tour-nav-container nano-container">
-		<div class="hamburger-lines">
-			<span class="line line1"></span>
-			<span class="line line2"></span>
-			<span class="line line3"></span>
-		</div>
+			<div class="hamburger-lines">
+				<span class="line line1"></span>
+				<span class="line line2"></span>
+				<span class="line line3"></span>
+			</div>
 			<ul class="nav-tour-list">
 				<li class="nav-tour-item">
 					<a href="#tour-overview">Overview</a>
@@ -161,3 +179,24 @@ $cruise_slug = $cruise_type->slug;
 
 
 </div>
+<script>
+	// fixed navbar
+	// var navWrapper = document.querySelector(".single-cruise-nav-wraper");
+	// var navWrapperOffset = navWrapper.offsetTop;
+	// window.addEventListener("scroll", function() {
+	// 	var body = document.querySelector(".single-cruise-body");
+	// 	var stop = body.offsetTop;
+	// 	var scrollTop = window.scrollY || window.pageYOffset;
+	// 	console.log(body)
+	// 	if (scrollTop >= navWrapperOffset) {
+	// 		console.log(navWrapperOffset)
+	// 		navWrapper.classList.add("navbar-fixed-top");
+	// 	}
+	// 	if (scrollTop < stop) {
+	// 		navWrapper.classList.remove("navbar-fixed-top");
+	// 	}
+	// });
+
+
+	// fixed navbar
+</script>

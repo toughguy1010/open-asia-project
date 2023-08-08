@@ -123,7 +123,7 @@
   .single-tour-nav-container .hamburger-lines {
     display: flex !important;
   }
-  .useful-information-action{
+  .useful-information-action {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -169,10 +169,10 @@
   #get-infomation,
   .nano-container,
   .list-quote {
-    width: unset ;
+    width: unset;
     margin: 0 3%;
   }
- 
+
   .tour_item-gallery ul li {
     height: unset;
   }
@@ -333,16 +333,32 @@
     > li.mega-menu-megamenu.mega-menu-item {
     padding: 0px !important;
   }
-  #mega-menu-wrap-primary-menu #mega-menu-primary-menu li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-3-of-12{
+  #mega-menu-wrap-primary-menu
+    #mega-menu-primary-menu
+    li.mega-menu-megamenu
+    > ul.mega-sub-menu
+    > li.mega-menu-row
+    > ul.mega-sub-menu
+    > li.mega-menu-columns-3-of-12 {
     width: 100%;
   }
-  #mega-menu-wrap-primary-menu #mega-menu-primary-menu li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-8-of-12{
+  #mega-menu-wrap-primary-menu
+    #mega-menu-primary-menu
+    li.mega-menu-megamenu
+    > ul.mega-sub-menu
+    > li.mega-menu-row
+    > ul.mega-sub-menu
+    > li.mega-menu-columns-8-of-12 {
     width: 100%;
-
   }
-  #mega-menu-wrap-primary-menu #mega-menu-primary-menu li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-4-of-12{
+  #mega-menu-wrap-primary-menu
+    #mega-menu-primary-menu
+    li.mega-menu-megamenu
+    > ul.mega-sub-menu
+    > li.mega-menu-row
+    > ul.mega-sub-menu
+    > li.mega-menu-columns-4-of-12 {
     width: 100%;
-
   }
   #mega-menu-wrap-primary-menu
     #mega-menu-primary-menu
@@ -530,6 +546,27 @@
   }
 }
 @media screen and (max-width: 860px) {
+  .table-dark-green {
+    font-size: 12px !important;
+  }
+  .weather-wrapper table th span {
+    font-size: 1em;
+    font-weight: 500;
+    display: block;
+  }
+  .weather-wrapper table th {
+    font-size: 12px !important;
+  }
+  .weather-wrapper table td {
+    border: 1px solid #ddd !important;
+    text-align: center;
+    padding: 0px;
+    vertical-align: middle;
+  }
+  .weather-status-icon {
+    width: 20px;
+    height: 20px;
+  }
   #mega-menu-wrap-primary-menu .cruise_type-wrapper {
     margin-right: 30px;
   }
@@ -718,33 +755,101 @@
     width: 100%;
   }
 }
+@media screen and (max-width: 750px) {
+  .weather-wrapper table,
+  .weather-wrapper tbody,
+  .weather-wrapper td,
+  .weather-wrapper th,
+  .weather-wrapper thead,
+  .weather-wrapper tr {
+    display: block;
+  }
+  .weather-description p {
+    font-size: 16px;
+  }
+  .weather-bottom-item {
+    text-align: center;
+    flex: 0 0 31%;
+  }
+  .weather-wrapper table th {
+    font-size: 14px !important;
+  }
+  .cf {
+    display: none !important;
+  }
+  .weather-wrapper td {
+    position: relative;
+    padding-left: 50% !important;
+    white-space: normal;
+    text-align: left;
+  }
+  .table-dark-green {
+    position: relative;
+    padding-left: 50% !important;
+    white-space: normal;
+    text-align: left;
+  }
+  .table-dark-green::before {
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: 500;
+    content: attr(data-title);
+    color: #fff;
+    top: auto;
+  }
+  .weather-wrapper td::before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: 500;
+    content: attr(data-title);
+  }
+  .table-dark-green {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 600px) {
   .single-tour-header-wrap {
     flex-direction: column;
     gap: 20px;
-}
-.single-tour-header-right {
-  align-self: end;
-}
-  .rotate_banner_wrap{
+  }
+  .single-tour-header-right {
+    align-self: end;
+  }
+  .rotate_banner_wrap {
     min-height: 630.594px;
   }
-  .rotate_banner h2{
+  .rotate_banner h2 {
     font-size: 30px;
     text-align: center;
   }
-  .search-input{
+  .search-input {
     font-size: 12px;
   }
-  .glance-item{
+  .glance-item {
     margin-bottom: 20px;
   }
   .glance-list {
     padding: 45px 30px;
-}
-  #mega-menu-wrap-primary-menu #mega-menu-primary-menu li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row .mega-menu-column > ul.mega-sub-menu > li.mega-menu-item {
+  }
+  #mega-menu-wrap-primary-menu
+    #mega-menu-primary-menu
+    li.mega-menu-megamenu
+    > ul.mega-sub-menu
+    > li.mega-menu-row
+    .mega-menu-column
+    > ul.mega-sub-menu
+    > li.mega-menu-item {
     padding: 15px 15px 15px 0px;
-}
+  }
   #mega-menu-wrap-primary-menu #mega-menu-primary-menu p {
     font-size: 12px;
   }
@@ -769,7 +874,7 @@
   .tour_item-text {
     font-size: 14px;
   }
-  .itinerary-img{
+  .itinerary-img {
     width: 100%;
   }
   .single-tour-meta .tour_item-duraiton {
@@ -784,11 +889,13 @@
   .cruise_port-row {
     flex-direction: column;
   }
-  .single-tour-container h1 , .tour-overview-wrap h1 , .customizable_itinerary-title h1 {
+  .single-tour-container h1,
+  .tour-overview-wrap h1,
+  .customizable_itinerary-title h1 {
     font-size: 24px;
     line-height: 24px;
   }
-  .customizable_itinerary-title h1{
+  .customizable_itinerary-title h1 {
     margin-bottom: 10px !important;
   }
   .single-tour-meta {
@@ -954,6 +1061,11 @@
     font-size: 16px;
     line-height: 26px;
   }
+  .weather-description p {
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 30px !important;
+  }
   #list-child-location h2,
   #relate_tour h2,
   .faq_wrapper h2,
@@ -962,7 +1074,8 @@
   .introduction-left h2,
   #places_of_interest h2,
   .travel_guide-wrap h2,
-  .glance-wraper h2 {
+  .glance-wraper h2,
+  .top-weather h2 {
     font-size: 40px !important;
     margin-bottom: 10px;
   }
@@ -1132,74 +1245,128 @@
     gap: 20px;
     align-items: center;
     text-align: center;
+    height: 300px !important;
+    overflow-y: auto;
   }
   .travel-style {
     border-left: unset;
     padding-left: 0 !important;
   }
+  .destination-title,
+  .travel-style-title {
+    font-size: 18px;
+    line-height: 23px;
+    margin-bottom: 10px;
+  }
+  .destination-item a,
+  .travel-style-list a {
+    font-size: 14px;
+    line-height: 25px;
+  }
 }
 @media screen and (max-width: 500px) {
-  #booking-guid-content{
-    margin: 30px 3% !important;
+  .location-body,
+  .wrap-post-list,
+  #get-infomation,
+  .nano-container,
+  .list-quote,
+  #footer-wrap {
+    width: unset;
+    margin: 0 20px;
   }
-  #booking-guid-content .vc_column_container>.vc_column-inner{
+  .page-tour-wrapper {
+    width: unset;
+    margin: 35px 20px;
+  }
+  .wrap {
+    max-width: 90%;
+  }
+  .easy_steps_container,
+  .location-header {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #get-infomation .vc_row-fluid {
+    padding: 10px;
+  }
+  .reviews-wrap .reviews {
+    padding: 60px 20px;
+  }
+  .vc_column_container > .vc_column-inner {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  #booking-guid-content {
+    margin: 30px 20px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  #booking-guid-content .vc_column_container > .vc_column-inner {
     padding: 0 !important;
   }
-  .trip-option-wrapper{
+  .trip-option-wrapper {
     align-items: end;
   }
-  .trip-content{
-    margin-top: 90px;
+  .trip-content {
+    /* margin-top: 90px; */
   }
-  .trip-option-btn a{
+  .trip-option-btn a {
     font-size: 14px;
     margin-top: 20px;
   }
-  .rotate_banner_wrap{
+  .rotate_banner_wrap {
     margin: 30px auto;
   }
-  .responsible-title h2{
+  .responsible-title h2 {
     font-size: 24px;
   }
-  .responsible-text{
+  .responsible-text {
     font-size: 14px;
     line-height: 24px;
   }
-  .post-bg-title{
+  .post-bg-title {
     font-size: 24px;
   }
   .post-bg-description {
     font-size: 14px;
     text-align: center;
     padding: 0 20px;
-}
-  #useful_information{
-    padding: 30px 15px !important;
   }
-  #useful_information ul li ,#useful_information p {
+  #useful_information {
+    padding: 30px 0px !important;
+  }
+
+  #useful_information ul li,
+  #useful_information p {
     font-size: 14px;
   }
-  .customizable_itinerary-left{
+  .customizable_itinerary-left {
     padding-right: 0px;
+    padding-left: 0px;
   }
-  #post-slider{
+  .customizable_itinerary-right {
+    padding-left: 0px;
+  }
+  #post-slider {
     height: 200px;
   }
-  .location-item img{
+  .location-item img {
     height: 300px;
   }
-  .location-title-item h2{
+  .location-title-item h2 {
     font-size: 18px;
     line-height: 20px;
   }
   .location-item-content {
     font-size: 14px;
     margin-bottom: 15px;
-}
-.location-btn a {
-  font-size: 14px;
-  padding: 8px 15px !important;
-}
+  }
+  .location-btn a {
+    font-size: 14px;
+    padding: 8px 15px !important;
+  }
   .breadcrumbs li {
     font-size: 10px;
   }
@@ -1268,20 +1435,24 @@
     height: 20px;
     width: 25px;
   }
-  .page-banner-container .page-banner-title{
+  .page-banner-container .page-banner-title {
     font-size: 24px;
     line-height: 37px;
   }
   .taxonomy-name {
     line-height: 37px;
     font-size: 20px;
-}
-  #hero_wrapper ,#cruise_type-banner, #destination_banner , .page-banner-wrap ,.trip-option-wrapper {
+  }
+  #hero_wrapper,
+  #cruise_type-banner,
+  #destination_banner,
+  .page-banner-wrap,
+  .trip-option-wrapper {
     min-height: 375px !important;
     height: 375px !important;
   }
   .search-title {
-    font-size: 26px;
+    font-size: 24px;
     line-height: 30px;
   }
   .search_span {
@@ -1295,7 +1466,7 @@
     width: 14%;
     margin: 0 1%;
   }
-  .member-item img{
+  .member-item img {
     height: 100%;
   }
   .quote-item-content:hover .quote-desc {
@@ -1390,7 +1561,7 @@
     height: 500px;
   }
   #tailor-made-body {
-    margin: 40px 3%;
+    margin: 40px 20px;
     padding: 0 !important;
   }
   .introduction-content {
@@ -1444,9 +1615,38 @@
   }
   .visa-content-wrap {
     width: unset;
-    margin: 40px 5%;
+    margin: 40px 20px;
   }
-
+  #abous-us-body{
+    margin: 30px 20px !important;
+    padding: 0 !important;
+  }
+  .rotate_banner_wrap {
+    margin: 30px 20px !important;
+    width: unset;
+}
+.rotate_text_fields h2 {
+  font-size: 30px;
+}
+.about-content{
+  padding: 0;
+}
+.about-content-title {
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 700;
+  text-transform: unset;
+  border-bottom: 1px solid #80b157;
+  padding-bottom: 5px;
+  overflow:unset;
+  display:unset;
+  -webkit-line-clamp:unset;
+  line-clamp: unset;
+  -webkit-box-orient: unset;
+}
+.about-content-body {
+  font-size: 14px;
+}
   .visa-content-description {
     text-align: center;
     font-size: 13px;
@@ -1511,7 +1711,7 @@
   .glance-item {
     flex: 0 0 100%;
   }
-  #post-706 #get-infomation{
+  #post-706 #get-infomation {
     width: unset !important;
   }
 }

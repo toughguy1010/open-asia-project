@@ -108,7 +108,7 @@ if (get_field('order_location', get_the_ID())) {
 
         <div class="tour_item-action">
             <div class="tour_item-btn">
-                <a href="<?php echo home_url() ?>/tailor-made-your-tour/" class="gray-btn">Easy Quote</a>
+                <a href="<?php echo home_url() ?>/tailor-made-your-tour/" class="gray-btn">Request a quote</a>
             </div>
             <div class="tour_item-btn">
                 <a href="<?php echo $tour_permalink ?>">More Details</a>
