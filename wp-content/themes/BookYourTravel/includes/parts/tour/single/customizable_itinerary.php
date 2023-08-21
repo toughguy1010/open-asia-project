@@ -15,8 +15,8 @@ if ($customizable_itinerary = get_field('customizable_itinerary', get_the_ID()))
                         <h1>
                             Customizable itinerary
                         </h1>
-                        <div class="toggle-conetent">
-                            <div class="toggle-text">
+                        <div class="toggle-conetent toggle-desktop">
+                            <div data-state = "all" class="toggle-text">
                                 Show all info
                             </div>
                             <div class="toggle-icon ">
@@ -39,6 +39,26 @@ if ($customizable_itinerary = get_field('customizable_itinerary', get_the_ID()))
                     <div class="customizable_itinerary-description">
                         <?php echo $tour_description  ?>
                     </div>
+                    <div class="toggle-conetent toggle-mobile ">
+                            <div data-state = "all" class="toggle-text">
+                                Show all info
+                            </div>
+                            <div class="toggle-icon ">
+                                <div class="circle-plus closed show-all-items">
+                                    <div class="circle">
+                                        <div class="horizontal"></div>
+                                        <div class="vertical"></div>
+                                    </div>
+                                </div>
+                                <div class="circle-plus-two closed show-all-items">
+                                    <div class="circle">
+                                        <div class="horizontal"></div>
+                                        <div class="vertical"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                 </div>
                 <div class="customizable_itinerary-body">
                     <div class="customizable_itinerary-list">

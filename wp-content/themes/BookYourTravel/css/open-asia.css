@@ -2001,11 +2001,20 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   width: 15px;
   height: 15px;
 }
+.tour_item-location-icon{
+  flex: 0 0 26px;
+}
 .item-duraiton,
 .item-tags {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+.tour_grid-top .item-duraiton{
+  font-size: 22px;
+}
+.tour_grid-top .tour_location-sequence{
+font-size: 16px;
 }
 .tour_item-gallery #post-gallery {
   display: flex;
@@ -4072,6 +4081,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .weather-wrapper table td {
   border: 1px solid #ddd !important;
   text-align: center;
+      vertical-align: middle;
 }
 .table-dark-green {
   width: 200px;

@@ -16,7 +16,7 @@ if ($customizable_itinerary = get_field('customizable_itinerary', get_the_ID()))
                             Customizable itinerary
                         </h1>
                         <div class="toggle-conetent">
-                            <div class="toggle-text">
+                            <div data-state = "all" class="toggle-text">
                                 Show all info
                             </div>
                             <div class="toggle-icon ">

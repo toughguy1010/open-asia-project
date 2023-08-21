@@ -69,14 +69,24 @@ menuItemHasChildrenList.forEach((menuItemHasChildren) => {
 (function ($) {
   $("#get-email").val("");
   $("#get-email").attr("placeholder", "Enter your email");
+
+  // Customizable itinerary toggle
   $(".show-all-items").on("click", function () {
     $(".body-itinerary-item").slideToggle();
+    var currentState = $(".toggle-text").data("state");
+    $(".customizable_itinerary-item .circle-plus").toggleClass("opened")
+    if (currentState === "all") {
+      $(".toggle-text").text("Show less info");
+      $(".toggle-text").data("state", "less");
+    } else {
+      $(".toggle-text").text("Show all info");
+      $(".toggle-text").data("state", "all");
+    }
   });
   $(".circle-plus").on("click", function () {
     var parentItem = $(this).closest(".customizable_itinerary-item");
     var bodyItem = parentItem.find(".body-itinerary-item");
     $(this).toggleClass("opened");
-    // bodyItem.toggleClass("active-customizable_itinerary");
     bodyItem.slideToggle();
   });
 
@@ -166,80 +176,114 @@ menuItemHasChildrenList.forEach((menuItemHasChildren) => {
     .substring(1)}`;
 
   firstParagraph.html(wrappedContent);
- // slide gallery in tour list
- const sliders = document.querySelectorAll(".tour_item-gallery");
+  // slide gallery in tour list
+  const sliders = document.querySelectorAll(".tour_item-gallery");
 
- sliders.forEach(function (slider) {
-   const sliderWrap = slider.querySelector("#post-gallery");
-   if (sliderWrap) {
-     const sliderDots = slider.querySelector("#slider-dots");
-     const prevButton = slider.querySelector(".slider-prev");
-     const nextButton = slider.querySelector(".slider-next");
-     const slides = slider.querySelectorAll(".gallery-item");
-     const slideWidth = slides[0].offsetWidth;
-     const itemCount = slides.length;
+  sliders.forEach(function (slider) {
+    const sliderWrap = slider.querySelector("#post-gallery");
+    if (sliderWrap) {
+      const sliderDots = slider.querySelector("#slider-dots");
+      const prevButton = slider.querySelector(".slider-prev");
+      const nextButton = slider.querySelector(".slider-next");
+      const slides = slider.querySelectorAll(".gallery-item");
+      const slideWidth = slides[0].offsetWidth;
+      const itemCount = slides.length;
 
-     let currentIndex = 0;
+      let currentIndex = 0;
 
-     if (currentIndex == 0) {
-       prevButton.style.display = "none";
-     }
+      if (currentIndex == 0) {
+        prevButton.style.display = "none";
+      }
 
-     function moveToSlide(index) {
-       if (index < 0 || index >= itemCount) {
-         return;
-       }
+      function moveToSlide(index) {
+        if (index < 0 || index >= itemCount) {
+          return;
+        }
 
-       sliderWrap.style.transform = `translateX(-${index * slideWidth}px)`;
-       currentIndex = index;
+        sliderWrap.style.transform = `translateX(-${index * slideWidth}px)`;
+        currentIndex = index;
 
-       if (currentIndex == 0) {
-         prevButton.style.display = "none";
-       } else {
-         prevButton.style.display = "block";
-       }
+        if (currentIndex == 0) {
+          prevButton.style.display = "none";
+        } else {
+          prevButton.style.display = "block";
+        }
 
-       if (currentIndex == itemCount - 1) {
-         nextButton.style.display = "none";
-       } else {
-         nextButton.style.display = "block";
-       }
+        if (currentIndex == itemCount - 1) {
+          nextButton.style.display = "none";
+        } else {
+          nextButton.style.display = "block";
+        }
 
-       // Highlight active dot
-       const dots = sliderDots.querySelectorAll(".dot");
-       dots.forEach((dot) => dot.classList.remove("active-dot"));
-       dots[currentIndex].classList.add("active-dot");
-     }
+        // Highlight active dot
+        const dots = sliderDots.querySelectorAll(".dot");
+        dots.forEach((dot) => dot.classList.remove("active-dot"));
+        dots[currentIndex].classList.add("active-dot");
+      }
 
-     prevButton.addEventListener("click", () => {
-       moveToSlide(currentIndex - 1);
-     });
+      prevButton.addEventListener("click", () => {
+        moveToSlide(currentIndex - 1);
+      });
 
-     nextButton.addEventListener("click", () => {
-       moveToSlide(currentIndex + 1);
-     });
+      nextButton.addEventListener("click", () => {
+        moveToSlide(currentIndex + 1);
+      });
 
-     // Move to slide when click on dot
-     const dots = sliderDots.querySelectorAll(".dot");
-     dots.forEach((dot) => {
-       dot.addEventListener("click", () => {
-         const index = parseInt(dot.getAttribute("data-index"));
-         moveToSlide(index);
-       });
-     });
-   }
- });
- // slide gallery in tour list
+      // Drag and drop functionality
+      let minDragDistance = 50
+      let pointerStartX = 0;
+      let startEventName, moveEventName, endEventName;
+      // Xác định sự kiện bắt đầu, di chuyển và kết thúc dựa trên thiết bị
+    if ("ontouchstart" in window) {
+      startEventName = "touchstart";
+      moveEventName = "touchmove";
+      endEventName = "touchend";
+    } else {
+      startEventName = "pointerdown";
+      moveEventName = "pointermove";
+      endEventName = "pointerup";
+    }
+
+      slides.forEach((slide, index) => {
+        slide.addEventListener(startEventName, (e) => {
+          pointerStartX = e.clientX || e.touches[0].clientX; // Sử dụng touches nếu là cảm ứng
+        });
+
+        slide.addEventListener(moveEventName, (e) => {
+          e.preventDefault();
+        });
+
+        slide.addEventListener(endEventName, (e) => {
+          const pointerEndX = e.clientX || e.changedTouches[0].clientX; // Sử dụng changedTouches nếu là cảm ứng
+          const pointerDistance = pointerEndX - pointerStartX;
+
+          if (pointerDistance > minDragDistance) {
+            moveToSlide(index - 1); // Kéo sang trái, chuyển slide trước đó
+          } else if (pointerDistance < -minDragDistance) {
+            moveToSlide(index + 1); // Kéo sang phải, chuyển slide kế tiếp
+          }
+        });
+      });
+
+      // Move to slide when click on dot
+      const dots = sliderDots.querySelectorAll(".dot");
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const index = parseInt(dot.getAttribute("data-index"));
+          moveToSlide(index);
+        });
+      });
+    }
+  });
+  // slide gallery in tour list
 
   // fixed navbar
 
   var navWrapper = $(".single-tour-nav-wraper");
   var navWrapperOffset = navWrapper.offset().top;
-  console.log(navWrapper)
-  $(window).scroll(function() {
+  $(window).scroll(function () {
     var body = $(".single-tour-body");
     var stop = body.offset().top;
-    console.log(stop)
     var scrollTop = jQuery(this).scrollTop();
     if (scrollTop >= navWrapperOffset) {
       jQuery(".single-tour-nav-wraper").addClass("navbar-fixed-top");
@@ -250,13 +294,10 @@ menuItemHasChildrenList.forEach((menuItemHasChildren) => {
   });
   // fixed navbar
 
-   // fixed navbar (cruise)
-
+  // fixed navbar (cruise)
 })(jQuery);
- 
+
 document.addEventListener("DOMContentLoaded", function () {
-
-
   const activeMapBtns = document.querySelectorAll(".tour_item-location");
 
   activeMapBtns.forEach(function (btn) {
@@ -368,13 +409,51 @@ document.addEventListener("DOMContentLoaded", function () {
   nextBtn.addEventListener("click", moveToNextSlide);
   prevBtn.addEventListener("click", moveToPreviousSlide);
 
+
+
+  let minDragDistance = 50
+  let pointerStartX = 0;
+  let startEventName, moveEventName, endEventName;
+  // Xác định sự kiện bắt đầu, di chuyển và kết thúc dựa trên thiết bị
+if ("ontouchstart" in window) {
+  startEventName = "touchstart";
+  moveEventName = "touchmove";
+  endEventName = "touchend";
+} else {
+  startEventName = "pointerdown";
+  moveEventName = "pointermove";
+  endEventName = "pointerup";
+}
+  slides.forEach((slide, index) => {
+    slide.addEventListener(startEventName, (e) => {
+      pointerStartX = e.clientX || e.touches[0].clientX; // Sử dụng touches nếu là cảm ứng
+    });
+
+    slide.addEventListener(moveEventName, (e) => {
+
+      e.preventDefault();
+    });
+
+    slide.addEventListener(endEventName, (e) => {
+
+      const pointerEndX = e.clientX || e.changedTouches[0].clientX; // Sử dụng changedTouches nếu là cảm ứng
+      const pointerDistance = pointerEndX - pointerStartX;
+      
+      if (pointerDistance > minDragDistance) {
+      
+        moveToPreviousSlide(); // Kéo sang trái, chuyển slide trước đó
+        updateSlideStatus();
+      } else if (pointerDistance < -minDragDistance) {
+        moveToNextSlide(); // Kéo sang phải, chuyển slide kế tiếp
+        updateSlideStatus();
+      }
+    });
+  });
+
   window.onload = function () {
     // updateTotalSlideStatus(); // Cập nhật tổng số slide ban đầu
     startSlide(); // Bắt đầu chạy slide
   };
 });
 
-
-(function($) {
-
-})(jQuery);
+(function ($) {})(jQuery);

@@ -144,6 +144,7 @@
     box-shadow: 0 0 1px rgba(67, 90, 111, 0.7),
       0 2px 5px -2px rgba(67, 90, 111, 0.5);
     top: 100%;
+    z-index: 999999;
   }
   .single-tour-nav-container .hamburger-lines {
     margin-left: auto;
@@ -522,8 +523,8 @@
   }
   .slider-element-list {
     overflow-x: auto;
-    width: 500px;
-    margin: 0 auto;
+    width: unset;
+    margin: 0 ;
   }
   .slider-element-item {
     flex: 0 0 200px;
@@ -816,7 +817,21 @@
     width: 100%;
   }
 }
+.toggle-mobile{
+  display: none;
+}
 @media screen and (max-width: 600px) {
+  .tour_grid-top .item-duraiton{
+    font-size: 22px;
+  }
+  .toggle-desktop{
+    display: none;
+  }
+  .toggle-mobile{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 25px;
+  }
   .single-tour-header-wrap {
     flex-direction: column;
     gap: 20px;
@@ -872,7 +887,7 @@
     width: 100%;
   }
   .tour_item-text {
-    font-size: 14px;
+    font-size: 16px;
   }
   .itinerary-img {
     width: 100%;
@@ -969,6 +984,7 @@
   .tour_item-location-icon img {
     width: 26px;
     height: 24px;
+    object-fit: contain;
   }
   /* .customizable_itinerary-title h1 {
     font-size: 18px;
@@ -1265,6 +1281,9 @@
   }
 }
 @media screen and (max-width: 500px) {
+  #full-section{
+    margin-bottom: 50px !important;
+  }
   .location-body,
   .wrap-post-list,
   #get-infomation,
@@ -1421,6 +1440,7 @@
   .tour_item-location-icon img {
     width: 26px;
     height: 20px;
+    object-fit: contain;
   }
   .tour_item-content-wrap .tour_item-action {
     flex-direction: column !important;
@@ -1530,7 +1550,7 @@
   #get-infomation {
     position: unset;
     width: 100%;
-    margin-top: 50px !important;
+    margin-top: 0px !important;
     margin-left: 0px !important;
     margin-right: 0px !important;
   }
@@ -1673,9 +1693,11 @@
   }
   .client-slider-wrap {
     padding: 35px 5%;
+    padding-right: 0%;
   }
   .slider-element-list {
     gap: 20px;
+    justify-content: flex-start;
   }
   .slider-item-title {
     line-height: 18px;
