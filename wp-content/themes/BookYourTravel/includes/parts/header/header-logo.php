@@ -6,6 +6,9 @@ ob_start();
 <!--logo-->
 <div class="logo">
 	<a href="<?php echo esc_url( home_url('/') ); ?>" title="<?php echo esc_attr($logo_title); ?>"><img src="<?php echo esc_url( $bookyourtravel_theme_globals->get_theme_logo_src() ); ?>" alt="<?php echo esc_attr( $logo_title ); ?>" /></a>
+	<!-- <a href="<?php echo esc_url( home_url('/') ); ?>" title="<?php echo esc_attr($logo_title); ?>">
+		<h2>open asia travel</h2>
+	</a> -->
 </div>
 <!--//logo-->
 <?php

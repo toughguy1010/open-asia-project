@@ -188,6 +188,7 @@ body {
 .list-member-avatar {
   display: flex;
   justify-content: center;
+  display: none;
 }
 .member-item {
   width: 70px;
@@ -200,7 +201,7 @@ body {
   /* border: 1px solid #000; */
 }
 .quote-content {
-  font-size: 28px;
+  font-size: 40px;
   font-family: "Reenie Beanie", cursive;
   width: 45%;
   margin: 20px auto;

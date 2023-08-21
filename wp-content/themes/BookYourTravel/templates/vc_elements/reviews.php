@@ -103,7 +103,7 @@ $img_url = wp_get_attachment_image_src($img, 'full');
 
         </div>
     </div>
-    <div class="thumbnail">
+    <div class="thumbnail" style="flex: 1">
         <img src="<?= $img_url[0] ?>" alt="">
     </div>
 </div>
