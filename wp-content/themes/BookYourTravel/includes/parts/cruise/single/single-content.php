@@ -168,13 +168,15 @@ $cruise_slug = $cruise_type->slug;
 	<!-- relate tour -->
 	<?php
 	set_query_var('cruise_type_id', $cruise_type_id);
-	require_once BookYourTravel_Theme_Utils::get_file_path('/includes/parts/tour/single/relate_tour.php');
+	require_once BookYourTravel_Theme_Utils::get_file_path('/includes/parts/cruise/single/relate_cruise.php');
 	?>
 	<!-- relate tour -->
 
 
 	<!-- relate post -->
-	<?php get_template_part('includes/parts/tour/single/relate_post') ?>
+	<?php
+	get_template_part('includes/parts/tour/single/relate_post')
+	?>
 	<!-- relate post -->
 
 

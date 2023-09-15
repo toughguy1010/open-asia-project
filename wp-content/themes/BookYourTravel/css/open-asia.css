@@ -21,8 +21,8 @@ body {
   scroll-behavior: smooth;
   /* overflow-x: hidden !important; */
 }
-.page-wrap{
-  overflow-x: hidden !important; 
+.page-wrap {
+  overflow-x: hidden !important;
 }
 ::-webkit-scrollbar {
   width: 0px;
@@ -334,6 +334,7 @@ body {
   font-size: 20px;
   line-height: 26px;
   font-weight: 700;
+  min-height: 50px;
 }
 .wrap-icon-guide {
   width: 120px;
@@ -1334,6 +1335,10 @@ body {
   font-size: 16px !important;
   text-transform: none !important;
 }
+.wpforms-submit:hover {
+  background: #fff !important;
+  color: #80b157 !important;
+}
 #plan-tour-form .wpforms-submit:hover {
   background: #fff !important;
   color: #80b157 !important;
@@ -1356,8 +1361,8 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .about-thumbnail-item {
   flex: 0 0 50%;
   width: 100%;
-  height: 100%;
-  height: 400px;
+  /* height: 100%;
+  height: 400px; */
 }
 .about-thumbnail-item img {
   width: 100%;
@@ -1376,11 +1381,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   text-transform: uppercase;
   border-bottom: 1px solid #80b157;
   padding-bottom: 5px;
-  overflow: hidden;
+  /* overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-line-clamp: 1; 
   line-clamp: 1;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: vertical; */
 }
 .about-content-body {
   font-size: 15px;
@@ -1434,12 +1439,18 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   text-align: center;
   margin-bottom: 30px;
 }
+.rtl {
+  direction: unset !important;
+  flex-direction: row-reverse !important;
+}
 .member-item-avatar img {
   width: 100%;
-  height: auto;
+  height: 250px;
   max-width: 250px;
   border-radius: 50%;
   margin-bottom: 30px;
+  object-fit: cover;
+  object-position: center;
 }
 .member-item-avatar {
   text-align: center;
@@ -2002,7 +2013,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   width: 15px;
   height: 15px;
 }
-.tour_item-location-icon{
+.tour_item-location-icon {
   flex: 0 0 26px;
 }
 .item-duraiton,
@@ -2011,11 +2022,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   align-items: center;
   gap: 20px;
 }
-.tour_grid-top .item-duraiton{
+.tour_grid-top .item-duraiton {
   font-size: 22px;
 }
-.tour_grid-top .tour_location-sequence{
-font-size: 16px;
+.tour_grid-top .tour_location-sequence {
+  font-size: 16px;
 }
 .tour_item-gallery #post-gallery {
   display: flex;
@@ -2739,12 +2750,12 @@ font-size: 16px;
   gap: 3%;
 }
 #relate_tour h2 {
-  font-family: Kristi;
-  font-size: 70px;
+  font-size: 22px;
   line-height: 1em;
   font-weight: 400;
   text-align: center;
   color: #418a3d;
+  text-transform: uppercase;
 }
 .list-relate_post {
   display: flex;
@@ -2888,12 +2899,13 @@ font-size: 16px;
   flex: 0 0 60%;
 }
 .hidden_gem-left h2 {
-  font-family: Kristi;
-  font-size: 70px;
+  /* font-family: Kristi; */
+  font-size: 22px;
   line-height: 1em;
   font-weight: 400;
   text-align: center;
   color: #80b157;
+  text-transform: uppercase;
 }
 .hidden_gem-content {
   line-height: 25px;
@@ -3061,11 +3073,11 @@ font-size: 16px;
   transition: all 0.5s;
 }
 #list-child-location h2 {
-  font-family: Kristi;
-  font-size: 70px;
+  font-size: 22px;
   line-height: 1em;
   font-weight: 400;
   text-align: center;
+  text-transform: uppercase;
   color: #418a3d;
 }
 .faq_item-title {
@@ -3124,15 +3136,12 @@ font-size: 16px;
 .faq_wrapper h2,
 .glance-wraper h2,
 .top-weather h2 {
-  /* font-size: 40px;
-  line-height: 60px;
-  font-weight: 200; */
-  font-family: Kristi;
-  font-size: 70px;
+  font-size: 22px;
   line-height: 1em;
   font-weight: 400;
   text-align: center;
   color: #418a3d;
+  text-transform: uppercase;
 }
 .introduction-wrapper {
   display: flex;
@@ -3150,13 +3159,13 @@ font-size: 16px;
 .travel_guide-wrap h2,
 #places_of_interest h2,
 .suggest_tour-wrapper h2 {
-  font-family: Kristi;
-  font-size: 70px !important;
+  font-size: 22px !important;
   line-height: 1em !important;
   font-weight: 400;
   color: #418a3d;
   text-align: center !important;
   margin-bottom: 20px !important;
+  text-transform: uppercase;
 }
 .introduction-left p,
 .travel_guide-content {
@@ -4082,7 +4091,7 @@ font-size: 16px;
 .weather-wrapper table td {
   border: 1px solid #ddd !important;
   text-align: center;
-      vertical-align: middle;
+  vertical-align: middle;
 }
 .table-dark-green {
   width: 200px;
@@ -4105,4 +4114,21 @@ font-size: 16px;
 .weather-caption {
   font-size: 12px;
   margin-top: -7px;
+}
+.text-logo {
+  font-size: 23px;
+  color: #80b157;
+  text-transform: uppercase;
+}
+.logo-container .text-logo {
+  margin-bottom: 0;
+}
+.header-desktop .logo {
+  align-self: baseline;
+}
+.header-desktop .logo-container {
+  margin-top: 20px;
+}
+.wrap-header .logo-container .text-logo {
+  font-size: 15px;
 }

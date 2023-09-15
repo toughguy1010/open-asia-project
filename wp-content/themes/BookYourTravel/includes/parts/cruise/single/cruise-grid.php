@@ -28,7 +28,7 @@ if ($cruise_id > 0) {
         setup_postdata($post);
     }
 
-    $cruise_obj = new BookYourTravel_Tour($post);
+    $cruise_obj = new BookYourTravel_Cruise($post);
     $entity_obj = $cruise_obj;
 
     $tour_description = wpautop($cruise_obj->get_short_description());
@@ -43,11 +43,10 @@ if ($cruise_id > 0) {
     $tour_permalink = get_the_permalink();
     $tour_title = get_the_title();
     // custom
-    $tour_duration = $cruise_obj->get_tour_durations();
+    $tour_duration = $cruise_obj->get_cruise_durations();
     $tour_tag = $cruise_obj->get_tags();
     if ($tour_price = get_field('tour_price', get_the_ID())) {
 		$have_price = $tour_price['have_price'];
-		
 		if (isset($have_price) && is_array($have_price) && count($have_price) > 0) {
 			$value_have_price = $have_price[0];
 		} else {
@@ -92,9 +91,9 @@ if (get_field('order_location', get_the_ID())) {
             <?php
             }
             ?>
-            <div class="tour_location-sequence tour_item-text">
+            <!-- <div class="tour_location-sequence tour_item-text">
                 <?= $total_location ?> Cities
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="tour_grid-bottom">

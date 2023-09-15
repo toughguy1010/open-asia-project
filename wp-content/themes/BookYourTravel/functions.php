@@ -206,8 +206,6 @@ function register_custom_menus() {
 add_action('after_setup_theme', 'register_custom_menus');
 
 
-
-
 // function enqueue_my_script() {
 //     // Register the script
 //     wp_register_script('my-custom-script', get_template_directory_uri() . 'js/tour-list.js', array('jquery'), '1.0', true);

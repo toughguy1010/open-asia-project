@@ -7,7 +7,12 @@ $logo_title = get_bloginfo('name') . ' | ' . (is_home() || is_front_page() ? get
 <div class="contact-banner-wrap">
     <div class="text_contact">
         <div class="logo">
-            <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr($logo_title); ?>"><img src="<?php echo esc_url($bookyourtravel_theme_globals->get_theme_logo_src()); ?>" alt="<?php echo esc_attr($logo_title); ?>" /></a>
+            <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr($logo_title); ?>">
+                <div class="logo-container">
+                    <h2 class="text-logo">open</h2>
+                    <h2 class="text-logo">asia travel</h2>
+                </div>
+            </a>
         </div>
         <div class="text_contact-caption">
             <?= $attr['title'] ?>

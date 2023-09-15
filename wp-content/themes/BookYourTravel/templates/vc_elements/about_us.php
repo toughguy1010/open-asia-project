@@ -26,11 +26,11 @@ $about_us_content = vc_param_group_parse_atts($attr['about_us_content']);
                 </div>
                 <div class="about-content-body">
                     <?php
-                    $content = $content['body']; // Assuming $content['body'] contains your text content
-                    $paragraphs = explode("\n\n", $content); // Split content into paragraphs
+                    $content = $content['body']; 
+                    $paragraphs = explode("\n\n", $content); 
 
                     foreach ($paragraphs as $paragraph) {
-                        echo nl2br($paragraph) . "<br><br>"; // Convert newlines to <br> and add an extra <br> for paragraph spacing
+                        echo nl2br($paragraph) . "<br><br>"; 
                     }
                     ?>
                 </div>

@@ -72,9 +72,10 @@ if (isset($_GET['tour-type'])) {
 	$tour_type = get_term_by('slug', $tour_type_slug, 'tour_type');
 
 	if ($tour_type) {
+
 		$tour_type_id = $tour_type->term_id;
 	} else {
-		echo 'Tour type không tồn tại.';
+		$tour_type_id = "";
 	}
 }
 $thumbnail_id = $bookyourtravel_theme_post_types->get_taxonomy_image_id($tour_type_id);
@@ -103,11 +104,11 @@ $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
 				<ul>
 					<li><a href="<?php echo home_url() ?>" title="Home">Home</a></li>
 					<span class="separator"> » </span>
-					<li><a href="<?php echo home_url() ?>/tours/?tour-type=<?= $tour_slug ?>" title="Cruises"><?= $tour_type->name ?></a></li>
+					<li><a href="<?php echo home_url() ?>/tours/?tour-type=<?= $tour_type_slug ?>" title="Cruises"><?= $tour_type->name ?></a></li>
 				</ul>
 			</nav>
 		</div>
-		
+
 		<?php while (have_posts()) : the_post(); ?>
 			<article <?php post_class(); ?> id="page-<?php the_ID(); ?>">
 				<div class="page-banner-wrap" style="background-image: url(<?php echo $thumbnail_url ?>);">
@@ -144,7 +145,7 @@ $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
 								</div>
 								<div class="step-plan-item">
 									<div class="step-img">
-										<img src="<?php echo get_template_directory_uri(); ?>/css/images/icon-booking-red.png.webp ?>" alt="">
+										<img src="<?php echo get_template_directory_uri(); ?>/css/images/step-3.png ?>" alt="">
 									</div>
 									<div class="step-plan-body">
 										<div class="step-plan-title">

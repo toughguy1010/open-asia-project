@@ -1,10 +1,9 @@
 <?php
 global  $bookyourtravel_theme_globals, $post, $first_display_tab, $default_tour_tabs, $entity_obj, $layout_class, $tab, $tour_item_args, $tour_list_args, $bookyourtravel_tour_helper;
 $tour_type_id = get_query_var('tour_type_id');
-
 ?>
 
-<section id="relate_tour" class="section">
+<section id="relate_tour" class="section ">
     <div class="nano-container">
         <h2>You may also like...</h2>
         <?php
@@ -22,8 +21,7 @@ $tour_type_id = get_query_var('tour_type_id');
         $tour_type_ids = isset($tour_list_args['tour_type_ids']) ? $tour_list_args['tour_type_ids'] : array();
         $tour_duration_ids = isset($tour_list_args['tour_duration_ids']) ? $tour_list_args['tour_duration_ids'] : array();
         $author_id = isset($tour_list_args["author_id"]) ? $tour_list_args["author_id"] : null;
-        $tour_type_ids =  $tour_type_id;
-        
+        $tour_type_ids = $tour_type_id ;
         $posts_per_page = 3;
         $tour_results = $bookyourtravel_tour_helper->list_tours($paged, $posts_per_page, $sort_by, $sort_order, array($parent_location_id), false, $tour_type_ids, $tour_duration_ids, $tour_tag_ids, array(), $show_featured_only, $author_id, $include_private);
         echo '<div class ="tour_grid-list" >';
