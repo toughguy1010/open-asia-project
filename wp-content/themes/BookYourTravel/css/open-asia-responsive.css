@@ -328,28 +328,28 @@
     font-size: 16px;
   }
 }
-.hide-in-desktop{
+.hide-in-desktop {
   display: none !important;
 }
 @media screen and (max-width: 960px) {
   #sticky-request {
     display: none;
   }
-  .hide-in-desktop{
+  .hide-in-desktop {
     display: unset !important;
   }
   .hide-in-desktop .mega-menu-link {
-    background: unset  !important;
+    background: unset !important;
   }
   .hide-in-desktop .mega-sub-menu .mega-menu-link:hover {
-    background: unset  !important;
+    background: unset !important;
     color: #80b157 !important;
   }
   .header .top-header .wrap {
     flex-direction: column;
   }
   .header .top-header .switch-lang {
-   display: none;
+    display: none;
   }
   #mega-menu-wrap-primary-menu
     #mega-menu-primary-menu
@@ -898,7 +898,7 @@
   #mega-menu-wrap-primary-menu #mega-menu-primary-menu p {
     font-size: 12px;
   }
- 
+
   #post-slider {
     height: 355px;
   }
@@ -1356,9 +1356,7 @@
   .trip-option-wrapper {
     align-items: end;
   }
-  .trip-content {
-    /* margin-top: 90px; */
-  }
+
   .trip-option-btn a {
     font-size: 14px;
     margin-top: 20px;
@@ -1767,44 +1765,21 @@
 }
 
 @media (max-width: 568px) {
-  .wpb-content-wrapper {
-    /* padding: 0 15px !important; */
-  }
-
-  /* .easy_steps_container,
-  .location-header {
-    width: 750px;
-  } */
-
   .about-thumbnail-item {
     width: auto;
     height: auto;
   }
-
-  #abous-us-body {
-    /* margin: 80px auto !important; */
-    /* width: 100%; */
-  }
-
   .about_us_list .rtl {
     direction: unset;
   }
-
   .about-us-item {
     display: block;
     margin-bottom: 30px;
   }
-
   .passionate_team-member {
     display: block;
   }
-
-  /* .vc_section {
-    padding: 0 !important;
-    margin: 0 !important;
-  } */
 }
-
 @media screen and (max-width: 400px) {
   .contact-banner-wrap {
     zoom: 0.6;

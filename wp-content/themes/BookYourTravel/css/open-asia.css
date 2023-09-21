@@ -260,23 +260,6 @@ body {
   justify-content: center;
   margin: 0 auto;
 }
-/* @media (min-width: 1200px){
-      .list-quote {
-          width: 1170px;
-      }
-      .list-quote {
-          width: 1200px;
-          
-      }
-      
-  }
-  @media (min-width: 768px){
-      .list-quote {
-          width: 750px;
-      }
-      
-  } */
-
 .quote-item {
   width: 25%;
   padding-left: 15px;
@@ -1568,10 +1551,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .step-img {
   width: 20%;
 }
-.step-img img {
-  /* width: 40px;
-  height: 40px; */
-}
+
 .step-plan-body {
   width: 70%;
 }
@@ -2540,9 +2520,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .overview-left {
   flex: 0 0 65%;
 }
-.overview-right {
-  /* flex: 0 0 35%; */
-}
+
 .overview-right {
   background-color: #f4f5f7;
 }
@@ -2874,9 +2852,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .section-tour-content .lSGallery {
   display: none;
 }
-.lightSlider {
-  /* height: 500px !important; */
-}
+
 .useful-information-action a {
   display: block;
   background-color: #80b157;
@@ -2953,9 +2929,6 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .hidden_gem-content {
   line-height: 25px;
-}
-#firstChar p:first-child {
-  /* display: flex; */
 }
 
 .hidden_gem-content p {
@@ -3921,9 +3894,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   padding-left: 0;
   padding-right: 0;
 }
-.post_breadcrumbs {
-  /* margin-top: 30px; */
-}
+
 .post_breadcrumbs .breadcrumbs li a,
 .post_breadcrumbs .breadcrumbs li {
   color: #aaa;
@@ -4245,11 +4216,13 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .trp-ls-shortcode-current-language .trp-ls-shortcode-disabled-language{
   cursor: pointer !important;
+  transition: none !important;
+}
+#trp-floater-ls{
+  display: none;
 }
 .trp-ls-shortcode-current-language .trp-ls-shortcode-disabled-language:hover{
   color: #fff;
-}
-.trp-ls-shortcode-language a{
 }
 .trp-ls-shortcode-language a:hover{
   color: #418a3d;
