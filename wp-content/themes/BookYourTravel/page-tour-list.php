@@ -66,20 +66,27 @@ if (!is_wp_error($tour_durations) && count($tour_durations) > 0) {
 $page_sidebar_positioning = BookYourTravel_Theme_Utils::get_page_sidebar_positioning($page_id);
 $section_class = BookYourTravel_Theme_Utils::get_page_section_class($page_sidebar_positioning);
 global $bookyourtravel_theme_globals, $bookyourtravel_theme_post_types;
+
 if (isset($_GET['tour-type'])) {
 	$tour_type_slug = $_GET['tour-type'];
-
 	$tour_type = get_term_by('slug', $tour_type_slug, 'tour_type');
-
-	if ($tour_type) {
-
-		$tour_type_id = $tour_type->term_id;
-	} else {
-		$tour_type_id = "";
-	}
+} else {
+	$tour_type_slug = "";
 }
-$thumbnail_id = $bookyourtravel_theme_post_types->get_taxonomy_image_id($tour_type_id);
-$thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
+
+if ($tour_type) {
+	$tour_type_name = $tour_type->name;
+	$tour_type_description = $tour_type->description;
+	$tour_type_id = $tour_type->term_id;
+	$thumbnail_id = $bookyourtravel_theme_post_types->get_taxonomy_image_id($tour_type_id);
+	$thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
+} else {
+	$tour_type_name = "All Tour";
+	$thumbnail_url = get_template_directory_uri() . '/css/images/all-tour-bg.webp';
+	$tour_type_description = "";
+	$tour_type_id = "";
+}
+
 ?>
 <style>
 	.page-banner-wrap {
@@ -104,7 +111,7 @@ $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
 				<ul>
 					<li><a href="<?php echo home_url() ?>" title="Home">Home</a></li>
 					<span class="separator"> » </span>
-					<li><a href="<?php echo home_url() ?>/tours/?tour-type=<?= $tour_type_slug ?>" title="Cruises"><?= $tour_type->name ?></a></li>
+					<li><a href="<?php echo home_url() ?>/tours/?tour-type=<?= $tour_type_slug ?>" title="Cruises"><?= $tour_type_name  ?></a></li>
 				</ul>
 			</nav>
 		</div>
@@ -113,7 +120,7 @@ $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
 			<article <?php post_class(); ?> id="page-<?php the_ID(); ?>">
 				<div class="page-banner-wrap" style="background-image: url(<?php echo $thumbnail_url ?>);">
 					<div class="page-banner-container">
-						<h1 class="page-banner-title"><?= $tour_type->name ?></h1>
+						<h1 class="page-banner-title"><?= $tour_type_name ?></h1>
 						<div class="plan-banner-wrap">
 							<h3>How to Plan a Perfect trip</h3>
 							<div class="step-plan-list">
@@ -123,7 +130,7 @@ $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
 									</div>
 									<div class="step-plan-body">
 										<div class="step-plan-title">
-											1. Discovery
+											1. Send us your request & customize
 										</div>
 										<div class="step-plan-content">
 											Browse our website. Tell us what kind of trip you want. Complete our simple request form.
@@ -136,10 +143,10 @@ $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
 									</div>
 									<div class="step-plan-body">
 										<div class="step-plan-title">
-											2. Customize
+											2. Book your trip
 										</div>
 										<div class="step-plan-content">
-											Together work with our Experienced Travel Specialists to tweak the itinerary.
+											We’ll build your itinerary from scratch and tweak things until it’s completely perfect. You agree to the final proposal and pay a small amount of deposit.
 										</div>
 									</div>
 								</div>
@@ -149,10 +156,10 @@ $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
 									</div>
 									<div class="step-plan-body">
 										<div class="step-plan-title">
-											3. Book your Trip
+											3. Enjoy your trip and we are always by your side
 										</div>
 										<div class="step-plan-content">
-											Once you're satisfied with our personalized proposal, book your chosen trip securely backed ASTA.
+											All you need to do now is enjoy your trip and we will always be here by your side 24/7. As locals, we stand ready to assist you around the clock.
 										</div>
 									</div>
 								</div>
@@ -211,10 +218,10 @@ $thumbnail_url = wp_get_attachment_image_src($thumbnail_id, "byt-featured")[0];
 		<div class="page-tour-wrapper">
 			<div class="taxonomy-header">
 				<div class="taxonomy-name">
-					<?= $tour_type->name ?>
+					<?= $tour_type_name ?>
 				</div>
 				<div class="taxonomy-description">
-					<?= $tour_type->description ?>
+					<?= $tour_type_description ?>
 				</div>
 			</div>
 			<?php

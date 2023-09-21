@@ -30,6 +30,15 @@ $visa_location = vc_param_group_parse_atts($attr['visa_location']);
                             var formattedContent = textContent.replace(/\n/g, '<br>');
                             document.write(formattedContent);
                         </script>
+                        <?php 
+                        if(!empty($item['link'])){
+                            ?>
+                            <span>
+                                <a href="<?= $item['link'] ?>"> click here</a>
+                            </span>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

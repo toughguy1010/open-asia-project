@@ -14,6 +14,8 @@ if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled('to
 		<li class="menu-item"><a href="<?php echo esc_url ( home_url('/') ); ?>"><?php esc_html_e('Home', "bookyourtravel"); ?></a></li>
 		<li class="menu-item"><a href="<?php echo esc_url ( admin_url('nav-menus.php') ); ?>"><?php esc_html_e('Configure', "bookyourtravel"); ?></a></li>
 	</ul>
+	
+
 </nav>
 <?php } ?>
 <!--//primary navigation-->

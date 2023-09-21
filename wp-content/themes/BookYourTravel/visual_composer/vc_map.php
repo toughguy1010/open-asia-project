@@ -746,6 +746,12 @@ function customLoadVCMapNewLayout()
                             "description" => __("Enter your title", 'traveler')
                         ],
                         [
+                            "type" => "textfield",
+                            "heading" => __("Link", 'traveler'),
+                            "param_name" => "link",
+                            "description" => __("Enter your title", 'traveler')
+                        ],
+                        [
                             "type" => "attach_image",
                             "heading" => __("Thumbnail", 'traveler'),
                             "param_name" => "thumbnail",

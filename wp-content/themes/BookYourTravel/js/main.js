@@ -67,6 +67,14 @@ menuItemHasChildrenList.forEach((menuItemHasChildren) => {
 });
 
 (function ($) {
+
+
+  $("#dropbtn-lang").click(function () {
+    $("#myDropdown").toggleClass("active");
+    return false;
+});
+
+
   $("#get-email").val("");
   $("#get-email").attr("placeholder", "Enter your email");
 

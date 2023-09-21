@@ -2,14 +2,15 @@
 global  $bookyourtravel_theme_globals, $post, $first_display_tab, $default_tour_tabs, $entity_obj, $layout_class, $tab, $tour_item_args, $tour_list_args, $bookyourtravel_tour_helper;
 $location_id = get_query_var('location_id');
 $location_title = get_the_title($location_id);
+$url = get_field('tour_link', $location_id);
 ?>
 
 <section id="relate_tour" class="section">
     <div class="nano-container">
-        <h2><?= $location_title?> Tours</h2>
+        <h2><?= $location_title ?> Tours</h2>
         <?php
         // get term id by slug
-       
+
         $posts_per_page = isset($tour_list_args['posts_per_page']) ? $tour_list_args['posts_per_page'] : 12;
         $paged = isset($tour_list_args['paged']) ? $tour_list_args['paged'] : 1;
         $sort_by = isset($tour_list_args['sort_by']) ? $tour_list_args['sort_by'] : 'title';
@@ -38,5 +39,6 @@ $location_title = get_the_title($location_id);
         }
         echo '</div>';
         ?>
+        <a class="button" href="<?= $url ?>" style="display: block !important; width: fit-content; margin: 0 auto;"> All <?= $location_title ?> Tours</a>
     </div>
 </section>

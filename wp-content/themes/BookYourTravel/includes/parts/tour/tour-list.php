@@ -16,15 +16,19 @@ global $bookyourtravel_theme_globals, $tour_item_args, $tour_list_args, $bookyou
 
 
 // get term id by slug
+$tour_type_id = "";
+$tour_type_slug = "";
+$tour_total = "";
+
 if (isset($_GET['tour-type'])) {
     $tour_type_slug = $_GET['tour-type'];
-
     $tour_type = get_term_by('slug', $tour_type_slug, 'tour_type');
 
     if ($tour_type) {
         $tour_type_id = $tour_type->term_id;
+        $tour_total = $tour_type->count;
     } else {
-        echo 'Tour type không tồn tại.';
+        echo 'Tour type không tồn tại.'; // Output a message if the tour type doesn't exist.
     }
 }
 $view ='';
@@ -58,9 +62,7 @@ if (isset($_GET['view'])) {
 }
 
 $sort_by = 'duration';
-// lấy ra tất cả các tour
 $tour_results = $bookyourtravel_tour_helper->list_tours($paged, -1, $sort_by, $sort_order, array($parent_location_id), false, $tour_type_ids, $tour_duration_ids, $tour_tag_ids, array(), $show_featured_only, $author_id, $include_private);
-// số tour hiển thị trên 1 trang
 $current_page = max(1, $paged); // Đảm bảo số trang ít nhất là 1
 $posts_per_page = 3; // Cập nhật số tour hiển thị trên mỗi trang thành 3
 if (isset($_GET['post_per_page'])) {
@@ -113,12 +115,13 @@ if (count($tour_results) > 0 && $tour_results['total'] > 0) {
     }
 ?>
     <div class="tours-list-form">
+        <?php if($tour_type_id != ""): ?>
         <form action="<?php echo home_url('/tours/'); ?>" method="GET" class="form-inline">
             <input type="hidden" name="tour-type" value="<?= $tour_type_slug ?>">
             <div class="form-row">
                 <div class="left-form">
                     <div class="total-results">
-                        <?= $tour_type->count ?> results found
+                        <?= $tour_total ?> results found
                     </div>
                     <span class="sep"></span>
                     <div class="view-per-page">
@@ -154,7 +157,8 @@ if (count($tour_results) > 0 && $tour_results['total'] > 0) {
                 </div>
             </div>
         </form>
-
+        <?php else: ?>
+        <?php endif; ?>
     </div>
 
 <?php
