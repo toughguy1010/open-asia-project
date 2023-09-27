@@ -34,7 +34,7 @@ $img_url = wp_get_attachment_image_src($img, 'full');
                     while ($query->have_posts()) {
                         $query->the_post();
                         $likes = get_post_meta(get_the_ID(), 'review_likes', true);
-                        $author = get_the_author();
+                        $name = get_the_title();
                         $post_id = get_the_ID();
 
                         // Lấy các đánh giá (ratings)
@@ -48,7 +48,7 @@ $img_url = wp_get_attachment_image_src($img, 'full');
                             <div class="reviews-item-top">
                                 <img src="<?php echo get_template_directory_uri(); ?>/css/images/no-avt.jpg" alt="" class="avatar-img">
                                 <div class="reivews-info">
-                                    <div class="reivews-author"><?php echo $author; ?></div>
+                                    <div class="reivews-author"><?php echo $name; ?></div>
                                     <div class="reivews-date"><?php echo $date; ?></div>
                                 </div>
                             </div>

@@ -873,4 +873,27 @@ function customLoadVCMapNewLayout()
             ),
         )
     );
+    vc_map(
+        array(
+            'name' => 'Partners',
+            'base' => 'partners',
+            'category' => 'BookYourTravel',
+            'params' => array(
+                array(
+                    'type' => 'param_group',
+                    'heading' => 'Partners Images',
+                    'param_name' => 'partners_images',
+                    'description' => 'Enter the gallery',
+                    'params' => array(
+                        [
+                            "type" => "attach_image",
+                            "heading" => __("Image", 'traveler'),
+                            "param_name" => "image",
+                            "description" => __("Enter your image.", 'traveler')
+                        ],
+                    )
+                ),
+            ),
+        )
+    );
 }

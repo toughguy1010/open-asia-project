@@ -5,7 +5,7 @@
     <div class="hotline-number-wrap">
         <div class="hotline-number-title">
             <img src="<?php echo get_template_directory_uri() ?>/css/images/icon-headset-white.png" alt="">
-            <p>Contact us, <?= $attr['name'] ?></p>
+            <p>Contact us, <strong><?= $attr['name'] ?></strong> </p>
         </div>
         <div class="hotline-number">
             <?=  $attr['phone_number']  ?>

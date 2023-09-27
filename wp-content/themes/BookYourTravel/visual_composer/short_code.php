@@ -255,3 +255,15 @@ if (!function_exists('rotate_banner')) {
     }
     add_shortcode('rotate_banner', 'rotate_banner');
 }
+
+
+if (!function_exists('partners')) {
+    function partners($attr, $content, $span)
+    {
+        $attr = shortcode_atts([
+            'partners_images' => '',
+        ], $attr,);
+        require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/partners.php');
+    }
+    add_shortcode('partners', 'partners');
+}

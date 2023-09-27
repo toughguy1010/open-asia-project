@@ -91,7 +91,7 @@ menuItemHasChildrenList.forEach((menuItemHasChildren) => {
       $(".toggle-text").data("state", "all");
     }
   });
-  $(".circle-plus").on("click", function () {
+  $(".top-itinerary-item").on("click", function () {
     var parentItem = $(this).closest(".customizable_itinerary-item");
     var bodyItem = parentItem.find(".body-itinerary-item");
     $(this).toggleClass("opened");

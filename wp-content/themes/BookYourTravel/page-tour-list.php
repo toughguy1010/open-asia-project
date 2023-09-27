@@ -72,6 +72,7 @@ if (isset($_GET['tour-type'])) {
 	$tour_type = get_term_by('slug', $tour_type_slug, 'tour_type');
 } else {
 	$tour_type_slug = "";
+	$tour_type = "";
 }
 
 if ($tour_type) {
