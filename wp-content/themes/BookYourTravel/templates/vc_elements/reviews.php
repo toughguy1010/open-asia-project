@@ -1,6 +1,5 @@
 <?php
-$img = $attr['background_image'];
-$img_url = wp_get_attachment_image_src($img, 'full');
+
 ?>
 
 <div class="reviews-wrap">
@@ -103,8 +102,18 @@ $img_url = wp_get_attachment_image_src($img, 'full');
 
         </div>
     </div>
-    <div class="thumbnail" style="flex: 1">
-        <img src="<?= $img_url[0] ?>" alt="">
+    <div class="right-col" style="flex: 1">
+        <div class="right-col-wrap">
+            <div class="right-col-title">
+                <?= $attr['title_plan'] ?>
+            </div>
+            <div class="right-col-caption">
+                <?= $attr['caption_plan'] ?>
+            </div>
+            <a href="<?= $attr['link_button_plan'] ?>">
+                <?= $attr['button_plan'] ?>
+            </a>
+        </div>
     </div>
 </div>
 

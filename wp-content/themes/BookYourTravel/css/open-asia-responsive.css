@@ -1277,9 +1277,17 @@
   .reviews-wrap {
     flex-direction: column;
   }
-  .reviews-wrap .reviews {
+  .reviews-wrap .reviews, .reviews-wrap .right-col {
     width: 100%;
   }
+  .right-col-wrap{
+    width: 100%;
+  }
+  .right-col-wrap a {
+    padding: 10px 20px !important;
+    width: fit-content;
+    font-size: 14px;
+}
   .introduction-body {
     min-width: none;
   }
@@ -1376,13 +1384,22 @@
   #get-infomation .vc_row-fluid {
     padding: 10px;
   }
-  .reviews-wrap .reviews {
+  .reviews-wrap .reviews , .reviews-wrap .reviews{
     padding: 60px 20px;
   }
   .vc_column_container > .vc_column-inner {
     padding-left: 20px !important;
     padding-right: 20px !important;
   }
+  .right-col-title{
+    font-size: 30px;
+    line-height: 1em;
+  }
+  .right-col-caption {
+    font-size: 14px;
+    margin-bottom: 12px;
+    margin-left: 0px;
+}
   #booking-guid-content {
     margin: 30px 20px !important;
     padding-left: 0px !important;

@@ -262,18 +262,32 @@ function customLoadVCMapNewLayout()
                 ),
 
                 array(
-                    "type" => "attach_image",
-                    "heading" => __("Background Image"),
-                    "param_name" => "background_image",
-                    'description' => 'Enter the reviews background',
-                ),
-                array(
                     'type' => 'textfield',
                     'heading' => 'Description',
                     'param_name' => 'description',
                     'description' => 'Enter the reviews title',
                 ),
 
+                array(
+                    "type" => "textfield",
+                    "heading" => __("Title plan"),
+                    "param_name" => "title_plan",
+                ),
+                array(
+                    "type" => "textfield",
+                    "heading" => __("Caption plan"),
+                    "param_name" => "caption_plan",
+                ),
+                array(
+                    "type" => "textfield",
+                    "heading" => __("Button plan"),
+                    "param_name" => "button_plan",
+                ),
+                array(
+                    "type" => "textfield",
+                    "heading" => __("Link button plan"),
+                    "param_name" => "link_button_plan",
+                ),
                 // Thêm các trường tùy chỉnh khác cho thành phần của bạn
             ),
         )

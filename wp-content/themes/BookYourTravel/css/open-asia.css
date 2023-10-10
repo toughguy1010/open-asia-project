@@ -4293,16 +4293,58 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   background-color: #fff !important;
   color: #80b157 !important;
 }
-#message-section{
+#message-section {
   position: relative;
   margin-top: 70px;
   margin-bottom: 20px;
   padding: 0 !important;
-
 }
-#message-section .wpb_column:last-child{
+#message-section .wpb_column:last-child {
   position: absolute;
   width: 900px;
   top: -95px;
   left: 185px;
+}
+.right-col {
+  padding: 130px 5%;
+  width: 50%;
+  background-color: #80b157;
+}
+.right-col-title {
+  font-size: 45px;
+  line-height: 1.22em;
+  font-weight: 700;
+  text-align: start;
+  color: #fff;
+}
+.right-col-caption {
+  text-align: start;
+  color: #fff;
+  margin: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.right-col-wrap a {
+  background-color: #ffff !important;
+  color: #80b157 !important;
+  padding: 15px 20px !important;
+  border-radius: 50px !important;
+  border: 1px solid #80b157 !important;
+  transition: all 0.5s !important;
+  display: block !important;
+  font-weight: 700 !important;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+.right-col-wrap a:hover{
+  background-color: #80b157 !important;
+  color: #fff !important;
+  border: 1px solid #fff !important;
+
+}
+.right-col-wrap{
+  width: 63%;
 }

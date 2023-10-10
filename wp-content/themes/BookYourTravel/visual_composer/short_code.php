@@ -59,7 +59,10 @@ if (!function_exists('reviews')) {
         $attr = shortcode_atts([
             'title' => '',
             'description' => '',
-            'background_image' => '',
+            'title_plan' => '',
+            'caption_plan' => '',
+            'button_plan' => '',
+            'link_button_plan' => '',
         ], $attr);
         require_once BookYourTravel_Theme_Utils::get_file_path('/templates/vc_elements/reviews.php');
     }
