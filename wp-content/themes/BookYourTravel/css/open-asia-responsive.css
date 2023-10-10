@@ -179,11 +179,18 @@
   .wrap-post-list,
   #get-infomation,
   .nano-container,
-  .list-quote {
+  .list-quote,#message-section {
     width: unset;
     margin: 0 3%;
   }
-
+  #message-section{
+    margin-top: 70px;
+  }
+  #message-section .wpb_column:last-child{
+    width: 713px;
+    top: -80px;
+    left: 185px;
+  }
   .tour_item-gallery ul li {
     height: unset;
   }
@@ -296,6 +303,12 @@
 }
 
 @media screen and (max-width: 1080px) {
+  #message-section .wpb_column:last-child {
+    width: 713px;
+    top: -80px;
+    left: 140px;
+}
+
   .main-nav li a {
     line-height: 24px;
     font-size: 14px;
@@ -789,6 +802,21 @@
   }
 }
 @media screen and (max-width: 750px) {
+  #message-section .wpb_column:last-child{
+    position: unset;
+    width: unset;
+    height: unset;
+  }
+  #message-section .wpb_row {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  #img-message{
+    margin-bottom: 0 !important;
+  }
+  #message-section {
+    margin-top: 0px;
+}
   .glance-wraper-content {
     flex-direction: column;
   }

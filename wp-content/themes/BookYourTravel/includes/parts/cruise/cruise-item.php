@@ -99,9 +99,9 @@ if ($bookyourtravel_theme_globals->show_static_prices_in_grids()) {
 }
 
 ?>
-<div class="our_cruise-item">
+<div class="our_cruise-item" style= "min-height:350px">
 	<a href="<?= $cruise_permalink ?>" class="cruise-thumb">
-		<?= $cruise_thumbnail_html ?>
+		<img src="<?=$attachment->guid ?>" alt="">
 	</a>
 	<div class="cruise-content">
 		<div class="cruise-title">

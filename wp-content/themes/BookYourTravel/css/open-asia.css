@@ -46,7 +46,7 @@ body {
 .top-header {
   float: none;
 }
-.top-header .top-nav{
+.top-header .top-nav {
   float: none !important;
   margin-bottom: 8px !important;
 }
@@ -83,13 +83,13 @@ body {
   background-color: #e3e6e6;
   height: 50px;
 }
-.header .wrap{
+.header .wrap {
   position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: end;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
-.top-header #menu-top-header-menu{
+.top-header #menu-top-header-menu {
   padding-top: 0px;
 }
 .contact-list li {
@@ -163,7 +163,7 @@ body {
   position: relative;
   background-color: #fff;
 }
-.button{
+.button {
   background-color: #80b157 !important;
   color: #fff !important;
   padding: 10px 20px !important;
@@ -173,11 +173,11 @@ body {
   display: unset !important;
   font-weight: 700 !important;
 }
-.button:hover{
+.button:hover {
   background-color: #ffff !important;
   color: #80b157 !important;
 }
-.view-more-button a{
+.view-more-button a {
   background-color: #80b157 !important;
   color: #fff !important;
   padding: 10px 20px !important;
@@ -189,7 +189,7 @@ body {
   margin: 0 auto;
   font-weight: 700 !important;
 }
-.view-more-button a:hover{
+.view-more-button a:hover {
   background-color: #ffff !important;
   color: #80b157 !important;
 }
@@ -876,7 +876,7 @@ body {
   padding: 5px !important;
 }
 #reviews-section {
-  margin-top: -79px;
+  /* margin-top: -79px; */
 }
 
 #footer-wrap {
@@ -1267,7 +1267,7 @@ body {
   width: 20px;
   height: 20px;
 }
-.hotline-number-title p strong{
+.hotline-number-title p strong {
   color: #418a3d;
 }
 .hotline-number-title p,
@@ -2895,7 +2895,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   width: 100% !important;
   padding: 0 !important;
 }
-.destination-list h4{
+.destination-list h4 {
   margin-bottom: 10px;
 }
 .destination_banner-wrap {
@@ -3002,10 +3002,10 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   align-items: flex-start;
   margin-bottom: 70px;
 }
-.glance-wraper-content{
+.glance-wraper-content {
   display: flex;
 }
-.glance-wraper-content iframe{
+.glance-wraper-content iframe {
   flex: 0 0 55%;
 }
 .glance-icon {
@@ -4161,27 +4161,25 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   margin-top: 20px;
 }
 
-.trp-language-switcher .trp-ls-shortcode-current-language{
+.trp-language-switcher .trp-ls-shortcode-current-language {
   width: unset !important;
   padding: 0 !important;
-  border:  0 !important;
+  border: 0 !important;
 }
-.trp_language_switcher_shortcode
-{
+.trp_language_switcher_shortcode {
   height: 100%;
 }
-.trp-language-switcher{
+.trp-language-switcher {
   width: unset !important;
   height: 100% !important;
 }
-.trp-language-switcher > div > a{
+.trp-language-switcher > div > a {
   font-size: 13px;
   text-transform: capitalize;
-  padding:  0 !important;
+  padding: 0 !important;
   color: #2c2c2c;
-
 }
-.trp-ls-shortcode-language{
+.trp-ls-shortcode-language {
   width: unset !important;
   position: absolute !important;
   top: 42px !important;
@@ -4191,27 +4189,30 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   min-width: 130px !important;
   left: -25px !important;
 }
-.trp-language-switcher:focus .trp-ls-shortcode-current-language, .trp-language-switcher:hover .trp-ls-shortcode-current-language{
+.trp-language-switcher:focus .trp-ls-shortcode-current-language,
+.trp-language-switcher:hover .trp-ls-shortcode-current-language {
   visibility: visible !important;
 }
-.switch-lang{
+.switch-lang {
   height: 50px;
   margin-top: 8px;
   display: flex;
   align-items: center;
 }
-.switch-lang svg{
+.switch-lang svg {
   margin-bottom: 16px;
   margin-right: 10px;
   fill: #686868;
 }
-.switch-lang:hover svg{
+.switch-lang:hover svg {
   fill: #ffff;
 }
-.switch-lang:hover .trp-ls-shortcode-current-language .trp-ls-shortcode-disabled-language{
-  color: #FFFF;
+.switch-lang:hover
+  .trp-ls-shortcode-current-language
+  .trp-ls-shortcode-disabled-language {
+  color: #ffff;
 }
-.trp-language-switcher > div{
+.trp-language-switcher > div {
   background-image: none !important;
 }
 .trp-language-switcher > div > a:hover {
@@ -4221,43 +4222,87 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .trp-ls-shortcode-current-language {
   background-color: unset !important;
 }
-.trp-ls-shortcode-current-language .trp-ls-shortcode-disabled-language{
+.trp-ls-shortcode-current-language .trp-ls-shortcode-disabled-language {
   cursor: pointer !important;
   transition: none !important;
 }
-#trp-floater-ls{
+#trp-floater-ls {
   display: none;
 }
-.trp-ls-shortcode-current-language .trp-ls-shortcode-disabled-language:hover{
+.trp-ls-shortcode-current-language .trp-ls-shortcode-disabled-language:hover {
   color: #fff;
 }
-.trp-ls-shortcode-language a:hover{
+.trp-ls-shortcode-language a:hover {
   color: #418a3d;
   font-weight: 600 !important;
-
 }
 .single-post-wrap .description p {
   overflow: hidden;
-   display: -webkit-box;
-   -webkit-line-clamp: 3; /* number of lines to show */
-           line-clamp: 3; 
-   -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
-.single-post-wrap .post_item_wrap img{
+.single-post-wrap .post_item_wrap img {
   height: 200px;
 }
-.partners-list{
+.partners-list {
   width: 1170px;
   display: flex;
   margin: 20px auto;
   overflow: auto;
   gap: 20px;
 }
-.partner-item img{
+.partner-item img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 .partner-item {
   height: 70px;
+}
+#message-section {
+  width: 1170px;
+  margin: 0 auto;
+}
+#message-section .vc_column-inner {
+  padding: 0 !important;
+}
+#text-message p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 25px;
+  text-align: justify;
+}
+#text-message {
+  margin-bottom: 10px !important;
+}
+.message-btn a {
+  background-color: #80b157 !important;
+  color: #fff !important;
+  padding: 10px 20px !important;
+  border-radius: 50px !important;
+  border: 1px solid #80b157 !important;
+  transition: all 0.5s !important;
+  display: block !important;
+  width: fit-content;
+  margin-left: auto;
+  font-weight: 700 !important;
+}
+.message-btn a:hover {
+  background-color: #fff !important;
+  color: #80b157 !important;
+}
+#message-section{
+  position: relative;
+  margin-top: 70px;
+  margin-bottom: 20px;
+  padding: 0 !important;
+
+}
+#message-section .wpb_column:last-child{
+  position: absolute;
+  width: 900px;
+  top: -95px;
+  left: 185px;
 }
