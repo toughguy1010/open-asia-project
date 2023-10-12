@@ -10,7 +10,7 @@ if ($glance) {
         <div class="glance-wraper nano-container">
             <h2><?= $title ?> at a glance</h2>
             <div class="glance-wraper-content">
-                <!-- <iframe src="<?= $youtube_link ?>" frameborder="0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+                <iframe src="<?= $youtube_link ?>" frameborder="0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <div class="glance-list">
                     <?php
                     foreach ($glance as $item) {

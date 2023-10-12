@@ -120,17 +120,17 @@ body {
   content: none;
 }
 .menu-btn a {
-  background-color: #80b157 !important;
+  background-color: #02a9a2 !important;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157 !important;
+  border: 1px solid #02a9a2 !important;
   transition: all 0.5s !important;
   display: unset !important;
   font-weight: 700 !important;
 }
 .menu-btn a:hover {
-  color: #80b157 !important;
+  color: #02a9a2 !important;
   background-color: #fff !important;
 }
 #menu-primary-menu {
@@ -164,25 +164,25 @@ body {
   background-color: #fff;
 }
 .button {
-  background-color: #80b157 !important;
+  background-color: #02a9a2 !important;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157 !important;
+  border: 1px solid #02a9a2 !important;
   transition: all 0.5s !important;
   display: unset !important;
   font-weight: 700 !important;
 }
 .button:hover {
   background-color: #ffff !important;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .view-more-button a {
-  background-color: #80b157 !important;
+  background-color: #02a9a2 !important;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157 !important;
+  border: 1px solid #02a9a2 !important;
   transition: all 0.5s !important;
   display: block !important;
   width: fit-content;
@@ -191,12 +191,12 @@ body {
 }
 .view-more-button a:hover {
   background-color: #ffff !important;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .search-button {
   width: 46px;
   height: 46px;
-  background-color: #80b157;
+  background-color: #02a9a2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -353,7 +353,7 @@ body {
 #wrap_easy_steps {
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff;
 }
 .step-title {
@@ -372,7 +372,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #b7db9a;
+  background-color: #9bd6dc;
 }
 .step-content {
   font-size: 15px;
@@ -580,15 +580,15 @@ body {
 .location-btn a {
   /* font-weight: 700; */
   font-size: 16px;
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
 }
 .location-btn a:hover {
-  color: #80b157 !important;
+  color: #02a9a2 !important;
   background-color: #fff !important;
 }
 #get-infomation {
@@ -596,7 +596,7 @@ body {
   position: sticky;
   width: 1170px;
   margin: 0 auto;
-  background-color: #80b157;
+  background-color: #02a9a2;
   padding: 40px 10px;
   margin-top: 60px;
 }
@@ -678,10 +678,10 @@ body {
 .reviews-wrap .reviews {
   padding: 130px 5%;
   width: 50%;
-  background-image: url(./images/bg-reviews.jpg);
+  background-image: url(./images/bg-reviews.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: right;
+  background-size: 100% ;
+  background-position: bottom right;
 }
 
 .star {
@@ -769,6 +769,7 @@ body {
   overflow: inherit !important;
   padding: 15px;
   box-shadow: 1px 1px 7px 0 rgba(0, 0, 0, 0.15), 0 0 2px 0 rgba(0, 0, 0, 0.05);
+  opacity: 0.8;
 }
 .reivews-content-wrap::before {
   position: absolute;
@@ -990,7 +991,7 @@ body {
 }
 .mobile-nav .main-nav li a:hover {
   background-color: #eee;
-  color: #80b157;
+  color: #02a9a2;
 }
 .mobile-nav .main-nav .menu-item-has-children a {
   width: 80%;
@@ -1011,7 +1012,7 @@ body {
 #sticky-request .cta .gradient-button {
   padding: 8px 0 !important;
   font-size: 15px !important;
-  background: #80b157;
+  background: #02a9a2;
   border-radius: 0;
   text-transform: none;
   border: 1px solid #fff;
@@ -1022,7 +1023,7 @@ body {
   text-decoration: underline;
 }
 #sticky-request .vc_column_container {
-  background: #80b157;
+  background: #02a9a2;
   padding: 7px;
 }
 #sticky-request .vc_column-inner {
@@ -1072,7 +1073,7 @@ body {
 }
 .destination-item a:hover,
 .travel-style-list a:hover {
-  color: #80b157;
+  color: #02a9a2;
   text-decoration: underline;
 }
 .travel-style {
@@ -1245,7 +1246,7 @@ body {
   top: 3px;
 }
 .hotline-infomation-wrap {
-  background: linear-gradient(90deg, #80b157 0%, #b1cd9b 48.44%, #80b157 100%);
+  background: linear-gradient(90deg, #02a9a2 0%, #b1cd9b 48.44%, #02a9a2 100%);
   padding: 40px;
   color: #fff;
   margin-top: 30px;
@@ -1268,7 +1269,7 @@ body {
   height: 20px;
 }
 .hotline-number-title p strong {
-  color: #418a3d;
+  color: #239c97;
 }
 .hotline-number-title p,
 .hotline-email-title p {
@@ -1318,7 +1319,7 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff;
   /* padding: 25px; */
   height: 50px;
@@ -1333,7 +1334,7 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff;
   /* padding: 25px; */
   height: 50px;
@@ -1356,11 +1357,11 @@ body {
   position: relative;
 }
 .wpforms-submit {
-  background-color: #80b157 !important;
+  background-color: #02a9a2 !important;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157 !important;
+  border: 1px solid #02a9a2 !important;
   transition: all 0.5s !important;
   outline: none !important;
   font-size: 16px !important;
@@ -1368,11 +1369,11 @@ body {
 }
 .wpforms-submit:hover {
   background: #fff !important;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 #plan-tour-form .wpforms-submit:hover {
   background: #fff !important;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 div.wpforms-container-full input[type="submit"]:focus:after,
 div.wpforms-container-full button[type="submit"]:focus:after,
@@ -1410,7 +1411,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   font-size: 24px;
   font-weight: 700;
   text-transform: uppercase;
-  border-bottom: 1px solid #80b157;
+  border-bottom: 1px solid #02a9a2;
   padding-bottom: 5px;
   /* overflow: hidden;
   display: -webkit-box;
@@ -1426,11 +1427,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   overflow: hidden;
 }
 .view-btn {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
   cursor: pointer;
   width: fit-content;
@@ -1440,7 +1441,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .view-btn:hover {
   background-color: #ffff;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .active-about-content {
   height: unset;
@@ -1514,7 +1515,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   display: inline-block;
 
   outline: none;
-  background: #80b157;
+  background: #02a9a2;
   border: none;
   text-decoration: none;
   font-size: 16px;
@@ -1571,18 +1572,18 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   margin-bottom: 15px;
 }
 .step-plan-btn a {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
   font-weight: 700;
   font-size: 16px;
 }
 .step-plan-btn a:hover {
   background-color: #ffffff;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .step-plan-btn {
   text-align: center;
@@ -1594,11 +1595,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   margin: 90px auto !important;
 }
 .plan-trip-option .trip-option-btn a {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
   font-weight: 700;
   font-size: 14px;
@@ -1610,7 +1611,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .plan-trip-option .trip-option-btn a:hover {
   background-color: #ffffff;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .social-list {
   display: flex;
@@ -1635,17 +1636,17 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   margin-top: 25px;
 }
 .connect-btn a {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
   display: block;
   text-align: center;
 }
 .connect-btn a:hover {
-  color: #80b157 !important;
+  color: #02a9a2 !important;
   background-color: #fff;
 }
 .footer p {
@@ -1688,7 +1689,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   color: #000;
 }
 .slider-element-item:hover {
-  color: #80b157;
+  color: #02a9a2;
 }
 .slider-item-title {
   padding-top: 15px;
@@ -1786,7 +1787,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   content: "";
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #3a3a3a 11.56%, #80b157 100%);
+  background: linear-gradient(135deg, #3a3a3a 11.56%, #02a9a2 100%);
   opacity: 0.9;
   z-index: -1;
   margin: -40px -26px -30px -26px;
@@ -1861,7 +1862,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   top: 100%;
   left: 13%;
   height: 1px;
-  background-color: #80b157;
+  background-color: #02a9a2;
   transform: translate(50%, 50%);
 }
 .submit-contact-form .wpforms-submit {
@@ -1944,11 +1945,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   transform: rotateY(0);
 }
 .rotate_text_fields a {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
   cursor: pointer;
   width: fit-content;
@@ -1956,7 +1957,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .rotate_text_fields a:hover {
   background-color: #fff;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .taxonomy-header {
   text-align: center;
@@ -2011,7 +2012,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .pager .current,
 .pager a:hover {
-  background: #80b157 !important;
+  background: #02a9a2 !important;
   color: #fff !important;
 }
 .pager > span {
@@ -2156,7 +2157,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   display: block;
 }
 .tour_item-title:hover {
-  color: #80b157;
+  color: #02a9a2;
 }
 .tour_item-text {
   font-size: 16px;
@@ -2168,7 +2169,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .static_price strong {
   font-size: 24px;
   font-weight: 600;
-  color: #80b157;
+  color: #02a9a2;
 }
 .market_price strong,
 .save_price strong {
@@ -2180,11 +2181,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   gap: 20px;
 }
 .tour_item-btn a {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 9px 12px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   display: block;
   transition: all 0.5s;
   text-align: center;
@@ -2193,7 +2194,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .tour_item-btn a:hover {
   background-color: #fff;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .tour_item-btn .gray-btn {
   color: #2c2c2c !important;
@@ -2351,7 +2352,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .tour_location-sequence::before {
   content: "";
-  background: #80b157;
+  background: #02a9a2;
   position: absolute;
   z-index: -1;
   width: 100%;
@@ -2386,7 +2387,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   margin-bottom: 15px;
 }
 .tour_grid-title:hover {
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .tour_grid_item .tour_item-action {
   padding: 0 15px;
@@ -2473,21 +2474,21 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   color: #1c1c1c;
 }
 .nav-tour-item a:hover {
-  color: #80b157;
+  color: #02a9a2;
   background-color: #eee;
 }
 .tour-nav-btn {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 15px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
   display: unset !important;
 }
 .tour-nav-btn:hover {
   background-color: #fff !important;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .single-tour .lSSlideOuter {
   margin: 0 !important;
@@ -2513,7 +2514,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   height: 10px;
   display: inline-block;
   vertical-align: middle;
-  background: #80b157;
+  background: #02a9a2;
   border-radius: 50%;
   margin-right: 15px;
 }
@@ -2538,18 +2539,18 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   margin-bottom: 56px;
 }
 .map-footer p a {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 15px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
   font-size: 16px;
   font-weight: 600;
 }
 .map-footer p a:hover {
   background-color: #fff;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .map-footer p {
   margin-bottom: 40px;
@@ -2604,7 +2605,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   width: 25px;
   height: 25px;
   border-radius: 100%;
-  background-color: #80b157;
+  background-color: #02a9a2;
 }
 .circle-plus .circle .horizontal {
   position: absolute;
@@ -2686,7 +2687,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   transition: all 0.7s;
 }
 .top-itinerary-item:hover .itinerary-item-title {
-  color: #80b157;
+  color: #02a9a2;
 }
 .customizable_itinerary-item {
   margin-bottom: 10px;
@@ -2730,7 +2731,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .top-plan-tour {
   color: #fff;
   padding: 12px 30px;
-  background-color: #80b157;
+  background-color: #02a9a2;
   text-align: center;
   font-size: 16px;
   font-weight: 600;
@@ -2780,7 +2781,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   line-height: 1em;
   font-weight: 700;
   text-align: center;
-  color: #418a3d;
+  color: #239c97;
   text-transform: uppercase;
 }
 .list-relate_post {
@@ -2859,11 +2860,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 
 .useful-information-action a {
   display: block;
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 15px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
   font-size: 14px;
   font-weight: 600;
@@ -2872,7 +2873,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .useful-information-action a:hover {
   background-color: #fff;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .useful-information-action span {
   display: block;
@@ -2931,7 +2932,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   line-height: 1em;
   font-weight: 700;
   text-align: center;
-  color: #80b157;
+  color: #02a9a2;
   text-transform: uppercase;
 }
 .hidden_gem-content {
@@ -2953,10 +2954,10 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   font-weight: 600;
   margin: 11px 19px 0 0;
   color: #ffffff;
-  background-color: #80b157;
+  background-color: #02a9a2;
 }
 .hidden_gem-action-btn {
-  color: #80b157;
+  color: #02a9a2;
   cursor: pointer;
   margin-bottom: 20px;
   font-size: 15px;
@@ -2997,10 +2998,10 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .glance-item {
   display: flex;
-  flex: 0 0 33.333333%;
+  flex: 0 0 100%;
   gap: 20px;
   align-items: flex-start;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
 }
 .glance-wraper-content {
   display: flex;
@@ -3096,11 +3097,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   text-align: center;
 }
 .location-inner-back a {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
 }
 #list-child-location h2 {
@@ -3109,7 +3110,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
-  color: #418a3d;
+  color: #239c97;
 }
 .faq_item-title {
   font-size: 18px;
@@ -3135,11 +3136,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   background: rgba(0, 0, 0, 0.06);
 }
 .faq_item-action a {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 10px 15px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
   font-size: 16px;
   margin: 25px 0;
@@ -3171,7 +3172,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   line-height: 1em;
   font-weight: 700;
   text-align: center;
-  color: #418a3d;
+  color: #239c97;
   text-transform: uppercase;
 }
 
@@ -3194,7 +3195,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   font-size: 22px !important;
   line-height: 1em !important;
   font-weight: 600;
-  color: #418a3d;
+  color: #239c97;
   text-align: center !important;
   margin-bottom: 20px !important;
   text-transform: uppercase;
@@ -3244,11 +3245,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   font-weight: 600;
 }
 .cruise_type-option a {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
   font-size: 16px;
   letter-spacing: 1px;
@@ -3258,7 +3259,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .cruise_type-option a:hover {
   background-color: #fff;
 
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .cruise_type-option {
   margin-top: 30px;
@@ -3346,11 +3347,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   text-shadow: 0px 0px 20px rgba(18, 44, 52, 1);
 }
 .cruise-content a {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
   margin-bottom: 30px;
   margin-top: 40px;
@@ -3360,7 +3361,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .cruise-content a:hover {
   background-color: #fff;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .our_cruise-item:hover .cruise-thumb img {
   transform: scale(1.2);
@@ -3426,7 +3427,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .cruise_query-list a {
   font-size: 15px;
-  color: #80b157;
+  color: #02a9a2;
   font-weight: 700;
   margin-bottom: 12px;
   position: relative;
@@ -3445,7 +3446,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 #port_contact {
   padding-top: 60px;
   padding-bottom: 60px;
-  background-color: #80b157;
+  background-color: #02a9a2;
 }
 .port_contact-wrap {
   text-align: center;
@@ -3457,11 +3458,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   margin-bottom: 30px;
 }
 .port_contact-wrap a {
-  background-color: #418a3d;
+  background-color: #239c97;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #418a3d;
+  border: 1px solid #239c97;
   transition: all 0.5s;
   font-size: 16px;
   letter-spacing: 1px;
@@ -3470,7 +3471,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .port_contact-wrap a:hover {
   background-color: #ffff;
-  color: #418a3d !important;
+  color: #239c97 !important;
 }
 .lightSlider {
   height: 650px !important;
@@ -3525,11 +3526,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   margin-top: 5px;
 }
 .cruise-contact-content a {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 15px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
   display: unset !important;
   /* text-transform: ; */
@@ -3538,7 +3539,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .cruise-contact-content a:hover {
   background-color: #fff;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 
 #mega-menu-wrap-primary-menu
@@ -3608,10 +3609,10 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   line-height: 27px !important;
 }
 .mega-menu-item .menu-item a:hover {
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 .mega-sub-menu .mega-menu-column {
-  border-top: 2px solid #80b157 !important;
+  border-top: 2px solid #02a9a2 !important;
 }
 .mega-block-title {
   font-size: 20px !important;
@@ -3638,11 +3639,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   width: 100% !important;
 }
 .mega-menu-item-text-13 a {
-  background-color: #80b157;
+  background-color: #02a9a2;
   color: #fff !important;
   padding: 10px 15px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157;
+  border: 1px solid #02a9a2;
   transition: all 0.5s;
   font-size: 15px;
   letter-spacing: 1px;
@@ -3652,10 +3653,10 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   margin-top: 30px;
 }
 .scroll-to-top {
-  background: #80b157;
+  background: #02a9a2;
 }
 .scroll-to-top:hover {
-  background: #418a3d;
+  background: #239c97;
 }
 
 #mega-menu-2249-0-0,
@@ -3746,7 +3747,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   padding: 0 !important;
 }
 .single-breadcrumbs .breadcrumbs li a:hover {
-  color: #80b157;
+  color: #02a9a2;
   text-decoration: underline;
 }
 .responsible_quote {
@@ -3759,7 +3760,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   margin: 15px auto 30px;
   padding-bottom: 10px;
   position: relative;
-  color: #80b157;
+  color: #02a9a2;
   width: fit-content;
 }
 .responsible-title h2::before {
@@ -3784,7 +3785,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   width: 300px !important;
   right: 0;
   z-index: 9999;
-  background: #80b157;
+  background: #02a9a2;
   color: #fff;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border: unset !important;
@@ -3881,7 +3882,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   max-width: 200px;
   height: 1px;
   display: block;
-  background-color: #80b157;
+  background-color: #02a9a2;
   content: "";
   width: 40%;
   left: 0;
@@ -3909,7 +3910,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   font-size: 12px;
 }
 .post_breadcrumbs .breadcrumbs li a:hover {
-  color: #80b157;
+  color: #02a9a2;
 }
 .left-entry-content h1 {
   font-size: 26px;
@@ -3957,7 +3958,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   color: #555;
 }
 .destionation-post-item a:hover {
-  color: #80b157;
+  color: #02a9a2;
 }
 .destionation-post-wrap {
   margin-top: 30px;
@@ -4044,7 +4045,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   overflow: hidden !important;
 }
 .page-post-list .post_title:hover {
-  color: #80b157;
+  color: #02a9a2;
 }
 .page-post-list article > div .details {
   padding-top: 10px;
@@ -4066,7 +4067,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 .footer-icon svg {
   width: 15px;
   height: 15px;
-  fill: #80b157;
+  fill: #02a9a2;
 }
 .gallery-status-wrap img {
   width: 20px;
@@ -4092,7 +4093,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .footer-info h2 {
   font-size: 23px;
-  color: #80b157;
+  color: #02a9a2;
   text-transform: uppercase;
 }
 .weather-status-icon {
@@ -4109,14 +4110,14 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   margin-bottom: 50px !important;
 }
 .weather-wrapper table th {
-  background: #80b157 !important;
+  background: #02a9a2 !important;
   color: #fff !important;
   text-align: center;
   vertical-align: middle;
   border: 1px solid #ddd !important;
 }
 .weather-wrapper table {
-  border-bottom: 3px solid #80b157 !important;
+  border-bottom: 3px solid #02a9a2 !important;
   margin-bottom: 35px;
 }
 .weather-wrapper table td {
@@ -4148,7 +4149,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .text-logo {
   font-size: 23px;
-  color: #80b157;
+  color: #02a9a2;
   text-transform: uppercase;
 }
 .logo-container .text-logo {
@@ -4184,7 +4185,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   position: absolute !important;
   top: 42px !important;
   border: unset !important;
-  border-top: 2px solid #418a3d !important;
+  border-top: 2px solid #239c97 !important;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   min-width: 130px !important;
   left: -25px !important;
@@ -4233,7 +4234,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   color: #fff;
 }
 .trp-ls-shortcode-language a:hover {
-  color: #418a3d;
+  color: #239c97;
   font-weight: 600 !important;
 }
 .single-post-wrap .description p {
@@ -4278,11 +4279,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   margin-bottom: 10px !important;
 }
 .message-btn a {
-  background-color: #80b157 !important;
+  background-color: #02a9a2 !important;
   color: #fff !important;
   padding: 10px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157 !important;
+  border: 1px solid #02a9a2 !important;
   transition: all 0.5s !important;
   display: block !important;
   width: fit-content;
@@ -4291,7 +4292,7 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 }
 .message-btn a:hover {
   background-color: #fff !important;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
 }
 #message-section {
   position: relative;
@@ -4306,9 +4307,12 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   left: 185px;
 }
 .right-col {
-  padding: 130px 5%;
+  /* padding: 130px 5%; */
   width: 50%;
-  background-color: #80b157;
+  background-color: #02a9a2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .right-col-title {
   font-size: 45px;
@@ -4328,10 +4332,10 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
 
 .right-col-wrap a {
   background-color: #ffff !important;
-  color: #80b157 !important;
+  color: #02a9a2 !important;
   padding: 15px 20px !important;
   border-radius: 50px !important;
-  border: 1px solid #80b157 !important;
+  border: 1px solid #02a9a2 !important;
   transition: all 0.5s !important;
   display: block !important;
   font-weight: 700 !important;
@@ -4339,12 +4343,11 @@ div.wpforms-container-full .wpforms-page-button:focus:after {
   text-align: center;
   font-size: 18px;
 }
-.right-col-wrap a:hover{
-  background-color: #80b157 !important;
+.right-col-wrap a:hover {
+  background-color: #02a9a2 !important;
   color: #fff !important;
   border: 1px solid #fff !important;
-
 }
-.right-col-wrap{
+.right-col-wrap {
   width: 63%;
 }
